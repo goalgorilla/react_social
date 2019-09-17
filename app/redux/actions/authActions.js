@@ -1,7 +1,7 @@
 import Router from "next/router";
 import axios from "axios";
 import { AUTHENTICATE, DEAUTHENTICATE } from "../types";
-import { API } from "../../config";
+import { API, grant_type, client_id, client_secret } from "../../config";
 import { setCookie, removeCookie } from "../../utils/cookie";
 
 // gets token from the api and stores it in the redux store and in cookie
@@ -9,13 +9,27 @@ const authenticate = ({ username, password }, type) => {
   if (type !== "login") {
     throw new Error("Wrong API call!");
   }
+
+  var bodyFormData = new FormData();
+  bodyFormData.set("grant_type", grant_type);
+  bodyFormData.set("client_id", client_id);
+  bodyFormData.set("client_secret", client_secret);
+  bodyFormData.set("username", username);
+  bodyFormData.set("password", password);
+
+  let axiosConfig = {
+    headers: {
+      "Access-Control-Allow-Origin": "*"
+    }
+  };
+
   return dispatch => {
     axios
-      .post(`${API}/${type}`, { username, password })
+      .post(`${API}/oauth/token`, bodyFormData, axiosConfig)
       .then(response => {
-        setCookie("token", response.data.token);
+        setCookie("token", response.data.access_token);
         Router.push("/");
-        dispatch({ type: AUTHENTICATE, payload: response.data.token });
+        dispatch({ type: AUTHENTICATE, payload: response.data.access_token });
       })
       .catch(err => {
         throw new Error(err);

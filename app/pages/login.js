@@ -1,6 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
+import actions from "../redux/actions";
+import initialize from "../utils/initialize";
+import Layout from "../components/Layout";
 
-class Signin extends React.Component {
+class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,11 +27,54 @@ class Signin extends React.Component {
 
   render() {
     return (
-      <form
-        onSubmit={this.handleSubmit.bind(this)}
-        className="container"
-        style={{ width: "540px" }}
-      ></form>
+      <Layout title="Login">
+        <form
+          onSubmit={this.handleSubmit.bind(this)}
+          className="container"
+          style={{ width: "540px" }}
+        >
+          <div className="field">
+            <p className="control has-icons-left has-icons-right">
+              <input
+                className="input"
+                type="text"
+                placeholder="username"
+                required
+                value={this.state.username}
+                onChange={e => this.setState({ username: e.target.value })}
+              />
+              <span className="icon is-small is-left">
+                <i className="fas fa-envelope" />
+              </span>
+              <span className="icon is-small is-right">
+                <i className="fas fa-check" />
+              </span>
+            </p>
+          </div>
+          <div className="field">
+            <p className="control has-icons-left">
+              <input
+                className="input"
+                type="password"
+                placeholder="Password"
+                required
+                value={this.state.password}
+                onChange={e => this.setState({ password: e.target.value })}
+              />
+              <span className="icon is-small is-left">
+                <i className="fas fa-lock" />
+              </span>
+            </p>
+          </div>
+          <div className="field">
+            <p className="control has-text-centered">
+              <button type="submit" className="button is-success">
+                Sign In
+              </button>
+            </p>
+          </div>
+        </form>
+      </Layout>
     );
   }
 }
@@ -35,4 +82,4 @@ class Signin extends React.Component {
 export default connect(
   state => state,
   actions
-)(login);
+)(Login);
