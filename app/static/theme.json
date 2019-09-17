@@ -1,0 +1,7 @@
+{
+  "theme": "SocialBlue",
+  "styles": {
+    "primaryTextColor": "blue"
+  },
+  "layout": "compact"
+}
