@@ -20,13 +20,8 @@ const Layout = ({ children, title, isAuthenticated, deauthenticate }) => (
           <a>Home</a>
         </Link>
         {!isAuthenticated && (
-          <Link href="/signin">
-            <a>Sign In</a>
-          </Link>
-        )}
-        {!isAuthenticated && (
-          <Link href="/signup">
-            <a>Sign Up</a>
+          <Link href="/login">
+            <a>Login</a>
           </Link>
         )}
         {isAuthenticated && (
@@ -34,6 +29,9 @@ const Layout = ({ children, title, isAuthenticated, deauthenticate }) => (
             <a>Sign Out</a>
           </li>
         )}
+        <Link href="/whoami">
+          <a>Who Am I</a>
+        </Link>
       </ul>
     </div>
 

@@ -1,14 +1,19 @@
-import React from "react";
-import styled from "styled-components";
+import { connect } from "react-redux";
+import initialize from "../utils/initialize";
+import Layout from "../components/Layout";
 
-const Title = styled.h1`
-  font-size: 50px;
-  color: ${({ theme }) => theme.colors.primaryTextColor};
-`;
-
-export default () => (
-  <div>
-    <Title>Hello World!</Title>
-    <p>test</p>
-  </div>
+const Index = () => (
+  <Layout title="Home">
+    <h2 className="title is-2">Authentication with Next.js and JWT</h2>
+    <p>
+      A proof of concept app, demonstrating the authentication of Next.js
+      application using JWT.
+    </p>
+  </Layout>
 );
+
+Index.getInitialProps = function(ctx) {
+  initialize(ctx);
+};
+
+export default connect(state => state)(Index);
