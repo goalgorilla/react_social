@@ -1,0 +1,5 @@
+name: "RFE Core"
+description: "Provides RFE core features."
+type: module
+core: 8.x
+package: RFE

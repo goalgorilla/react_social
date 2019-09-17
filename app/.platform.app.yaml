@@ -1,0 +1,31 @@
+name: app
+type: nodejs:10
+build:
+  flavor: none
+
+hooks:
+  build: |
+    set -e
+    yarn install
+    yarn run build
+
+dependencies:
+  nodejs:
+    yarn: "*"
+
+web:
+  commands:
+    start: "yarn start -- --port=$PORT"
+  #in this setup you ßwill find your application stdout and stderr in /app/run/logs
+  locations:
+    "/":
+      root: "static"
+      passthru: true
+      allow: true
+      rules:
+        \.(css|js|gif|jpe?g|png|ttf|eot|woff2?|otf|html|ico|svg?)$:
+          allow: true
+        ^/robots\.txt$:
+          allow: true
+
+disk: 512

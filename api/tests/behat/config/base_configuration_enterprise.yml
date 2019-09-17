@@ -1,0 +1,41 @@
+imports:
+  - base_configuration_core.yml
+default:
+  suites:
+    enterprise:
+      parameters:
+        test_users:
+          admin:
+            username: "admin"
+            password: "admin"
+            mail: "info+admin@example.com"
+      paths:
+        - "/var/www/tests/behat/features"
+      contexts:
+        - Drupal\rfe\Behat\rfeFeatureContext
+        - Drupal\social\Behat\SocialDrupalContext
+        - Drupal\social\Behat\SocialMinkContext
+        - Drupal\DrupalExtension\Context\BatchContext
+        - Drupal\DrupalExtension\Context\ConfigContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\social\Behat\PostContext
+        - Drupal\social\Behat\EmailContext
+
+  extensions:
+    Drupal\DrupalExtension:
+      api_driver: "drupal"
+      drupal:
+        drupal_root: "/var/www/html"
+      selectors:
+        warning_message_selector: ".alert.alert-warning"
+      region_map:
+        "Page title": ".block-social-page-title-block .page-title"
+        "Page title block": ".section-title"
+        "Hero block": "#hero"
+        "Admin page title block": ".region-header"
+        "Hero buttons": ".region--hero .btn-group"
+        "Tabs": ".region--secondary-navigation"
+        "Main content": ".region--content"
+        "Main content front": ".region--content"
+        "Sidebar second": "aside[role=complementary]"
+        "Modal footer": ".modal-footer"

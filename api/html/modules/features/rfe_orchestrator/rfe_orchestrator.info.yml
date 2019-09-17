@@ -1,0 +1,7 @@
+name: "rfe Orchestrator"
+description: "Provides a list of dependencies that represent the features that are enabled on a website"
+type: module
+core: 8.x
+dependencies:
+  - rfe_core:rfe_core
+package: rfe

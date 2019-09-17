@@ -1,0 +1,7 @@
+imports:
+  - base_configuration_core.yml
+default:
+  suites:
+    distribution:
+      filters:
+        tags: '@stability&&~@private-file-uploads&&~@gdpr'

@@ -1,0 +1,7 @@
+imports:
+  - base_configuration_enterprise.yml
+default:
+  suites:
+    enterprise:
+      filters:
+        tags: '@stability&&@enterprise'

@@ -1,0 +1,7 @@
+name: "rfe Helper"
+description: "Provides rfe helper features."
+type: module
+core: 8.x
+package: rfe
+dependencies:
+  - enterprise_helper:enterprise_helper

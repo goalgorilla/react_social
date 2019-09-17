@@ -1,0 +1,69 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the rfe_orchestrator module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function rfe_orchestrator_install() {
+  // Install modules.
+  $modules = _rfe_orchestrator_module_list();
+  _rfe_orchestrator_module_installer($modules);
+  // Set permissions.
+  _rfe_orchestrator_set_permissions();
+}
+
+/**
+ * Returns list of project related modules that might be uninstalled.
+ */
+function _rfe_orchestrator_module_list() {
+  $modules = [
+    'monolog' => NULL,
+    'social_embed' => NULL,
+    'social_event_managers' => NULL,
+    'social_event_type' => NULL,
+    'social_kpi_lite' => NULL,
+    'social_landing_page' => NULL,
+    'social_private_message' => NULL,
+    'social_user_export' => NULL,
+    'social_modules_checker' => NULL,
+    'social_engagement' => NULL,
+    'social_captcha' => NULL,
+    'google_analytics' => NULL,
+    'social_wootric' => NULL,
+  ];
+  return $modules;
+}
+
+/**
+ * Install modules.
+ */
+function _rfe_orchestrator_module_installer($modules) {
+  foreach (array_keys($modules) as $key => $module) {
+    if (\Drupal::service('module_handler')->moduleExists($module)) {
+      unset($modules[$key]);
+    }
+  }
+
+  \Drupal::service('module_installer')->install(array_keys($modules), TRUE);
+
+  foreach ($modules as $module => $weight) {
+    if (is_string($module) && is_numeric($weight)) {
+      module_set_weight($module, $weight);
+    }
+  }
+}
+
+/**
+ * Set data_policy permissions.
+ */
+function _rfe_orchestrator_set_permissions() {
+  $permissions = [
+    'administer google analytics',
+    'opt-in or out of google analytics tracking',
+  ];
+  user_role_grant_permissions('sitemanager', $permissions);
+}

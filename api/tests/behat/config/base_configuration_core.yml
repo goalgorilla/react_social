@@ -1,0 +1,22 @@
+imports:
+  - /var/www/html/profiles/contrib/social/tests/behat/config/behat.yml
+default:
+  suites:
+    distribution:
+      parameters:
+        test_users:
+          admin:
+            username: 'admin'
+            password: 'admin'
+            mail: 'info+admin@example.com'
+      paths:
+      - '/var/www/html/profiles/contrib/social/tests/behat/features'
+      contexts:
+        - Drupal\social\Behat\FeatureContext
+        - Drupal\social\Behat\SocialDrupalContext
+        - Drupal\social\Behat\SocialMinkContext
+        - Drupal\DrupalExtension\Context\BatchContext
+        - Drupal\DrupalExtension\Context\ConfigContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\social\Behat\PostContext
+        - Drupal\social\Behat\EmailContext

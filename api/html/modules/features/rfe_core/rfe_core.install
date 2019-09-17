@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the rfe_core module.
+ */
+
+use Drupal\system\Entity\Action;
+
+/**
+ * Implements hook_install().
+ *
+ * Perform actions related to the installation of rfe_core.
+ */
+function rfe_core_install() {
+  // Install default theme.
+  // _rfe_core_theme_installer('rfe');
+  _rfe_core_remove_user_administrator_actions();
+}
+
+/**
+ * Install default theme.
+ */
+function _rfe_core_theme_installer($theme) {
+  // Enable the theme first.
+  \Drupal::service('theme_installer')->install([$theme]);
+  // Make sure the admin theme is not used when managing groups.
+  $theme_settings = \Drupal::configFactory()->getEditable('system.theme');
+  $theme_settings->set('default', $theme);
+  $theme_settings->save();
+}
+
+/**
+ * Remove the add/remove administrator role action.
+ *
+ * On Open Social Enterprise sites there should never be more than 1 admin user
+ * so the ability to add/remove this role is considered a security issue.
+ *
+ * Site Managers have access to the add/remove role actions so the dangerous
+ * action should be removed.
+ */
+function _rfe_core_remove_user_administrator_actions() {
+  $actions = Action::loadMultiple([
+    'user_add_role_action.administrator',
+    'user_remove_role_action.administrator',
+  ]);
+  foreach ($actions as $action) {
+    $action->delete();
+  }
+}

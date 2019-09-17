@@ -1,0 +1,17 @@
+{
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "scripts": {
+    "test": "jest",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@testing-library/react": "^9.1.4",
+    "jest": "^24.9.0",
+    "next": "^9.0.5",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "styled-components": "^4.3.2"
+  }
+}

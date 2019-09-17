@@ -1,0 +1,56 @@
+language: php
+
+php:
+  - "7.2"
+
+env:
+  BUILD_STARTED: false
+  global:
+    #secure variable contains values for AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
+    - secure: EmNaI3GjG0TWTNuibXZS7VhV5DzJRqRJbSFM3RFDTyK6UDhF5sOUgELMm02YxEgRoFg9FBbTx8ZMoT8Jpae5TSbjNMoGnnparDbMClIUtXt91RLjzLOV+Ga37lh6iXSrtIsErRyaULdMDVYXKUlZ3kzOkKkHhFD86Afivn5wbSPBmn0VN7B0LnSfn/0eKHR8vEzcmKpX1U0FpXtaj8/JQL+75Gf9CHRRv4cCDvvoGxHO7l5e8ZtH9iARFRXK4Sy42ePHSVVQgsnAqEIHp9F2krpYxeUhtQbt3iaCzKBQubPOeS5hNav2yah/kDN/hrNZNngJ50XjinmwJtqP+5jdZw==
+
+branches:
+  except:
+    - fix-distro/*
+
+build:
+  cache: true
+  cache_dir_list:
+    # Allow packages to be installed from cache (if it's the right version).
+    - /root/.composer/cache
+  pre_ci_boot:
+    options: "-v /app:/app"
+  ci:
+    - export BUILD_STARTED=true
+    - mkdir travis_artifacts
+    - export COMPOSER_EXIT_ON_PATCH_FAILURE=1
+    # Set timezone to Europe/Amsterdam.
+    - echo 'Europe/Amsterdam' | tee /etc/timezone
+    - dpkg-reconfigure --frontend noninteractive tzdata
+    # Install docker-compose.
+    - curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+    - chmod +x /usr/local/bin/docker-compose
+    # Install all the dependencies with composer and copy to the volume.
+    - composer install --prefer-dist --no-interaction
+    - rm -rf /app/*
+    - cp -R . /app
+    # Build and up our containers for CI.
+    - docker-compose -f docker-compose-ci.yml down
+    - docker-compose -f docker-compose-ci.yml build --pull
+    - docker-compose -f docker-compose-ci.yml up -d
+    - sleep 10
+    # Install the site and run unit, functional tests and coding standarts.
+    - docker exec -i web_ci_rfe bash /var/www/scripts/rfe/check-coding-standards.sh
+    - docker exec -i web_ci_rfe bash /var/www/scripts/rfe/install_script.sh
+    #    - docker exec -i social_rfe_web bash /var/www/scripts/social/check-feature-state.sh rfe
+    - docker exec -i web_scripts_ci_rfe sh /var/www/scripts/social/unit-tests.sh
+    - docker exec -i behat_ci_rfe bash /var/www/scripts/rfe/behatstability.sh
+
+  post_ci:
+    - docker-compose -f docker-compose-ci.yml down
+
+  on_success:
+    - cp -R /app/shippable/testresults/* /root/src/bitbucket.org/$REPO_FULL_NAME/shippable/testresults/
+  on_failure:
+    - cp -R /app/shippable/testresults/* /root/src/bitbucket.org/$REPO_FULL_NAME/shippable/testresults/ || true
+    - aws s3 sync /app/travis_artifacts/ "s3://gg-travis-eci-os" --region "us-east-1" || true

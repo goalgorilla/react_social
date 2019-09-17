@@ -1,0 +1,4 @@
+admin_hash: $acceptance_admin_password_hash_here$
+email_prefix: devel+rfe_user_
+#modules_to_uninstall:
+# - example_module

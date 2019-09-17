@@ -1,0 +1,69 @@
+version: "2"
+
+services:
+  web_scripts:
+    image: goalgorilla/open_social_docker:ci
+    volumes:
+      - /app:/var/www
+    environment:
+      - DRUPAL_SETTINGS=production
+    network_mode: "bridge"
+    container_name: web_scripts_ci_rfe
+
+  web:
+    image: goalgorilla/open_social_docker:ci
+    volumes:
+      - /app:/var/www
+    links:
+      - db:db
+      - mailcatcher:mailcatcher
+    environment:
+      - DRUPAL_SETTINGS=production
+    ports:
+      - "80"
+    network_mode: "bridge"
+    container_name: web_ci_rfe
+
+  db:
+    image: mysql:5.6
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=social
+    ports:
+      - "3306"
+    network_mode: "bridge"
+    command: mysqld --max_allowed_packet=16M
+
+  mailcatcher:
+    image: schickling/mailcatcher
+    ports:
+      - "1080"
+    network_mode: "bridge"
+
+  selenium:
+    image: selenium/standalone-firefox:2.48.2
+    links:
+      - web:web
+    volumes:
+      - ./html/profiles/contrib/social/tests/behat/features/files/:/files
+    ports:
+      - "4444"
+      - "5900"
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    network_mode: "bridge"
+
+  behat:
+    image: goalgorilla/open_social_docker:ci
+    volumes:
+      - /app:/var/www
+    links:
+      - web:web
+      - db:db
+      - selenium:selenium
+      - mailcatcher:mailcatcher
+    environment:
+      - DRUPAL_SETTINGS=production
+    network_mode: "bridge"
+    container_name: behat_ci_rfe
