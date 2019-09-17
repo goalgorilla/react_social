@@ -36,13 +36,11 @@ export default withRedux(initStore, { debug: true })(
     render() {
       const { Component, pageProps, store } = this.props;
       return (
-        <Container>
-          <ThemeProvider theme={theme}>
-            <Provider store={store}>
-              <Component {...pageProps} />
-            </Provider>
-          </ThemeProvider>
-        </Container>
+        <ThemeProvider theme={theme}>
+          <Provider store={store}>
+            <Component {...pageProps} />
+          </Provider>
+        </ThemeProvider>
       );
     }
   }
