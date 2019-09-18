@@ -17,15 +17,9 @@ const authenticate = ({ username, password }, type) => {
   bodyFormData.set("username", username);
   bodyFormData.set("password", password);
 
-  let axiosConfig = {
-    headers: {
-      "Access-Control-Allow-Origin": "*"
-    }
-  };
-
   return dispatch => {
     axios
-      .post(`${API}/oauth/token`, bodyFormData, axiosConfig)
+      .post(`${API}/oauth/token/`, bodyFormData)
       .then(response => {
         setCookie("token", response.data.access_token);
         Router.push("/");
