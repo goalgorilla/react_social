@@ -1,6 +1,6 @@
 module.exports = {
-  API: "http://192.168.99.100:32771",
+  API: "https://api.feature-rfe-25-5tikd6i-jmqq2w45dtvdy.eu-4.platformsh.site",
   grant_type: "password",
-  client_id: "fe9ee669-36c3-4a08-9424-f97683c1ea3a",
-  client_secret: "nEdRmF1JGq2p"
+  client_id: "af5ce4a3-127b-43e1-805d-c311c1050770",
+  client_secret: "1pV4DRYIWo40"
 };
