@@ -19,12 +19,13 @@ Whoami.getInitialProps = async ctx => {
   initialize(ctx);
   const token = ctx.store.getState().authentication.token;
   if (token) {
-    const response = await axios.get(`${API}/user`, {
+    const response = await axios.get(`${API}/jsonapi`, {
       headers: {
-        authorization: token
+        Authorization: "Bearer " + token
       }
     });
-    const user = response.data.user;
+    console.log(response);
+    const user = response.data.meta.links.me.meta.id;
     return {
       user
     };

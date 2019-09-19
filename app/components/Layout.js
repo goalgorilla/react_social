@@ -10,15 +10,13 @@ const Layout = ({ children, title, isAuthenticated, deauthenticate }) => (
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css"
+        rel="shortcut icon"
+        href="/static/favicon.ico"
+        type="image/vnd.microsoft.icon"
       />
     </Head>
-    <div className="tabs is-centered">
+    <div>
       <ul>
-        <Link href="/">
-          <a>Home</a>
-        </Link>
         {!isAuthenticated && (
           <Link href="/login">
             <a>Login</a>
@@ -29,13 +27,10 @@ const Layout = ({ children, title, isAuthenticated, deauthenticate }) => (
             <a>Sign Out</a>
           </li>
         )}
-        <Link href="/whoami">
-          <a>Who Am I</a>
-        </Link>
       </ul>
     </div>
 
-    <div className="has-text-centered">{children}</div>
+    <div>{children}</div>
   </div>
 );
 

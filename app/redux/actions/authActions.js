@@ -22,7 +22,7 @@ const authenticate = ({ username, password }, type) => {
       .post(`${API}/oauth/token/`, bodyFormData)
       .then(response => {
         setCookie("token", response.data.access_token);
-        Router.push("/");
+        Router.push("/whoami");
         dispatch({ type: AUTHENTICATE, payload: response.data.access_token });
       })
       .catch(err => {
