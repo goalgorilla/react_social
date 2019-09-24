@@ -26,6 +26,10 @@ const Layout = ({ children, title, isAuthenticated, deauthenticate }) => (
         href="/static/favicon.ico"
         type="image/vnd.microsoft.icon"
       />
+      <link
+        href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap"
+        rel="stylesheet"
+      ></link>
     </Head>
     <TempHeader>
       <ul>

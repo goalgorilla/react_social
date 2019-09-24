@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     background: ${themeData.style.backgroundColor.secondary};
     margin: 0;
+    font-family: 'Montserrat', sans-serif;
   }
 `;
 
