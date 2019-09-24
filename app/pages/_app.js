@@ -1,21 +1,10 @@
 import App, { Container } from "next/app";
 import React from "react";
 import { ThemeProvider } from "styled-components";
-import { createGlobalStyle } from "styled-components";
 import withRedux from "next-redux-wrapper";
 import { initStore } from "../redux";
 import { Provider } from "react-redux";
-
-// Theme from API placeholder
-import themeData from "../static/theme.json";
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    background: ${themeData.style.backgroundColor.secondary};
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-  }
-`;
+import GlobalStyle from "../components/GlobalStyle";
 
 const theme = {};
 
