@@ -4,6 +4,8 @@ import actions from "../redux/actions";
 import initialize from "../utils/initialize";
 import Layout from "../components/Layout";
 import Button from "../components/atoms/Button";
+import Input from "../components/atoms/Input";
+import Label from "../components/atoms/Label";
 
 class Login extends React.Component {
   constructor(props) {
@@ -29,7 +31,9 @@ class Login extends React.Component {
   render() {
     return (
       <Layout title="Login | Open Social">
+        <Input type={"password"} />
         <Button text={"Log in"} />
+        <Label text={"Username or email address"} required={true} />
       </Layout>
     );
   }
