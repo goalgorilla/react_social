@@ -5,6 +5,7 @@ import initialize from "../utils/initialize";
 import Layout from "../components/Layout";
 import Button from "../components/atoms/Button";
 import Input from "../components/atoms/Input";
+import InputDescription from "../components/atoms/InputDescription";
 import Label from "../components/atoms/Label";
 
 class Login extends React.Component {
@@ -34,6 +35,9 @@ class Login extends React.Component {
         <Input />
         <Button text={"Log in"} />
         <Label text={"Username or email address"} required={true} />
+        <Label text={"Password"} required={true} />
+        <InputDescription text={"Enter your Open Social username or email."} />
+        <InputDescription text={"Forgot password?"} link={true} />
       </Layout>
     );
   }
