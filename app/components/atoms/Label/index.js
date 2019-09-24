@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const StyledLabel = styled.label`
   margin: 20px; /* remove this */
@@ -22,6 +23,15 @@ const Label = props => {
     );
   }
   return <StyledLabel>{props.text}</StyledLabel>;
+};
+
+Label.defaultProps = {
+  required: false
+};
+
+Label.propTypes = {
+  /** boolean indicating if the form is required */
+  required: PropTypes.bool
 };
 
 export default Label;

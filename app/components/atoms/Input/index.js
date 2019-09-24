@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const StyledInput = styled.input`
   margin: 20px; /* remove this */
@@ -28,6 +29,15 @@ const StyledInput = styled.input`
 
 const Input = props => {
   return <StyledInput type={props.type}></StyledInput>;
+};
+
+Input.defaultProps = {
+  type: "text"
+};
+
+Input.propTypes = {
+  /** the input type (password, text, etc..) */
+  type: PropTypes.string
 };
 
 export default Input;

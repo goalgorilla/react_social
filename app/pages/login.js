@@ -31,7 +31,7 @@ class Login extends React.Component {
   render() {
     return (
       <Layout title="Login | Open Social">
-        <Input type={"password"} />
+        <Input />
         <Button text={"Log in"} />
         <Label text={"Username or email address"} required={true} />
       </Layout>
