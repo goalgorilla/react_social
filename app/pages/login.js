@@ -29,7 +29,7 @@ class Login extends React.Component {
   render() {
     return (
       <Layout title="Login | Open Social">
-        <Button text={"hello"} />
+        <Button text={"Log in"} />
       </Layout>
     );
   }
