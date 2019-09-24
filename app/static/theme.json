@@ -1,7 +1,20 @@
 {
   "theme": "SocialBlue",
-  "styles": {
-    "primaryTextColor": "blue"
-  },
-  "layout": "compact"
+  "style": {
+    "backgroundColor": {
+      "primary": "#ffffff",
+      "secondary": "#f3f3f3"
+    },
+    "textColor": {
+      "primary": "#4d4d4d",
+      "secondary": "#777777"
+    },
+    "systemMessage": {
+      "failure": {
+        "borderColor": "#ebccd1",
+        "backgroundColor": "#f2dede",
+        "textColor": "#a94442"
+      }
+    }
+  }
 }

@@ -11,15 +11,12 @@ import themeData from "../static/theme.json";
 
 const GlobalStyle = createGlobalStyle`
   body {
+    background: ${themeData.style.backgroundColor.secondary};
     margin: 0;
   }
 `;
 
-const theme = {
-  colors: {
-    primaryTextColor: themeData.styles.primaryTextColor
-  }
-};
+const theme = {};
 
 export default withRedux(initStore, { debug: true })(
   class MyApp extends App {
@@ -39,6 +36,7 @@ export default withRedux(initStore, { debug: true })(
         <ThemeProvider theme={theme}>
           <Provider store={store}>
             <Component {...pageProps} />
+            <GlobalStyle />
           </Provider>
         </ThemeProvider>
       );

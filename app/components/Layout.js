@@ -2,7 +2,19 @@ import Link from "next/link";
 import Head from "next/head";
 import { connect } from "react-redux";
 import actions from "../redux/actions";
+import styled from "styled-components";
 
+const TempHeader = styled.div`
+  background: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px;
+`;
+
+const Content = styled.div`
+  padding-top: 50px;
+`;
 const Layout = ({ children, title, isAuthenticated, deauthenticate }) => (
   <div>
     <Head>
@@ -15,7 +27,7 @@ const Layout = ({ children, title, isAuthenticated, deauthenticate }) => (
         type="image/vnd.microsoft.icon"
       />
     </Head>
-    <div>
+    <TempHeader>
       <ul>
         {!isAuthenticated && (
           <Link href="/login">
@@ -28,9 +40,8 @@ const Layout = ({ children, title, isAuthenticated, deauthenticate }) => (
           </li>
         )}
       </ul>
-    </div>
-
-    <div>{children}</div>
+    </TempHeader>
+    <Content>{children}</Content>
   </div>
 );
 
