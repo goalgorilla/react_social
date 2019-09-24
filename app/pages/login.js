@@ -7,6 +7,7 @@ import Button from "../components/atoms/Button";
 import Input from "../components/atoms/Input";
 import InputDescription from "../components/atoms/InputDescription";
 import Label from "../components/atoms/Label";
+import Title from "../components/atoms/Title";
 
 class Login extends React.Component {
   constructor(props) {
@@ -32,6 +33,7 @@ class Login extends React.Component {
   render() {
     return (
       <Layout title="Login | Open Social">
+        <Title text={"Log in"} />
         <Input />
         <Button text={"Log in"} />
         <Label text={"Username or email address"} required={true} />
