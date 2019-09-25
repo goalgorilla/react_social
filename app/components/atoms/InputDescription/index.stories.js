@@ -6,8 +6,10 @@ import { withInfo } from "@storybook/addon-info";
 storiesOf("InputDescription", module)
   .addDecorator(withInfo)
   .add("default", () => (
-    <InputDescription text={"Enter your Open Social username or email."} />
+    <InputDescription>
+      Enter your Open Social username or email.
+    </InputDescription>
   ))
   .add("link", () => (
-    <InputDescription text={"Forgot password?"} link={true} />
+    <InputDescription link={true}>Forgot password?</InputDescription>
   ));

@@ -5,4 +5,5 @@ import { withInfo } from "@storybook/addon-info";
 
 storiesOf("Input", module)
   .addDecorator(withInfo)
-  .add("default", () => <Input />);
+  .add("default", () => <Input />)
+  .add("password input", () => <Input type={"password"} />);

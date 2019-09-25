@@ -5,4 +5,4 @@ import { withInfo } from "@storybook/addon-info";
 
 storiesOf("Title", module)
   .addDecorator(withInfo)
-  .add("default", () => <Title text={"Log in"} />);
+  .add("default", () => <Title>Log in</Title>);
