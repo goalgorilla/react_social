@@ -11,11 +11,11 @@ const StyledInputDescription = styled.h4`
   line-height: 1.5;
 `;
 
-const InputDescription = props => {
-  if (props.link) {
-    return <StyledInputDescription link>{props.text}</StyledInputDescription>;
+const InputDescription = ({ children, link }) => {
+  if (link) {
+    return <StyledInputDescription link>{children}</StyledInputDescription>;
   }
-  return <StyledInputDescription>{props.text}</StyledInputDescription>;
+  return <StyledInputDescription>{children}</StyledInputDescription>;
 };
 
 InputDescription.defaultProps = {
@@ -23,8 +23,6 @@ InputDescription.defaultProps = {
 };
 
 InputDescription.propTypes = {
-  /** string containing the description of the input field */
-  text: PropTypes.string,
   /** boolean indicating if the input description is a link to another page */
   link: PropTypes.bool
 };

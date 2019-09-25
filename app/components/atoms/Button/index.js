@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 
 const StyledButton = styled.button`
   margin: 20px; /* remove this */
@@ -27,13 +26,8 @@ const StyledButton = styled.button`
   }
 `;
 
-const Button = props => {
-  return <StyledButton>{props.text}</StyledButton>;
-};
-
-Button.propTypes = {
-  /** text to be displayed on the button */
-  text: PropTypes.string
+const Button = ({ children }) => {
+  return <StyledButton>{children}</StyledButton>;
 };
 
 export default Button;

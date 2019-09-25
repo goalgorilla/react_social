@@ -13,16 +13,16 @@ const Required = styled.span`
   color: red;
 `;
 
-const Label = props => {
-  if (props.required) {
+const Label = ({ children, required }) => {
+  if (required) {
     return (
       <StyledLabel>
-        {props.text}
+        {children}
         <Required>*</Required>
       </StyledLabel>
     );
   }
-  return <StyledLabel>{props.text}</StyledLabel>;
+  return <StyledLabel>{children}</StyledLabel>;
 };
 
 Label.defaultProps = {
