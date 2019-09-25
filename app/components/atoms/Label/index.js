@@ -3,7 +3,6 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const StyledLabel = styled.label`
-  margin: 20px; /* remove this */
   font-size: 14px;
   color: #4d4d4d;
   font-weight: 500;
@@ -18,7 +17,7 @@ const Label = ({ children, required }) => {
     return (
       <StyledLabel>
         {children}
-        <Required>*</Required>
+        <Required> *</Required>
       </StyledLabel>
     );
   }

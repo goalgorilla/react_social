@@ -2,12 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import actions from "../redux/actions";
 import initialize from "../utils/initialize";
+
+// TEMP
 import Layout from "../components/Layout";
-import Button from "../components/atoms/Button";
-import Input from "../components/atoms/Input";
-import InputDescription from "../components/atoms/InputDescription";
-import Label from "../components/atoms/Label";
-import Title from "../components/atoms/Title";
+import FormField from "../components/molecules/FormField";
 
 class Login extends React.Component {
   constructor(props) {
@@ -33,15 +31,18 @@ class Login extends React.Component {
   render() {
     return (
       <Layout title="Login | Open Social">
-        <Title>Log in</Title>
-        <Input type={"password"} />
-        <Button>Log in</Button>
-        <Label required={true}>Username or email address</Label>
-        <Label required={true}>Password</Label>
-        <InputDescription>
-          Enter your Open Social username or email.
-        </InputDescription>
-        <InputDescription link={true}>Forgot password?</InputDescription>
+        <FormField
+          label={"Username or email address"}
+          description={"Enter your Open Social username or email."}
+          required={true}
+        ></FormField>
+        <FormField
+          label={"Password"}
+          description={"Forgot your password?"}
+          link={true}
+          type={"password"}
+          required={true}
+        ></FormField>
       </Layout>
     );
   }

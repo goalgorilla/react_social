@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
-  margin: 20px; /* remove this */
   font-family: inherit;
   font-weight: 500;
   background-color: #36a9e1;

@@ -3,9 +3,10 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const StyledInput = styled.input`
-  margin: 20px; /* remove this */
   border-radius: 3px;
   border: 1px solid #adadad;
+  width: 100%;
+  max-width: 23rem;
   color: #555555;
   background-color: #fff;
   outline: 0;
@@ -28,6 +29,9 @@ const StyledInput = styled.input`
 `;
 
 const Input = props => {
+  if (props.required) {
+    return <StyledInput type={props.type} required></StyledInput>;
+  }
   return <StyledInput type={props.type}></StyledInput>;
 };
 
