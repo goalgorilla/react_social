@@ -8,19 +8,21 @@ import Card from "../components/organisms/Card";
 import Title from "../components/atoms/Title";
 import Button from "../components/atoms/Button";
 import styled from "styled-components";
+import SystemMessage from "../components/atoms/SystemMessage";
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin: 20px;
+  max-width: 780px;
+  flex: 0 0 66.66667%;
 `;
 
 const Form = styled.form`
   display flex;
   flex-direction: column;
   justify-content: space-between;
-  max-width: 780px;
-  flex: 0 0 66.66667%;
+
   
   button:last-child {
     margin-left: auto;
@@ -33,12 +35,28 @@ class Login extends React.Component {
     super(props);
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      systemMessageVisible: false
     };
   }
 
   static getInitialProps(ctx) {
     initialize(ctx);
+  }
+
+  componentDidMount() {
+    this.setState({
+      systemMessageVisible: false
+    });
+  }
+
+  componentDidUpdate() {
+    if (this.props.authentication.error && !this.state.systemMessageVisible) {
+      this.setState({
+        systemMessageVisible: true
+      });
+      this.props.clearAuthenticationStore();
+    }
   }
 
   onChangeUsername(username) {
@@ -66,6 +84,21 @@ class Login extends React.Component {
       <Layout title="Login | Open Social">
         <Wrapper>
           <Title>Log in</Title>
+          {this.state.systemMessageVisible && (
+            <SystemMessage>
+              Oops, there was an error. This may have happened for the following
+              reasons:
+              <br />- Invalid username/email and password combination.
+              <br />- There has been more than one failed login attempt for this
+              account. It is temporarily blocked.
+              <br />- Too many failed login attempts from your computer (IP
+              address). This IP address is temporarily blocked.
+              <br />
+              <br />
+              To solve the issue, try using different login information, try
+              again later, or <b>request a new password</b>
+            </SystemMessage>
+          )}
           <Form onSubmit={this.handleSubmit.bind(this)}>
             <Card
               header={

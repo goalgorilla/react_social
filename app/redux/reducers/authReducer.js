@@ -10,6 +10,10 @@ export default (state = initialState, action) => {
       return { token: action.payload };
     case DEAUTHENTICATE:
       return { token: null };
+    case "LOGIN_ERROR":
+      return {
+        error: action.payload
+      };
     default:
       return state;
   }
