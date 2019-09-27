@@ -29,10 +29,27 @@ const StyledInput = styled.input`
 `;
 
 const Input = props => {
+  const onChange = e => {
+    props.onChange(e.target.value);
+  };
+
   if (props.required) {
-    return <StyledInput type={props.type} required></StyledInput>;
+    return (
+      <StyledInput
+        type={props.type}
+        onChange={onChange}
+        name={props.name}
+        required
+      ></StyledInput>
+    );
   }
-  return <StyledInput type={props.type}></StyledInput>;
+  return (
+    <StyledInput
+      type={props.type}
+      onChange={onChange}
+      name={props.name}
+    ></StyledInput>
+  );
 };
 
 Input.defaultProps = {
