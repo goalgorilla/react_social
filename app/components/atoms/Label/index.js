@@ -17,7 +17,7 @@ const Label = ({ children, required }) => {
     return (
       <StyledLabel>
         {children}
-        <Required> *</Required>
+        <Required>*</Required>
       </StyledLabel>
     );
   }

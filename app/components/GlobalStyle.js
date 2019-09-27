@@ -8,6 +8,9 @@ const GlobalStyle = createGlobalStyle`
     background: ${themeData.style.backgroundColor.secondary};
     margin: 0;
     font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 `;
 
