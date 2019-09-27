@@ -10,11 +10,23 @@ const TempHeader = styled.div`
   top: 0;
   width: 100%;
   height: 50px;
+
+  a {
+    color: white;
+    text-decoration: none;
+    padding: 0 20px 0 0;
+    font-weight: 500;
+  }
+
+  li {
+    display: inline-block;
+  }
 `;
 
 const Content = styled.div`
   padding-top: 50px;
 `;
+
 const Layout = ({ children, title, isAuthenticated, deauthenticate }) => (
   <div>
     <Head>
@@ -33,6 +45,12 @@ const Layout = ({ children, title, isAuthenticated, deauthenticate }) => (
     </Head>
     <TempHeader>
       <ul>
+        <Link href="/">
+          <a>Home</a>
+        </Link>
+        <Link href="/whoami">
+          <a>Profile</a>
+        </Link>
         {!isAuthenticated && (
           <Link href="/login">
             <a>Login</a>
