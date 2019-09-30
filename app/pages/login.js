@@ -45,16 +45,12 @@ class Login extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({
-      systemMessageVisible: false
-    });
+    this.hideSystemMessage();
   }
 
   componentDidUpdate() {
     if (this.props.authentication.error && !this.state.systemMessageVisible) {
-      this.setState({
-        systemMessageVisible: true
-      });
+      this.showSystemMessage();
       this.props.clearAuthenticationStore();
     }
   }
@@ -68,6 +64,18 @@ class Login extends React.Component {
   onChangePassword(password) {
     this.setState({
       password: password
+    });
+  }
+
+  hideSystemMessage() {
+    this.setState({
+      systemMessageVisible: false
+    });
+  }
+
+  showSystemMessage() {
+    this.setState({
+      systemMessageVisible: true
     });
   }
 
@@ -85,7 +93,7 @@ class Login extends React.Component {
         <Wrapper>
           <Title>Log in</Title>
           {this.state.systemMessageVisible && (
-            <SystemMessage>
+            <SystemMessage test={this.hideSystemMessage.bind(this)}>
               Oops, there was an error. This may have happened for the following
               reasons:
               <br />- Invalid username/email and password combination.
