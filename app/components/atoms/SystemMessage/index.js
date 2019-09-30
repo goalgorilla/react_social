@@ -29,10 +29,9 @@ const CloseButton = styled.button`
     brightness(80%) contrast(99%);
 `;
 
-const SystemMessage = ({ children, type, test }) => {
+const SystemMessage = ({ children, type, close }) => {
   const onClick = e => {
-    console.log("test");
-    test();
+    close();
   };
 
   return (

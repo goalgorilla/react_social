@@ -93,7 +93,7 @@ class Login extends React.Component {
         <Wrapper>
           <Title>Log in</Title>
           {this.state.systemMessageVisible && (
-            <SystemMessage test={this.hideSystemMessage.bind(this)}>
+            <SystemMessage close={this.hideSystemMessage.bind(this)}>
               Oops, there was an error. This may have happened for the following
               reasons:
               <br />- Invalid username/email and password combination.
