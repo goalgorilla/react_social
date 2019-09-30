@@ -1,15 +1,16 @@
 import React from "react";
 import styled from "styled-components";
+import { device } from "../../../utils/device";
 
 const StyledButton = styled.button`
   font-family: ${prop => prop.theme.font.family};
   font-weight: ${prop => prop.theme.font.weight.medium};
-  background-color: ${prop => prop.theme.color.brand.primary};
   font-size: ${prop => prop.theme.font.size.desktop.default};
+  background-color: ${prop => prop.theme.color.brand.primary};
   line-height: ${prop => prop.theme.font.lineHeight.default};
   border-radius: ${prop => prop.theme.layout.borderRadius.default};
   border-color: ${prop => prop.theme.color.brand.primary};
-  max-width: 180px;
+
   padding: 6px 60px;
   color: ${prop => prop.theme.color.text.light};
   outline: 0;
@@ -23,6 +24,10 @@ const StyledButton = styled.button`
 
   &:hover {
     background-color: ${prop => prop.theme.color.brand.secondary};
+  }
+
+  @media ${device.mobileL} {
+    width: 100%;
   }
 `;
 
