@@ -52,10 +52,10 @@ const Card = ({ children, header, footer }) => (
 Card.defaultProps = {};
 
 Card.propTypes = {
-  /** string containing the header's text */
-  header: PropTypes.string,
-  /** string containing the footer's value */
-  footer: PropTypes.string
+  /** object containing the header's content */
+  header: PropTypes.object,
+  /** object containing the footer's content */
+  footer: PropTypes.object
 };
 
 export default Card;
