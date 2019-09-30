@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 const StyledInput = styled.input`
   border-radius: ${props => props.theme.layout.borderRadius.small};
   border: 1px solid ${props => props.theme.color.text.two};
-  width: 100%;
   max-width: 23rem;
   color: ${props => props.theme.color.text.one};
   background-color: ${props => props.theme.color.background.primary};
