@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledTitle = styled.h2`
-  font-size: 20px;
-  color: #4d4d4d;
-  font-weight: 500;
-  line-height: 1.1;
+  font-size: ${props => props.theme.font.size.desktop.large};
+  color: ${props => props.theme.color.foreground.primary};
+  font-weight: ${props => props.theme.font.weight.medium};
+  line-height: ${props => props.theme.font.lineHeight.small};
 `;
 
 const Title = ({ children }) => {

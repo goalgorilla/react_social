@@ -3,9 +3,9 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const StyledLabel = styled.label`
-  font-size: 14px;
-  color: #4d4d4d;
-  font-weight: 500;
+  font-size: ${props => props.theme.font.size.desktop.medium};
+  color: ${props => props.theme.color.foreground.primary};
+  font-weight: ${props => props.theme.font.weight.medium};
 `;
 
 const Required = styled.span`

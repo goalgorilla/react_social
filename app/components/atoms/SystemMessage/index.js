@@ -4,14 +4,14 @@ import PropTypes from "prop-types";
 
 const StyledSystemMessage = styled.p`
   position: relative;
-  border-radius: 5px;
-  font-size: 14px;
-  color: #a94442;
-  background-color: #f2dede;
-  border: 1px solid #ebccd1;
+  border-radius: ${props => props.theme.layout.borderRadius.default};
+  font-size: ${props => props.theme.font.size.desktop.medium};
+  color: ${props => props.theme.color.system.failure.text};
+  background-color: ${props => props.theme.color.system.failure.background};
+  border: 1px solid ${props => props.theme.color.system.failure.border};
   padding: 20px 50px 20px 20px;
-  font-weight: 400;
-  line-height: 1.5;
+  font-weight: ${props => props.theme.font.weight.regular};
+  line-height: ${props => props.theme.font.weight.default};
 `;
 
 const CloseButton = styled.button`

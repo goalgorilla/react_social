@@ -4,9 +4,12 @@ import PropTypes from "prop-types";
 
 const StyledInputDescription = styled.h4`
   font-size: 12px;
-  color: #464545;
+  color: ${props => props.theme.color.foreground.primary};
   margin: 0;
-  font-weight: ${props => (props.link ? "500" : "300")};
+  font-weight: ${props =>
+    props.link
+      ? props.theme.font.weight.medium
+      : props.theme.font.weight.light};
   cursor: ${props => (props.link ? "pointer" : "default")};
 `;
 

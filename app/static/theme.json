@@ -1,20 +1,23 @@
 {
   "theme": "SocialBlue",
   "style": {
+    "font": {
+      "fontFamily": "'Montserrat', sans-serif",
+      "fontWeight": {
+        "light": "300",
+        "regular": "400",
+        "medium": "500",
+        "bold": "700"
+      }
+    },
     "backgroundColor": {
       "primary": "#ffffff",
       "secondary": "#f3f3f3"
     },
     "textColor": {
       "primary": "#4d4d4d",
-      "secondary": "#777777"
-    },
-    "systemMessage": {
-      "failure": {
-        "borderColor": "#ebccd1",
-        "backgroundColor": "#f2dede",
-        "textColor": "#a94442"
-      }
+      "secondary": "#777777",
+      "test": "red"
     }
   }
 }

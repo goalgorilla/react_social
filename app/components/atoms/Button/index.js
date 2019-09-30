@@ -2,16 +2,16 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
-  font-family: inherit;
-  font-weight: 500;
-  background-color: #36a9e1;
-  font-size: 16px;
-  line-height: 1.5;
-  border-radius: 5px;
-  border-color: #36a9e1;
+  font-family: ${prop => prop.theme.font.family};
+  font-weight: ${prop => prop.theme.font.weight.medium};
+  background-color: ${prop => prop.theme.color.brand.primary};
+  font-size: ${prop => prop.theme.font.size.desktop.default};
+  line-height: ${prop => prop.theme.font.lineHeight.default};
+  border-radius: ${prop => prop.theme.layout.borderRadius.default};
+  border-color: ${prop => prop.theme.color.brand.primary};
   max-width: 180px;
   padding: 6px 60px;
-  color: #ffffff;
+  color: ${prop => prop.theme.color.text.light};
   outline: 0;
   -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.24), 0 2px 4px rgba(0, 0, 0, 0.48);
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.24), 0 2px 4px rgba(0, 0, 0, 0.48);
@@ -22,7 +22,7 @@ const StyledButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: #2189b5;
+    background-color: ${prop => prop.theme.color.brand.secondary};
   }
 `;
 

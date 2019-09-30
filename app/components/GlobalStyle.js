@@ -1,14 +1,12 @@
 import { createGlobalStyle } from "styled-components";
-
-// Theme from API placeholder
-import themeData from "../static/theme.json";
+import theme from "./Theme";
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background: ${themeData.style.backgroundColor.secondary};
+    background: ${theme.color.background.secondary};
     margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
+    font-family: ${theme.font.family};
+    font-weight: ${theme.font.weight.light};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
