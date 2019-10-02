@@ -9,6 +9,10 @@ const GlobalStyle = createGlobalStyle`
     font-weight: ${theme.font.weight.light};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    min-height: 100%;
+  }
+  html {
+    height: 100%;
   }
 `;
 

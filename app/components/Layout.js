@@ -27,8 +27,12 @@ const TempHeader = styled.div`
     font-weight: 500;
   }
 
-  li {
+  li a {
     display: inline-block;
+  }
+
+  a:last-child {
+    float: right;
   }
 `;
 
@@ -37,7 +41,7 @@ const Content = styled.div`
   margin: auto;
   padding: ${props => props.theme.layout.padding};
   padding-top: 50px;
-  padding-bottom: 10rem;
+  padding-bottom: 23rem;
 `;
 
 const Wrapper = styled.div`
