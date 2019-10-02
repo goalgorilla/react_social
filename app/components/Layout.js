@@ -3,6 +3,7 @@ import Head from "next/head";
 import { connect } from "react-redux";
 import actions from "../redux/actions";
 import styled from "styled-components";
+import Footer from "./organisms/Footer";
 
 const TempHeader = styled.div`
   background: #333;
@@ -10,6 +11,14 @@ const TempHeader = styled.div`
   top: 0;
   width: 100%;
   height: 50px;
+
+  ul {
+    max-width: ${props => props.theme.layout.maxWidth};
+    margin: auto;
+    height: 100%;
+    line-height: 50px;
+    padding: ${props => props.theme.layout.padding};
+  }
 
   a {
     color: white;
@@ -24,7 +33,16 @@ const TempHeader = styled.div`
 `;
 
 const Content = styled.div`
+  max-width: ${props => props.theme.layout.maxWidth};
+  margin: auto;
+  padding: ${props => props.theme.layout.padding};
   padding-top: 50px;
+  padding-bottom: 10rem;
+`;
+
+const Wrapper = styled.div`
+  position: relative;
+  min-height: 100vh;
 `;
 
 const Layout = ({ children, title, isAuthenticated, deauthenticate }) => (
@@ -43,27 +61,30 @@ const Layout = ({ children, title, isAuthenticated, deauthenticate }) => (
         rel="stylesheet"
       ></link>
     </Head>
-    <TempHeader>
-      <ul>
-        <Link href="/">
-          <a>Home</a>
-        </Link>
-        <Link href="/whoami">
-          <a>Profile</a>
-        </Link>
-        {!isAuthenticated && (
-          <Link href="/login">
-            <a>Login</a>
+    <Wrapper>
+      <TempHeader>
+        <ul>
+          <Link href="/">
+            <a>Home</a>
           </Link>
-        )}
-        {isAuthenticated && (
-          <li onClick={deauthenticate}>
-            <a>Sign Out</a>
-          </li>
-        )}
-      </ul>
-    </TempHeader>
-    <Content>{children}</Content>
+          <Link href="/whoami">
+            <a>Profile</a>
+          </Link>
+          {!isAuthenticated && (
+            <Link href="/login">
+              <a>Login</a>
+            </Link>
+          )}
+          {isAuthenticated && (
+            <li onClick={deauthenticate}>
+              <a>Sign Out</a>
+            </li>
+          )}
+        </ul>
+      </TempHeader>
+      <Content>{children}</Content>
+      <Footer>Copyright © 2019. [Community name]. All rights reserved.</Footer>
+    </Wrapper>
   </div>
 );
 

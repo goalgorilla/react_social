@@ -13,7 +13,6 @@ import SystemMessage from "../components/atoms/SystemMessage";
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 20px;
   max-width: 780px;
   flex: 0 0 66.66667%;
 `;
@@ -23,7 +22,6 @@ const Form = styled.form`
   flex-direction: column;
   justify-content: space-between;
 
-  
   button:last-child {
     margin-left: auto;
     margin-top: 20px;

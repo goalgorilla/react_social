@@ -61,7 +61,9 @@ const theme = {
     borderRadius: {
       small: "3px",
       default: "5px"
-    }
+    },
+    maxWidth: "1200px",
+    padding: "0 20px"
   }
 };
 
