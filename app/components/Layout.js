@@ -4,37 +4,7 @@ import { connect } from "react-redux";
 import actions from "../redux/actions";
 import styled from "styled-components";
 import Footer from "./organisms/Footer";
-
-const TempHeader = styled.div`
-  background: #333;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 50px;
-
-  ul {
-    max-width: ${props => props.theme.layout.maxWidth};
-    margin: auto;
-    height: 100%;
-    line-height: 50px;
-    padding: ${props => props.theme.layout.padding};
-  }
-
-  a {
-    color: white;
-    text-decoration: none;
-    padding: 0 20px 0 0;
-    font-weight: 500;
-  }
-
-  li a {
-    display: inline-block;
-  }
-
-  a:last-child {
-    float: right;
-  }
-`;
+import Header from "./organisms/Header";
 
 const Content = styled.div`
   max-width: ${props => props.theme.layout.maxWidth};
@@ -61,31 +31,15 @@ const Layout = ({ children, title, isAuthenticated, deauthenticate }) => (
         type="image/vnd.microsoft.icon"
       />
       <link
-        href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap"
+        href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap"
         rel="stylesheet"
       ></link>
     </Head>
     <Wrapper>
-      <TempHeader>
-        <ul>
-          <Link href="/">
-            <a>Home</a>
-          </Link>
-          <Link href="/whoami">
-            <a>Profile</a>
-          </Link>
-          {!isAuthenticated && (
-            <Link href="/login">
-              <a>Login</a>
-            </Link>
-          )}
-          {isAuthenticated && (
-            <li onClick={deauthenticate}>
-              <a>Sign Out</a>
-            </li>
-          )}
-        </ul>
-      </TempHeader>
+      <Header
+        isAuthenticated={isAuthenticated}
+        deauthenticate={deauthenticate}
+      ></Header>
       <Content>{children}</Content>
       <Footer>Copyright © 2019. [Community name]. All rights reserved.</Footer>
     </Wrapper>

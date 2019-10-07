@@ -34,6 +34,7 @@ const theme = {
       light: "300",
       regular: "400",
       medium: "500",
+      default: "600",
       bold: "700"
     },
     size: {
