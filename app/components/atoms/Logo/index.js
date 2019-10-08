@@ -2,10 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
 
-const StyledLink = styled(Link)`
+const StyledA = styled.a`
   display: inline-block;
   vertical-align: top;
   height: 50px;
+  min-width: 50px;
   max-width: 200px;
   overflow: hidden;
 `;
@@ -16,9 +17,11 @@ const StyledImg = styled.img`
 
 const Logo = () => {
   return (
-    <StyledLink href="/">
-      <StyledImg src="/static/logo.svg" alt="[Community Name]" />
-    </StyledLink>
+    <Link href="/">
+      <StyledA>
+        <StyledImg src="/static/logo.svg" alt="[Community Name]" />
+      </StyledA>
+    </Link>
   );
 };
 
