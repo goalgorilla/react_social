@@ -11,7 +11,7 @@ const StyledSystemMessage = styled.p`
   border: 1px solid ${props => props.theme.color.system.failure.border};
   padding: 20px 50px 20px 20px;
   font-weight: ${props => props.theme.font.weight.regular};
-  line-height: ${props => props.theme.font.weight.default};
+  line-height: ${props => props.theme.font.lineHeight.default};
 `;
 
 const CloseButton = styled.button`
