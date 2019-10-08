@@ -4,12 +4,11 @@ import { API } from "../config";
 import initialize from "../utils/initialize";
 import Layout from "../components/Layout";
 
-const Whoami = ({ user }) => (
+const Whoami = ({ id, username }) => (
   <Layout title="Who Am I">
-    {(user && (
+    {(id && (
       <p>
-        You are logged in as{" "}
-        <strong className="is-size-2 has-text-primary">{user}</strong>.
+        You are logged in as <strong>{username}</strong>({id}).
       </p>
     )) || <p>You are not authenticated.</p>}
   </Layout>
@@ -17,19 +16,12 @@ const Whoami = ({ user }) => (
 
 Whoami.getInitialProps = async ctx => {
   initialize(ctx);
-  const token = ctx.store.getState().authentication.token;
-  if (token) {
-    const response = await axios.get(`${API}/jsonapi`, {
-      headers: {
-        Authorization: "Bearer " + token
-      }
-    });
-    console.log(response);
-    const user = response.data.meta.links.me.meta.id;
-    return {
-      user
-    };
-  }
+  const username = ctx.store.getState().authentication.username;
+  const id = ctx.store.getState().authentication.id;
+  return {
+    id,
+    username
+  };
 };
 
 export default connect(state => state)(Whoami);
