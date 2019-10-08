@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import Link from "next/link";
-import NavigationDropdown from "../../molecules/NavigationDropdown";
+import NavigationDropdown from "../NavigationDropdown";
 
 const NavBar = styled.ul`
   display: flex;
@@ -27,10 +27,6 @@ const NavBar = styled.ul`
     font-weight: ${props => props.theme.font.weight.bold};
     font-size: ${props => props.theme.font.size.mobile.default};
     align-self: center;
-  }
-
-  li:active {
-    opacity: 0.8;
   }
 `;
 

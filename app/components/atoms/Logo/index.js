@@ -12,10 +12,6 @@ const StyledLink = styled(Link)`
 
 const StyledImg = styled.img`
   cursor: pointer;
-
-  &:active {
-    opacity: 0.9;
-  }
 `;
 
 const Logo = () => {
