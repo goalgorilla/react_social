@@ -4,6 +4,14 @@ import PropTypes from "prop-types";
 import Link from "next/link";
 import NavigationDropdown from "../NavigationDropdown";
 
+const StyledHr = styled.hr`
+  border: 0;
+  border-top: 1px solid #f1f1f1;
+  height: 1px;
+  padding: 0;
+  margin: 0 10px 0 10px;
+`;
+
 const NavBar = styled.ul`
   display: flex;
   list-style-type: none;
@@ -53,6 +61,56 @@ const AccountNavigation = ({ isAuthenticated, deauthenticate }) => {
 
         {isAuthenticated && (
           <ul>
+            <p>Signed in as</p>
+            <li>
+              <Link href="/profile">
+                <a>Chris Hall</a>
+              </Link>
+            </li>
+            <StyledHr></StyledHr>
+            <li>
+              <Link href="/stream">
+                <a>My stream</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/myevents">
+                <a>My events</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/mytopics">
+                <a>My events</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/mygroups">
+                <a>My groups</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/myinformation">
+                <a>My information</a>
+              </Link>
+            </li>
+            <StyledHr></StyledHr>
+            <li>
+              <Link href="/following">
+                <a>Following</a>
+              </Link>
+            </li>
+            <StyledHr></StyledHr>
+            <li>
+              <Link href="/settings">
+                <a>Settings</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/editprofile">
+                <a>Edit profile</a>
+              </Link>
+            </li>
+            <StyledHr></StyledHr>
             <li onClick={deauthenticate}>
               <a>Log out</a>
             </li>

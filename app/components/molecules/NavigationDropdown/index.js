@@ -5,12 +5,19 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   ul {
     background: ${props => props.theme.color.background.primary};
+    width: 100%;
+    box-sizing: border-box;
     list-style-type: none;
-    padding: 0;
     position: absolute;
     left: 0;
-    width: 100%;
-    padding: 10px 0 10px 10px;
+    padding: 10px 10px 10px 10px;
+  }
+
+  ul p {
+    color: ${props => props.theme.color.text.one};
+    font-size: ${props => props.theme.font.size.mobile.small};
+    padding-left: 10px;
+    margin: 10px 0 -5px 0;
   }
 
   ul li {
@@ -22,6 +29,7 @@ const Wrapper = styled.div`
   }
 
   ul > li > a {
+    align-items: center;
     color: ${props => props.theme.color.foreground.primary};
     font-weight: ${props => props.theme.font.weight.default};
     font-size: ${props => props.theme.font.size.mobile.medium};

@@ -6,7 +6,7 @@ const ErrorMessage = styled.p``;
 
 function Error({ statusCode }) {
   return (
-    <Layout title="${statusCode} Error | Open Social">
+    <Layout title="Error | Open Social">
       <ErrorMessage>
         {statusCode
           ? `${statusCode} error occured on the server.`
