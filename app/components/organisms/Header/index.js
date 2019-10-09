@@ -5,17 +5,15 @@ import NavigationList from "../../molecules/NavigationList";
 import AccountNavigation from "../../molecules/AccountNavigation";
 
 const Wrapper = styled.div`
-  display: flex;
   position: fixed;
+  z-index: 999;
   top: 0;
+  display: flex;
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.16),
   width: 100%;
   height: 50px;
   background: ${props => props.theme.color.brand.primary};
-  -webkit-box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.16),
     0 2px 4px rgba(0, 0, 0, 0.32);
-  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.16),
-    0 2px 4px rgba(0, 0, 0, 0.32);
-  z-index: 999;
 `;
 
 const Header = ({ isAuthenticated, deauthenticate }) => (

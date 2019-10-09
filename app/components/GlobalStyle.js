@@ -3,13 +3,13 @@ import theme from "./Theme";
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background: ${theme.color.background.secondary};
     margin: 0;
+    min-height: 100%;
+    background: ${theme.color.background.secondary};
     font-family: ${theme.font.family};
     font-weight: ${theme.font.weight.light};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    min-height: 100%;
   }
   html {
     height: 100%;

@@ -6,12 +6,11 @@ import { device } from "../../../utils/device";
 import SocialNav from "../../molecules/SocialNav";
 
 const Wrapper = styled.div`
-  width: 100%;
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: white;
   height: 10rem;
+  background: white;
 
   @media ${device.tablet} {
     height: 22rem;
@@ -19,26 +18,26 @@ const Wrapper = styled.div`
 `;
 
 const FooterContent = styled.div`
-  padding: ${props => props.theme.layout.padding};
-  max-width: ${props => props.theme.layout.maxWidth};
-  margin: auto;
-  display: flex;
-  flex-direction: row;
-  padding-top: 15px;
   flex-wrap: wrap;
+  flex-direction: row;
+  display: flex;
+  margin: auto;
+  max-width: ${props => props.theme.layout.maxWidth};
+  padding: ${props => props.theme.layout.padding};
+  padding-top: 15px;
 
   p {
-    color: ${props => props.theme.color.text.one};
-    line-height: ${props => props.theme.font.lineHeight.default};
-    font-weight: ${props => props.theme.font.weight.regular};
-    font-size: ${props => props.theme.font.size.desktop.small};
     margin-bottom: 20px;
     margin-top: -10px;
+    font-size: ${props => props.theme.font.size.desktop.small};
+    line-height: ${props => props.theme.font.lineHeight.default};
+    font-weight: ${props => props.theme.font.weight.regular};
+    color: ${props => props.theme.color.text.one};
   }
 
   ul {
-    margin: 15px 0 0;
     flex: 0 50%;
+    margin: 15px 0 0;
   }
 
   * {
@@ -54,19 +53,19 @@ const FooterContent = styled.div`
 `;
 
 const FooterNav = styled.ul`
-  display: flex;
   flex-direction: row;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  font-size: ${props => props.theme.font.size.desktop.medium};
   align-self: flex-start;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  font-size: ${props => props.theme.font.size.desktop.medium};
+  list-style-type: none;
 
   a {
     padding: 0 25px 0 0;
+    font-weight: ${props => props.theme.font.weight.bold};
     color: ${props => props.theme.color.brand.primary};
     text-decoration: none;
-    font-weight: ${props => props.theme.font.weight.bold};
   }
   @media ${device.tablet} {
     flex-direction: column;

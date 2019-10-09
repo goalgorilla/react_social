@@ -7,8 +7,8 @@ import Footer from "./organisms/Footer";
 import Header from "./organisms/Header";
 
 const Content = styled.div`
-  max-width: ${props => props.theme.layout.maxWidth};
   margin: auto;
+  max-width: ${props => props.theme.layout.maxWidth};
   padding: ${props => props.theme.layout.padding};
   padding-top: 50px;
   padding-bottom: 23rem;
