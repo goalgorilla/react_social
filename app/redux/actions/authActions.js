@@ -70,7 +70,7 @@ const authenticate = ({ username, password }, type) => {
 const reauthenticate = (token, username, id) => {
   const payload = {
     token: token,
-    username: username,
+    username: decodeURI(username),
     id: id
   };
   return dispatch => {
