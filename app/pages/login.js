@@ -11,16 +11,16 @@ import styled from "styled-components";
 import SystemMessage from "../components/atoms/SystemMessage";
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 780px;
   flex: 0 0 66.66667%;
+  flex-direction: column;
+  display: flex;
+  max-width: 780px;
 `;
 
 const Form = styled.form`
+flex-direction: column;
+justify-content: space-between;
   display flex;
-  flex-direction: column;
-  justify-content: space-between;
 
   button:last-child {
     margin-left: auto;
