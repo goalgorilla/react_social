@@ -9,11 +9,11 @@ const Wrapper = styled.div`
   z-index: 999;
   top: 0;
   display: flex;
-  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.16),
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0),
+    0 2px 4px rgba(0, 0, 0, 0.32);
   width: 100%;
   height: 50px;
   background: ${props => props.theme.color.brand.primary};
-    0 2px 4px rgba(0, 0, 0, 0.32);
 `;
 
 const Header = ({ isAuthenticated, deauthenticate }) => (
