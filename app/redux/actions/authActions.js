@@ -51,7 +51,7 @@ const authenticate = ({ username, password }, type) => {
         });
       })
       .then(response => {
-        const username = response.data.data.attributes.name;
+        const username = decodeURI(response.data.data.attributes.name);
         data.username = username;
         setCookie("username", username);
         Router.push("/whoami");

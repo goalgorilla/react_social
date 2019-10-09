@@ -19,7 +19,13 @@ const Wrapper = styled.div`
   min-height: 100vh;
 `;
 
-const Layout = ({ children, title, isAuthenticated, deauthenticate }) => (
+const Layout = ({
+  children,
+  title,
+  isAuthenticated,
+  deauthenticate,
+  username
+}) => (
   <div>
     <Head>
       <title>{title}</title>
@@ -39,15 +45,17 @@ const Layout = ({ children, title, isAuthenticated, deauthenticate }) => (
       <Header
         isAuthenticated={isAuthenticated}
         deauthenticate={deauthenticate}
+        username={username}
       ></Header>
       <Content>{children}</Content>
-      <Footer>Copyright © 2019. [Community name]. All rights reserved.</Footer>
+      <Footer>Copyright © 2019. [Site Name]. All rights reserved.</Footer>
     </Wrapper>
   </div>
 );
 
 const mapStateToProps = state => ({
-  isAuthenticated: !!state.authentication.token
+  isAuthenticated: !!state.authentication.token,
+  username: state.authentication.username
 });
 
 export default connect(

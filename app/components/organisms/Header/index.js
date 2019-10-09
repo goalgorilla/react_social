@@ -16,13 +16,14 @@ const Wrapper = styled.div`
   background: ${props => props.theme.color.brand.primary};
 `;
 
-const Header = ({ isAuthenticated, deauthenticate }) => (
+const Header = ({ isAuthenticated, deauthenticate, username }) => (
   <Wrapper>
     <Logo></Logo>
     <NavigationList isAuthenticated={isAuthenticated}></NavigationList>
     <AccountNavigation
       isAuthenticated={isAuthenticated}
       deauthenticate={deauthenticate}
+      username={username}
     ></AccountNavigation>
   </Wrapper>
 );

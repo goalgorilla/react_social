@@ -38,7 +38,7 @@ const NavBar = styled.ul`
   }
 `;
 
-const AccountNavigation = ({ isAuthenticated, deauthenticate }) => {
+const AccountNavigation = ({ isAuthenticated, deauthenticate, username }) => {
   return (
     <NavBar>
       <NavigationDropdown
@@ -64,7 +64,7 @@ const AccountNavigation = ({ isAuthenticated, deauthenticate }) => {
             <p>Signed in as</p>
             <li>
               <Link href="/profile">
-                <a>H</a>
+                <a>{username}</a>
               </Link>
             </li>
             <StyledHr></StyledHr>
