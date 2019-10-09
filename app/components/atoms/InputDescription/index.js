@@ -3,14 +3,14 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const StyledInputDescription = styled.h4`
-  font-size: 12px;
-  color: ${props => props.theme.color.foreground.primary};
   margin: 0;
+  cursor: ${props => (props.link ? "pointer" : "default")};
+  font-size: 12px;
   font-weight: ${props =>
     props.link
       ? props.theme.font.weight.medium
       : props.theme.font.weight.light};
-  cursor: ${props => (props.link ? "pointer" : "default")};
+  color: ${props => props.theme.color.foreground.primary};
 `;
 
 const InputDescription = ({ children, link }) => {

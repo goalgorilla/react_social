@@ -4,11 +4,11 @@ import Link from "next/link";
 
 const StyledA = styled.a`
   display: inline-block;
-  vertical-align: top;
-  height: 50px;
+  overflow: hidden;
   min-width: 50px;
   max-width: 200px;
-  overflow: hidden;
+  height: 50px;
+  vertical-align: top;
 `;
 
 const StyledImg = styled.img`

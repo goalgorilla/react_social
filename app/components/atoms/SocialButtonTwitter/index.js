@@ -3,13 +3,13 @@ import styled from "styled-components";
 import { Twitter } from "styled-icons/boxicons-logos/Twitter";
 
 const StyledTwitter = styled(Twitter)`
-  color: white;
-  padding: 7px;
-  text-align: center;
-  text-decoration: none;
   margin: 5px 2px;
+  padding: 7px;
   border-radius: 50%;
   background: ${props => props.theme.color.brand.primary};
+  text-align: center;
+  text-decoration: none;
+  color: white;
 
   &:hover {
     opacity: 0.8;

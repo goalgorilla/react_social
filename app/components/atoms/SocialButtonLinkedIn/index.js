@@ -3,13 +3,13 @@ import styled from "styled-components";
 import { Linkedin } from "styled-icons/boxicons-logos/Linkedin";
 
 const StyledLinkedIn = styled(Linkedin)`
-  color: white;
-  padding: 9px;
-  text-align: center;
-  text-decoration: none;
   margin: 5px 2px;
+  padding: 9px;
   border-radius: 50%;
   background: ${props => props.theme.color.brand.primary};
+  text-align: center;
+  text-decoration: none;
+  color: white;
 
   &:hover {
     opacity: 0.8;
