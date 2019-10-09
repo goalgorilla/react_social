@@ -6,10 +6,10 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const Wrapper = styled.div`
-display flex;
-flex-direction: column;
-justify-content: space-between;
-height: 90px;
+  flex-direction: column;
+  justify-content: space-between;
+  display: flex;
+  height: 90px;
 `;
 
 const FormField = props => {

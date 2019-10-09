@@ -4,35 +4,35 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   ul {
-    background: ${props => props.theme.color.background.primary};
-    width: 100%;
-    box-sizing: border-box;
-    list-style-type: none;
     position: absolute;
     left: 0;
+    box-sizing: border-box;
+    width: 100%;
     padding: 10px 10px 10px 10px;
+    background: ${props => props.theme.color.background.primary};
+    list-style-type: none;
   }
 
   ul p {
-    color: ${props => props.theme.color.text.one};
-    font-size: ${props => props.theme.font.size.mobile.small};
-    padding-left: 10px;
     margin: 10px 0 -5px 0;
+    padding-left: 10px;
+    font-size: ${props => props.theme.font.size.mobile.small};
+    color: ${props => props.theme.color.text.one};
   }
 
   ul li {
-    display: flex;
-    height: 100%;
     justify-content: flex-start;
+    display: flex;
     width: 100%;
+    height: 100%;
     padding: 10px;
   }
 
   ul > li > a {
     align-items: center;
-    color: ${props => props.theme.color.foreground.primary};
-    font-weight: ${props => props.theme.font.weight.default};
     font-size: ${props => props.theme.font.size.mobile.medium};
+    font-weight: ${props => props.theme.font.weight.default};
+    color: ${props => props.theme.color.foreground.primary};
   }
 `;
 

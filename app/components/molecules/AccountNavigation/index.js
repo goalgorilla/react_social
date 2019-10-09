@@ -5,36 +5,36 @@ import Link from "next/link";
 import NavigationDropdown from "../NavigationDropdown";
 
 const StyledHr = styled.hr`
+  margin: 0 10px 0 10px;
   border: 0;
   border-top: 1px solid #f1f1f1;
   height: 1px;
   padding: 0;
-  margin: 0 10px 0 10px;
 `;
 
 const NavBar = styled.ul`
   display: flex;
-  list-style-type: none;
   margin: 0;
-  padding: 0;
-  height: 50px;
   margin-left: auto;
+  height: 50px;
+  padding: 0;
+  list-style-type: none;
 
   li {
-    display: flex;
     justify-content: center;
-    height: 50px;
+    display: flex;
     width: 50px;
+    height: 50px;
   }
 
   li > a {
+    align-self: center;
     display: flex;
     cursor: pointer;
-    text-decoration: none;
-    color: ${props => props.theme.color.text.light};
-    font-weight: ${props => props.theme.font.weight.bold};
     font-size: ${props => props.theme.font.size.mobile.default};
-    align-self: center;
+    font-weight: ${props => props.theme.font.weight.bold};
+    color: ${props => props.theme.color.text.light};
+    text-decoration: none;
   }
 `;
 
@@ -64,7 +64,7 @@ const AccountNavigation = ({ isAuthenticated, deauthenticate }) => {
             <p>Signed in as</p>
             <li>
               <Link href="/profile">
-                <a>Chris Hall</a>
+                <a>H</a>
               </Link>
             </li>
             <StyledHr></StyledHr>

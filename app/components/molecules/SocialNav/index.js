@@ -6,25 +6,25 @@ import styled from "styled-components";
 import { device } from "../../../utils/device";
 
 const StyledSocialNav = styled.ul`
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
   display: flex;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 
   li:first-child {
     margin-left: auto;
   }
 
   li:not(:last-child) {
-    text-decoration: none;
     padding: 0 20px 0 0;
+    text-decoration: none;
   }
 
   @media ${device.tablet} {
-    padding: 10px 0;
+    margin-top: 0 !important;
     border-top: 1px solid #f1f1f1;
     border-bottom: 1px solid #f1f1f1;
-    margin-top: 0 !important;
+    padding: 10px 0;
 
     li:first-child {
       margin-left: 0;

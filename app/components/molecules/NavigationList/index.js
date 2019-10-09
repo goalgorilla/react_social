@@ -6,26 +6,26 @@ import NavigationDropdown from "../NavigationDropdown";
 
 const NavBar = styled.ul`
   display: flex;
-  list-style-type: none;
   margin: 0;
-  padding: 0;
-  height: 50px;
   width: 100%;
+  height: 50px;
+  padding: 0;
+  list-style-type: none;
 
   li {
-    display: flex;
     justify-content: center;
-    height: 50px;
+    display: flex;
     width: 50px;
+    height: 50px;
   }
 
   li > a {
+    align-self: center;
     display: flex;
     cursor: pointer;
-    text-decoration: none;
-    color: ${props => props.theme.color.text.light};
     font-weight: ${props => props.theme.font.weight.medium};
-    align-self: center;
+    color: ${props => props.theme.color.text.light};
+    text-decoration: none;
   }
 
   div:first-child > div > li {
