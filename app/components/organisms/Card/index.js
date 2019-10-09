@@ -8,11 +8,11 @@ const Wrapper = styled.div`
   justify-content: space-between;
   display: flex;
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.16),
+    0 2px 4px rgba(0, 0, 0, 0.32);
   border-radius: ${props => props.theme.layout.borderRadius.default};
   max-width: 780px;
   height: 365px;
   background-color: ${props => props.theme.color.background.primary};
-    0 2px 4px rgba(0, 0, 0, 0.32);
 `;
 
 const CardHeader = styled.div`

@@ -18,8 +18,8 @@ const Wrapper = styled.div`
 `;
 
 const Form = styled.form`
-flex-direction: column;
-justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-between;
   display flex;
 
   button:last-child {
