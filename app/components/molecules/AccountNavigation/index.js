@@ -42,7 +42,7 @@ const AccountNavigation = ({ isAuthenticated, deauthenticate, username }) => {
   return (
     <NavBar>
       <NavigationDropdown
-        title={<img src="/static/account.svg" width="24px" />}
+        button={<img src="/static/account.svg" width="24px" />}
       >
         {!isAuthenticated && (
           <ul>
@@ -80,7 +80,7 @@ const AccountNavigation = ({ isAuthenticated, deauthenticate, username }) => {
             </li>
             <li>
               <Link href="/mytopics">
-                <a>My events</a>
+                <a>My topics</a>
               </Link>
             </li>
             <li>

@@ -5,6 +5,7 @@ const theme = {
     brand: {
       primary: "#36a9e1",
       secondary: "#2189b5",
+      tertiary: "#116892",
       accent: ""
     },
     foreground: {

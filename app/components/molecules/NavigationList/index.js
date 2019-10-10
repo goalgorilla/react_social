@@ -23,8 +23,6 @@ const NavBar = styled.ul`
     align-self: center;
     display: flex;
     cursor: pointer;
-    font-weight: ${props => props.theme.font.weight.medium};
-    color: ${props => props.theme.color.text.light};
     text-decoration: none;
   }
 
@@ -37,10 +35,10 @@ const NavigationList = ({ isAuthenticated }) => {
   return (
     <NavBar>
       <NavigationDropdown
-        title={<img src="/static/translate.svg" width="20px" />}
+        button={<img src="/static/translate.svg" width="20px" />}
       ></NavigationDropdown>
       <NavigationDropdown
-        title={<img src="/static/hamburger.svg" width="20px" />}
+        button={<img src="/static/hamburger.svg" width="20px" />}
       >
         <ul>
           <li>
@@ -48,42 +46,47 @@ const NavigationList = ({ isAuthenticated }) => {
               <a>Home</a>
             </Link>
           </li>
-          <li>
-            <a>
-              Explore <img src="/static/dropdown.svg" width="20px" />
-            </a>
-          </li>
-          <ul>
-            <li>
-              <Link href="/community">
-                <a>Community</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/groups">
-                <a>All groups</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/events">
-                <a>All events</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/topics">
-                <a>All topics</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/members">
-                <a>All members</a>
-              </Link>
-            </li>
-          </ul>
+          <NavigationDropdown
+            title={
+              <li>
+                <a>
+                  Explore <img src="/static/dropdown.svg" width="20px" />
+                </a>
+              </li>
+            }
+          >
+            <ul>
+              <li>
+                <Link href="/community">
+                  <a>Community</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/groups">
+                  <a>All groups</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/events">
+                  <a>All events</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/topics">
+                  <a>All topics</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/members">
+                  <a>All members</a>
+                </Link>
+              </li>
+            </ul>
+          </NavigationDropdown>
         </ul>
       </NavigationDropdown>
       <NavigationDropdown
-        title={<img src="/static/search.svg" width="24px" />}
+        button={<img src="/static/search.svg" width="24px" />}
       ></NavigationDropdown>
     </NavBar>
   );

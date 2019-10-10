@@ -28,11 +28,21 @@ const Wrapper = styled.div`
     padding: 10px;
   }
 
-  ul > li > a {
+  ul li a {
     align-items: center;
     font-size: ${props => props.theme.font.size.mobile.medium};
     font-weight: ${props => props.theme.font.weight.default};
     color: ${props => props.theme.color.foreground.primary};
+  }
+
+  ul > ul {
+    padding: 5px 0 5px 25px;
+    background: ${props => props.theme.color.background.secondary};
+  }
+
+  div > ul {
+    padding: 5px 0 5px 25px;
+    background: ${props => props.theme.color.background.secondary};
   }
 `;
 
@@ -51,50 +61,69 @@ const PageDim = styled.div`
 const NavButton = styled.li`
   background: ${props =>
     props.active
-      ? props.theme.color.brand.secondary
+      ? props.theme.color.brand.tertiary
       : props.theme.color.brand.primary};
 `;
 
 class NavigationDropdown extends React.Component {
   constructor(props) {
     super(props);
-
+    this.container = React.createRef();
     this.state = {
       displayMenu: false
     };
-
-    this.showDropdownMenu = this.showDropdownMenu.bind(this);
-    this.hideDropdownMenu = this.hideDropdownMenu.bind(this);
   }
 
-  showDropdownMenu(event) {
-    event.preventDefault();
-    this.setState({ displayMenu: true }, () => {
-      document.addEventListener("click", this.hideDropdownMenu);
+  componentDidMount() {
+    document.addEventListener("mousedown", this.handleClickOutside);
+  }
+  componentWillUnmount() {
+    document.removeEventListener("mousedown", this.handleClickOutside);
+  }
+
+  handleButtonClick = () => {
+    this.setState(state => {
+      return {
+        displayMenu: !state.displayMenu
+      };
     });
-  }
+  };
 
-  hideDropdownMenu() {
-    this.setState({ displayMenu: false }, () => {
-      document.removeEventListener("click", this.hideDropdownMenu);
-    });
-  }
+  handleClickOutside = event => {
+    if (
+      this.container.current &&
+      !this.container.current.contains(event.target)
+    ) {
+      this.setState({
+        displayMenu: false
+      });
+    }
+  };
 
   render() {
-    return (
-      <div>
-        <Wrapper>
-          <NavButton
-            onClick={this.showDropdownMenu}
-            active={this.state.displayMenu}
-          >
-            <a>{this.props.title}</a>
-          </NavButton>
+    if (this.props.button) {
+      return (
+        <div>
+          <Wrapper className="container" ref={this.container}>
+            <NavButton
+              onClick={this.handleButtonClick}
+              active={this.state.displayMenu}
+            >
+              <a>{this.props.button}</a>
+            </NavButton>
+            {this.state.displayMenu ? this.props.children : null}
+          </Wrapper>
+          {this.state.displayMenu && <PageDim></PageDim>}
+        </div>
+      );
+    } else if (this.props.title) {
+      return (
+        <div className="container" ref={this.container}>
+          <span onClick={this.handleButtonClick}>{this.props.title}</span>
           {this.state.displayMenu ? this.props.children : null}
-        </Wrapper>
-        {this.state.displayMenu && <PageDim></PageDim>}
-      </div>
-    );
+        </div>
+      );
+    }
   }
 }
 
