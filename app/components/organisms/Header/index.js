@@ -14,6 +14,7 @@ const Wrapper = styled.div`
   width: 100%;
   height: 50px;
   background: ${props => props.theme.color.brand.primary};
+  user-select: none;  
 `;
 
 const Header = ({ isAuthenticated, deauthenticate, username }) => (

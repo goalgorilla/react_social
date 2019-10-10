@@ -3,6 +3,15 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import Link from "next/link";
 import NavigationDropdown from "../NavigationDropdown";
+import SearchBar from "../../molecules/SearchBar";
+
+const StyledHr = styled.hr`
+  margin: 0 10px 0 10px;
+  border: 0;
+  border-top: 1px solid #f1f1f1;
+  height: 1px;
+  padding: 0;
+`;
 
 const NavBar = styled.ul`
   display: flex;
@@ -36,7 +45,33 @@ const NavigationList = ({ isAuthenticated }) => {
     <NavBar>
       <NavigationDropdown
         button={<img src="/static/translate.svg" width="20px" />}
-      ></NavigationDropdown>
+      >
+        <ul>
+          <SearchBar placeholder="Type in the language"></SearchBar>
+          <li>
+            <a>English (current)</a>
+          </li>
+          <StyledHr></StyledHr>
+          <li>
+            <a>Afrikaans</a>
+          </li>
+          <li>
+            <a>Albanian</a>
+          </li>
+          <li>
+            <a>Amharic</a>
+          </li>
+          <li>
+            <a>Arabic</a>
+          </li>
+          <li>
+            <a>Armenian</a>
+          </li>
+          <li>
+            <a>Azerbaijani</a>
+          </li>
+        </ul>
+      </NavigationDropdown>
       <NavigationDropdown
         button={<img src="/static/hamburger.svg" width="20px" />}
       >

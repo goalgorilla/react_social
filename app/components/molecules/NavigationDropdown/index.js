@@ -63,6 +63,7 @@ const NavButton = styled.li`
     props.active
       ? props.theme.color.brand.tertiary
       : props.theme.color.brand.primary};
+  cursor: pointer;
 `;
 
 class NavigationDropdown extends React.Component {
@@ -75,10 +76,10 @@ class NavigationDropdown extends React.Component {
   }
 
   componentDidMount() {
-    document.addEventListener("mousedown", this.handleClickOutside);
+    document.addEventListener("mouseup", this.handleClickOutside);
   }
   componentWillUnmount() {
-    document.removeEventListener("mousedown", this.handleClickOutside);
+    document.removeEventListener("mouseup", this.handleClickOutside);
   }
 
   handleButtonClick = () => {
