@@ -1,4 +1,6 @@
 import Layout from "../components/Layout";
+import { connect } from "react-redux";
+import initialize from "../utils/initialize";
 import React from "react";
 import styled from "styled-components";
 
@@ -16,9 +18,14 @@ function Error({ statusCode }) {
   );
 }
 
-Error.getInitialProps = ({ res, err }) => {
-  const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
+Error.getInitialProps = async ctx => {
+  initialize(ctx);
+  const statusCode = ctx.res
+    ? ctx.res.statusCode
+    : ctx.err
+    ? ctx.err.statusCode
+    : 404;
   return { statusCode };
 };
 
-export default Error;
+export default connect(state => state)(Error);
