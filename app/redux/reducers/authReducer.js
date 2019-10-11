@@ -3,7 +3,8 @@ import { AUTHENTICATE, DEAUTHENTICATE } from "../types";
 const initialState = {
   token: null,
   username: null,
-  id: null
+  id: null,
+  profileImage: null
 };
 
 export default (state = initialState, action) => {
@@ -12,10 +13,11 @@ export default (state = initialState, action) => {
       return {
         token: action.payload.token,
         username: action.payload.username,
-        id: action.payload.id
+        id: action.payload.id,
+        profileImage: action.payload.profileImage
       };
     case DEAUTHENTICATE:
-      return { token: null, username: null, id: null };
+      return { token: null, username: null, id: null, profileImage: null };
     case "LOGIN_ERROR":
       return {
         error: action.payload

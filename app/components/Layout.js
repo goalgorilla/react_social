@@ -5,13 +5,18 @@ import actions from "../redux/actions";
 import styled from "styled-components";
 import Footer from "./organisms/Footer";
 import Header from "./organisms/Header";
+import { deviceMinWidth } from "../utils/device";
 
 const Content = styled.div`
   margin: auto;
   max-width: ${props => props.theme.layout.maxWidth};
   padding: ${props => props.theme.layout.padding};
   padding-top: 50px;
-  padding-bottom: 23rem;
+  padding-bottom: 30rem;
+
+  @media ${deviceMinWidth.tablet} {
+    padding-top: 100px;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -24,7 +29,8 @@ const Layout = ({
   title,
   isAuthenticated,
   deauthenticate,
-  username
+  username,
+  profileImage
 }) => (
   <div>
     <Head>
@@ -46,6 +52,7 @@ const Layout = ({
         isAuthenticated={isAuthenticated}
         deauthenticate={deauthenticate}
         username={username}
+        profileImage={profileImage}
       ></Header>
       <Content>{children}</Content>
       <Footer>Copyright © 2019. [Site Name]. All rights reserved.</Footer>
@@ -55,7 +62,8 @@ const Layout = ({
 
 const mapStateToProps = state => ({
   isAuthenticated: !!state.authentication.token,
-  username: state.authentication.username
+  username: state.authentication.username,
+  profileImage: state.authentication.profileImage
 });
 
 export default connect(

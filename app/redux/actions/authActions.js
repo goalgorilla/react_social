@@ -21,7 +21,8 @@ const authenticate = ({ username, password }, type) => {
     const data = {
       token: null,
       username: null,
-      id: null
+      id: null,
+      profileImage: null
     };
     axios
       // Obtain login token using the user's username and password
@@ -51,9 +52,37 @@ const authenticate = ({ username, password }, type) => {
         });
       })
       .then(response => {
+        // store username
         const username = decodeURI(response.data.data.attributes.name);
         data.username = username;
         setCookie("username", username);
+
+        // url to get profile image id
+        const profileUrl =
+          response.data.data.relationships.profile_profiles.links.related.href;
+        // Obtain the user's profile image id
+        return axios.get(profileUrl, {
+          headers: {
+            Authorization: "Bearer " + data.token
+          }
+        });
+      })
+      .then(response => {
+        // store the profile image id
+        const profileImageId =
+          response.data.data.relationships.field_profile_image.data.id;
+        // Obtain the user's profile image url
+        return axios.get(`${API}/jsonapi/file/file/${profileImageId}`, {
+          headers: {
+            Authorization: "Bearer " + data.token
+          }
+        });
+      })
+      .then(response => {
+        // Store the profile image url
+        const imageUrl = response.data.data.attributes.uri.url;
+        data.profileImage = imageUrl;
+        setCookie("profileImage", imageUrl);
         Router.push("/whoami");
         dispatch({ type: AUTHENTICATE, payload: data });
       })
@@ -67,11 +96,12 @@ const authenticate = ({ username, password }, type) => {
 };
 
 // gets the token from the cookie and saves it in the store
-const reauthenticate = (token, username, id) => {
+const reauthenticate = (token, username, id, profileImage) => {
   const payload = {
     token: token,
     username: decodeURI(username),
-    id: id
+    id: id,
+    profileImage: profileImage
   };
   return dispatch => {
     dispatch({ type: AUTHENTICATE, payload: payload });
@@ -84,6 +114,7 @@ const deauthenticate = () => {
     removeCookie("token");
     removeCookie("username");
     removeCookie("id");
+    removeCookie("profileImage");
     Router.push("/");
     dispatch({ type: DEAUTHENTICATE });
   };
@@ -94,6 +125,7 @@ const clearAuthenticationStore = () => {
     removeCookie("token");
     removeCookie("username");
     removeCookie("id");
+    removeCookie("profileImage");
     dispatch({ type: DEAUTHENTICATE });
   };
 };

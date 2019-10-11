@@ -10,7 +10,8 @@ export default function(ctx) {
         actions.reauthenticate(
           getCookie("token", ctx.req),
           getCookie("username", ctx.req),
-          getCookie("id", ctx.req)
+          getCookie("id", ctx.req),
+          getCookie("profileImage", ctx.req)
         )
       );
     }

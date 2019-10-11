@@ -15,7 +15,6 @@ const StyledHr = styled.hr`
 const NavBar = styled.ul`
   display: flex;
   margin: 0;
-  margin-left: auto;
   height: 50px;
   padding: 0;
   list-style-type: none;
@@ -38,13 +37,24 @@ const NavBar = styled.ul`
   }
 `;
 
-const AccountNavigation = ({ isAuthenticated, deauthenticate, username }) => {
+const ProfileImage = styled.img`
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background-color: white;
+`;
+
+const AccountNavigation = ({
+  isAuthenticated,
+  deauthenticate,
+  username,
+  profileImage
+}) => {
   return (
     <NavBar>
-      <NavigationDropdown
-        button={<img src="/static/account.svg" width="24px" />}
-      >
-        {!isAuthenticated && (
+      {!isAuthenticated && (
+        <NavigationDropdown
+          button={<img src="/static/account.svg" width="24px" />}
+        >
           <ul>
             <li>
               <Link href="/signup">
@@ -57,9 +67,18 @@ const AccountNavigation = ({ isAuthenticated, deauthenticate, username }) => {
               </Link>
             </li>
           </ul>
-        )}
+        </NavigationDropdown>
+      )}
 
-        {isAuthenticated && (
+      {isAuthenticated && (
+        <NavigationDropdown
+          button={
+            <ProfileImage
+              src={`https://api.feature-rfe-25-5tikd6i-jmqq2w45dtvdy.eu-4.platformsh.site${profileImage}`}
+              width="20px"
+            />
+          }
+        >
           <ul>
             <p>Signed in as</p>
             <li>
@@ -115,8 +134,8 @@ const AccountNavigation = ({ isAuthenticated, deauthenticate, username }) => {
               <a>Log out</a>
             </li>
           </ul>
-        )}
-      </NavigationDropdown>
+        </NavigationDropdown>
+      )}
     </NavBar>
   );
 };
