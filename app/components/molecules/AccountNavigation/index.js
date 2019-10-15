@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import Link from "next/link";
+import { API } from "../../../config";
 import NavigationDropdown from "../NavigationDropdown";
 
 const StyledHr = styled.hr`
@@ -49,6 +50,11 @@ const AccountNavigation = ({
   username,
   profileImage
 }) => {
+  if (profileImage == "") {
+    var accountImg = <img src="/static/account.svg" width="24px" />;
+  } else {
+    var accountImg = <ProfileImage src={API + profileImage} width="20px" />;
+  }
   return (
     <NavBar>
       {!isAuthenticated && (
@@ -71,14 +77,7 @@ const AccountNavigation = ({
       )}
 
       {isAuthenticated && (
-        <NavigationDropdown
-          button={
-            <ProfileImage
-              src={`https://api.feature-rfe-25-5tikd6i-jmqq2w45dtvdy.eu-4.platformsh.site${profileImage}`}
-              width="20px"
-            />
-          }
-        >
+        <NavigationDropdown button={accountImg}>
           <ul>
             <p>Signed in as</p>
             <li>

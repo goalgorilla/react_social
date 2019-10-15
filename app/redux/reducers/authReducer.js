@@ -4,7 +4,7 @@ const initialState = {
   token: null,
   username: null,
   id: null,
-  profileImage: null
+  profileImage: ""
 };
 
 export default (state = initialState, action) => {
@@ -17,7 +17,7 @@ export default (state = initialState, action) => {
         profileImage: action.payload.profileImage
       };
     case DEAUTHENTICATE:
-      return { token: null, username: null, id: null, profileImage: null };
+      return { token: null, username: null, id: null, profileImage: "" };
     case "LOGIN_ERROR":
       return {
         error: action.payload

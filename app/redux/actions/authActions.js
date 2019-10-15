@@ -56,7 +56,6 @@ const authenticate = ({ username, password }, type) => {
         const username = decodeURI(response.data.data.attributes.name);
         data.username = username;
         setCookie("username", username);
-
         // url to get profile image id
         const profileUrl =
           response.data.data.relationships.profile_profiles.links.related.href;
@@ -68,21 +67,32 @@ const authenticate = ({ username, password }, type) => {
         });
       })
       .then(response => {
-        // store the profile image id
-        const profileImageId =
-          response.data.data.relationships.field_profile_image.data.id;
-        // Obtain the user's profile image url
-        return axios.get(`${API}/jsonapi/file/file/${profileImageId}`, {
-          headers: {
-            Authorization: "Bearer " + data.token
-          }
-        });
+        // store user profile image id if it exists otherwise set as null
+        var profileImageId = response.data.data.relationships
+          .field_profile_image.data
+          ? response.data.data.relationships.field_profile_image.data.id
+          : false;
+
+        if (profileImageId) {
+          return axios
+            .get(`${API}/jsonapi/file/file/${profileImageId}`, {
+              headers: {
+                Authorization: "Bearer " + data.token
+              }
+            })
+            .then(response => {
+              // Store the profile image url
+              const imageUrl = response.data.data.attributes.uri.url;
+              data.profileImage = imageUrl;
+              setCookie("profileImage", imageUrl);
+              return;
+            });
+        } else {
+          data.profileImage = "";
+          setCookie("profileImage", "");
+        }
       })
-      .then(response => {
-        // Store the profile image url
-        const imageUrl = response.data.data.attributes.uri.url;
-        data.profileImage = imageUrl;
-        setCookie("profileImage", imageUrl);
+      .finally(response => {
         Router.push("/whoami");
         dispatch({ type: AUTHENTICATE, payload: data });
       })
