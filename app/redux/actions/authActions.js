@@ -1,8 +1,9 @@
 import Router from "next/router";
 import axios from "axios";
 import { AUTHENTICATE, DEAUTHENTICATE } from "../types";
-import { API, grant_type, client_id, client_secret } from "../../config";
 import { setCookie, removeCookie } from "../../utils/cookie";
+
+const API_URL = process.env.API_URL;
 
 // gets token from the api and stores it in the redux store and in cookie
 const authenticate = ({ username, password }, type) => {
@@ -11,15 +12,15 @@ const authenticate = ({ username, password }, type) => {
   }
 
   var bodyFormData = new FormData();
-  bodyFormData.set("grant_type", grant_type);
-  bodyFormData.set("client_id", client_id);
-  bodyFormData.set("client_secret", client_secret);
+  bodyFormData.set("grant_type", process.env.GRANT_TYPE);
+  bodyFormData.set("client_id", process.env.CLIENT_ID);
+  bodyFormData.set("client_secret", process.env.CLIENT_SECRET);
   bodyFormData.set("username", username);
   bodyFormData.set("password", password);
 
   return dispatch => {
     axios
-      .post(`${API}/oauth/token/`, bodyFormData)
+      .post(`${API_URL}/oauth/token/`, bodyFormData)
       .then(response => {
         setCookie("token", response.data.access_token);
         Router.push("/whoami");
