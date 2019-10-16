@@ -22,6 +22,7 @@
     "drupal-composer/drupal-scaffold": "^2.0.0",
     "drupal/google_analytics": "^2.4",
     "drupal/monolog": "^1.0",
+    "drupal/social_json_api": "^1.0@alpha",
     "drupal/social_kpi_lite": "^1.0@alpha",
     "drush/drush": "8.*@stable",
     "goalgorilla/enterprise_helper": "^1.0",
