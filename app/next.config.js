@@ -1,25 +1,27 @@
 const webpack = require("webpack");
 // Initialize doteenv library
-require("dotenv").config();
+const { parsed: localEnv } = require("dotenv").config();
+
+// Utility to assist in decoding a packed JSON variable.
+function read_base64_json(varName) {
+  try {
+    return JSON.parse(new Buffer(process.env[varName], "base64").toString());
+  } catch (err) {
+    throw new Error(`no ${varName} environment variable`);
+  }
+}
 
 module.exports = {
-  webpack: config => {
-    // Fixes npm packages that depend on `fs` module
-    config.node = {
-      fs: "empty"
-    };
-    /**
-     * Returns environment variables as an object
-     */
-    const env = Object.keys(process.env).reduce((acc, curr) => {
-      acc[`process.env.${curr}`] = JSON.stringify(process.env[curr]);
-      return acc;
-    }, {});
-
-    /** Allows you to create global constants which can be configured
-     * at compile time, which in our case is our environment variables
-     */
-    config.plugins.push(new webpack.DefinePlugin(env));
-    return config;
+  webpack: (config, { dev }) => {
+    // if development use .env file
+    if (dev) {
+      config.plugins.push(new webpack.EnvironmentPlugin(localEnv));
+      return config;
+      // if NODE_ENV = production
+    } else {
+      let variables = read_base64_json("PLATFORM_VARIABLES");
+      config.plugins.push(new webpack.EnvironmentPlugin(variables));
+      return config;
+    }
   }
 };
