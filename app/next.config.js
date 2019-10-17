@@ -5,7 +5,9 @@ const { parsed: localEnv } = require("dotenv").config();
 // Utility to assist in decoding a packed JSON variable.
 function read_base64_json(varName) {
   try {
-    return JSON.parse(new Buffer(process.env[varName], "base64").toString());
+    return JSON.parse(
+      new Buffer.from(process.env[varName], "base64").toString()
+    );
   } catch (err) {
     throw new Error(`no ${varName} environment variable`);
   }
