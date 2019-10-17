@@ -20,6 +20,7 @@ module.exports = {
       // if NODE_ENV = production
     } else {
       let variables = read_base64_json("PLATFORM_VARIABLES");
+      console.log(variables);
       config.plugins.push(new webpack.EnvironmentPlugin(variables));
       return config;
     }
