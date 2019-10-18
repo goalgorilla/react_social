@@ -8,8 +8,4 @@ const StyledTitle = styled.h2`
   color: ${props => props.theme.color.foreground.primary};
 `;
 
-const Title = ({ children }) => {
-  return <StyledTitle>{children}</StyledTitle>;
-};
-
-export default Title;
+export default StyledTitle;

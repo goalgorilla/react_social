@@ -172,7 +172,6 @@ parameters:
         "x-requested-with",
         "access-control-allow-origin",
         "x-allowed-header",
-        "*",
       ]
     # Specify allowed request methods, specify ['*'] to allow all possible ones.
     allowedMethods: ["*"]
