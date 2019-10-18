@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   display: flex;
-  height: 90px;
+  height: 5.625rem;
 `;
 
 const FormField = props => {

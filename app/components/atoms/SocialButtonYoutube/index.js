@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { Youtube } from "styled-icons/boxicons-logos/Youtube";
+import { Youtube } from "styled-icons/fa-brands/Youtube ";
 
 const StyledYoutube = styled(Youtube)`
-  margin: 5px 2px;
-  padding: 7px;
+  margin: 0.3125rem 0.125rem;
+  padding: 0.4375rem;
   border-radius: 50%;
   background: ${props => props.theme.color.brand.primary};
   text-align: center;

@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
+import { deviceMinWidth } from "../../../utils/device";
 
 const Wrapper = styled.div`
   ul {
@@ -16,7 +17,8 @@ const Wrapper = styled.div`
   ul p {
     margin: 10px 0 -5px 0;
     padding-left: 10px;
-    font-size: ${props => props.theme.font.size.mobile.small};
+    font-size: ${props => props.theme.font.size.small};
+    font-weight: ${props => props.theme.font.weight.regular};
     color: ${props => props.theme.color.text.one};
   }
 
@@ -30,7 +32,7 @@ const Wrapper = styled.div`
 
   ul li a {
     align-items: center;
-    font-size: ${props => props.theme.font.size.mobile.medium};
+    font-size: ${props => props.theme.font.size.medium};
     font-weight: ${props => props.theme.font.weight.default};
     color: ${props => props.theme.color.foreground.primary};
   }
@@ -56,6 +58,10 @@ const PageDim = styled.div`
   opacity: 1;
   margin-top: 50px;
   z-index: -1;
+
+  @media ${deviceMinWidth.tablet} {
+    display: none;
+  }
 `;
 
 const NavButton = styled.li`
@@ -63,6 +69,10 @@ const NavButton = styled.li`
     props.active
       ? props.theme.color.brand.tertiary
       : props.theme.color.brand.primary};
+  cursor: pointer;
+`;
+
+const NavLink = styled.div`
   cursor: pointer;
 `;
 
@@ -119,10 +129,14 @@ class NavigationDropdown extends React.Component {
       );
     } else if (this.props.title) {
       return (
-        <div className="container" ref={this.container}>
-          <span onClick={this.handleButtonClick}>{this.props.title}</span>
+        <NavLink
+          className="container"
+          ref={this.container}
+          onClick={this.handleButtonClick}
+        >
+          {this.props.title}
           {this.state.displayMenu ? this.props.children : null}
-        </div>
+        </NavLink>
       );
     }
   }

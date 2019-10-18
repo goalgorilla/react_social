@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { Linkedin } from "styled-icons/boxicons-logos/Linkedin";
+import { Linkedin } from "styled-icons/fa-brands/LinkedinIn";
 
 const StyledLinkedIn = styled(Linkedin)`
-  margin: 5px 2px;
-  padding: 9px;
+  margin: 0.3125rem 0.125rem;
+  padding: 0.5625rem;
   border-radius: 50%;
   background: ${props => props.theme.color.brand.primary};
   text-align: center;

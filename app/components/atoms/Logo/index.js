@@ -1,18 +1,25 @@
 import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
+import { deviceMinWidth } from "../../../utils/device";
 
 const StyledA = styled.a`
   display: inline-block;
   overflow: hidden;
-  min-width: 50px;
-  max-width: 200px;
-  height: 50px;
-  vertical-align: top;
+  min-width: 3.125rem;
+
+  @media ${deviceMinWidth.tablet} {
+    min-width: 6.25rem;
+  }
 `;
 
 const StyledImg = styled.img`
   cursor: pointer;
+
+  @media ${deviceMinWidth.tablet} {
+    height: 6.25rem;
+    width: 6.25rem;
+  }
 `;
 
 const Logo = () => {

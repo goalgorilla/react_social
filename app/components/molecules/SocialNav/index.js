@@ -3,7 +3,7 @@ import SocialButtonLinkedIn from "../../atoms/SocialButtonLinkedIn";
 import SocialButtonTwitter from "../../atoms/SocialButtonTwitter";
 import SocialButtonYoutube from "../../atoms/SocialButtonYoutube";
 import styled from "styled-components";
-import { device } from "../../../utils/device";
+import { deviceMaxWidth } from "../../../utils/device";
 
 const StyledSocialNav = styled.ul`
   display: flex;
@@ -16,15 +16,15 @@ const StyledSocialNav = styled.ul`
   }
 
   li:not(:last-child) {
-    padding: 0 20px 0 0;
+    padding: 0 1.25rem 0 0;
     text-decoration: none;
   }
 
-  @media ${device.tablet} {
+  @media ${deviceMaxWidth.tablet} {
     margin-top: 0 !important;
     border-top: 1px solid #f1f1f1;
     border-bottom: 1px solid #f1f1f1;
-    padding: 10px 0;
+    padding: 0.625rem 0;
 
     li:first-child {
       margin-left: 0;

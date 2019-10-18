@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 const StyledInputDescription = styled.h4`
   margin: 0;
   cursor: ${props => (props.link ? "pointer" : "default")};
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: ${props =>
     props.link
       ? props.theme.font.weight.medium

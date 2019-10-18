@@ -3,7 +3,6 @@ import Head from "next/head";
 import { connect } from "react-redux";
 import actions from "../redux/actions";
 import styled from "styled-components";
-import Footer from "./organisms/Footer";
 import Header from "./organisms/Header";
 import { deviceMinWidth } from "../utils/device";
 
@@ -11,11 +10,11 @@ const Content = styled.div`
   margin: auto;
   max-width: ${props => props.theme.layout.maxWidth};
   padding: ${props => props.theme.layout.padding};
-  padding-top: 50px;
+  padding-top: 3.125rem;
   padding-bottom: 30rem;
 
   @media ${deviceMinWidth.tablet} {
-    padding-top: 100px;
+    padding-top: 6.25rem;
   }
 `;
 
@@ -55,7 +54,6 @@ const Layout = ({
         profileImage={profileImage}
       ></Header>
       <Content>{children}</Content>
-      <Footer>Copyright © 2019. [Site Name]. All rights reserved.</Footer>
     </Wrapper>
   </div>
 );

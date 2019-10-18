@@ -19,7 +19,8 @@ const theme = {
     text: {
       light: "#ffffff",
       one: "#555555",
-      two: "#adadad"
+      two: "#adadad",
+      three: "#777777"
     },
     system: {
       failure: {
@@ -39,20 +40,11 @@ const theme = {
       bold: "700"
     },
     size: {
-      desktop: {
-        small: "12px",
-        medium: "14px",
-        default: "16px",
-        large: "20px",
-        veryLarge: "48px"
-      },
-      mobile: {
-        small: "10.5px",
-        medium: "12.25px",
-        default: "14px",
-        large: "17.5px",
-        veryLarge: "32px"
-      }
+      small: "0.75rem",
+      medium: "0.875rem",
+      default: "1rem",
+      large: "1.25rem",
+      veryLarge: "3rem"
     },
     lineHeight: {
       small: "1.1",
@@ -64,8 +56,8 @@ const theme = {
       small: "3px",
       default: "5px"
     },
-    maxWidth: "1200px",
-    padding: "0 20px"
+    maxWidth: "75rem",
+    padding: "0 1.25rem"
   }
 };
 

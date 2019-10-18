@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { Twitter } from "styled-icons/boxicons-logos/Twitter";
+import { Twitter } from "styled-icons/fa-brands/Twitter";
 
 const StyledTwitter = styled(Twitter)`
-  margin: 5px 2px;
-  padding: 7px;
+  margin: 0.3125rem 0.125rem;
+  padding: 0.4375rem;
   border-radius: 50%;
   background: ${props => props.theme.color.brand.primary};
   text-align: center;

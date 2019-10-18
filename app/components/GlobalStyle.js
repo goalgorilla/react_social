@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import theme from "./Theme";
+import { deviceMaxWidth } from "../utils/device";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -13,6 +14,12 @@ const GlobalStyle = createGlobalStyle`
   }
   html {
     height: 100%;
+    font-size: 16px;
+  }
+  @media ${deviceMaxWidth.tablet}{
+    html {
+      font-size: 14px;  
+    }
   }
 `;
 

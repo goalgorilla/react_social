@@ -7,9 +7,9 @@ import PropTypes from "prop-types";
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
-  padding: 10px 10px;
+  padding: 0.625rem 0.625rem;
   background: ${props => props.theme.color.background.secondary};
-  margin: -10px 20px 0 -10px;
+  margin: -0.625rem 1.25rem 0 -0.625rem;
 `;
 
 const SearchBar = ({ placeholder }) => {

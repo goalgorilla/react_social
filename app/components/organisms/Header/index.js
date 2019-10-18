@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Logo from "../../atoms/Logo";
 import NavigationList from "../../molecules/NavigationList";
 import AccountNavigation from "../../molecules/AccountNavigation";
+import NavigationDropdown from "../../molecules/NavigationDropdown";
 import { deviceMinWidth } from "../../../utils/device";
 
 const Wrapper = styled.div`
@@ -24,28 +25,48 @@ const Wrapper = styled.div`
 
 const NavRow = styled.div`
   display: flex;
-  height: 50px;
+  box-sizing: border-box;
   width: 100%;
+  height: 50px;
+  font-size: ${props => props.theme.font.size.small};
+  font-weight: ${props => props.theme.font.weight.bold};
+  color: ${props => props.theme.color.text.light};
 
   & > a {
-    font-size: ${props => props.theme.font.size.desktop.small};
-    font-weight: ${props => props.theme.font.weight.bold};
-    color: ${props => props.theme.color.text.three};
-    text-align: center;
-    line-height: 50px;
-    padding: 0 12.5px 0 12.5px;
-  }
-
-  & > a:last-child {
     margin-left: auto;
+    margin-right: 15px;
+    padding: 0 12.5px 0 12.5px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    color: ${props => props.theme.color.text.three};
   }
 
   &:first-of-type {
     display: none;
+    color: ${props => props.theme.color.text.three};
     background: ${props => props.theme.color.background.secondary};
+    padding-left: 30px;
+  }
+
+  &:first-of-type > div {
+    display: flex;
+    align-items: center;
+  }
+
+  &:first-of-type > div > * {
+    display: flex;
+    align-items: center;
+  }
+
+  &:first-of-type > div img {
+    padding-right: 10px;
+    opacity: 0.9;
   }
 
   @media ${deviceMinWidth.tablet} {
+    padding-left: 15px;
+
     &:first-of-type {
       display: flex;
     }
@@ -53,8 +74,8 @@ const NavRow = styled.div`
 `;
 
 const NavWrapper = styled.div`
-  display: flex;
   flex-direction: row;
+  display: flex;
   width: 100%;
 
   @media ${deviceMinWidth.tablet} {
@@ -72,8 +93,17 @@ const Header = ({
     <Logo></Logo>
     <NavWrapper>
       <NavRow>
-        <a>English</a>
-        <a>getopensocial.com</a>
+        <NavigationDropdown
+          title={
+            <a>
+              <img src="/static/translate.svg" width="20px" />
+              English <img src="/static/dropdown.svg" width="20px" />
+            </a>
+          }
+        ></NavigationDropdown>
+        <a href="http://www.getopensocial.com" target="_blank">
+          getopensocial.com
+        </a>
       </NavRow>
       <NavRow>
         <NavigationList isAuthenticated={isAuthenticated}></NavigationList>

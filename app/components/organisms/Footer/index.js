@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import PropTypes from "prop-types";
-import { device } from "../../../utils/device";
+import { deviceMaxWidth } from "../../../utils/device";
 import SocialNav from "../../molecules/SocialNav";
 
 const Wrapper = styled.div`
@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   height: 10rem;
   background: white;
 
-  @media ${device.tablet} {
+  @media ${deviceMaxWidth.tablet} {
     height: 22rem;
   }
 `;
@@ -24,12 +24,12 @@ const FooterContent = styled.div`
   margin: auto;
   max-width: ${props => props.theme.layout.maxWidth};
   padding: ${props => props.theme.layout.padding};
-  padding-top: 15px;
+  padding-top: 0.9375rem;
 
   p {
-    margin-bottom: 20px;
-    margin-top: -10px;
-    font-size: ${props => props.theme.font.size.desktop.small};
+    margin-bottom: 1.25rem;
+    margin-top: -0.625rem;
+    font-size: ${props => props.theme.font.size.small};
     line-height: ${props => props.theme.font.lineHeight.default};
     font-weight: ${props => props.theme.font.weight.regular};
     color: ${props => props.theme.color.text.one};
@@ -37,17 +37,17 @@ const FooterContent = styled.div`
 
   ul {
     flex: 0 50%;
-    margin: 15px 0 0;
+    margin: 0.9375rem 0 0;
   }
 
   * {
   }
 
-  @media ${device.tablet} {
+  @media ${deviceMaxWidth.tablet} {
     flex-direction: column;
 
     p {
-      margin-top: 20px;
+      margin-top: 1.25rem;
     }
   }
 `;
@@ -58,21 +58,21 @@ const FooterNav = styled.ul`
   display: flex;
   margin: 0;
   padding: 0;
-  font-size: ${props => props.theme.font.size.desktop.medium};
+  font-size: ${props => props.theme.font.size.medium};
   list-style-type: none;
 
   a {
-    padding: 0 25px 0 0;
+    padding: 0 1.563rem 0 0;
     font-weight: ${props => props.theme.font.weight.bold};
     color: ${props => props.theme.color.brand.primary};
     text-decoration: none;
   }
-  @media ${device.tablet} {
+  @media ${deviceMaxWidth.tablet} {
     flex-direction: column;
-    height: 150px;
+    height: 9.375rem;
 
     a {
-      padding: 0 0 25px 0;
+      padding: 0 0 1.563rem 0;
     }
   }
 `;

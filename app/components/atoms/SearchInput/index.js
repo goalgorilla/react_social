@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 
 const StyledInput = styled.input`
   width: 100%;
-  padding: 5px 10px;
-  font-size: ${props => props.theme.font.size.mobile.medium};
+  padding: 0.3125rem 0.625rem;
+  font-size: ${props => props.theme.font.size.medium};
   font-weight: ${props => props.theme.font.weight.default};
   color: #4d4d4d;
   border: 0;

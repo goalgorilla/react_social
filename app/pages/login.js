@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   flex: 0 0 66.66667%;
   flex-direction: column;
   display: flex;
-  max-width: 780px;
+  max-width: 48.75rem;
 `;
 
 const Form = styled.form`
@@ -24,7 +24,7 @@ const Form = styled.form`
 
   button:last-child {
     margin-left: auto;
-    margin-top: 20px;
+    margin-top: 1.25rem;
   }
 `;
 

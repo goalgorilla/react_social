@@ -6,9 +6,9 @@ const StyledSystemMessage = styled.p`
   position: relative;
   border: 1px solid ${props => props.theme.color.system.failure.border};
   border-radius: ${props => props.theme.layout.borderRadius.default};
-  padding: 20px 50px 20px 20px;
+  padding: 1.25rem 3.125rem 1.25rem 1.25rem;
   background-color: ${props => props.theme.color.system.failure.background};
-  font-size: ${props => props.theme.font.size.desktop.medium};
+  font-size: ${props => props.theme.font.size.medium};
   line-height: ${props => props.theme.font.lineHeight.default};
   font-weight: ${props => props.theme.font.weight.regular};
   color: ${props => props.theme.color.system.failure.text};
@@ -16,11 +16,11 @@ const StyledSystemMessage = styled.p`
 
 const CloseButton = styled.button`
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 1.25rem;
+  right: 1.25rem;
   border: 0;
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   background: url("./static/close.svg") no-repeat top left;
   background-size: contain;
   cursor: pointer;

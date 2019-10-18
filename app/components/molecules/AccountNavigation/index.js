@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Link from "next/link";
 import { API } from "../../../config";
 import NavigationDropdown from "../NavigationDropdown";
+import { deviceMinWidth } from "../../../utils/device";
 
 const StyledHr = styled.hr`
   margin: 0 10px 0 10px;
@@ -13,7 +14,7 @@ const StyledHr = styled.hr`
   padding: 0;
 `;
 
-const NavBar = styled.ul`
+const AccountNavigationWrapper = styled.ul`
   display: flex;
   margin: 0;
   height: 50px;
@@ -31,10 +32,14 @@ const NavBar = styled.ul`
     align-self: center;
     display: flex;
     cursor: pointer;
-    font-size: ${props => props.theme.font.size.mobile.default};
-    font-weight: ${props => props.theme.font.weight.bold};
-    color: ${props => props.theme.color.text.light};
     text-decoration: none;
+  }
+
+  @media ${deviceMinWidth.tablet} {
+    margin-right: 15px;
+    li {
+      width: 44px;
+    }
   }
 `;
 
@@ -42,6 +47,47 @@ const ProfileImage = styled.img`
   border-radius: 50%;
   border: 2px solid transparent;
   background-color: white;
+`;
+
+const DesktopButtons = styled.div`
+  display: none;
+
+  @media ${deviceMinWidth.tablet} {
+    display: flex;
+  }
+`;
+
+const MobileWrapper = styled.div`
+  display: flex;
+
+  @media ${deviceMinWidth.tablet} {
+    display: none;
+  }
+`;
+
+const DesktopWrapper = styled.div`
+  display: none;
+  margin-right: 12.5px;
+
+  ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+
+  ul li {
+    padding: 0 0 0 15px;
+    margin-left: 15px;
+  }
+
+  ul li a {
+    white-space: nowrap;
+    color: inherit;
+  }
+
+  @media ${deviceMinWidth.tablet} {
+    display: flex;
+  }
 `;
 
 const AccountNavigation = ({
@@ -56,86 +102,124 @@ const AccountNavigation = ({
     var accountImg = <ProfileImage src={API + profileImage} width="20px" />;
   }
   return (
-    <NavBar>
+    <AccountNavigationWrapper>
       {!isAuthenticated && (
-        <NavigationDropdown
-          button={<img src="/static/account.svg" width="24px" />}
-        >
-          <ul>
-            <li>
-              <Link href="/signup">
-                <a>Sign up</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/login">
-                <a>Log in</a>
-              </Link>
-            </li>
-          </ul>
-        </NavigationDropdown>
+        <React.Fragment>
+          <MobileWrapper>
+            <NavigationDropdown
+              button={<img src="/static/account.svg" width="24px" />}
+            >
+              <ul>
+                <li>
+                  <Link href="/signup">
+                    <a>Sign up</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/login">
+                    <a>Log in</a>
+                  </Link>
+                </li>
+              </ul>
+            </NavigationDropdown>
+          </MobileWrapper>
+          <DesktopWrapper>
+            <ul>
+              <li>
+                <Link href="/signup">
+                  <a>Sign up</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/login">
+                  <a>Log in</a>
+                </Link>
+              </li>
+            </ul>
+          </DesktopWrapper>
+        </React.Fragment>
       )}
 
       {isAuthenticated && (
-        <NavigationDropdown button={accountImg}>
-          <ul>
-            <p>Signed in as</p>
-            <li>
-              <Link href="/profile">
-                <a>{username}</a>
-              </Link>
-            </li>
-            <StyledHr></StyledHr>
-            <li>
-              <Link href="/stream">
-                <a>My stream</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/myevents">
-                <a>My events</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/mytopics">
-                <a>My topics</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/mygroups">
-                <a>My groups</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/myinformation">
-                <a>My information</a>
-              </Link>
-            </li>
-            <StyledHr></StyledHr>
-            <li>
-              <Link href="/following">
-                <a>Following</a>
-              </Link>
-            </li>
-            <StyledHr></StyledHr>
-            <li>
-              <Link href="/settings">
-                <a>Settings</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/editprofile">
-                <a>Edit profile</a>
-              </Link>
-            </li>
-            <StyledHr></StyledHr>
-            <li onClick={deauthenticate}>
-              <a>Log out</a>
-            </li>
-          </ul>
-        </NavigationDropdown>
+        <React.Fragment>
+          <DesktopButtons>
+            <NavigationDropdown
+              button={<img src="/static/add.svg" width="20px" />}
+            ></NavigationDropdown>
+            <NavigationDropdown
+              button={<img src="/static/group.svg" width="20px" />}
+            ></NavigationDropdown>
+            <NavigationDropdown
+              button={
+                <img src="/static/private message_no_new.svg" width="20px" />
+              }
+            ></NavigationDropdown>
+            <NavigationDropdown
+              button={
+                <img src="/static/notification_no new.svg" width="20px" />
+              }
+            ></NavigationDropdown>
+          </DesktopButtons>
+          <NavigationDropdown button={accountImg}>
+            <ul>
+              <p>Signed in as</p>
+              <li>
+                <Link href="/profile">
+                  <a>{username}</a>
+                </Link>
+              </li>
+              <StyledHr></StyledHr>
+              <li>
+                <Link href="/stream">
+                  <a>My stream</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/myevents">
+                  <a>My events</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/mytopics">
+                  <a>My topics</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/mygroups">
+                  <a>My groups</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/myinformation">
+                  <a>My information</a>
+                </Link>
+              </li>
+              <StyledHr></StyledHr>
+              <li>
+                <Link href="/following">
+                  <a>Following</a>
+                </Link>
+              </li>
+              <StyledHr></StyledHr>
+              <li>
+                <Link href="/settings">
+                  <a>Settings</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/editprofile">
+                  <a>Edit profile</a>
+                </Link>
+              </li>
+              <StyledHr></StyledHr>
+              <li onClick={deauthenticate}>
+                <a>Log out</a>
+              </li>
+            </ul>
+          </NavigationDropdown>
+        </React.Fragment>
       )}
-    </NavBar>
+    </AccountNavigationWrapper>
   );
 };
 
