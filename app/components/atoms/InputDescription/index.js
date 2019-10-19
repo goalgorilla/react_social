@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
+// A component to provide a description for a input field
 const StyledInputDescription = styled.h4`
   margin: 0;
   cursor: ${props => (props.link ? "pointer" : "default")};
@@ -13,6 +14,7 @@ const StyledInputDescription = styled.h4`
   color: ${props => props.theme.color.foreground.primary};
 `;
 
+// returns a differently styled description when the link prop is passed so the user can tell the description is a link
 const InputDescription = ({ children, link }) => {
   if (link) {
     return <StyledInputDescription link>{children}</StyledInputDescription>;

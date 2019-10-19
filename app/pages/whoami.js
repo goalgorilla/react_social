@@ -4,6 +4,8 @@ import { API } from "../config";
 import initialize from "../utils/initialize";
 import Layout from "../components/Layout";
 
+// Temporary page to display the logged in user id
+
 const Whoami = ({ id, username }) => (
   <Layout title="Who Am I">
     {(id && (

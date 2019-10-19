@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
+// An input field component used for search
 const StyledInput = styled.input`
   width: 100%;
   padding: 0.3125rem 0.625rem;

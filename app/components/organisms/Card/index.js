@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
+// A card component to contain content - used, for example, for the login page's form.
 const Wrapper = styled.div`
   flex: 0 0 66.66667%;
   flex-direction: column;

@@ -4,6 +4,8 @@ import initialize from "../utils/initialize";
 import React from "react";
 import styled from "styled-components";
 
+// A custom error page displaying the error status code to the user and whether the error occured server side or client side
+
 const ErrorMessage = styled.p``;
 
 function Error({ statusCode }) {

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
+// This component is used to display system messages to the user. It is a closeable <p> tag.
 const StyledSystemMessage = styled.p`
   position: relative;
   border: 1px solid ${props => props.theme.color.system.failure.border};

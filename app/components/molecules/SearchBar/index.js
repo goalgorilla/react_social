@@ -4,6 +4,7 @@ import SearchInput from "../../atoms/SearchInput";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
+// A search bar - consists of an input field and a search icon
 const Wrapper = styled.div`
   display: flex;
   width: 100%;

@@ -1,5 +1,6 @@
 import themeData from "../static/theme.json";
 
+// A file containing all the theme data for styled-components
 const theme = {
   color: {
     brand: {

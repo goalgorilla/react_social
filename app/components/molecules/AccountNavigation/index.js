@@ -6,6 +6,7 @@ import { API } from "../../../config";
 import NavigationDropdown from "../NavigationDropdown";
 import { deviceMinWidth } from "../../../utils/device";
 
+// The right side of the header's navigation portion. Contains any navigation regarding the user's account
 const StyledHr = styled.hr`
   margin: 0 10px 0 10px;
   border: 0;
@@ -96,13 +97,16 @@ const AccountNavigation = ({
   username,
   profileImage
 }) => {
+  // if the user does not have a profile image use the placeholder
   if (profileImage == "") {
     var accountImg = <img src="/static/account.svg" width="24px" />;
   } else {
+    // set the user's profile image as the one obtained from the API
     var accountImg = <ProfileImage src={API + profileImage} width="20px" />;
   }
   return (
     <AccountNavigationWrapper>
+      {/* if the user is not logged in display the login + signup links */}
       {!isAuthenticated && (
         <React.Fragment>
           <MobileWrapper>
@@ -140,6 +144,7 @@ const AccountNavigation = ({
         </React.Fragment>
       )}
 
+      {/* if the user is logged in display the links regarding the users account */}
       {isAuthenticated && (
         <React.Fragment>
           <DesktopButtons>

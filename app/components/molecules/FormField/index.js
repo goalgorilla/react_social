@@ -5,6 +5,7 @@ import InputDescription from "../../atoms/InputDescription";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
+// A component to style a form field (label + input + input description)
 const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;

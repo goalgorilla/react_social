@@ -6,6 +6,13 @@ import styled from "styled-components";
 import Header from "./organisms/Header";
 import { deviceMinWidth } from "../utils/device";
 
+/* Layout used by all pages, containing:
+ - <head> data
+ - The <Header> of the site
+ - A <Wrapper> for the content of the page
+ - The <Footer> of the site
+
+ This component also passes down whether the user is authenticated along with account details to child components. */
 const Content = styled.div`
   margin: auto;
   max-width: ${props => props.theme.layout.maxWidth};

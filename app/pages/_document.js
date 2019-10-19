@@ -1,6 +1,7 @@
 import Document from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
+// Overrided document.js for rendering the styled-components at server side
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet();

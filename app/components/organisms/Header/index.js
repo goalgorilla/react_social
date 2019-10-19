@@ -6,6 +6,7 @@ import AccountNavigation from "../../molecules/AccountNavigation";
 import NavigationDropdown from "../../molecules/NavigationDropdown";
 import { deviceMinWidth } from "../../../utils/device";
 
+// The header of the website. Containing the navigation bars.
 const Wrapper = styled.div`
   position: fixed;
   z-index: 999;

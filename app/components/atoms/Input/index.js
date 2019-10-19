@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
+// Input component used for form fields
 const StyledInput = styled.input`
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   border: 1px solid ${props => props.theme.color.text.two};
@@ -26,6 +27,7 @@ const Input = props => {
     props.onChange(e.target.value);
   };
 
+  // if the required prop is passed return an input that contains the required attribute
   if (props.required) {
     return (
       <StyledInput
@@ -36,6 +38,7 @@ const Input = props => {
       ></StyledInput>
     );
   }
+  // returns an input that is not required
   return (
     <StyledInput
       type={props.type}

@@ -3,6 +3,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import { deviceMinWidth } from "../../../utils/device";
 
+// This component is used for dropdown menus in the Header.
 const Wrapper = styled.div`
   ul {
     position: absolute;
@@ -85,13 +86,16 @@ class NavigationDropdown extends React.Component {
     };
   }
 
+  // Adds a listener for the user's clicks to run the handleClickOutside() method
   componentDidMount() {
     document.addEventListener("mouseup", this.handleClickOutside);
   }
+  // Removes the click listener when the component will unmount
   componentWillUnmount() {
     document.removeEventListener("mouseup", this.handleClickOutside);
   }
 
+  // Toggles the display of the dropdown
   handleButtonClick = () => {
     this.setState(state => {
       return {
@@ -100,6 +104,7 @@ class NavigationDropdown extends React.Component {
     });
   };
 
+  // Checks if the user clicked outside of the dropdown and closes the dropdown if they did
   handleClickOutside = event => {
     if (
       this.container.current &&
@@ -112,6 +117,9 @@ class NavigationDropdown extends React.Component {
   };
 
   render() {
+    {
+      /* if a button is passed return this code block */
+    }
     if (this.props.button) {
       return (
         <div>
@@ -127,6 +135,9 @@ class NavigationDropdown extends React.Component {
           {this.state.displayMenu && <PageDim></PageDim>}
         </div>
       );
+      {
+        /* if a title is passed return this code block */
+      }
     } else if (this.props.title) {
       return (
         <NavLink

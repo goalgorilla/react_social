@@ -18,7 +18,7 @@ export default withRedux(initStore, { debug: true })(
         }
       };
     }
-
+    // render the app with the redux store, theme and globalstyle
     render() {
       const { Component, pageProps, store } = this.props;
       return (

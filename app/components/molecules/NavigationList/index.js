@@ -6,6 +6,7 @@ import NavigationDropdown from "../NavigationDropdown";
 import SearchBar from "../../molecules/SearchBar";
 import { deviceMinWidth } from "../../../utils/device";
 
+// This NavigationList component contains the list of links the user can use to traverse the site. It is used in the header.
 const StyledHr = styled.hr`
   margin: 0 10px 0 10px;
   border: 0;
@@ -77,7 +78,7 @@ const DesktopWrapper = styled.div`
   }
 `;
 
-const NavigationList = ({ isAuthenticated }) => {
+const NavigationList = () => {
   return (
     <NavBar>
       <MobileWrapper>

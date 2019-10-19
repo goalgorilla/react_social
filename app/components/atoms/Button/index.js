@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { deviceMaxWidth } from "../../../utils/device";
 
+// A basic styled button component used for form submission
 const StyledButton = styled.button`
   transition: box-shadow, 0.15s ease-out;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.24), 0 2px 4px rgba(0, 0, 0, 0.48);

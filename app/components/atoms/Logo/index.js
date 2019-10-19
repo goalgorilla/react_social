@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Link from "next/link";
 import { deviceMinWidth } from "../../../utils/device";
 
+// A basic logo component used, for example, in the header
 const StyledA = styled.a`
   display: inline-block;
   overflow: hidden;

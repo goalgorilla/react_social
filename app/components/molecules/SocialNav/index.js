@@ -5,6 +5,7 @@ import SocialButtonYoutube from "../../atoms/SocialButtonYoutube";
 import styled from "styled-components";
 import { deviceMaxWidth } from "../../../utils/device";
 
+// A navigation bar containing social media buttons/links
 const StyledSocialNav = styled.ul`
   display: flex;
   margin: 0;
@@ -32,7 +33,7 @@ const StyledSocialNav = styled.ul`
   }
 `;
 
-const SocialNav = props => {
+const SocialNav = () => {
   return (
     <StyledSocialNav>
       <li>
