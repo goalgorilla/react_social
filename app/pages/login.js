@@ -5,6 +5,9 @@ import initialize from "../utils/initialize";
 import Layout from "../components/Layout";
 import FormField from "../components/molecules/FormField";
 import Card from "../components/organisms/Card";
+import CardHeader from "../components/atoms/CardHeader";
+import CardBody from "../components/atoms/CardBody";
+import CardFooter from "../components/atoms/CardFooter";
 import Title from "../components/atoms/Title";
 import Button from "../components/atoms/Button";
 import styled from "styled-components";
@@ -106,35 +109,36 @@ class Login extends React.Component {
             </SystemMessage>
           )}
           <Form onSubmit={this.handleSubmit.bind(this)}>
-            <Card
-              header={
+            <Card>
+              <CardHeader>
                 <div>
                   Log in with <b>username</b> or <b>email</b>
                 </div>
-              }
-              footer={
+              </CardHeader>
+              <CardBody>
+                <FormField
+                  label={"Username or email address"}
+                  description={"Enter your Open Social username or email."}
+                  type={"text"}
+                  required={true}
+                  onChange={this.onChangeUsername.bind(this)}
+                  name={"username"}
+                ></FormField>
+                <FormField
+                  label={"Password"}
+                  description={"Forgot your password?"}
+                  link={true}
+                  type={"password"}
+                  required={true}
+                  name={"password"}
+                  onChange={this.onChangePassword.bind(this)}
+                ></FormField>
+              </CardBody>
+              <CardFooter>
                 <div>
                   Don't have an account yet? <b>Sign Up</b>
                 </div>
-              }
-            >
-              <FormField
-                label={"Username or email address"}
-                description={"Enter your Open Social username or email."}
-                type={"text"}
-                required={true}
-                onChange={this.onChangeUsername.bind(this)}
-                name={"username"}
-              ></FormField>
-              <FormField
-                label={"Password"}
-                description={"Forgot your password?"}
-                link={true}
-                type={"password"}
-                required={true}
-                name={"password"}
-                onChange={this.onChangePassword.bind(this)}
-              ></FormField>
+              </CardFooter>
             </Card>
             <Button type="submit">Log in</Button>
           </Form>
