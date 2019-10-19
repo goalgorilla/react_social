@@ -11,9 +11,9 @@ const StyledButton = styled.button`
   padding: 0.375rem 3.75rem;
   background-color: ${prop => prop.theme.color.brand.primary};
   cursor: pointer;
-  font-size: ${prop => prop.theme.font.size.default};
+  font-size: inherit;
   line-height: ${prop => prop.theme.font.lineHeight.default};
-  font-family: ${prop => prop.theme.font.family};
+  font-family: inherit;
   font-weight: ${prop => prop.theme.font.weight.medium};
   color: ${prop => prop.theme.color.text.light};
 
