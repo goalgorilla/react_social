@@ -12,7 +12,8 @@ const Wrapper = styled.div`
   display: flex;
 
   & > * {
-    padding: 0.625rem 0;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
   }
 `;
 
