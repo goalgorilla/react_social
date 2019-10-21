@@ -22,39 +22,4 @@ const StyledInput = styled.input`
   }
 `;
 
-const Input = props => {
-  const onChange = e => {
-    props.onChange(e.target.value);
-  };
-
-  // if the required prop is passed return an input that contains the required attribute
-  if (props.required) {
-    return (
-      <StyledInput
-        type={props.type}
-        onChange={onChange}
-        name={props.name}
-        required
-      ></StyledInput>
-    );
-  }
-  // returns an input that is not required
-  return (
-    <StyledInput
-      type={props.type}
-      onChange={onChange}
-      name={props.name}
-    ></StyledInput>
-  );
-};
-
-Input.defaultProps = {
-  type: "text"
-};
-
-Input.propTypes = {
-  /** the input type (password, text, etc..) */
-  type: PropTypes.string
-};
-
-export default Input;
+export default StyledInput;

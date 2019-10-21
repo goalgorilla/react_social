@@ -42,6 +42,8 @@ class Login extends React.Component {
       password: "",
       error: false
     };
+    this.onChangePassword = this.onChangePassword.bind(this);
+    this.onChangeUsername = this.onChangeUsername.bind(this);
   }
 
   static getInitialProps(ctx) {}
@@ -61,15 +63,15 @@ class Login extends React.Component {
     }
   }
 
-  onChangeUsername(username) {
+  onChangeUsername(e) {
     this.setState({
-      username: username
+      username: e.target.value
     });
   }
 
-  onChangePassword(password) {
+  onChangePassword(e) {
     this.setState({
-      password: password
+      password: e.target.value
     });
   }
 
@@ -118,7 +120,8 @@ class Login extends React.Component {
                   <Input
                     type="text"
                     name="username"
-                    onChange={this.onChangeUsername.bind(this)}
+                    value={this.state.username}
+                    onChange={this.onChangeUsername}
                     required
                   ></Input>
                   <InputDescription>
@@ -130,7 +133,8 @@ class Login extends React.Component {
                   <Input
                     type="password"
                     name="username"
-                    onChange={this.onChangePassword.bind(this)}
+                    value={this.state.password}
+                    onChange={this.onChangePassword}
                     required
                   ></Input>
                   <InputDescription link={true}>
