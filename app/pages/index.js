@@ -8,8 +8,6 @@ const Index = () => (
   </Layout>
 );
 
-Index.getInitialProps = function(ctx) {
-  initialize(ctx);
-};
+Index.getInitialProps = function(ctx) {};
 
 export default connect(state => state)(Index);

@@ -44,9 +44,7 @@ class Login extends React.Component {
     };
   }
 
-  static getInitialProps(ctx) {
-    initialize(ctx);
-  }
+  static getInitialProps(ctx) {}
 
   componentDidMount() {
     this.setState({

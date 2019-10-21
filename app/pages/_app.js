@@ -6,10 +6,12 @@ import { initStore } from "../redux";
 import { Provider } from "react-redux";
 import GlobalStyle from "../components/GlobalStyle";
 import theme from "../components/Theme";
+import initialize from "../utils/initialize";
 
 export default withRedux(initStore, { debug: true })(
   class MyApp extends App {
     static async getInitialProps({ Component, ctx }) {
+      initialize(ctx);
       return {
         pageProps: {
           ...(Component.getInitialProps

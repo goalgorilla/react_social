@@ -17,7 +17,6 @@ const Whoami = ({ id, username }) => (
 );
 
 Whoami.getInitialProps = async ctx => {
-  initialize(ctx);
   const username = ctx.store.getState().authentication.username;
   const id = ctx.store.getState().authentication.id;
   return {

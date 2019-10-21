@@ -21,7 +21,6 @@ function Error({ statusCode }) {
 }
 
 Error.getInitialProps = async ctx => {
-  initialize(ctx);
   const statusCode = ctx.res
     ? ctx.res.statusCode
     : ctx.err
