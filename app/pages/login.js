@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import actions from "../redux/actions";
 import initialize from "../utils/initialize";
 import Layout from "../components/Layout";
-import FormField from "../components/molecules/FormField";
 import Card from "../components/organisms/Card";
 import CardHeader from "../components/atoms/CardHeader";
 import CardBody from "../components/atoms/CardBody";
@@ -12,6 +11,10 @@ import Title from "../components/atoms/Title";
 import Button from "../components/atoms/Button";
 import styled from "styled-components";
 import SystemMessage from "../components/atoms/SystemMessage";
+import BlockFormField from "../components/molecules/BlockFormField";
+import Label from "../components/atoms/Label";
+import Input from "../components/atoms/Input";
+import InputDescription from "../components/atoms/InputDescription";
 
 const Wrapper = styled.div`
   flex: 0 0 66.66667%;
@@ -116,23 +119,30 @@ class Login extends React.Component {
                 </div>
               </CardHeader>
               <CardBody>
-                <FormField
-                  label={"Username or email address"}
-                  description={"Enter your Open Social username or email."}
-                  type={"text"}
-                  required={true}
-                  onChange={this.onChangeUsername.bind(this)}
-                  name={"username"}
-                ></FormField>
-                <FormField
-                  label={"Password"}
-                  description={"Forgot your password?"}
-                  link={true}
-                  type={"password"}
-                  required={true}
-                  name={"password"}
-                  onChange={this.onChangePassword.bind(this)}
-                ></FormField>
+                <BlockFormField>
+                  <Label required={true}>Username or email address</Label>
+                  <Input
+                    type="text"
+                    name="username"
+                    onChange={this.onChangeUsername.bind(this)}
+                    required
+                  ></Input>
+                  <InputDescription>
+                    Enter your Open Social username or email.
+                  </InputDescription>
+                </BlockFormField>
+                <BlockFormField>
+                  <Label required={true}>Password</Label>
+                  <Input
+                    type="password"
+                    name="username"
+                    onChange={this.onChangePassword.bind(this)}
+                    required
+                  ></Input>
+                  <InputDescription link={true}>
+                    Forgot your password?
+                  </InputDescription>
+                </BlockFormField>
               </CardBody>
               <CardFooter>
                 <div>
