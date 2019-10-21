@@ -92,7 +92,7 @@ const authenticate = ({ username, password }, type) => {
           setCookie("profileImage", "");
         }
       })
-      .finally(response => {
+      .then(response => {
         Router.push("/whoami");
         dispatch({ type: AUTHENTICATE, payload: data });
       })
