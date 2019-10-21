@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 // This component is used to display system messages to the user. It is a closeable <p> tag.
-const StyledSystemMessage = styled.p`
+const StyledSystemMessageTemp = styled.p`
   position: relative;
   border: 1px solid ${props => props.theme.color.system.failure.border};
   border-radius: ${props => props.theme.layout.borderRadius.default};
@@ -30,26 +30,39 @@ const CloseButton = styled.button`
     brightness(80%) contrast(99%);
 `;
 
-const SystemMessage = ({ children, type, close }) => {
-  const onClick = e => {
-    close();
+class SystemMessageTemp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      displayMessage: true
+    };
+  }
+
+  closeMessage = () => {
+    this.setState({
+      displayMessage: false
+    });
   };
 
-  return (
-    <StyledSystemMessage {...type}>
-      {children}
-      <CloseButton onClick={onClick}></CloseButton>
-    </StyledSystemMessage>
-  );
-};
+  render() {
+    if (this.state.displayMessage)
+      return (
+        <StyledSystemMessageTemp {...this.props.type}>
+          {this.props.children}
+          <CloseButton onClick={this.closeMessage}></CloseButton>
+        </StyledSystemMessageTemp>
+      );
+    return null;
+  }
+}
 
-SystemMessage.defaultProps = {
+SystemMessageTemp.defaultProps = {
   type: "Information"
 };
 
-SystemMessage.propTypes = {
+SystemMessageTemp.propTypes = {
   /** the type of system message: Success, Failure, Warning, Information */
   type: PropTypes.string
 };
 
-export default SystemMessage;
+export default SystemMessageTemp;

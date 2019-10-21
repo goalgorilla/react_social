@@ -40,7 +40,7 @@ class Login extends React.Component {
     this.state = {
       username: "",
       password: "",
-      systemMessageVisible: false
+      error: false
     };
   }
 
@@ -49,12 +49,16 @@ class Login extends React.Component {
   }
 
   componentDidMount() {
-    this.hideSystemMessage();
+    this.setState({
+      error: false
+    });
   }
 
   componentDidUpdate() {
-    if (this.props.authentication.error && !this.state.systemMessageVisible) {
-      this.showSystemMessage();
+    if (this.props.authentication.error && !this.state.error) {
+      this.setState({
+        error: true
+      });
       this.props.clearAuthenticationStore();
     }
   }
@@ -71,19 +75,10 @@ class Login extends React.Component {
     });
   }
 
-  hideSystemMessage() {
-    this.setState({
-      systemMessageVisible: false
-    });
-  }
-
-  showSystemMessage() {
-    this.setState({
-      systemMessageVisible: true
-    });
-  }
-
   handleSubmit(e) {
+    this.setState({
+      error: false
+    });
     e.preventDefault();
     this.props.authenticate(
       { username: this.state.username, password: this.state.password },
@@ -96,10 +91,11 @@ class Login extends React.Component {
       <Layout title="Login | Open Social">
         <Wrapper>
           <Title>Log in</Title>
-          {this.state.systemMessageVisible && (
-            <SystemMessage close={this.hideSystemMessage.bind(this)}>
+          {this.state.error && (
+            <SystemMessage>
               Oops, there was an error. This may have happened for the following
               reasons:
+              <br />
               <br />- Invalid username/email and password combination.
               <br />- There has been more than one failed login attempt for this
               account. It is temporarily blocked.
