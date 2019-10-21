@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import actions from "../redux/actions";
 import styled from "styled-components";
 import Header from "./organisms/Header";
+import Footer from "./organisms/Footer";
 import { deviceMinWidth } from "../utils/device";
 
 /* Layout used by all pages, containing:
@@ -61,6 +62,7 @@ const Layout = ({
         profileImage={profileImage}
       ></Header>
       <Content>{children}</Content>
+      <Footer>Copyright © 2019. [Community name]. All rights reserved</Footer>
     </Wrapper>
   </div>
 );

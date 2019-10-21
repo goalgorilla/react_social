@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { Facebook } from "styled-icons/evil/ScFacebook";
+import { ScFacebook } from "styled-icons/evil/ScFacebook";
 
 // Facebook social media button - used, for example, in the footer
-const StyledFacebook = styled(Facebook)`
+const StyledFacebook = styled(ScFacebook)`
   margin: 0.3125rem 0.125rem;
   padding: 0.4375rem;
   border-radius: 50%;
