@@ -17,6 +17,7 @@ app
     server.get("/login", (req, res) => {
       if (req.cookies.token) {
         res.redirect("/");
+        res.end();
       } else {
         return app.render(req, res, "/login", req.query);
       }

@@ -19,7 +19,8 @@ export default function(ctx) {
   } else {
     const token = ctx.store.getState().authentication.token;
 
-    if (token && (ctx.pathname === "/signin" || ctx.pathname === "/signup")) {
+    // if the page is loaded on the client we use Next's router to redirect. Server-side redirect can be found in server.js
+    if (token && (ctx.pathname === "/login" || ctx.pathname === "/signup")) {
       setTimeout(function() {
         Router.push("/");
       }, 0);
