@@ -12,11 +12,11 @@ function read_base64_json(varName) {
   }
 }
 
-const API_URL = Object.keys(read_base64_json("PLATFORM_ROUTES")).find(url =>
+const url = Object.keys(read_base64_json("PLATFORM_ROUTES")).find(url =>
   url.startsWith("https://api.")
 );
 
-export const API_URL = API_URL;
+export const API_URL = url;
 export const GRANT_TYPE = publicRuntimeConfig.platform_variables.GRANT_TYPE;
 export const CLIENT_ID = publicRuntimeConfig.platform_variables.CLIENT_ID;
 export const CLIENT_SECRET =
