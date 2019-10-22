@@ -15,7 +15,7 @@ function read_base64_json(varName) {
 
 module.exports = {
   publicRuntimeConfig: {
-    platform_variables: read_base64_json("PLATFORM_VARIABLES"),
-    platform_routes: read_base64_json("PLATFORM_ROUTES")
+    platform_variables: read_base64_json("PLATFORM_VARIABLES")
+    // platform_routes: read_base64_json("PLATFORM_ROUTES")
   }
 };

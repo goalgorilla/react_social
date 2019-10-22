@@ -1,7 +1,18 @@
 import getConfig from "next/config";
 const { publicRuntimeConfig } = getConfig();
 
-const API_URL = Object.keys(publicRuntimeConfig.platform_routes).find(url =>
+// Utility to assist in decoding a packed JSON variable.
+function read_base64_json(varName) {
+  try {
+    return JSON.parse(
+      new Buffer.from(process.env[varName], "base64").toString()
+    );
+  } catch (err) {
+    throw new Error(`no ${varName} environment variable`);
+  }
+}
+
+const API_URL = Object.keys(read_base64_json("PLATFORM_ROUTES")).find(url =>
   url.startsWith("https://api.")
 );
 
