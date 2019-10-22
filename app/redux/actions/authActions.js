@@ -14,10 +14,6 @@ const authenticate = ({ username, password }, type) => {
   if (type !== "login") {
     throw new Error("Wrong API call!");
   }
-  console.log(API_URL);
-  console.log(GRANT_TYPE);
-  console.log(CLIENT_ID);
-  console.log(CLIENT_SECRET);
 
   var bodyFormData = new FormData();
   bodyFormData.set("grant_type", GRANT_TYPE);

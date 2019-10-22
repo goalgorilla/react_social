@@ -2,6 +2,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import initialize from "../utils/initialize";
 import Layout from "../components/Layout";
+import { API_URL } from "../utils/constants";
 
 const Whoami = ({ user }) => (
   <Layout title="Who Am I">
@@ -18,7 +19,7 @@ Whoami.getInitialProps = async ctx => {
   initialize(ctx);
   const token = ctx.store.getState().authentication.token;
   if (token) {
-    const response = await axios.get(`${process.env.API_URL}/jsonapi`, {
+    const response = await axios.get(`${API_URL}/jsonapi`, {
       headers: {
         Authorization: "Bearer " + token
       }
