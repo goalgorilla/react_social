@@ -2,8 +2,12 @@ import Router from "next/router";
 import axios from "axios";
 import { AUTHENTICATE, DEAUTHENTICATE } from "../types";
 import { setCookie, removeCookie } from "../../utils/cookie";
-
-const API_URL = process.env.API_URL;
+import {
+  API_URL,
+  GRANT_TYPE,
+  CLIENT_ID,
+  CLIENT_SECRET
+} from "../../utils/constants";
 
 // gets token from the api and stores it in the redux store and in cookie
 const authenticate = ({ username, password }, type) => {
@@ -12,9 +16,9 @@ const authenticate = ({ username, password }, type) => {
   }
 
   var bodyFormData = new FormData();
-  bodyFormData.set("grant_type", process.env.GRANT_TYPE);
-  bodyFormData.set("client_id", process.env.CLIENT_ID);
-  bodyFormData.set("client_secret", process.env.CLIENT_SECRET);
+  bodyFormData.set("grant_type", GRANT_TYPE);
+  bodyFormData.set("client_id", CLIENT_ID);
+  bodyFormData.set("client_secret", CLIENT_SECRET);
   bodyFormData.set("username", username);
   bodyFormData.set("password", password);
 

@@ -5,11 +5,6 @@ import { createGlobalStyle } from "styled-components";
 import withRedux from "next-redux-wrapper";
 import { initStore } from "../redux";
 import { Provider } from "react-redux";
-import getConfig from "next/config";
-const { publicRuntimeConfig } = getConfig();
-
-console.log("PUBLIC RUNTIME CONFIG:");
-console.log(publicRuntimeConfig);
 
 // Theme from API placeholder
 import themeData from "../static/theme.json";
