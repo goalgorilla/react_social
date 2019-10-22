@@ -14,17 +14,7 @@ function read_base64_json(varName) {
 }
 
 module.exports = {
-  webpack: (config, { dev }) => {
-    // if development use .env file
-    if (dev) {
-      config.plugins.push(new webpack.EnvironmentPlugin(localEnv));
-      return config;
-      // if NODE_ENV = production
-    } else {
-      let variables = read_base64_json("PLATFORM_VARIABLES");
-      console.log(variables);
-      config.plugins.push(new webpack.EnvironmentPlugin(variables));
-      return config;
-    }
+  publicRuntimeConfig: {
+    platform_variables: read_base64_json("PLATFORM_VARIABLES")
   }
 };
