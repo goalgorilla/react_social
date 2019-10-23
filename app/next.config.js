@@ -9,11 +9,19 @@ function read_base64_json(varName) {
       new Buffer.from(process.env[varName], "base64").toString()
     );
   } catch (err) {
-    throw new Error(`no ${varName} environment variable`);
+    return;
   }
 }
 
 module.exports = {
+  webpack: (config, { dev }) => {
+    // if development use .env file
+    if (dev) {
+      config.plugins.push(new webpack.EnvironmentPlugin(localEnv));
+      return config;
+    }
+    return config;
+  },
   publicRuntimeConfig: {
     platform_variables: read_base64_json("PLATFORM_VARIABLES")
     // platform_routes: read_base64_json("PLATFORM_ROUTES")
