@@ -7,7 +7,7 @@ import { deviceMinWidth } from "../../../utils/device";
 const StyledA = styled.a`
   display: inline-block;
   overflow: hidden;
-  min-width: 3.125rem;
+  min-width: 3.571rem;
 
   @media ${deviceMinWidth.tablet} {
     min-width: 6.25rem;
