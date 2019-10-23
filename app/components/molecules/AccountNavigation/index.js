@@ -13,6 +13,10 @@ const StyledHr = styled.hr`
   border-top: 1px solid #f1f1f1;
   height: 1px;
   padding: 0;
+
+  @media ${deviceMinWidth.tablet} {
+    margin: 0;
+  }
 `;
 
 const AccountNavigationWrapper = styled.ul`

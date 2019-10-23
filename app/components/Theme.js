@@ -41,6 +41,7 @@ const theme = {
       bold: "700"
     },
     size: {
+      verySmall: "0.6875rem",
       small: "0.75rem",
       medium: "0.875rem",
       default: "1rem",

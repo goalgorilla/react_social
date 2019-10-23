@@ -49,8 +49,29 @@ const Wrapper = styled.div`
   }
 
   @media ${deviceMinWidth.tablet} {
+    position: relative;
     ul {
-      margin-top: 0.625rem;
+      position: absolute;
+      right: 0;
+      left: auto;
+      margin-top: 0.3125rem;
+      width: auto;
+      padding: 0.125rem 0 0.125rem 0;
+      border-radius: ${props => props.theme.layout.borderRadius.default};
+      box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0),
+        0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    ul li {
+      padding-right: 4.688rem;
+    }
+
+    ul li a {
+      font-size: ${props => props.theme.font.size.small};
+    }
+
+    ul p {
+      font-size: ${props => props.theme.font.size.verySmall};
     }
   }
 `;
