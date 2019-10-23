@@ -8,7 +8,7 @@ import { deviceMinWidth } from "../../../utils/device";
 
 // The right side of the header's navigation portion. Contains any navigation regarding the user's account
 const StyledHr = styled.hr`
-  margin: 0 10px 0 10px;
+  margin: 0 0.625rem 0 0.625rem;
   border: 0;
   border-top: 1px solid #f1f1f1;
   height: 1px;
@@ -18,18 +18,18 @@ const StyledHr = styled.hr`
 const AccountNavigationWrapper = styled.ul`
   display: flex;
   margin: 0;
-  height: 50px;
+  height: 3.125rem;
   padding: 0;
   list-style-type: none;
 
   li {
     justify-content: center;
     display: flex;
-    width: 50px;
+    width: 3.125rem;
     height: 50px;
   }
 
-  li > a {
+  li > * {
     align-self: center;
     display: flex;
     cursor: pointer;
@@ -37,9 +37,9 @@ const AccountNavigationWrapper = styled.ul`
   }
 
   @media ${deviceMinWidth.tablet} {
-    margin-right: 15px;
+    margin-right: 0.9375rem;
     li {
-      width: 44px;
+      width: 2.75rem;
     }
   }
 `;
@@ -68,7 +68,7 @@ const MobileWrapper = styled.div`
 
 const DesktopWrapper = styled.div`
   display: none;
-  margin-right: 12.5px;
+  margin-right: 0.75rem;
 
   ul {
     display: flex;
@@ -77,8 +77,8 @@ const DesktopWrapper = styled.div`
   }
 
   ul li {
-    padding: 0 0 0 15px;
-    margin-left: 15px;
+    padding: 0 0 0 0.9375rem;
+    margin-left: 0.9375rem;
   }
 
   ul li a {
@@ -150,10 +150,35 @@ const AccountNavigation = ({
           <DesktopButtons>
             <NavigationDropdown
               button={<img src="/static/add.svg" width="20px" />}
-            ></NavigationDropdown>
-            <NavigationDropdown
-              button={<img src="/static/group.svg" width="20px" />}
-            ></NavigationDropdown>
+            >
+              <ul>
+                <li>
+                  <Link href="/node/add/event">
+                    <a>New Event</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/node/add/topic">
+                    <a>New Topic</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/node/add/page">
+                    <a>New Page</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/group/add">
+                    <a>New Group</a>
+                  </Link>
+                </li>
+              </ul>
+            </NavigationDropdown>
+            <li>
+              <Link href="/user/groups">
+                <img src="/static/group.svg" width="20px" />
+              </Link>
+            </li>
             <NavigationDropdown
               button={
                 <img src="/static/private message_no_new.svg" width="20px" />
@@ -163,7 +188,16 @@ const AccountNavigation = ({
               button={
                 <img src="/static/notification_no new.svg" width="20px" />
               }
-            ></NavigationDropdown>
+            >
+              <ul>
+                <p>Notification Centre</p>
+                <li>
+                  <Link href="/notifications">
+                    <a>All notifications</a>
+                  </Link>
+                </li>
+              </ul>
+            </NavigationDropdown>
           </DesktopButtons>
           <NavigationDropdown button={accountImg}>
             <ul>

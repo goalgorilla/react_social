@@ -10,14 +10,14 @@ const Wrapper = styled.div`
     left: 0;
     box-sizing: border-box;
     width: 100%;
-    padding: 10px 10px 10px 10px;
+    padding: 0.625rem 0.625rem 0.625rem 0.625rem;
     background: ${props => props.theme.color.background.primary};
     list-style-type: none;
   }
 
   ul p {
-    margin: 10px 0 -5px 0;
-    padding-left: 10px;
+    margin: 0.625rem 0 -0.3125rem 0;
+    padding-left: 0.625rem;
     font-size: ${props => props.theme.font.size.small};
     font-weight: ${props => props.theme.font.weight.regular};
     color: ${props => props.theme.color.text.one};
@@ -28,7 +28,7 @@ const Wrapper = styled.div`
     display: flex;
     width: 100%;
     height: 100%;
-    padding: 10px;
+    padding: 0.625rem;
   }
 
   ul li a {
@@ -39,13 +39,19 @@ const Wrapper = styled.div`
   }
 
   ul > ul {
-    padding: 5px 0 5px 25px;
+    padding: 0.3125rem 0 0.3125rem 1.563rem;
     background: ${props => props.theme.color.background.secondary};
   }
 
   div > ul {
-    padding: 5px 0 5px 25px;
+    padding: 0.3125rem 0 0.3125rem 1.563rem;
     background: ${props => props.theme.color.background.secondary};
+  }
+
+  @media ${deviceMinWidth.tablet} {
+    ul {
+      margin-top: 0.625rem;
+    }
   }
 `;
 

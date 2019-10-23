@@ -8,7 +8,7 @@ import { deviceMinWidth } from "../../../utils/device";
 
 // This NavigationList component contains the list of links the user can use to traverse the site. It is used in the header.
 const StyledHr = styled.hr`
-  margin: 0 10px 0 10px;
+  margin: 0 0.625rem 0 0.625rem;
   border: 0;
   border-top: 1px solid #f1f1f1;
   height: 1px;
@@ -51,7 +51,7 @@ const MobileWrapper = styled.div`
 
 const DesktopWrapper = styled.div`
   display: none;
-  padding-left: 15px;
+  padding-left: 0.9375rem;
 
   ul {
     display: flex;
@@ -63,7 +63,7 @@ const DesktopWrapper = styled.div`
     align-items: center;
     display: flex;
     width: 100%;
-    padding-right: 20px;
+    padding-right: 1.25rem;
   }
 
   ul > li > a {
