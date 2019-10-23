@@ -19,7 +19,7 @@ const StyledYoutube = styled(Youtube)`
 `;
 
 const SocialButtonYoutube = () => {
-  return <StyledYoutube size="26" />;
+  return <StyledYoutube size="24" />;
 };
 
 export default SocialButtonYoutube;

@@ -19,7 +19,7 @@ const StyledTwitter = styled(Twitter)`
 `;
 
 const SocialButtonTwitter = () => {
-  return <StyledTwitter size="26" />;
+  return <StyledTwitter size="24" />;
 };
 
 export default SocialButtonTwitter;

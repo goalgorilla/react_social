@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { LinkedinIn } from "styled-icons/fa-brands/LinkedinIn";
+import { Linkedin } from "styled-icons/boxicons-logos/Linkedin";
 
 // Linkedin social media button - used, for example, in the footer
-const StyledLinkedIn = styled(LinkedinIn)`
+const StyledLinkedIn = styled(Linkedin)`
   margin: 0.3125rem 0.125rem;
   padding: 0.5625rem;
   border-radius: 50%;
