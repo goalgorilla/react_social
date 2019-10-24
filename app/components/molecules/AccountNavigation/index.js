@@ -40,6 +40,12 @@ const AccountNavigationWrapper = styled.ul`
     text-decoration: none;
   }
 
+  & > div > li > a,
+  & > div > li > a > img {
+    display: block;
+    height: 100%;
+  }
+
   @media ${deviceMinWidth.tablet} {
     margin-right: 0.9375rem;
     li {
@@ -154,6 +160,7 @@ const AccountNavigation = ({
           <DesktopButtons>
             <NavigationDropdown
               button={<img src="/static/add.svg" width="20px" />}
+              rightAlign={true}
             >
               <ul>
                 <li>
@@ -180,18 +187,22 @@ const AccountNavigation = ({
             </NavigationDropdown>
             <li>
               <Link href="/user/groups">
-                <img src="/static/group.svg" width="20px" />
+                <a>
+                  <img src="/static/group.svg" width="20px" />
+                </a>
               </Link>
             </li>
             <NavigationDropdown
               button={
                 <img src="/static/private message_no_new.svg" width="20px" />
               }
+              rightAlign={true}
             ></NavigationDropdown>
             <NavigationDropdown
               button={
                 <img src="/static/notification_no new.svg" width="20px" />
               }
+              rightAlign={true}
             >
               <ul>
                 <p>Notification Centre</p>
@@ -203,7 +214,7 @@ const AccountNavigation = ({
               </ul>
             </NavigationDropdown>
           </DesktopButtons>
-          <NavigationDropdown button={accountImg}>
+          <NavigationDropdown button={accountImg} rightAlign={true}>
             <ul>
               <p>Signed in as</p>
               <li>

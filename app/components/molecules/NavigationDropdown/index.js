@@ -6,6 +6,7 @@ import { deviceMinWidth } from "../../../utils/device";
 // This component is used for dropdown menus in the Header.
 const Wrapper = styled.div`
   ul {
+    z-index: 1000;
     position: absolute;
     left: 0;
     box-sizing: border-box;
@@ -36,6 +37,8 @@ const Wrapper = styled.div`
     font-size: ${props => props.theme.font.size.medium};
     font-weight: ${props => props.theme.font.weight.default};
     color: ${props => props.theme.color.foreground.primary};
+    text-decoration: none;
+    cursor: pointer;
   }
 
   ul > ul {
@@ -52,8 +55,8 @@ const Wrapper = styled.div`
     position: relative;
     ul {
       position: absolute;
-      right: 0;
-      left: auto;
+      right: ${props => (props.rightAlign ? "0" : "auto")};
+      left: ${props => (props.rightAlign ? "auto" : "0")};
       margin-top: 0.3125rem;
       width: auto;
       padding: 0.125rem 0 0.125rem 0;
@@ -92,12 +95,18 @@ const PageDim = styled.div`
   }
 `;
 
+// If the button is on the top nav row we use different background colors
 const NavButton = styled.li`
   background: ${props =>
     props.active
-      ? props.theme.color.brand.tertiary
+      ? props.navRowOne
+        ? props.theme.color.background.primary
+        : props.theme.color.brand.tertiary
+      : props.navRowOne
+      ? "none"
       : props.theme.color.brand.primary};
   cursor: pointer;
+  list-style-type: none;
 `;
 
 const NavLink = styled.div`
@@ -150,10 +159,15 @@ class NavigationDropdown extends React.Component {
     if (this.props.button) {
       return (
         <div>
-          <Wrapper className="container" ref={this.container}>
+          <Wrapper
+            className="container"
+            ref={this.container}
+            rightAlign={this.props.rightAlign}
+          >
             <NavButton
               onClick={this.handleButtonClick}
               active={this.state.displayMenu}
+              navRowOne={this.props.navRowOne}
             >
               <a>{this.props.button}</a>
             </NavButton>

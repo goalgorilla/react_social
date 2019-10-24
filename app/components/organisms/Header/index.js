@@ -9,7 +9,7 @@ import { deviceMinWidth } from "../../../utils/device";
 // The header of the website. Containing the navigation bars.
 const Wrapper = styled.div`
   position: fixed;
-  z-index: 999;
+  z-index: 900;
   top: 0;
   display: flex;
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0),
@@ -47,7 +47,7 @@ const NavRow = styled.div`
     display: none;
     color: ${props => props.theme.color.text.three};
     background: ${props => props.theme.color.background.secondary};
-    padding-left: 30px;
+    padding-left: 0.9375rem;
   }
 
   &:first-of-type > div {
@@ -55,21 +55,32 @@ const NavRow = styled.div`
     align-items: center;
   }
 
-  &:first-of-type > div > * {
+  &:first-of-type div > li > a {
+    display: block;
+    height: 100%;
+    line-height: 50px;
+    padding: 0 0.6125rem 0 0.6125rem;
+  }
+
+  &:first-of-type div > li > a > img {
+    vertical-align: middle;
+    margin-top: -4px;
+  }
+
+  &:first-of-type > div > a {
     display: flex;
     align-items: center;
   }
 
-  &:first-of-type > div img {
+  &:first-of-type > div img:first-of-type {
     padding-right: 10px;
     opacity: 0.9;
   }
 
   @media ${deviceMinWidth.tablet} {
-    padding-left: 15px;
-
     &:first-of-type {
       display: flex;
+      position: relative;
     }
   }
 `;
@@ -95,13 +106,39 @@ const Header = ({
     <NavWrapper>
       <NavRow>
         <NavigationDropdown
-          title={
-            <a>
+          button={
+            <React.Fragment>
               <img src="/static/translate.svg" width="20px" />
-              English <img src="/static/dropdown.svg" width="20px" />
-            </a>
+              English 
+              <img src="/static/dropdown.svg" width="20px" />
+            </React.Fragment>
           }
-        ></NavigationDropdown>
+          navRowOne={true}
+        >
+          <ul>
+            <li>
+              <a>English (current)</a>
+            </li>
+            <li>
+              <a>Afrikaans</a>
+            </li>
+            <li>
+              <a>Albanian</a>
+            </li>
+            <li>
+              <a>Amharic</a>
+            </li>
+            <li>
+              <a>Arabic</a>
+            </li>
+            <li>
+              <a>Armenian</a>
+            </li>
+            <li>
+              <a>Azerbaijani</a>
+            </li>
+          </ul>
+        </NavigationDropdown>
         <a href="http://www.getopensocial.com" target="_blank">
           getopensocial.com
         </a>
