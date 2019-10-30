@@ -1,6 +1,6 @@
 import { AUTHENTICATE, DEAUTHENTICATE } from "../types";
 
-const initialState = {
+export const initialState = {
   token: null,
   username: null,
   id: null,
