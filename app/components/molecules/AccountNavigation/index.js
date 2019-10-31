@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import Link from "next/link";
-import { API } from "../../../config";
+import { API_URL } from "../../../utils/constants";
 import NavigationDropdown from "../NavigationDropdown";
 import { deviceMinWidth } from "../../../utils/device";
 
@@ -112,7 +112,7 @@ const AccountNavigation = ({
     var accountImg = <img src="/static/account.svg" width="24px" />;
   } else {
     // set the user's profile image as the one obtained from the API
-    var accountImg = <ProfileImage src={API + profileImage} width="20px" />;
+    var accountImg = <ProfileImage src={API_URL + profileImage} width="20px" />;
   }
   return (
     <AccountNavigationWrapper>
