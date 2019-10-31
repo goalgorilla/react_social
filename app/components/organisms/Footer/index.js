@@ -81,7 +81,7 @@ const FooterNav = styled.ul`
 const Footer = ({ children }) => (
   <Wrapper>
     <FooterContent>
-      <FooterNav>
+      <FooterNav data-testid="footer-nav">
         <Link href="/about">
           <a>About</a>
         </Link>

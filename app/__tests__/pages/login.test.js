@@ -52,29 +52,29 @@ describe("Login Page render check", () => {
   });
 });
 
+// describe("Login Page login form working", () => {
+//   // TODO: mock api call
+//   // it("Displays an error if login POST request fails", () => {});
 
-describe("Login Page login form working", () => {
-  it("Displays an error if login POST request fails", () => {});
+//   // TODO: mock api call
+//   it("Logs in user with correct login details if login POST request succeeds", async () => {
+//     const { getByLabelText, getAllByText } = render(<Login />);
 
-  // TODO: mock api call
-  it("Logs in user with correct login details if login POST request succeeds", async () => {
-    const { getByLabelText, getAllByText } = render(<Login />);
+//     // get input nodes
+//     const usernameInputNode = getByLabelText("Username or email address*");
+//     const passwordInputNode = getByLabelText("Password*");
+//     usernameInputNode.value = "fakeuser";
+//     passwordInputNode.value = "fakepassword";
 
-    // get input nodes
-    const usernameInputNode = getByLabelText("Username or email address*");
-    const passwordInputNode = getByLabelText("Password*");
-    usernameInputNode.value = "fakeuser";
-    passwordInputNode.value = "fakepassword";
+//     // fill the form
+//     fireEvent.change(usernameInputNode);
+//     fireEvent.change(passwordInputNode);
 
-    // fill the form
-    fireEvent.change(usernameInputNode);
-    fireEvent.change(passwordInputNode);
-
-    // submit the form
-    var nodeArray = getAllByText("Log in");
-    fireEvent.click(nodeArray.slice(-1).pop());
-  });
-});
+//     // submit the form
+//     var nodeArray = getAllByText("Log in");
+//     fireEvent.click(nodeArray.slice(-1).pop());
+//   });
+// });
 
 describe("With React Testing Library Snapshot", () => {
   it("Should match Snapshot", () => {

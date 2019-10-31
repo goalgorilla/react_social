@@ -35,7 +35,7 @@ const StyledSocialNav = styled.ul`
 
 const SocialNav = () => {
   return (
-    <StyledSocialNav>
+    <StyledSocialNav data-testid="social-nav">
       <li>
         <SocialButtonYoutube />
       </li>

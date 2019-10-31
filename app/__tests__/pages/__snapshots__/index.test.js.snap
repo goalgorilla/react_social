@@ -199,6 +199,7 @@ exports[`With React Testing Library Snapshot Should match Snapshot 1`] = `
         >
           <ul
             class="Footer__FooterNav-sc-132taj7-2 MovyR"
+            data-testid="footer-nav"
           >
             <a
               href="/about"
@@ -223,6 +224,7 @@ exports[`With React Testing Library Snapshot Should match Snapshot 1`] = `
           </ul>
           <ul
             class="SocialNav__StyledSocialNav-ix7acc-0 ljYaZb"
+            data-testid="social-nav"
           >
             <li>
               <svg
