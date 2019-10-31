@@ -31,14 +31,14 @@ const authenticate = ({ username, password }, type) => {
     };
     axios
       // Obtain login token using the user's username and password
-      .post(`${API}/oauth/token/`, bodyFormData)
+      .post(`${API_URL}/oauth/token/`, bodyFormData)
       .then(response => {
         // store token
         const token = response.data.access_token;
         data.token = token;
         setCookie("token", token);
         // Obtain the user's id to be used for getting information about the user
-        return axios.get(`${API}/jsonapi`, {
+        return axios.get(`${API_URL}/jsonapi`, {
           headers: {
             Authorization: "Bearer " + token
           }
@@ -50,7 +50,7 @@ const authenticate = ({ username, password }, type) => {
         data.id = id;
         setCookie("id", id);
         // Obtain the user's username using the user's id
-        return axios.get(`${API}/jsonapi/user/user/` + id, {
+        return axios.get(`${API_URL}/jsonapi/user/user/` + id, {
           headers: {
             Authorization: "Bearer " + data.token
           }
@@ -80,7 +80,7 @@ const authenticate = ({ username, password }, type) => {
 
         if (profileImageId) {
           return axios
-            .get(`${API}/jsonapi/file/file/${profileImageId}`, {
+            .get(`${API_URL}/jsonapi/file/file/${profileImageId}`, {
               headers: {
                 Authorization: "Bearer " + data.token
               }
