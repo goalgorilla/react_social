@@ -27,7 +27,11 @@ const Logo = () => {
   return (
     <Link href="/">
       <StyledA>
-        <StyledImg src="/static/logo.svg" alt="[Community Name]" />
+        <StyledImg
+          src="/static/logo.svg"
+          alt="[Community Name]"
+          data-testid="logo"
+        />
       </StyledA>
     </Link>
   );

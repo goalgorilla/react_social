@@ -115,7 +115,7 @@ const languageDropdownList = (
 
 // Explore dropdown contents
 const exploreDropdownList = (
-  <ul>
+  <ul data-testid="dropdown-menu">
     <li>
       <Link href="/community">
         <a>Community</a>
@@ -146,7 +146,7 @@ const exploreDropdownList = (
 
 const NavigationList = () => {
   return (
-    <NavBar>
+    <NavBar data-testid="header-nav">
       {/* Mobile NavList */}
       <MobileWrapper>
         {/* Mobile translation button & dropdown */}

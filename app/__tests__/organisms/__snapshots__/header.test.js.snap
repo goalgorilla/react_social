@@ -1,0 +1,187 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`With React Testing Library Snapshot Should match Snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="Header__Wrapper-sc-1f0tfo1-0 gOOKAB"
+  >
+    <a
+      class="Logo__StyledA-e7xfjo-0 jGzaBK"
+    >
+      <img
+        alt="[Community Name]"
+        class="Logo__StyledImg-e7xfjo-1 dLzScd"
+        data-testid="logo"
+        src="/static/logo.svg"
+      />
+    </a>
+    <div
+      class="Header__NavWrapper-sc-1f0tfo1-2 jQRpyd"
+    >
+      <div
+        class="Header__NavRow-sc-1f0tfo1-1 frERno"
+      >
+        <div>
+          <div
+            class="container NavigationDropdown__Wrapper-uiy1lv-0 iXuusX"
+          >
+            <li
+              class="NavigationDropdown__NavButton-uiy1lv-2 fxbPMi"
+            >
+              <a>
+                <img
+                  src="/static/translate.svg"
+                  width="20px"
+                />
+                English 
+                <img
+                  src="/static/dropdown.svg"
+                  width="20px"
+                />
+              </a>
+            </li>
+          </div>
+        </div>
+        <a
+          href="http://www.getopensocial.com"
+          target="_blank"
+        >
+          getopensocial.com
+        </a>
+      </div>
+      <div
+        class="Header__NavRow-sc-1f0tfo1-1 frERno"
+      >
+        <ul
+          class="NavigationList__NavBar-sc-16etxpz-1 cioncu"
+          data-testid="header-nav"
+        >
+          <div
+            class="NavigationList__MobileWrapper-sc-16etxpz-2 bDxsgl"
+          >
+            <div>
+              <div
+                class="container NavigationDropdown__Wrapper-uiy1lv-0 iXuusX"
+              >
+                <li
+                  class="NavigationDropdown__NavButton-uiy1lv-2 gKjZse"
+                >
+                  <a>
+                    <img
+                      src="/static/translate.svg"
+                      width="20px"
+                    />
+                  </a>
+                </li>
+              </div>
+            </div>
+            <div>
+              <div
+                class="container NavigationDropdown__Wrapper-uiy1lv-0 iXuusX"
+              >
+                <li
+                  class="NavigationDropdown__NavButton-uiy1lv-2 gKjZse"
+                >
+                  <a>
+                    <img
+                      src="/static/hamburger.svg"
+                      width="20px"
+                    />
+                  </a>
+                </li>
+              </div>
+            </div>
+          </div>
+          <div
+            class="NavigationList__DesktopWrapper-sc-16etxpz-3 buWtxT"
+          >
+            <ul>
+              <li>
+                <a
+                  href="/"
+                >
+                  Home
+                </a>
+              </li>
+              <div>
+                <div
+                  class="container NavigationDropdown__Wrapper-uiy1lv-0 iXuusX"
+                >
+                  <li
+                    class="NavigationDropdown__NavButton-uiy1lv-2 gKjZse"
+                  >
+                    <a>
+                      Explore
+                    </a>
+                  </li>
+                </div>
+              </div>
+            </ul>
+          </div>
+          <div>
+            <div
+              class="container NavigationDropdown__Wrapper-uiy1lv-0 iXuusX"
+            >
+              <li
+                class="NavigationDropdown__NavButton-uiy1lv-2 gKjZse"
+              >
+                <a>
+                  <img
+                    src="/static/search.svg"
+                    width="24px"
+                  />
+                </a>
+              </li>
+            </div>
+          </div>
+        </ul>
+        <ul
+          class="AccountNavigation__AccountNavigationWrapper-gfi0qn-1 cylFQq"
+          data-testid="account-nav"
+        >
+          <div
+            class="AccountNavigation__MobileWrapper-gfi0qn-4 fBFadr"
+          >
+            <div>
+              <div
+                class="container NavigationDropdown__Wrapper-uiy1lv-0 iXuusX"
+              >
+                <li
+                  class="NavigationDropdown__NavButton-uiy1lv-2 gKjZse"
+                >
+                  <a>
+                    <img
+                      src="/static/account.svg"
+                      width="24px"
+                    />
+                  </a>
+                </li>
+              </div>
+            </div>
+          </div>
+          <div
+            class="AccountNavigation__DesktopWrapper-gfi0qn-5 jWMLfD"
+          >
+            <ul>
+              <li>
+                <a
+                  href="/signup"
+                >
+                  Sign up
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/login"
+                >
+                  Log in
+                </a>
+              </li>
+            </ul>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

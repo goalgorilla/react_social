@@ -115,7 +115,7 @@ const AccountNavigation = ({
     var accountImg = <ProfileImage src={API + profileImage} width="20px" />;
   }
   return (
-    <AccountNavigationWrapper>
+    <AccountNavigationWrapper data-testid="account-nav">
       {/* if the user is not logged in display the login + signup links */}
       {!isAuthenticated && (
         <React.Fragment>

@@ -15,6 +15,7 @@ exports[`With React Testing Library Snapshot Should match Snapshot 1`] = `
           <img
             alt="[Community Name]"
             class="Logo__StyledImg-e7xfjo-1 dLzScd"
+            data-testid="logo"
             src="/static/logo.svg"
           />
         </a>
@@ -57,6 +58,7 @@ exports[`With React Testing Library Snapshot Should match Snapshot 1`] = `
           >
             <ul
               class="NavigationList__NavBar-sc-16etxpz-1 cioncu"
+              data-testid="header-nav"
             >
               <div
                 class="NavigationList__MobileWrapper-sc-16etxpz-2 bDxsgl"
@@ -139,6 +141,7 @@ exports[`With React Testing Library Snapshot Should match Snapshot 1`] = `
             </ul>
             <ul
               class="AccountNavigation__AccountNavigationWrapper-gfi0qn-1 cylFQq"
+              data-testid="account-nav"
             >
               <div
                 class="AccountNavigation__MobileWrapper-gfi0qn-4 fBFadr"
