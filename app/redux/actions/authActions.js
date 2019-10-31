@@ -23,12 +23,83 @@ const authenticate = ({ username, password }, type) => {
   bodyFormData.set("password", password);
 
   return dispatch => {
+    const data = {
+      token: null,
+      username: null,
+      id: null,
+      profileImage: null
+    };
     axios
-      .post(`${API_URL}/oauth/token/`, bodyFormData)
+      // Obtain login token using the user's username and password
+      .post(`${API}/oauth/token/`, bodyFormData)
       .then(response => {
-        setCookie("token", response.data.access_token);
+        // store token
+        const token = response.data.access_token;
+        data.token = token;
+        setCookie("token", token);
+        // Obtain the user's id to be used for getting information about the user
+        return axios.get(`${API}/jsonapi`, {
+          headers: {
+            Authorization: "Bearer " + token
+          }
+        });
+      })
+      .then(response => {
+        // store id
+        const id = response.data.meta.links.me.meta.id;
+        data.id = id;
+        setCookie("id", id);
+        // Obtain the user's username using the user's id
+        return axios.get(`${API}/jsonapi/user/user/` + id, {
+          headers: {
+            Authorization: "Bearer " + data.token
+          }
+        });
+      })
+      .then(response => {
+        // store username
+        const username = decodeURI(response.data.data.attributes.name);
+        data.username = username;
+        setCookie("username", username);
+        // url to get profile image id
+        const profileUrl =
+          response.data.data.relationships.profile_profiles.links.related.href;
+        // Obtain the user's profile image id
+        return axios.get(profileUrl, {
+          headers: {
+            Authorization: "Bearer " + data.token
+          }
+        });
+      })
+      .then(response => {
+        // store user profile image id if it exists otherwise set as null
+        var profileImageId = response.data.data.relationships
+          .field_profile_image.data
+          ? response.data.data.relationships.field_profile_image.data.id
+          : false;
+
+        if (profileImageId) {
+          return axios
+            .get(`${API}/jsonapi/file/file/${profileImageId}`, {
+              headers: {
+                Authorization: "Bearer " + data.token
+              }
+            })
+            .then(response => {
+              // Store the profile image url
+              const imageUrl = response.data.data.attributes.uri.url;
+              data.profileImage = imageUrl;
+              setCookie("profileImage", imageUrl);
+              return;
+            });
+        } else {
+          data.profileImage = "";
+          setCookie("profileImage", "");
+        }
+      })
+      .then(response => {
         Router.push("/whoami");
-        dispatch({ type: AUTHENTICATE, payload: response.data.access_token });
+        dispatch({ type: AUTHENTICATE, payload: data });
       })
       .catch(err => {
         dispatch({
@@ -40,9 +111,15 @@ const authenticate = ({ username, password }, type) => {
 };
 
 // gets the token from the cookie and saves it in the store
-const reauthenticate = token => {
+const reauthenticate = (token, username, id, profileImage) => {
+  const payload = {
+    token: token,
+    username: decodeURI(username),
+    id: id,
+    profileImage: profileImage
+  };
   return dispatch => {
-    dispatch({ type: AUTHENTICATE, payload: token });
+    dispatch({ type: AUTHENTICATE, payload: payload });
   };
 };
 
@@ -50,6 +127,9 @@ const reauthenticate = token => {
 const deauthenticate = () => {
   return dispatch => {
     removeCookie("token");
+    removeCookie("username");
+    removeCookie("id");
+    removeCookie("profileImage");
     Router.push("/");
     dispatch({ type: DEAUTHENTICATE });
   };
@@ -58,6 +138,9 @@ const deauthenticate = () => {
 const clearAuthenticationStore = () => {
   return dispatch => {
     removeCookie("token");
+    removeCookie("username");
+    removeCookie("id");
+    removeCookie("profileImage");
     dispatch({ type: DEAUTHENTICATE });
   };
 };

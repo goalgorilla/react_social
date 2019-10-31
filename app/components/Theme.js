@@ -1,10 +1,12 @@
 import themeData from "../static/theme.json";
 
+// A file containing all the theme data for styled-components
 const theme = {
   color: {
     brand: {
       primary: "#36a9e1",
       secondary: "#2189b5",
+      tertiary: "#116892",
       accent: ""
     },
     foreground: {
@@ -18,7 +20,8 @@ const theme = {
     text: {
       light: "#ffffff",
       one: "#555555",
-      two: "#adadad"
+      two: "#adadad",
+      three: "#777777"
     },
     system: {
       failure: {
@@ -34,23 +37,16 @@ const theme = {
       light: "300",
       regular: "400",
       medium: "500",
+      default: "600",
       bold: "700"
     },
     size: {
-      desktop: {
-        small: "12px",
-        medium: "14px",
-        default: "16px",
-        large: "20px",
-        veryLarge: "48px"
-      },
-      mobile: {
-        small: "10.5px",
-        medium: "12.25px",
-        default: "14px",
-        large: "17.5px",
-        veryLarge: "32px"
-      }
+      verySmall: "0.6875rem",
+      small: "0.75rem",
+      medium: "0.875rem",
+      default: "1rem",
+      large: "1.25rem",
+      veryLarge: "3rem"
     },
     lineHeight: {
       small: "1.1",
@@ -61,7 +57,9 @@ const theme = {
     borderRadius: {
       small: "3px",
       default: "5px"
-    }
+    },
+    maxWidth: "75rem",
+    padding: "0 1.25rem"
   }
 };
 

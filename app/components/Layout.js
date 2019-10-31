@@ -3,31 +3,42 @@ import Head from "next/head";
 import { connect } from "react-redux";
 import actions from "../redux/actions";
 import styled from "styled-components";
+import Header from "./organisms/Header";
+import Footer from "./organisms/Footer";
+import { deviceMinWidth } from "../utils/device";
 
-const TempHeader = styled.div`
-  background: #333;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 50px;
+/* Layout used by all pages, containing:
+ - <head> data
+ - The <Header> of the site
+ - A <Wrapper> for the content of the page
+ - The <Footer> of the site
 
-  a {
-    color: white;
-    text-decoration: none;
-    padding: 0 20px 0 0;
-    font-weight: 500;
-  }
-
-  li {
-    display: inline-block;
-  }
-`;
-
+ This component also passes down whether the user is authenticated along with account details to child components. */
 const Content = styled.div`
-  padding-top: 50px;
+  margin: auto;
+  max-width: ${props => props.theme.layout.maxWidth};
+  padding: ${props => props.theme.layout.padding};
+  padding-top: 3.125rem;
+  padding-bottom: 30rem;
+
+  @media ${deviceMinWidth.tablet} {
+    padding-top: 6.25rem;
+  }
 `;
 
-const Layout = ({ children, title, isAuthenticated, deauthenticate }) => (
+const Wrapper = styled.div`
+  position: relative;
+  min-height: 100vh;
+`;
+
+const Layout = ({
+  children,
+  title,
+  isAuthenticated,
+  deauthenticate,
+  username,
+  profileImage
+}) => (
   <div>
     <Head>
       <title>{title}</title>
@@ -39,36 +50,27 @@ const Layout = ({ children, title, isAuthenticated, deauthenticate }) => (
         type="image/vnd.microsoft.icon"
       />
       <link
-        href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap"
+        href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap"
         rel="stylesheet"
       ></link>
     </Head>
-    <TempHeader>
-      <ul>
-        <Link href="/">
-          <a>Home</a>
-        </Link>
-        <Link href="/whoami">
-          <a>Profile</a>
-        </Link>
-        {!isAuthenticated && (
-          <Link href="/login">
-            <a>Login</a>
-          </Link>
-        )}
-        {isAuthenticated && (
-          <li onClick={deauthenticate}>
-            <a>Sign Out</a>
-          </li>
-        )}
-      </ul>
-    </TempHeader>
-    <Content>{children}</Content>
+    <Wrapper>
+      <Header
+        isAuthenticated={isAuthenticated}
+        deauthenticate={deauthenticate}
+        username={username}
+        profileImage={profileImage}
+      ></Header>
+      <Content>{children}</Content>
+      <Footer>Copyright © 2019. [Community name]. All rights reserved</Footer>
+    </Wrapper>
   </div>
 );
 
 const mapStateToProps = state => ({
-  isAuthenticated: !!state.authentication.token
+  isAuthenticated: !!state.authentication.token,
+  username: state.authentication.username,
+  profileImage: state.authentication.profileImage
 });
 
 export default connect(

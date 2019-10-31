@@ -2,53 +2,67 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
-const StyledSystemMessage = styled.p`
+// This component is used to display system messages to the user. It is a closeable <p> tag.
+const StyledSystemMessageTemp = styled.p`
   position: relative;
-  border-radius: ${props => props.theme.layout.borderRadius.default};
-  font-size: ${props => props.theme.font.size.desktop.medium};
-  color: ${props => props.theme.color.system.failure.text};
-  background-color: ${props => props.theme.color.system.failure.background};
   border: 1px solid ${props => props.theme.color.system.failure.border};
-  padding: 20px 50px 20px 20px;
+  border-radius: ${props => props.theme.layout.borderRadius.default};
+  padding: 1.25rem 3.125rem 1.25rem 1.25rem;
+  background-color: ${props => props.theme.color.system.failure.background};
+  font-size: ${props => props.theme.font.size.medium};
+  line-height: ${props => props.theme.font.lineHeight.default};
   font-weight: ${props => props.theme.font.weight.regular};
-  line-height: ${props => props.theme.font.weight.default};
+  color: ${props => props.theme.color.system.failure.text};
 `;
 
 const CloseButton = styled.button`
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 1.25rem;
+  right: 1.25rem;
+  border: 0;
+  width: 1.25rem;
+  height: 1.25rem;
   background: url("./static/close.svg") no-repeat top left;
   background-size: contain;
   cursor: pointer;
-  height: 20px;
-  width: 20px;
-  border: 0;
   outline: 0;
   filter: invert(43%) sepia(13%) saturate(2260%) hue-rotate(314deg)
     brightness(80%) contrast(99%);
 `;
 
-const SystemMessage = ({ children, type, close }) => {
-  const onClick = e => {
-    close();
+class SystemMessageTemp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      displayMessage: true
+    };
+  }
+
+  closeMessage = () => {
+    this.setState({
+      displayMessage: false
+    });
   };
 
-  return (
-    <StyledSystemMessage {...type}>
-      {children}
-      <CloseButton onClick={onClick}></CloseButton>
-    </StyledSystemMessage>
-  );
-};
+  render() {
+    if (this.state.displayMessage)
+      return (
+        <StyledSystemMessageTemp {...this.props.type}>
+          {this.props.children}
+          <CloseButton onClick={this.closeMessage}></CloseButton>
+        </StyledSystemMessageTemp>
+      );
+    return null;
+  }
+}
 
-SystemMessage.defaultProps = {
+SystemMessageTemp.defaultProps = {
   type: "Information"
 };
 
-SystemMessage.propTypes = {
+SystemMessageTemp.propTypes = {
   /** the type of system message: Success, Failure, Warning, Information */
   type: PropTypes.string
 };
 
-export default SystemMessage;
+export default SystemMessageTemp;

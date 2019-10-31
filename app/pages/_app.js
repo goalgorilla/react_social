@@ -6,10 +6,12 @@ import { initStore } from "../redux";
 import { Provider } from "react-redux";
 import GlobalStyle from "../components/GlobalStyle";
 import theme from "../components/Theme";
+import initialize from "../utils/initialize";
 
 export default withRedux(initStore, { debug: true })(
   class MyApp extends App {
     static async getInitialProps({ Component, ctx }) {
+      initialize(ctx);
       return {
         pageProps: {
           ...(Component.getInitialProps
@@ -18,7 +20,7 @@ export default withRedux(initStore, { debug: true })(
         }
       };
     }
-
+    // render the app with the redux store, theme and globalstyle
     render() {
       const { Component, pageProps, store } = this.props;
       return (
