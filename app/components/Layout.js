@@ -2,6 +2,30 @@ import Link from "next/link";
 import Head from "next/head";
 import { connect } from "react-redux";
 import actions from "../redux/actions";
+import styled from "styled-components";
+
+const TempHeader = styled.div`
+  background: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px;
+
+  a {
+    color: white;
+    text-decoration: none;
+    padding: 0 20px 0 0;
+    font-weight: 500;
+  }
+
+  li {
+    display: inline-block;
+  }
+`;
+
+const Content = styled.div`
+  padding-top: 50px;
+`;
 
 const Layout = ({ children, title, isAuthenticated, deauthenticate }) => (
   <div>
@@ -14,9 +38,19 @@ const Layout = ({ children, title, isAuthenticated, deauthenticate }) => (
         href="/static/favicon.ico"
         type="image/vnd.microsoft.icon"
       />
+      <link
+        href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap"
+        rel="stylesheet"
+      ></link>
     </Head>
-    <div>
+    <TempHeader>
       <ul>
+        <Link href="/">
+          <a>Home</a>
+        </Link>
+        <Link href="/whoami">
+          <a>Profile</a>
+        </Link>
         {!isAuthenticated && (
           <Link href="/login">
             <a>Login</a>
@@ -28,9 +62,8 @@ const Layout = ({ children, title, isAuthenticated, deauthenticate }) => (
           </li>
         )}
       </ul>
-    </div>
-
-    <div>{children}</div>
+    </TempHeader>
+    <Content>{children}</Content>
   </div>
 );
 

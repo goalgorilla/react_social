@@ -1,7 +1,23 @@
 {
   "theme": "SocialBlue",
-  "styles": {
-    "primaryTextColor": "blue"
-  },
-  "layout": "compact"
+  "style": {
+    "font": {
+      "fontFamily": "'Montserrat', sans-serif",
+      "fontWeight": {
+        "light": "300",
+        "regular": "400",
+        "medium": "500",
+        "bold": "700"
+      }
+    },
+    "backgroundColor": {
+      "primary": "#ffffff",
+      "secondary": "#f3f3f3"
+    },
+    "textColor": {
+      "primary": "#4d4d4d",
+      "secondary": "#777777",
+      "test": "red"
+    }
+  }
 }

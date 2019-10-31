@@ -31,7 +31,10 @@ const authenticate = ({ username, password }, type) => {
         dispatch({ type: AUTHENTICATE, payload: response.data.access_token });
       })
       .catch(err => {
-        throw new Error(err);
+        dispatch({
+          type: "LOGIN_ERROR",
+          payload: err.response.status
+        });
       });
   };
 };
@@ -52,8 +55,16 @@ const deauthenticate = () => {
   };
 };
 
+const clearAuthenticationStore = () => {
+  return dispatch => {
+    removeCookie("token");
+    dispatch({ type: DEAUTHENTICATE });
+  };
+};
+
 export default {
   authenticate,
   reauthenticate,
-  deauthenticate
+  deauthenticate,
+  clearAuthenticationStore
 };
