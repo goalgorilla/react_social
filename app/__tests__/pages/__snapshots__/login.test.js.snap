@@ -1,0 +1,409 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`With React Testing Library Snapshot Should match Snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="Layout__Wrapper-bk4rf0-1 eyEgBA"
+    >
+      <div
+        class="Header__Wrapper-sc-1f0tfo1-0 gOOKAB"
+      >
+        <a
+          class="Logo__StyledA-e7xfjo-0 jGzaBK"
+        >
+          <img
+            alt="[Community Name]"
+            class="Logo__StyledImg-e7xfjo-1 dLzScd"
+            src="/static/logo.svg"
+          />
+        </a>
+        <div
+          class="Header__NavWrapper-sc-1f0tfo1-2 jQRpyd"
+        >
+          <div
+            class="Header__NavRow-sc-1f0tfo1-1 frERno"
+          >
+            <div>
+              <div
+                class="container NavigationDropdown__Wrapper-uiy1lv-0 iXuusX"
+              >
+                <li
+                  class="NavigationDropdown__NavButton-uiy1lv-2 fxbPMi"
+                >
+                  <a>
+                    <img
+                      src="/static/translate.svg"
+                      width="20px"
+                    />
+                    English 
+                    <img
+                      src="/static/dropdown.svg"
+                      width="20px"
+                    />
+                  </a>
+                </li>
+              </div>
+            </div>
+            <a
+              href="http://www.getopensocial.com"
+              target="_blank"
+            >
+              getopensocial.com
+            </a>
+          </div>
+          <div
+            class="Header__NavRow-sc-1f0tfo1-1 frERno"
+          >
+            <ul
+              class="NavigationList__NavBar-sc-16etxpz-1 cioncu"
+            >
+              <div
+                class="NavigationList__MobileWrapper-sc-16etxpz-2 bDxsgl"
+              >
+                <div>
+                  <div
+                    class="container NavigationDropdown__Wrapper-uiy1lv-0 iXuusX"
+                  >
+                    <li
+                      class="NavigationDropdown__NavButton-uiy1lv-2 gKjZse"
+                    >
+                      <a>
+                        <img
+                          src="/static/translate.svg"
+                          width="20px"
+                        />
+                      </a>
+                    </li>
+                  </div>
+                </div>
+                <div>
+                  <div
+                    class="container NavigationDropdown__Wrapper-uiy1lv-0 iXuusX"
+                  >
+                    <li
+                      class="NavigationDropdown__NavButton-uiy1lv-2 gKjZse"
+                    >
+                      <a>
+                        <img
+                          src="/static/hamburger.svg"
+                          width="20px"
+                        />
+                      </a>
+                    </li>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="NavigationList__DesktopWrapper-sc-16etxpz-3 buWtxT"
+              >
+                <ul>
+                  <li>
+                    <a
+                      href="/"
+                    >
+                      Home
+                    </a>
+                  </li>
+                  <div>
+                    <div
+                      class="container NavigationDropdown__Wrapper-uiy1lv-0 iXuusX"
+                    >
+                      <li
+                        class="NavigationDropdown__NavButton-uiy1lv-2 gKjZse"
+                      >
+                        <a>
+                          Explore
+                        </a>
+                      </li>
+                    </div>
+                  </div>
+                </ul>
+              </div>
+              <div>
+                <div
+                  class="container NavigationDropdown__Wrapper-uiy1lv-0 iXuusX"
+                >
+                  <li
+                    class="NavigationDropdown__NavButton-uiy1lv-2 gKjZse"
+                  >
+                    <a>
+                      <img
+                        src="/static/search.svg"
+                        width="24px"
+                      />
+                    </a>
+                  </li>
+                </div>
+              </div>
+            </ul>
+            <ul
+              class="AccountNavigation__AccountNavigationWrapper-gfi0qn-1 cylFQq"
+            >
+              <div
+                class="AccountNavigation__MobileWrapper-gfi0qn-4 fBFadr"
+              >
+                <div>
+                  <div
+                    class="container NavigationDropdown__Wrapper-uiy1lv-0 iXuusX"
+                  >
+                    <li
+                      class="NavigationDropdown__NavButton-uiy1lv-2 gKjZse"
+                    >
+                      <a>
+                        <img
+                          src="/static/account.svg"
+                          width="24px"
+                        />
+                      </a>
+                    </li>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="AccountNavigation__DesktopWrapper-gfi0qn-5 jWMLfD"
+              >
+                <ul>
+                  <li>
+                    <a
+                      href="/signup"
+                    >
+                      Sign up
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/login"
+                    >
+                      Log in
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        class="Layout__Content-bk4rf0-0 gWBWlW"
+      >
+        <div
+          class="login__Wrapper-sc-13vv1la-0 eyAbz"
+        >
+          <h2
+            class="Title__StyledTitle-sc-7fbqca-0 kyJaHO"
+          >
+            Log in
+          </h2>
+          <form
+            class="login__Form-sc-13vv1la-1 FuQrg"
+          >
+            <div
+              class="Card-sc-1v10mc3-0 iIQTpv"
+            >
+              <div
+                class="CardHeader-sc-1pzusu5-0 ldXtvG"
+              >
+                <div>
+                  Log in with 
+                  <b>
+                    username
+                  </b>
+                   or 
+                  <b>
+                    email
+                  </b>
+                </div>
+              </div>
+              <div
+                class="CardBody-wrqthv-0 dPlcuN"
+              >
+                <div
+                  class="BlockFormField-sc-8m16vr-0 cBafTU"
+                >
+                  <label
+                    class="Label__StyledLabel-rs4sgc-0 fvvxIZ"
+                  >
+                    Username or email address
+                    <span
+                      class="Label__Required-rs4sgc-1 gqRcuq"
+                    >
+                      *
+                    </span>
+                  </label>
+                  <input
+                    class="Input__StyledInput-sc-160b00b-0 gvuLKV"
+                    id="username"
+                    name="username"
+                    required=""
+                    type="text"
+                    value=""
+                  />
+                  <h4
+                    class="InputDescription__StyledInputDescription-sc-15sirg5-0 bHFAOW"
+                  >
+                    Enter your Open Social username or email.
+                  </h4>
+                </div>
+                <div
+                  class="BlockFormField-sc-8m16vr-0 cBafTU"
+                >
+                  <label
+                    class="Label__StyledLabel-rs4sgc-0 fvvxIZ"
+                  >
+                    Password
+                    <span
+                      class="Label__Required-rs4sgc-1 gqRcuq"
+                    >
+                      *
+                    </span>
+                  </label>
+                  <input
+                    class="Input__StyledInput-sc-160b00b-0 gvuLKV"
+                    id="password"
+                    name="password"
+                    required=""
+                    type="password"
+                    value=""
+                  />
+                  <h4
+                    class="InputDescription__StyledInputDescription-sc-15sirg5-0 bynQDY"
+                  >
+                    Forgot your password?
+                  </h4>
+                </div>
+              </div>
+              <div
+                class="CardFooter-m4jtez-0 kwkNnm"
+              >
+                <div>
+                  Don't have an account yet? 
+                  <b>
+                    Sign Up
+                  </b>
+                </div>
+              </div>
+            </div>
+            <button
+              class="Button__StyledButton-sc-1vb759o-0 gEPreJ"
+              type="submit"
+            >
+              Log in
+            </button>
+          </form>
+        </div>
+      </div>
+      <div
+        class="Footer__Wrapper-sc-132taj7-0 eINhNg"
+      >
+        <div
+          class="Footer__FooterContent-sc-132taj7-1 fyAcfl"
+        >
+          <ul
+            class="Footer__FooterNav-sc-132taj7-2 MovyR"
+          >
+            <a
+              href="/about"
+            >
+              About
+            </a>
+            <a
+              href="/privacy"
+            >
+              Privacy Policy
+            </a>
+            <a
+              href="/about"
+            >
+              Terms of Use
+            </a>
+            <a
+              href="/contact"
+            >
+              Contact
+            </a>
+          </ul>
+          <ul
+            class="SocialNav__StyledSocialNav-ix7acc-0 ljYaZb"
+          >
+            <li>
+              <svg
+                aria-hidden="true"
+                class="SocialButtonYoutube__StyledYoutube-sc-1bsrppf-0 hMMyAm StyledIconBase-sc-bdy9j4 cCvWXa"
+                fill="currentColor"
+                focusable="false"
+                height="24"
+                viewBox="0 0 576 512"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"
+                  fill="currentColor"
+                />
+              </svg>
+            </li>
+            <li>
+              <svg
+                aria-hidden="true"
+                class="SocialButtonTwitter__StyledTwitter-hzx2lk-0 kgyama StyledIconBase-sc-bdy9j4 cCvWXa"
+                fill="currentColor"
+                focusable="false"
+                height="24"
+                viewBox="0 0 512 512"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
+                  fill="currentColor"
+                />
+              </svg>
+            </li>
+            <li>
+              <svg
+                aria-hidden="true"
+                class="SocialButtonFacebook__StyledFacebook-sc-16v6mfo-0 lgvGzN StyledIconBase-sc-bdy9j4 jbPeIR"
+                fill="currentColor"
+                focusable="false"
+                height="26"
+                viewBox="0 0 24 24"
+                width="26"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M13.397 20.997v-8.196h2.765l.411-3.209h-3.176V7.548c0-.926.258-1.56 1.587-1.56h1.684V3.127A22.336 22.336 0 0014.201 3c-2.444 0-4.122 1.492-4.122 4.231v2.355H7.332v3.209h2.753v8.202h3.312z"
+                />
+              </svg>
+            </li>
+            <li>
+              <svg
+                aria-hidden="true"
+                class="SocialButtonLinkedIn__StyledLinkedIn-sc-191gk36-0 eeVssJ StyledIconBase-sc-bdy9j4 jbPeIR"
+                fill="currentColor"
+                focusable="false"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="4.983"
+                  cy="5.009"
+                  r="2.188"
+                />
+                <path
+                  d="M9.237 8.855v12.139h3.769v-6.003c0-1.584.298-3.118 2.262-3.118 1.937 0 1.961 1.811 1.961 3.218v5.904H21v-6.657c0-3.27-.704-5.783-4.526-5.783-1.835 0-3.065 1.007-3.568 1.96h-.051v-1.66H9.237zm-6.142 0H6.87v12.139H3.095z"
+                />
+              </svg>
+            </li>
+          </ul>
+          <p>
+            Copyright © 2019. [Community name]. All rights reserved
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

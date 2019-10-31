@@ -82,10 +82,13 @@ function Login(props) {
             </CardHeader>
             <CardBody>
               <BlockFormField>
-                <Label required={true}>Username or email address</Label>
+                <Label required={true} htmlFor="username">
+                  Username or email address
+                </Label>
                 <Input
                   type="text"
                   name="username"
+                  id="username"
                   value={username}
                   onChange={e => setUsername(e.target.value)}
                   required
@@ -95,10 +98,13 @@ function Login(props) {
                 </InputDescription>
               </BlockFormField>
               <BlockFormField>
-                <Label required={true}>Password</Label>
+                <Label required={true} htmlFor="password">
+                  Password
+                </Label>
                 <Input
                   type="password"
                   name="password"
+                  id="password"
                   value={password}
                   onChange={e => setPassword(e.target.value)}
                   required

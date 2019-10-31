@@ -6,14 +6,17 @@ import theme from "../../components/Theme";
 
 // Redux
 import reducer from "../../redux/reducers";
-import { createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
 import { Provider } from "react-redux";
 import { initialState } from "../../redux/reducers/authReducer.js";
+import thunk from "redux-thunk";
 
 const AllTheProviders = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
-      <Provider store={createStore(reducer, initialState)}>
+      <Provider
+        store={createStore(reducer, initialState, applyMiddleware(thunk))}
+      >
         {children}
         <GlobalStyle />
       </Provider>
