@@ -2,9 +2,9 @@
   "license": "SEE LICENSE IN LICENSE.txt",
   "scripts": {
     "test": "jest",
-    "dev": "node server.js",
+    "dev": "node start.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
+    "start": "NODE_ENV=production node start.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -17,6 +17,7 @@
     "jest": "^24.9.0",
     "js-cookie": "^2.2.1",
     "next": "^9.0.5",
+    "next-i18next": "^2.0.0",
     "next-redux-wrapper": "^3.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -28,6 +29,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
+    "@babel/register": "^7.6.2",
     "@storybook/addon-actions": "^5.2.1",
     "@storybook/addon-info": "^5.2.1",
     "@storybook/addon-links": "^5.2.1",

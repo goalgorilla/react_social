@@ -5,6 +5,7 @@ import Link from "next/link";
 import { API_URL } from "../../../utils/constants";
 import NavigationDropdown from "../NavigationDropdown";
 import { deviceMinWidth } from "../../../utils/device";
+import { withTranslation } from "../../../i18n";
 
 // The right side of the header's navigation portion. Contains any navigation regarding the user's account
 const StyledHr = styled.hr`
@@ -105,7 +106,8 @@ const AccountNavigation = ({
   isAuthenticated,
   deauthenticate,
   username,
-  profileImage
+  profileImage,
+  t
 }) => {
   // if the user does not have a profile image use the placeholder
   if (profileImage == "") {
@@ -126,12 +128,12 @@ const AccountNavigation = ({
               <ul>
                 <li>
                   <Link href="/signup">
-                    <a>Sign up</a>
+                    <a>{t("sign up")}</a>
                   </Link>
                 </li>
                 <li>
                   <Link href="/login">
-                    <a>Log in</a>
+                    <a>{t("log in")}</a>
                   </Link>
                 </li>
               </ul>
@@ -141,12 +143,12 @@ const AccountNavigation = ({
             <ul>
               <li>
                 <Link href="/signup">
-                  <a>Sign up</a>
+                  <a>{t("sign up")}</a>
                 </Link>
               </li>
               <li>
                 <Link href="/login">
-                  <a>Log in</a>
+                  <a>{t("log in")}</a>
                 </Link>
               </li>
             </ul>
@@ -281,4 +283,4 @@ AccountNavigation.defaultProps = {};
 
 AccountNavigation.propTypes = {};
 
-export default AccountNavigation;
+export default withTranslation("header")(AccountNavigation);

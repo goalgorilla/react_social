@@ -3,18 +3,12 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import Link from "next/link";
 import NavigationDropdown from "../NavigationDropdown";
-import SearchBar from "../../molecules/SearchBar";
+import LanguageList from "../LanguageList";
 import { deviceMinWidth, deviceMaxWidth } from "../../../utils/device";
+import { withTranslation } from "../../../i18n";
+import SearchBar from "../SearchBar";
 
 // This NavigationList component contains the list of links the user can use to traverse the site. It is used in the header.
-const StyledHr = styled.hr`
-  margin: 0 0.625rem 0 0.625rem;
-  border: 0;
-  border-top: 1px solid #f1f1f1;
-  height: 1px;
-  padding: 0;
-`;
-
 const NavBar = styled.ul`
   display: flex;
   margin: 0;
@@ -84,35 +78,6 @@ const DesktopWrapper = styled.div`
   }
 `;
 
-// Language dropdown contents
-const languageDropdownList = (
-  <ul>
-    <SearchBar placeholder="Type in the language"></SearchBar>
-    <li>
-      <a>English (current)</a>
-    </li>
-    <StyledHr></StyledHr>
-    <li>
-      <a>Afrikaans</a>
-    </li>
-    <li>
-      <a>Albanian</a>
-    </li>
-    <li>
-      <a>Amharic</a>
-    </li>
-    <li>
-      <a>Arabic</a>
-    </li>
-    <li>
-      <a>Armenian</a>
-    </li>
-    <li>
-      <a>Azerbaijani</a>
-    </li>
-  </ul>
-);
-
 // Explore dropdown contents
 const exploreDropdownList = (
   <ul>
@@ -144,7 +109,7 @@ const exploreDropdownList = (
   </ul>
 );
 
-const NavigationList = () => {
+const NavigationList = ({ t }) => {
   return (
     <NavBar>
       {/* Mobile NavList */}
@@ -153,7 +118,10 @@ const NavigationList = () => {
         <NavigationDropdown
           button={<img src="/static/translate.svg" width="20px" />}
         >
-          {languageDropdownList}
+          <ul>
+            <SearchBar placeholder="Type in the language"></SearchBar>
+            <LanguageList />
+          </ul>
         </NavigationDropdown>
         {/* Mobile hamburger button & dropdown */}
         <NavigationDropdown
@@ -162,7 +130,7 @@ const NavigationList = () => {
           <ul>
             <li>
               <Link href="/">
-                <a>Home</a>
+                <a>{t("home")}</a>
               </Link>
             </li>
             {/* Nested explore dropdown inside hamburger menu */}
@@ -170,7 +138,8 @@ const NavigationList = () => {
               title={
                 <li>
                   <a>
-                    Explore <img src="/static/dropdown.svg" width="20px" />
+                    {t("explore")}
+                    <img src="/static/dropdown.svg" width="20px" />
                   </a>
                 </li>
               }
@@ -185,7 +154,7 @@ const NavigationList = () => {
         <ul>
           <li>
             <Link href="/">
-              <a>Home</a>
+              <a>{t("home")}</a>
             </Link>
           </li>
           {/* Desktop explore dropdown */}
@@ -206,4 +175,4 @@ NavigationList.defaultProps = {};
 
 NavigationList.propTypes = {};
 
-export default NavigationList;
+export default withTranslation("header")(NavigationList);

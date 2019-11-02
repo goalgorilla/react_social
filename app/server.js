@@ -1,6 +1,9 @@
 const express = require("express");
 const next = require("next");
 const cookieParser = require("cookie-parser");
+const nextI18NextMiddleware = require("next-i18next/middleware").default;
+
+const nextI18next = require("./i18n");
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== "production";
@@ -13,6 +16,7 @@ app
     const server = express();
 
     server.use(cookieParser());
+    server.use(nextI18NextMiddleware(nextI18next));
 
     server.get("/login", (req, res) => {
       if (req.cookies.token) {

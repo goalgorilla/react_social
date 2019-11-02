@@ -4,7 +4,9 @@ import Logo from "../../atoms/Logo";
 import NavigationList from "../../molecules/NavigationList";
 import AccountNavigation from "../../molecules/AccountNavigation";
 import NavigationDropdown from "../../molecules/NavigationDropdown";
+import LanguageList from "../../molecules/LanguageList";
 import { deviceMinWidth } from "../../../utils/device";
+import { i18n } from "../../../i18n";
 
 // The header of the website. Containing the navigation bars.
 const Wrapper = styled.div`
@@ -109,34 +111,14 @@ const Header = ({
           button={
             <React.Fragment>
               <img src="/static/translate.svg" width="20px" />
-              English 
+              {i18n.languages}
               <img src="/static/dropdown.svg" width="20px" />
             </React.Fragment>
           }
           navRowOne={true}
         >
           <ul>
-            <li>
-              <a>English (current)</a>
-            </li>
-            <li>
-              <a>Afrikaans</a>
-            </li>
-            <li>
-              <a>Albanian</a>
-            </li>
-            <li>
-              <a>Amharic</a>
-            </li>
-            <li>
-              <a>Arabic</a>
-            </li>
-            <li>
-              <a>Armenian</a>
-            </li>
-            <li>
-              <a>Azerbaijani</a>
-            </li>
+            <LanguageList />
           </ul>
         </NavigationDropdown>
         <a href="http://www.getopensocial.com" target="_blank">
