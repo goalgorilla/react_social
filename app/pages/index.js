@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { compose } from "redux";
 import initialize from "../utils/initialize";
 import Layout from "../components/Layout";
 import { withTranslation } from "../i18n";
@@ -9,8 +10,13 @@ const Index = ({ t }) => (
   </Layout>
 );
 
-Index.getInitialProps = async () => {
-  namespacesRequired: ["common", "header"];
-};
+Index.getInitialProps = async () => ({
+  namespacesRequired: ["common", "header"]
+});
 
-export default connect(state => state)(withTranslation("common")(Index));
+// export default compose(
+//   withTranslation("common"),
+//   connect(state => state)
+// )(Index);
+
+export default connect(state => state)(withTranslation()(Index));
