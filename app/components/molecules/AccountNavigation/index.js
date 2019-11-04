@@ -167,22 +167,22 @@ const AccountNavigation = ({
               <ul>
                 <li>
                   <Link href="/node/add/event">
-                    <a>New Event</a>
+                    <a>{t("new-event")}</a>
                   </Link>
                 </li>
                 <li>
                   <Link href="/node/add/topic">
-                    <a>New Topic</a>
+                    <a>{t("new-topic")}</a>
                   </Link>
                 </li>
                 <li>
                   <Link href="/node/add/page">
-                    <a>New Page</a>
+                    <a>{t("new-page")}</a>
                   </Link>
                 </li>
                 <li>
                   <Link href="/group/add">
-                    <a>New Group</a>
+                    <a>{t("new-group")}</a>
                   </Link>
                 </li>
               </ul>
@@ -207,10 +207,10 @@ const AccountNavigation = ({
               rightAlign={true}
             >
               <ul>
-                <p>Notification Centre</p>
+                <p>{t("notification-centre")}</p>
                 <li>
                   <Link href="/notifications">
-                    <a>All notifications</a>
+                    <a>{t("all-notifications")}</a>
                   </Link>
                 </li>
               </ul>
@@ -218,7 +218,7 @@ const AccountNavigation = ({
           </DesktopButtons>
           <NavigationDropdown button={accountImg} rightAlign={true}>
             <ul>
-              <p>Signed in as</p>
+              <p>{t("signed-in-as")}</p>
               <li>
                 <Link href="/profile">
                   <a>{username}</a>
@@ -227,49 +227,49 @@ const AccountNavigation = ({
               <StyledHr></StyledHr>
               <li>
                 <Link href="/stream">
-                  <a>My stream</a>
+                  <a>{t("my-stream")}</a>
                 </Link>
               </li>
               <li>
                 <Link href="/myevents">
-                  <a>My events</a>
+                  <a>{t("my-events")}</a>
                 </Link>
               </li>
               <li>
                 <Link href="/mytopics">
-                  <a>My topics</a>
+                  <a>{t("my-topics")}</a>
                 </Link>
               </li>
               <li>
                 <Link href="/mygroups">
-                  <a>My groups</a>
+                  <a>{t("my-groups")}</a>
                 </Link>
               </li>
               <li>
                 <Link href="/myinformation">
-                  <a>My information</a>
+                  <a>{t("my-information")}</a>
                 </Link>
               </li>
               <StyledHr></StyledHr>
               <li>
                 <Link href="/following">
-                  <a>Following</a>
+                  <a>{t("following")}</a>
                 </Link>
               </li>
               <StyledHr></StyledHr>
               <li>
                 <Link href="/settings">
-                  <a>Settings</a>
+                  <a>{t("settings")}</a>
                 </Link>
               </li>
               <li>
                 <Link href="/editprofile">
-                  <a>Edit profile</a>
+                  <a>{t("edit-profile")}</a>
                 </Link>
               </li>
               <StyledHr></StyledHr>
               <li onClick={deauthenticate}>
-                <a>Log out</a>
+                <a>{t("log-out")}</a>
               </li>
             </ul>
           </NavigationDropdown>

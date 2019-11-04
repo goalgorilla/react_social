@@ -111,7 +111,7 @@ const Header = ({
           button={
             <React.Fragment>
               <img src="/static/translate.svg" width="20px" />
-              {i18n.languages}
+              {i18n.language}
               <img src="/static/dropdown.svg" width="20px" />
             </React.Fragment>
           }

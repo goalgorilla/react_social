@@ -78,37 +78,6 @@ const DesktopWrapper = styled.div`
   }
 `;
 
-// Explore dropdown contents
-const exploreDropdownList = (
-  <ul>
-    <li>
-      <Link href="/community">
-        <a>Community</a>
-      </Link>
-    </li>
-    <li>
-      <Link href="/groups">
-        <a>All groups</a>
-      </Link>
-    </li>
-    <li>
-      <Link href="/events">
-        <a>All events</a>
-      </Link>
-    </li>
-    <li>
-      <Link href="/topics">
-        <a>All topics</a>
-      </Link>
-    </li>
-    <li>
-      <Link href="/members">
-        <a>All members</a>
-      </Link>
-    </li>
-  </ul>
-);
-
 const NavigationList = ({ t }) => {
   return (
     <NavBar>
@@ -119,7 +88,9 @@ const NavigationList = ({ t }) => {
           button={<img src="/static/translate.svg" width="20px" />}
         >
           <ul>
-            <SearchBar placeholder="Type in the language"></SearchBar>
+            <SearchBar
+              placeholder={t("language-search-placeholder")}
+            ></SearchBar>
             <LanguageList />
           </ul>
         </NavigationDropdown>
@@ -144,7 +115,33 @@ const NavigationList = ({ t }) => {
                 </li>
               }
             >
-              {exploreDropdownList}
+              <ul>
+                <li>
+                  <Link href="/community">
+                    <a>{t("community")}</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/groups">
+                    <a>{t("all-groups")}</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/events">
+                    <a>{t("all-events")}</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/topics">
+                    <a>{t("all-topics")}</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/members">
+                    <a>{t("all-members")}</a>
+                  </Link>
+                </li>
+              </ul>
             </NavigationDropdown>
           </ul>
         </NavigationDropdown>
@@ -158,8 +155,34 @@ const NavigationList = ({ t }) => {
             </Link>
           </li>
           {/* Desktop explore dropdown */}
-          <NavigationDropdown button={"Explore"}>
-            {exploreDropdownList}
+          <NavigationDropdown button={t("explore")}>
+            <ul>
+              <li>
+                <Link href="/community">
+                  <a>{t("community")}</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/groups">
+                  <a>{t("all-groups")}</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/events">
+                  <a>{t("all-events")}</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/topics">
+                  <a>{t("all-topics")}</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/members">
+                  <a>{t("all-members")}</a>
+                </Link>
+              </li>
+            </ul>
           </NavigationDropdown>
         </ul>
       </DesktopWrapper>
