@@ -16,11 +16,11 @@ function languageList(props) {
   return (
     <React.Fragment>
       <li onClick={() => i18n.changeLanguage("en")}>
-        <a>English</a>
+        <a>English&nbsp; {i18n.language == "en" && "(current)"}</a>
       </li>
       <StyledHr></StyledHr>
       <li onClick={() => i18n.changeLanguage("nl")}>
-        <a>Dutch</a>
+        <a>Dutch&nbsp; {i18n.language == "nl" && "(current)"}</a>
       </li>
     </React.Fragment>
   );
