@@ -37,6 +37,7 @@ const Layout = ({
   isAuthenticated,
   deauthenticate,
   username,
+  id,
   profileImage
 }) => (
   <div>
@@ -60,6 +61,7 @@ const Layout = ({
         deauthenticate={deauthenticate}
         username={username}
         profileImage={profileImage}
+        id={id}
       ></Header>
       <Content>{children}</Content>
       <Footer>Copyright © 2019. [Community name]. All rights reserved</Footer>
@@ -70,7 +72,8 @@ const Layout = ({
 const mapStateToProps = state => ({
   isAuthenticated: !!state.authentication.token,
   username: state.authentication.username,
-  profileImage: state.authentication.profileImage
+  profileImage: state.authentication.profileImage,
+  id: state.authentication.id
 });
 
 export default connect(
