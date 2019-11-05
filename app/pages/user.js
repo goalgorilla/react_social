@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import ProfileBanner from "../components/atoms/ProfileBanner";
 import UserCard from "../components/molecules/UserCard";
 import styled from "styled-components";
+import ProfileNavigationBar from "../components/molecules/ProfileNavigationBar";
 
 const ProfileContentContainer = styled.div`
   display: flex;
@@ -18,6 +19,7 @@ const ProfileContentContainer = styled.div`
 const ProfileLeftColumn = styled.div``;
 
 const ProfileRightColumn = styled.div`
+  margin-top: 20px;
   height: 250px;
 `;
 
@@ -34,7 +36,7 @@ const User = ({ name }) => {
           {/* <RecentlyJoinedGroups /> */}
         </ProfileLeftColumn>
         <ProfileRightColumn>
-          {/* <ProfileNavigationBar /> */}
+          <ProfileNavigationBar />
           {/* <ProfileStream /> */}
           {/* <ProfileEvents /> */}
           {/* <ProfileTopics /> */}

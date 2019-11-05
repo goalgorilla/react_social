@@ -24,7 +24,7 @@ const ProfileImage = styled.img`
   background-color: ${props => props.theme.color.background.secondary};
   width: 128px;
   margin-top: -75px;
-  z-index: 999;
+  z-index: 500;
 `;
 
 const FirstName = styled.h1`
@@ -49,6 +49,7 @@ const UserRole = styled.p`
   font-weight: ${props => props.theme.font.weight.bold};
   margin-top: 10px;
   margin-bottom: 20px;
+  color: ${props => props.theme.color.text.three};
 `;
 
 const PrivateMessageButton = styled(Button)`
