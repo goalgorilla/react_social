@@ -1,10 +1,18 @@
+// user.js - profile page
 import { connect } from "react-redux";
 import Layout from "../components/Layout";
 import axios from "axios";
 import { API_URL } from "../utils/constants";
+import { useRouter } from "next/router";
+import ProfileBanner from "../components/atoms/ProfileBanner";
 
 const User = ({ name }) => {
-  return <Layout title={name + " | Open Social"}></Layout>;
+  const router = useRouter();
+  return (
+    <Layout title={name + " | Open Social"}>
+      <ProfileBanner id={router.query.id} />
+    </Layout>
+  );
 };
 
 User.getInitialProps = async ctx => {
