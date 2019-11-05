@@ -16,7 +16,7 @@ const ProfileBannerContainer = styled.div`
   width: 100%;
   left: 0;
   overflow: hidden;
-  max-height: 320px;
+  max-height: 150px;
 `;
 
 const ProfileBanner = () => {

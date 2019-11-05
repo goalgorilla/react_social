@@ -5,12 +5,43 @@ import axios from "axios";
 import { API_URL } from "../utils/constants";
 import { useRouter } from "next/router";
 import ProfileBanner from "../components/atoms/ProfileBanner";
+import UserCard from "../components/molecules/UserCard";
+import styled from "styled-components";
+
+const ProfileContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 150px;
+`;
+
+const ProfileLeftColumn = styled.div``;
+
+const ProfileRightColumn = styled.div`
+  height: 250px;
+`;
 
 const User = ({ name }) => {
   const router = useRouter();
   return (
     <Layout title={name + " | Open Social"}>
       <ProfileBanner id={router.query.id} />
+      <ProfileContentContainer>
+        <ProfileLeftColumn>
+          <UserCard />
+          {/* <UpcomingEvents /> */}
+          {/* <RecentlyCreatedTopics /> */}
+          {/* <RecentlyJoinedGroups /> */}
+        </ProfileLeftColumn>
+        <ProfileRightColumn>
+          {/* <ProfileNavigationBar /> */}
+          {/* <ProfileStream /> */}
+          {/* <ProfileEvents /> */}
+          {/* <ProfileTopics /> */}
+          {/* <ProfileGroups /> */}
+          {/* <ProfileInformation /> */}
+        </ProfileRightColumn>
+      </ProfileContentContainer>
     </Layout>
   );
 };
