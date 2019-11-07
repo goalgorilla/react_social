@@ -128,12 +128,12 @@ const AccountNavigation = ({
               <ul>
                 <li>
                   <Link href="/signup">
-                    <a>{t("sign up")}</a>
+                    <a>{t("sign-up")}</a>
                   </Link>
                 </li>
                 <li>
                   <Link href="/login">
-                    <a>{t("log in")}</a>
+                    <a>{t("log-in")}</a>
                   </Link>
                 </li>
               </ul>
@@ -143,12 +143,12 @@ const AccountNavigation = ({
             <ul>
               <li>
                 <Link href="/signup">
-                  <a>{t("sign up")}</a>
+                  <a>{t("sign-up")}</a>
                 </Link>
               </li>
               <li>
                 <Link href="/login">
-                  <a>{t("log in")}</a>
+                  <a>{t("log-in")}</a>
                 </Link>
               </li>
             </ul>
