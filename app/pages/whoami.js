@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import initialize from "../utils/initialize";
 import Layout from "../components/Layout";
 import { API_URL } from "../utils/constants";
+import { withTranslation } from "../i18n";
 
 // Temporary page to display the logged in user id
 
@@ -21,8 +22,9 @@ Whoami.getInitialProps = async ctx => {
   const id = ctx.store.getState().authentication.id;
   return {
     id,
-    username
+    username,
+    namespacesRequired: ["common", "header"]
   };
 };
 
-export default connect(state => state)(Whoami);
+export default connect(state => state)(withTranslation()(Whoami));

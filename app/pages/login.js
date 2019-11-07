@@ -14,6 +14,7 @@ import BlockFormField from "../components/molecules/BlockFormField";
 import Label from "../components/atoms/Label";
 import Input from "../components/atoms/Input";
 import InputDescription from "../components/atoms/InputDescription";
+import { withTranslation } from "../i18n";
 
 const Wrapper = styled.div`
   flex: 0 0 66.66667%;
@@ -121,7 +122,11 @@ function Login(props) {
   );
 }
 
+Login.getInitialProps = async () => ({
+  namespacesRequired: ["common", "header"]
+});
+
 export default connect(
   state => state,
   actions
-)(Login);
+)(withTranslation()(Login));
