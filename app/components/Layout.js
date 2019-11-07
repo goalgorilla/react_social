@@ -19,7 +19,8 @@ const Content = styled.div`
   max-width: ${props => props.theme.layout.maxWidth};
   padding: ${props => props.theme.layout.padding};
   padding-top: 3.125rem;
-  padding-bottom: 30rem;
+  margin-bottom: 5rem;
+  min-height: calc(100vh - 100px);
 
   @media ${deviceMinWidth.tablet} {
     padding-top: 6.25rem;

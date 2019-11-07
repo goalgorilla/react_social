@@ -5,14 +5,11 @@ import Link from "next/link";
 import NavigationDropdown from "../NavigationDropdown";
 import SearchBar from "../../molecules/SearchBar";
 import { deviceMinWidth, deviceMaxWidth } from "../../../utils/device";
+import StyledHr from "../../atoms/StyledHr";
 
 // This NavigationList component contains the list of links the user can use to traverse the site. It is used in the header.
-const StyledHr = styled.hr`
+const Hr = styled(StyledHr)`
   margin: 0 0.625rem 0 0.625rem;
-  border: 0;
-  border-top: 1px solid #f1f1f1;
-  height: 1px;
-  padding: 0;
 `;
 
 const NavBar = styled.ul`
@@ -91,7 +88,7 @@ const languageDropdownList = (
     <li>
       <a>English (current)</a>
     </li>
-    <StyledHr></StyledHr>
+    <Hr></Hr>
     <li>
       <a>Afrikaans</a>
     </li>

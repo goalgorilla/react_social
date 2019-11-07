@@ -8,6 +8,7 @@ import ProfileBanner from "../components/atoms/ProfileBanner";
 import UserCard from "../components/molecules/UserCard";
 import styled from "styled-components";
 import ProfileNavigationBar from "../components/molecules/ProfileNavigationBar";
+import ProfileInformation from "../components/molecules/ProfileInformation";
 
 const ProfileContentContainer = styled.div`
   display: flex;
@@ -20,7 +21,6 @@ const ProfileLeftColumn = styled.div``;
 
 const ProfileRightColumn = styled.div`
   margin-top: 20px;
-  height: 250px;
 `;
 
 const User = ({ name }) => {
@@ -41,7 +41,7 @@ const User = ({ name }) => {
           {/* <ProfileEvents /> */}
           {/* <ProfileTopics /> */}
           {/* <ProfileGroups /> */}
-          {/* <ProfileInformation /> */}
+          <ProfileInformation />
         </ProfileRightColumn>
       </ProfileContentContainer>
     </Layout>

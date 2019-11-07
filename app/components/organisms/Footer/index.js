@@ -7,7 +7,7 @@ import SocialNav from "../../molecules/SocialNav";
 
 // The footer of the website, contains SocialNav, FooterNav and any children in the form of a <p> tag.
 const Wrapper = styled.div`
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
   height: 10rem;

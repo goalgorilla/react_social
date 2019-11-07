@@ -5,9 +5,10 @@ import Link from "next/link";
 import { API_URL } from "../../../utils/constants";
 import NavigationDropdown from "../NavigationDropdown";
 import { deviceMinWidth } from "../../../utils/device";
+import StyledHr from "../../atoms/StyledHr";
 
 // The right side of the header's navigation portion. Contains any navigation regarding the user's account
-const StyledHr = styled.hr`
+const Hr = styled(StyledHr)`
   margin: 0 0.625rem 0 0.625rem;
   border: 0;
   border-top: 1px solid #f1f1f1;
@@ -223,7 +224,7 @@ const AccountNavigation = ({
                   <a>{username}</a>
                 </Link>
               </li>
-              <StyledHr></StyledHr>
+              <Hr></Hr>
               <li>
                 <Link href="/stream">
                   <a>My stream</a>
@@ -249,13 +250,13 @@ const AccountNavigation = ({
                   <a>My information</a>
                 </Link>
               </li>
-              <StyledHr></StyledHr>
+              <Hr></Hr>
               <li>
                 <Link href="/following">
                   <a>Following</a>
                 </Link>
               </li>
-              <StyledHr></StyledHr>
+              <Hr></Hr>
               <li>
                 <Link href="/settings">
                   <a>Settings</a>
@@ -266,7 +267,7 @@ const AccountNavigation = ({
                   <a>Edit profile</a>
                 </Link>
               </li>
-              <StyledHr></StyledHr>
+              <Hr></Hr>
               <li onClick={deauthenticate}>
                 <a>Log out</a>
               </li>
