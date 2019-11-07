@@ -9,6 +9,8 @@ import UserCard from "../components/molecules/UserCard";
 import styled from "styled-components";
 import ProfileNavigationBar from "../components/molecules/ProfileNavigationBar";
 import ProfileInformation from "../components/molecules/ProfileInformation";
+import ProfileStream from "../components/organisms/ProfileStream";
+import React, { useState, useEffect } from "react";
 
 const ProfileContentContainer = styled.div`
   display: flex;
@@ -23,8 +25,11 @@ const ProfileRightColumn = styled.div`
   margin-top: 20px;
 `;
 
-const User = ({ name }) => {
+function User({ name }) {
   const router = useRouter();
+
+  const [activePanel, setActivePanel] = useState("stream");
+
   return (
     <Layout title={name + " | Open Social"}>
       <ProfileBanner id={router.query.id} />
@@ -36,17 +41,20 @@ const User = ({ name }) => {
           {/* <RecentlyJoinedGroups /> */}
         </ProfileLeftColumn>
         <ProfileRightColumn>
-          <ProfileNavigationBar />
-          {/* <ProfileStream /> */}
+          <ProfileNavigationBar
+            activePanel={activePanel}
+            setActivePanel={setActivePanel}
+          />
+          <ProfileStream activePanel={activePanel} />
           {/* <ProfileEvents /> */}
           {/* <ProfileTopics /> */}
           {/* <ProfileGroups /> */}
-          <ProfileInformation />
+          <ProfileInformation activePanel={activePanel} />
         </ProfileRightColumn>
       </ProfileContentContainer>
     </Layout>
   );
-};
+}
 
 User.getInitialProps = async ctx => {
   // Get name of the user from the id passed in url

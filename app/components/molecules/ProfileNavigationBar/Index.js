@@ -12,44 +12,62 @@ const StyledNav = styled.ul`
   background: #0f6892;
   padding: 10px 0;
   justify-content: center;
+`;
 
-  li {
-    padding: 0 20px;
-  }
+const StyledListItem = styled.li`
+  padding: 0 20px;
+  height: 100%;
 
-  li a {
+  a {
     color: white;
     font-size: 0.95rem;
+    border-bottom: ${props => (props.active ? "3px solid white" : "none")};
+    padding-bottom: 9px;
     font-weight: ${props => props.theme.font.weight.bold};
-    opacity: 0.5;
+    opacity: ${props => (props.active ? "1" : "0.5")};
     cursor: pointer;
   }
 
-  li a:hover {
+  a:hover {
     opacity: 1;
   }
 `;
 
-const ProfileNavigationBar = () => {
+function ProfileNavigationBar(props) {
   return (
     <StyledNav>
-      <li>
+      <StyledListItem
+        onClick={() => props.setActivePanel("stream")}
+        active={props.activePanel == "stream"}
+      >
         <a>Stream</a>
-      </li>
-      <li>
+      </StyledListItem>
+      <StyledListItem
+        onClick={() => props.setActivePanel("events")}
+        active={props.activePanel == "events"}
+      >
         <a>Events</a>
-      </li>
-      <li>
+      </StyledListItem>
+      <StyledListItem
+        onClick={() => props.setActivePanel("topics")}
+        active={props.activePanel == "topics"}
+      >
         <a>Topics</a>
-      </li>
-      <li>
+      </StyledListItem>
+      <StyledListItem
+        onClick={() => props.setActivePanel("groups")}
+        active={props.activePanel == "groups"}
+      >
         <a>Groups</a>
-      </li>
-      <li>
+      </StyledListItem>
+      <StyledListItem
+        onClick={() => props.setActivePanel("information")}
+        active={props.activePanel == "information"}
+      >
         <a>Information</a>
-      </li>
+      </StyledListItem>
     </StyledNav>
   );
-};
+}
 
 export default ProfileNavigationBar;
