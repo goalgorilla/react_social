@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Link from "next/link";
 import NavigationDropdown from "../NavigationDropdown";
 import LanguageList from "../LanguageList";
+import ExploreList from "../ExploreList";
 import { deviceMinWidth, deviceMaxWidth } from "../../../utils/device";
 import { withTranslation } from "../../../i18n";
 import SearchBar from "../SearchBar";
@@ -115,33 +116,7 @@ const NavigationList = ({ t }) => {
                 </li>
               }
             >
-              <ul>
-                <li>
-                  <Link href="/community">
-                    <a>{t("community")}</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/groups">
-                    <a>{t("all-groups")}</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/events">
-                    <a>{t("all-events")}</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/topics">
-                    <a>{t("all-topics")}</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/members">
-                    <a>{t("all-members")}</a>
-                  </Link>
-                </li>
-              </ul>
+              <ExploreList />
             </NavigationDropdown>
           </ul>
         </NavigationDropdown>
@@ -156,33 +131,7 @@ const NavigationList = ({ t }) => {
           </li>
           {/* Desktop explore dropdown */}
           <NavigationDropdown button={t("explore")}>
-            <ul>
-              <li>
-                <Link href="/community">
-                  <a>{t("community")}</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/groups">
-                  <a>{t("all-groups")}</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/events">
-                  <a>{t("all-events")}</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/topics">
-                  <a>{t("all-topics")}</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/members">
-                  <a>{t("all-members")}</a>
-                </Link>
-              </li>
-            </ul>
+            <ExploreList />
           </NavigationDropdown>
         </ul>
       </DesktopWrapper>
