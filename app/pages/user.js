@@ -10,6 +10,9 @@ import styled from "styled-components";
 import ProfileNavigationBar from "../components/molecules/ProfileNavigationBar";
 import ProfileInformation from "../components/molecules/ProfileInformation";
 import ProfileStream from "../components/organisms/ProfileStream";
+import ProfileEvents from "../components/organisms/ProfileEvents";
+import ProfileTopics from "../components/organisms/ProfileTopics";
+import ProfileGroups from "../components/organisms/ProfileGroups";
 import React, { useState, useEffect } from "react";
 
 const ProfileContentContainer = styled.div`
@@ -46,9 +49,9 @@ function User({ name }) {
             setActivePanel={setActivePanel}
           />
           <ProfileStream activePanel={activePanel} />
-          {/* <ProfileEvents /> */}
-          {/* <ProfileTopics /> */}
-          {/* <ProfileGroups /> */}
+          <ProfileEvents activePanel={activePanel} />
+          <ProfileTopics activePanel={activePanel} />
+          <ProfileGroups activePanel={activePanel} />
           <ProfileInformation activePanel={activePanel} />
         </ProfileRightColumn>
       </ProfileContentContainer>

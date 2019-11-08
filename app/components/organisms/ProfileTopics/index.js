@@ -10,11 +10,12 @@ const BoldTitle = styled(Title)`
   margin-bottom: 20px;
 `;
 
-function ProfileStream(props) {
-  if (props.activePanel == "stream") {
+function ProfileTopics(props) {
+  const count = 0;
+  if (props.activePanel == "topics") {
     return (
       <Container>
-        <BoldTitle>Stream</BoldTitle>
+        <BoldTitle>{count} Topics</BoldTitle>
       </Container>
     );
   } else {
@@ -22,4 +23,4 @@ function ProfileStream(props) {
   }
 }
 
-export default ProfileStream;
+export default ProfileTopics;
