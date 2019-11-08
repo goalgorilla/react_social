@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Title from "../../atoms/Title";
 import SortAndFilter from "../../molecules/SortAndFilter";
+import CardList from "../CardList";
+import TopicCard from "../../molecules/TopicCard";
 
 const Container = styled.div`
   margin-top: 60px;
@@ -36,6 +38,13 @@ function ProfileTopics(props) {
           <Reset>Reset</Reset>
         </HeaderRow>
         <SortAndFilter />
+        <CardList>
+          <TopicCard>Temp Topic Card 1</TopicCard>
+          <TopicCard>Temp Topic Card 2</TopicCard>
+          <TopicCard>Temp Topic Card 3</TopicCard>
+          <TopicCard>Temp Topic Card 4</TopicCard>
+          <TopicCard>Temp Topic Card 5</TopicCard>
+        </CardList>
       </Container>
     );
   } else {
