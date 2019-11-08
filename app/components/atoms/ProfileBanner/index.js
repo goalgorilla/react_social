@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { deviceMinWidth, deviceMaxWidth } from "../../../utils/device";
 
 // The body for the Card component
 const StyledProfileBanner = styled.img`
@@ -17,6 +18,11 @@ const ProfileBannerContainer = styled.div`
   left: 0;
   overflow: hidden;
   max-height: 150px;
+  z-index: -1;
+
+  @media ${deviceMinWidth.laptop} {
+    max-height: 320px;
+  }
 `;
 
 const ProfileBanner = () => {

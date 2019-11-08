@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { deviceMaxWidth } from "../../../utils/device";
+import { deviceMaxWidth, deviceMinWidth } from "../../../utils/device";
 
 const StyledNav = styled.ul`
   position: absolute;
@@ -7,7 +7,6 @@ const StyledNav = styled.ul`
   width: 100%;
   display: flex;
   margin: 0;
-  padding: 0;
   list-style-type: none;
   background: #0f6892;
   padding: 10px 0;
@@ -26,6 +25,15 @@ const StyledNav = styled.ul`
       ),
       linear-gradient(to left, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0) 30px);
   }
+
+  @media ${deviceMinWidth.laptop} {
+    position: relative;
+    border-radius: 5px 5px 0px 0px;
+    justify-content: center;
+    align-items: center;
+    min-height: 45px;
+    padding: 0;
+  }
 `;
 
 const StyledListItem = styled.li`
@@ -34,7 +42,7 @@ const StyledListItem = styled.li`
 
   a {
     color: white;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     border-bottom: ${props => (props.active ? "3px solid white" : "none")};
     padding-bottom: 9px;
     font-weight: ${props => props.theme.font.weight.bold};
@@ -44,6 +52,12 @@ const StyledListItem = styled.li`
 
   a:hover {
     opacity: 1;
+  }
+
+  @media ${deviceMinWidth.laptop} {
+    a {
+      padding-bottom: 10px;
+    }
   }
 `;
 

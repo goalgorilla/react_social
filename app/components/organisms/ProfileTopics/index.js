@@ -3,9 +3,14 @@ import Title from "../../atoms/Title";
 import SortAndFilter from "../../molecules/SortAndFilter";
 import CardList from "../CardList";
 import TopicCard from "../../molecules/TopicCard";
+import { deviceMinWidth, deviceMaxWidth } from "../../../utils/device";
 
 const Container = styled.div`
   margin-top: 60px;
+
+  @media ${deviceMinWidth.laptop} {
+    margin-top: 30px;
+  }
 `;
 
 const BoldTitle = styled(Title)`

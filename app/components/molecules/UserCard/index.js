@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import Button from "../../atoms/Button";
+import { deviceMinWidth, deviceMaxWidth } from "../../../utils/device";
 
 // A card component to contain content - used, for example, for the login page's form.
 const StyledUserCard = styled.div`
@@ -14,6 +15,13 @@ const StyledUserCard = styled.div`
   h1,
   h2 {
     text-align: center;
+  }
+  z-index: 900;
+
+  @media ${deviceMinWidth.laptop} {
+    border-radius: 5px;
+    padding: 30px;
+    min-width: 300px;
   }
 `;
 

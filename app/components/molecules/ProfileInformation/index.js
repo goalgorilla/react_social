@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { deviceMaxWidth } from "../../../utils/device";
 import Title from "../../atoms/Title";
 import Card from "../../organisms/Card";
 import CardBody from "../../atoms/CardBody";
@@ -9,6 +8,7 @@ import InfoText from "../../atoms/InfoText";
 import InfoRow from "../InfoRow";
 import ChipContainer from "../ChipContainer";
 import Chip from "../../atoms/Chip";
+import { deviceMaxWidth, deviceMinWidth } from "../../../utils/device";
 
 const Hr = styled(StyledHr)`
   margin: 10px 0;
@@ -16,6 +16,10 @@ const Hr = styled(StyledHr)`
 
 const Container = styled.div`
   margin-top: 60px;
+
+  @media ${deviceMinWidth.laptop} {
+    margin-top: 30px;
+  }
 `;
 
 const BoldTitle = styled(Title)`

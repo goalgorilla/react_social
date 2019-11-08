@@ -14,18 +14,37 @@ import ProfileEvents from "../components/organisms/ProfileEvents";
 import ProfileTopics from "../components/organisms/ProfileTopics";
 import ProfileGroups from "../components/organisms/ProfileGroups";
 import React, { useState, useEffect } from "react";
+import { deviceMinWidth, deviceMaxWidth } from "../utils/device";
 
 const ProfileContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
   margin-top: 150px;
+
+  @media ${deviceMinWidth.laptop} {
+    flex-direction: row;
+    margin-top: 320px;
+  }
 `;
 
-const ProfileLeftColumn = styled.div``;
+const ProfileLeftColumn = styled.div`
+  @media ${deviceMinWidth.laptop} {
+    margin-right: 30px;
+    margin-top: -45px;
+    box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.16),
+      0 2px 4px rgba(0, 0, 0, 0.32);
+    border-radius: 5px;
+  }
+`;
 
 const ProfileRightColumn = styled.div`
   margin-top: 20px;
+  width: 100%;
+
+  @media ${deviceMinWidth.laptop} {
+    margin-top: -45px;
+  }
 `;
 
 function User({ name }) {
