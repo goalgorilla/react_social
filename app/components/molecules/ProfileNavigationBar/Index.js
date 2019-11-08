@@ -11,7 +11,21 @@ const StyledNav = styled.ul`
   list-style-type: none;
   background: #0f6892;
   padding: 10px 0;
-  justify-content: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (max-width: 490px) {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0) 30px
+      ),
+      linear-gradient(to left, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0) 30px);
+  }
 `;
 
 const StyledListItem = styled.li`
