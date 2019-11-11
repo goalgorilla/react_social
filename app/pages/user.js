@@ -57,7 +57,7 @@ function User({ name }) {
       <ProfileBanner id={router.query.id} />
       <ProfileContentContainer>
         <ProfileLeftColumn>
-          <UserCard />
+          <UserCard setActivePanel={setActivePanel} />
           {/* <UpcomingEvents /> */}
           {/* <RecentlyCreatedTopics /> */}
           {/* <RecentlyJoinedGroups /> */}

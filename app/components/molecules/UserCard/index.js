@@ -3,6 +3,8 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import Button from "../../atoms/Button";
 import { deviceMinWidth, deviceMaxWidth } from "../../../utils/device";
+import StyledHr from "../../atoms/StyledHr";
+import UserStats from "../UserStats";
 
 // A card component to contain content - used, for example, for the login page's form.
 const StyledUserCard = styled.div`
@@ -33,6 +35,11 @@ const ProfileImage = styled.img`
   width: 128px;
   margin-top: -75px;
   z-index: 500;
+
+  @media ${deviceMinWidth.laptop} {
+    margin-top: -100px;
+    border: 7px solid transparent;
+  }
 `;
 
 const FirstName = styled.h1`
@@ -47,7 +54,7 @@ const LastName = styled.h2`
 `;
 
 const TwitterHandle = styled.p`
-  font-size: ${props => props.theme.font.size.medium};
+  font-size: ${props => props.theme.font.size.small};
   font-weight: ${props => props.theme.font.weight.medium};
   margin-top: -10px;
   color: ${props => props.theme.color.text.three};
@@ -58,11 +65,13 @@ const UserRole = styled.p`
   margin-top: 10px;
   margin-bottom: 20px;
   color: ${props => props.theme.color.text.three};
+  font-size: ${props => props.theme.font.size.medium};
 `;
 
 const PrivateMessageButton = styled(Button)`
   background: #ffc042;
   color: ${props => props.theme.color.text.one};
+  font-size: ${props => props.theme.font.size.medium};
   border-color: #ffc042;
   outline-color: #d5a021;
   box-shadow: none;
@@ -71,16 +80,44 @@ const PrivateMessageButton = styled(Button)`
   }
 `;
 
-const UserCard = () => (
+const Hr = styled(StyledHr)`
+  display: none;
+
+  @media ${deviceMinWidth.laptop} {
+    display: flex;
+    border-top: 1px solid #999;
+    margin: 10px 0 10px 0;
+  }
+`;
+
+const FullProfileLink = styled.p`
+  display: none;
+  font-size: ${props => props.theme.font.size.medium};
+  font-weight: ${props => props.theme.font.weight.bold};
+  color: ${props => props.theme.color.brand.primary};
+  margin-top: 30px;
+  cursor: pointer;
+
+  @media ${deviceMinWidth.laptop} {
+    display: block;
+  }
+`;
+
+const UserCard = props => (
   <StyledUserCard>
     <ProfileImage src="https://api.master-7rqtwti-jmqq2w45dtvdy.eu-4.platformsh.site/sites/default/files/chrishall.jpg" />
     <FirstName>Justine</FirstName>
     <LastName>Marshall</LastName>
     <TwitterHandle>(@justinemarshall)</TwitterHandle>
     <UserRole>Director at Tokyo Book Association</UserRole>
+    <Hr></Hr>
+    <UserStats />
     <PrivateMessageButton>
       <b>Private message</b>
     </PrivateMessageButton>
+    <FullProfileLink onClick={() => props.setActivePanel("information")}>
+      See full profile of this member
+    </FullProfileLink>
   </StyledUserCard>
 );
 
