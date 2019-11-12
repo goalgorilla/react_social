@@ -5,11 +5,12 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 5px;
+  width: 100%;
 `;
 
 const ActivityName = styled.p`
   font-weight: ${props => props.theme.font.weight.bold};
-  font-size: ${props => props.theme.font.size.medium};
+  font-size: ${props => props.theme.font.size.default};
   color: ${props => props.theme.color.foreground.primary};
   margin-bottom: 10px;
 `;

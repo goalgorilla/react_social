@@ -1,14 +1,21 @@
 import styled from "styled-components";
 import Title from "../../atoms/Title";
-import Card from "../../organisms/Card";
+import Card from "../Card";
 import CardBody from "../../atoms/CardBody";
 import StyledHr from "../../atoms/StyledHr";
 import InfoTitle from "../../atoms/InfoTitle";
 import InfoText from "../../atoms/InfoText";
-import InfoRow from "../InfoRow";
-import ChipContainer from "../ChipContainer";
+import InfoRow from "../../molecules/InfoRow";
+import ChipContainer from "../../molecules/ChipContainer";
 import Chip from "../../atoms/Chip";
 import { deviceMaxWidth, deviceMinWidth } from "../../../utils/device";
+import { API_URL } from "../../../utils/constants";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+
+const StyledInfoTitle = styled(InfoTitle)`
+  min-width: 170px;
+`;
 
 const Hr = styled(StyledHr)`
   margin: 10px 0;
@@ -28,42 +35,57 @@ const BoldTitle = styled(Title)`
 `;
 
 function ProfileInformation(props) {
+  const [data, setData] = useState({
+    field_profile_self_introduction: null
+  });
+
+  const fetchUserInfo = async () => {
+    let result = await axios.get(
+      `${API_URL}/jsonapi/user/user/${props.userId}/profile_profiles`,
+      {
+        headers: {
+          Authorization: "Bearer " + props.token
+        }
+      }
+    );
+    console.log(result.data.data.attributes);
+    setData(result.data.data.attributes);
+  };
+
+  useEffect(() => {
+    fetchUserInfo();
+  }, []);
+
   if (props.activePanel == "information") {
     return (
       <Container>
         <BoldTitle>Information</BoldTitle>
         <Card>
           <CardBody>
+            {!!data.field_profile_self_introduction && (
+              <React.Fragment>
+                <InfoRow>
+                  <StyledInfoTitle>Introduction</StyledInfoTitle>
+                  <InfoText>
+                    {data.field_profile_self_introduction.value}
+                  </InfoText>
+                </InfoRow>
+                <Hr />
+              </React.Fragment>
+            )}
             <InfoRow>
-              <InfoTitle>Introduction</InfoTitle>
-              <InfoText>
-                sdfhj ksdhf kshfdk shfskdjfhsdfdhsjfhksdjhfks dhs f skdjfhdks
-                fdhs fsdhkf ksdhjfdjks djksk hksdj hksh ksdjhfksjhsdfhj ksdhf
-                kshfdk shfskdjfhsdfdhsjfhksdjhfks dhs f skdjfhdks fdhs fsdhkf
-                ksdhjfdjks djksk hksdj hksh ksdjhfksjhsdfhj ksdhf kshfdk
-                <br />
-                <br />
-                shfskdjfhsdfdhsjfhksdjhfks dhs f skdjfhdks fdhs fsdhkf
-                ksdhjfdjks djksk hksdj hksh ksdjhfksjh sdfhj ksdhf kshfdk
-                shfskdjfhsdfdhsjfhksdjhfks dhs f skdjfhdks fdhs fsdhkf
-                ksdhjfdjks djksk hksdj hksh ksdjhfksjh
-              </InfoText>
-            </InfoRow>
-
-            <Hr />
-            <InfoRow>
-              <InfoTitle>Email</InfoTitle>
+              <StyledInfoTitle>Email</StyledInfoTitle>
               <InfoText>justin@tba.jp</InfoText>
             </InfoRow>
             <Hr />
             <InfoRow>
-              <InfoTitle>Phone number</InfoTitle>
+              <StyledInfoTitle>Phone number</StyledInfoTitle>
               <InfoText>080-1234-5678</InfoText>
             </InfoRow>
 
             <Hr />
             <InfoRow>
-              <InfoTitle>Interests</InfoTitle>
+              <StyledInfoTitle>Interests</StyledInfoTitle>
               <ChipContainer>
                 <Chip>Cooking</Chip>
                 <Chip>Football</Chip>
@@ -73,7 +95,7 @@ function ProfileInformation(props) {
 
             <Hr />
             <InfoRow>
-              <InfoTitle>Expertise</InfoTitle>
+              <StyledInfoTitle>Expertise</StyledInfoTitle>
               <ChipContainer>
                 <Chip>Multicultural communication</Chip>
               </ChipContainer>

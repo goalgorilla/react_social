@@ -8,7 +8,7 @@ import ProfileBanner from "../components/atoms/ProfileBanner";
 import UserCard from "../components/molecules/UserCard";
 import styled from "styled-components";
 import ProfileNavigationBar from "../components/molecules/ProfileNavigationBar";
-import ProfileInformation from "../components/molecules/ProfileInformation";
+import ProfileInformation from "../components/organisms/ProfileInformation";
 import ProfileStream from "../components/organisms/ProfileStream";
 import ProfileEvents from "../components/organisms/ProfileEvents";
 import ProfileTopics from "../components/organisms/ProfileTopics";
@@ -37,6 +37,7 @@ const ProfileLeftColumn = styled.div`
     box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.16),
       0 2px 4px rgba(0, 0, 0, 0.32);
     border-radius: 5px;
+    min-width: 380px;
   }
 `;
 
@@ -53,11 +54,11 @@ const RecentActivityContainer = styled.div`
   display: flex;
   flex-direction: column;
   background: ${props => props.theme.color.background.primary};
-  padding: 0 30px;
+  padding: 0 40px;
   border-radius: 0px 0px 5px 5px;
 `;
 
-function User({ name }) {
+function User({ name, token }) {
   const router = useRouter();
 
   const [activePanel, setActivePanel] = useState("stream");
@@ -85,7 +86,11 @@ function User({ name }) {
           <ProfileEvents activePanel={activePanel} />
           <ProfileTopics activePanel={activePanel} />
           <ProfileGroups activePanel={activePanel} />
-          <ProfileInformation activePanel={activePanel} />
+          <ProfileInformation
+            activePanel={activePanel}
+            userId={router.query.id}
+            token={token}
+          />
         </ProfileRightColumn>
       </ProfileContentContainer>
     </Layout>
@@ -93,12 +98,14 @@ function User({ name }) {
 }
 
 User.getInitialProps = async ctx => {
+  const token = ctx.store.getState().authentication.token;
+
   // Get name of the user from the id passed in url
   return axios
     .get(`${API_URL}/jsonapi/user/user/${ctx.query.id}`)
     .then(response => {
       const name = response.data.data.attributes.name;
-      return { name };
+      return { name, token };
     })
     .catch(err => {
       console.log(err);

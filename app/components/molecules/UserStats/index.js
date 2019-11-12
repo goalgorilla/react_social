@@ -34,15 +34,15 @@ const UserStats = props => {
   return (
     <Container>
       <Column>
-        <Stat>5</Stat>
+        <Stat>25</Stat>
         <Label>Events</Label>
       </Column>
       <Column>
-        <Stat>28</Stat>
+        <Stat>12</Stat>
         <Label>Topics</Label>
       </Column>
       <Column>
-        <Stat>2</Stat>
+        <Stat>3</Stat>
         <Label>Groups</Label>
       </Column>
     </Container>

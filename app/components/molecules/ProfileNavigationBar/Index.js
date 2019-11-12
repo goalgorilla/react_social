@@ -8,7 +8,7 @@ const StyledNav = styled.ul`
   display: flex;
   margin: 0;
   list-style-type: none;
-  background: #0f6892;
+  background: ${props => props.theme.color.brand.tertiary};
   padding: 10px 0;
   overflow-x: auto;
   overflow-y: hidden;

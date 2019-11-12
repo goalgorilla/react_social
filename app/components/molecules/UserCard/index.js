@@ -23,7 +23,7 @@ const StyledUserCard = styled.div`
 
   @media ${deviceMinWidth.laptop} {
     border-radius: 5px;
-    padding: 30px;
+    padding: 30px 40px;
     min-width: 300px;
   }
 `;
@@ -87,7 +87,7 @@ const Hr = styled(StyledHr)`
   @media ${deviceMinWidth.laptop} {
     display: flex;
     border-top: 1px solid #999;
-    margin: 10px 0 10px 0;
+    margin: 0 0 10px 0;
   }
 `;
 
