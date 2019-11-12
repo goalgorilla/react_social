@@ -96,7 +96,7 @@ const UserCard = props => (
     <ProfileImage src="https://api.master-7rqtwti-jmqq2w45dtvdy.eu-4.platformsh.site/sites/default/files/chrishall.jpg" />
     <FirstName>Justine</FirstName>
     <LastName>Marshall</LastName>
-    <TwitterHandle>(@justinemarshall)</TwitterHandle>
+    <TwitterHandle>(@twitterhandle)</TwitterHandle>
     <UserRole>Director at Tokyo Book Association</UserRole>
     <Hr></Hr>
     <UserStats />

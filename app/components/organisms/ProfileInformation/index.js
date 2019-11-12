@@ -73,17 +73,24 @@ function ProfileInformation(props) {
                 <Hr />
               </React.Fragment>
             )}
-            <InfoRow>
-              <StyledInfoTitle>Email</StyledInfoTitle>
-              <InfoText>justin@tba.jp</InfoText>
-            </InfoRow>
-            <Hr />
-            <InfoRow>
-              <StyledInfoTitle>Phone number</StyledInfoTitle>
-              <InfoText>080-1234-5678</InfoText>
-            </InfoRow>
-
-            <Hr />
+            {data.field_profile_show_email && (
+              <React.Fragment>
+                <InfoRow>
+                  <StyledInfoTitle>Email</StyledInfoTitle>
+                  <InfoText>justin@tba.jp</InfoText>
+                </InfoRow>
+                <Hr />
+              </React.Fragment>
+            )}
+            {!!data.field_profile_self_introduction && (
+              <React.Fragment>
+                <InfoRow>
+                  <StyledInfoTitle>Phone number</StyledInfoTitle>
+                  <InfoText>{data.field_profile_phone_number}</InfoText>
+                </InfoRow>
+                <Hr />
+              </React.Fragment>
+            )}
             <InfoRow>
               <StyledInfoTitle>Interests</StyledInfoTitle>
               <ChipContainer>
