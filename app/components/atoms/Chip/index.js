@@ -7,7 +7,7 @@ const Chip = styled.p`
   width: 100%;
   margin: 0 5px !important;
   border-radius: 15px;
-  font-size: ${props => props.theme.font.size.default};
+  font-size: ${props => props.theme.font.size.medium};
   font-weight: ${props => props.theme.font.weight.bold};
   background: ${props => props.theme.color.background.secondary};
 `;

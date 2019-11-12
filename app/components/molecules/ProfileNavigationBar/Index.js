@@ -42,7 +42,7 @@ const StyledListItem = styled.li`
 
   a {
     color: white;
-    font-size: 0.9rem;
+    font-size: ${props => props.theme.font.size.medium};
     border-bottom: ${props => (props.active ? "3px solid white" : "none")};
     padding-bottom: 9px;
     font-weight: ${props => props.theme.font.weight.bold};

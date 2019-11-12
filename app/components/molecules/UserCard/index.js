@@ -5,6 +5,7 @@ import Button from "../../atoms/Button";
 import { deviceMinWidth, deviceMaxWidth } from "../../../utils/device";
 import StyledHr from "../../atoms/StyledHr";
 import UserStats from "../UserStats";
+import TextButton from "../../atoms/TextButton";
 
 // A card component to contain content - used, for example, for the login page's form.
 const StyledUserCard = styled.div`
@@ -90,19 +91,6 @@ const Hr = styled(StyledHr)`
   }
 `;
 
-const FullProfileLink = styled.p`
-  display: none;
-  font-size: ${props => props.theme.font.size.medium};
-  font-weight: ${props => props.theme.font.weight.bold};
-  color: ${props => props.theme.color.brand.primary};
-  margin-top: 30px;
-  cursor: pointer;
-
-  @media ${deviceMinWidth.laptop} {
-    display: block;
-  }
-`;
-
 const UserCard = props => (
   <StyledUserCard>
     <ProfileImage src="https://api.master-7rqtwti-jmqq2w45dtvdy.eu-4.platformsh.site/sites/default/files/chrishall.jpg" />
@@ -115,9 +103,9 @@ const UserCard = props => (
     <PrivateMessageButton>
       <b>Private message</b>
     </PrivateMessageButton>
-    <FullProfileLink onClick={() => props.setActivePanel("information")}>
+    <TextButton onClick={() => props.setActivePanel("information")}>
       See full profile of this member
-    </FullProfileLink>
+    </TextButton>
   </StyledUserCard>
 );
 

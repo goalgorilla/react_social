@@ -13,6 +13,8 @@ import ProfileStream from "../components/organisms/ProfileStream";
 import ProfileEvents from "../components/organisms/ProfileEvents";
 import ProfileTopics from "../components/organisms/ProfileTopics";
 import ProfileGroups from "../components/organisms/ProfileGroups";
+import RecentActivity from "../components/organisms/RecentActivity";
+import StyledHr from "../components/atoms/StyledHr";
 import React, { useState, useEffect } from "react";
 import { deviceMinWidth, deviceMaxWidth } from "../utils/device";
 
@@ -47,6 +49,14 @@ const ProfileRightColumn = styled.div`
   }
 `;
 
+const RecentActivityContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  background: ${props => props.theme.color.background.primary};
+  padding: 0 30px;
+  border-radius: 0px 0px 5px 5px;
+`;
+
 function User({ name }) {
   const router = useRouter();
 
@@ -58,9 +68,13 @@ function User({ name }) {
       <ProfileContentContainer>
         <ProfileLeftColumn>
           <UserCard setActivePanel={setActivePanel} />
-          {/* <UpcomingEvents /> */}
-          {/* <RecentlyCreatedTopics /> */}
-          {/* <RecentlyJoinedGroups /> */}
+          <RecentActivityContainer>
+            <RecentActivity activity="events" setActivePanel={setActivePanel} />
+            <StyledHr />
+            <RecentActivity activity="topics" setActivePanel={setActivePanel} />
+            <StyledHr />
+            <RecentActivity activity="groups" setActivePanel={setActivePanel} />
+          </RecentActivityContainer>
         </ProfileLeftColumn>
         <ProfileRightColumn>
           <ProfileNavigationBar

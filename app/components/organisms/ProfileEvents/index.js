@@ -29,6 +29,7 @@ const HeaderRow = styled.div`
 `;
 
 const Reset = styled.p`
+  font-size: ${props => props.theme.font.size.medium};
   font-weight: ${props => props.theme.font.weight.bold};
   color: ${props => props.theme.color.brand.primary};
   cursor: pointer;
