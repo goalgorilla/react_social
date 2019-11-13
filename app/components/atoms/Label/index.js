@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 // This component can be used as a label for an input field
 const StyledLabel = styled.label`
   font-size: ${props => props.theme.font.size.medium};
-  font-weight: ${props => props.theme.font.weight.medium};
+  font-weight: ${props => props.theme.font.weight.regular};
   color: ${props => props.theme.color.foreground.primary};
 `;
 

@@ -58,17 +58,19 @@ const RecentActivityContainer = styled.div`
   border-radius: 0px 0px 5px 5px;
 `;
 
-function User({ name, token }) {
-  const router = useRouter();
-
+function User({ name, id, token, profileId }) {
   const [activePanel, setActivePanel] = useState("stream");
 
   return (
     <Layout title={name + " | Open Social"}>
-      <ProfileBanner id={router.query.id} />
+      <ProfileBanner id={profileId} />
       <ProfileContentContainer>
         <ProfileLeftColumn>
-          <UserCard setActivePanel={setActivePanel} />
+          <UserCard
+            setActivePanel={setActivePanel}
+            loggedInUser={id}
+            id={profileId}
+          />
           <RecentActivityContainer>
             <RecentActivity activity="events" setActivePanel={setActivePanel} />
             <StyledHr />
@@ -88,7 +90,7 @@ function User({ name, token }) {
           <ProfileGroups activePanel={activePanel} />
           <ProfileInformation
             activePanel={activePanel}
-            userId={router.query.id}
+            userId={profileId}
             token={token}
           />
         </ProfileRightColumn>
@@ -99,13 +101,17 @@ function User({ name, token }) {
 
 User.getInitialProps = async ctx => {
   const token = ctx.store.getState().authentication.token;
+  const id = ctx.store.getState().authentication.id;
+
+  // if no id is passed set profileId to that of logged in user
+  const profileId = typeof ctx.query.id === "undefined" ? id : ctx.query.id;
 
   // Get name of the user from the id passed in url
   return axios
-    .get(`${API_URL}/jsonapi/user/user/${ctx.query.id}`)
+    .get(`${API_URL}/jsonapi/user/user/${profileId}`)
     .then(response => {
       const name = response.data.data.attributes.name;
-      return { name, token };
+      return { name, id, token, profileId };
     })
     .catch(err => {
       console.log(err);

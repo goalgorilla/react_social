@@ -220,7 +220,7 @@ const AccountNavigation = ({
             <ul>
               <p>Signed in as</p>
               <li>
-                <Link href={`/user?id=${id}`}>
+                <Link href={`/user`}>
                   <a>{username}</a>
                 </Link>
               </li>
