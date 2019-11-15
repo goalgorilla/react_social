@@ -1,7 +1,6 @@
 module.exports = {
-  API:
-    "https://api.feature-rfe-102105-lktendy-jmqq2w45dtvdy.eu-4.platformsh.site/",
+  API: "https://api.master-7rqtwti-jmqq2w45dtvdy.eu-4.platformsh.site/",
   grant_type: "password",
-  client_id: "dd1c18a0-3fb0-4de4-a900-0381983fba52",
-  client_secret: "G3eOLg6D7AG9"
+  client_id: "b10b793f-e06c-4d10-abb7-b8f2ed3b991f",
+  client_secret: "tZSfN3j1l3az"
 };
