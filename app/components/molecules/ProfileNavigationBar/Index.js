@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { deviceMaxWidth, deviceMinWidth } from "../../../utils/device";
+import React from "react";
 
 const StyledNav = styled.ul`
   position: absolute;
