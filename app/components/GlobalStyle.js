@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import theme from "./Theme";
+import theme from "./themes/theme.js";
 import { deviceMaxWidth } from "../utils/device";
 
 // A styled components GlobalStyle file. Used for applying a styles globally across the app.

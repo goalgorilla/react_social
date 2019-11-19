@@ -5,7 +5,7 @@ import withRedux from "next-redux-wrapper";
 import { initStore } from "../redux";
 import { Provider } from "react-redux";
 import GlobalStyle from "../components/GlobalStyle";
-import theme from "../components/Theme";
+import theme from "../components/themes/theme.js";
 import initialize from "../utils/initialize";
 
 export default withRedux(initStore, { debug: true })(
