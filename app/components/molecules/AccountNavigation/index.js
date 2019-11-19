@@ -5,20 +5,7 @@ import Link from "next/link";
 import { API_URL } from "../../../utils/constants";
 import NavigationDropdown from "../NavigationDropdown";
 import { deviceMinWidth } from "../../../utils/device";
-import HorizontalLine from "../../atoms/HorizontalLine";
-
-// The right side of the header's navigation portion. Contains any navigation regarding the user's account
-const StyledHorizontalLine = styled(HorizontalLine)`
-  margin: 0 0.625rem 0 0.625rem;
-  border: 0;
-  border-top: 1px solid #f1f1f1;
-  height: 1px;
-  padding: 0;
-
-  @media ${deviceMinWidth.tablet} {
-    margin: 0;
-  }
-`;
+import ListDivider from "../../atoms/ListDivider";
 
 const AccountNavigationWrapper = styled.ul`
   display: flex;
@@ -224,7 +211,7 @@ const AccountNavigation = ({
                   <a>{username}</a>
                 </Link>
               </li>
-              <StyledHorizontalLine></StyledHorizontalLine>
+              <ListDivider />
               <li>
                 <Link href="/stream">
                   <a>My stream</a>
@@ -250,13 +237,13 @@ const AccountNavigation = ({
                   <a>My information</a>
                 </Link>
               </li>
-              <StyledHorizontalLine></StyledHorizontalLine>
+              <ListDivider />
               <li>
                 <Link href="/following">
                   <a>Following</a>
                 </Link>
               </li>
-              <StyledHorizontalLine></StyledHorizontalLine>
+              <ListDivider />
               <li>
                 <Link href="/settings">
                   <a>Settings</a>
@@ -267,7 +254,7 @@ const AccountNavigation = ({
                   <a>Edit profile</a>
                 </Link>
               </li>
-              <StyledHorizontalLine></StyledHorizontalLine>
+              <ListDivider />
               <li onClick={deauthenticate}>
                 <a>Log out</a>
               </li>
