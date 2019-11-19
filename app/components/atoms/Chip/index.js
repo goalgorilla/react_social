@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+// Chips are used to display users' expertise and interests
 const Chip = styled.p`
   color: ${props => props.theme.color.text.one};
   text-align: center;
