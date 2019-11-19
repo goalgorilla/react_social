@@ -3,14 +3,14 @@ import { deviceMaxWidth } from "../../../utils/device";
 import Title from "../../atoms/Title";
 import Card from "../../organisms/Card";
 import CardBody from "../../atoms/CardBody";
-import StyledHr from "../../atoms/StyledHr";
+import HorizontalLine from "../../atoms/HorizontalLine";
 import InfoTitle from "../../atoms/InfoTitle";
 import InfoText from "../../atoms/InfoText";
 import InfoRow from "../InfoRow";
 import ChipContainer from "../ChipContainer";
 import Chip from "../../atoms/Chip";
 
-const Hr = styled(StyledHr)`
+const StyledHorizontalLine = styled(HorizontalLine)`
   margin: 10px 0;
 `;
 
@@ -46,18 +46,18 @@ function ProfileInformation(props) {
               </InfoText>
             </InfoRow>
 
-            <Hr />
+            <StyledHorizontalLine />
             <InfoRow>
               <InfoTitle>Email</InfoTitle>
               <InfoText>justin@tba.jp</InfoText>
             </InfoRow>
-            <Hr />
+            <StyledHorizontalLine />
             <InfoRow>
               <InfoTitle>Phone number</InfoTitle>
               <InfoText>080-1234-5678</InfoText>
             </InfoRow>
 
-            <Hr />
+            <StyledHorizontalLine />
             <InfoRow>
               <InfoTitle>Interests</InfoTitle>
               <ChipContainer>
@@ -67,7 +67,7 @@ function ProfileInformation(props) {
               </ChipContainer>
             </InfoRow>
 
-            <Hr />
+            <StyledHorizontalLine />
             <InfoRow>
               <InfoTitle>Expertise</InfoTitle>
               <ChipContainer>

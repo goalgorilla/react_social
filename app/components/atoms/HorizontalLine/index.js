@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledHr = styled.hr`
+const HorizontalLine = styled.hr`
   margin: 0;
   border: 0;
   border-top: 1px solid #f1f1f1;
@@ -8,4 +8,4 @@ const StyledHr = styled.hr`
   padding: 0;
 `;
 
-export default StyledHr;
+export default HorizontalLine;
