@@ -2,6 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import Button from "../../atoms/Button";
+import Avatar from "../../atoms/Avatar";
+
+const ProfileAvatar = styled(Avatar)`
+  margin-top: -75px;
+  z-index: 500;
+  border: 5px solid transparent;
+  background-color: ${props => props.theme.color.background.secondary};
+`;
 
 // A card component to contain content - used, for example, for the login page's form.
 const StyledUserCard = styled.div`
@@ -15,16 +23,6 @@ const StyledUserCard = styled.div`
   h2 {
     text-align: center;
   }
-`;
-
-const ProfileImage = styled.img`
-  align-self: center;
-  border-radius: 50%;
-  border: 5px solid transparent;
-  background-color: ${props => props.theme.color.background.secondary};
-  width: 128px;
-  margin-top: -75px;
-  z-index: 500;
 `;
 
 const FirstName = styled.h1`
@@ -65,7 +63,10 @@ const PrivateMessageButton = styled(Button)`
 
 const UserCard = () => (
   <StyledUserCard>
-    <ProfileImage src="https://api.master-7rqtwti-jmqq2w45dtvdy.eu-4.platformsh.site/sites/default/files/chrishall.jpg" />
+    <ProfileAvatar
+      src="https://api.master-7rqtwti-jmqq2w45dtvdy.eu-4.platformsh.site/sites/default/files/chrishall.jpg"
+      width="128px"
+    />
     <FirstName>Justine</FirstName>
     <LastName>Marshall</LastName>
     <TwitterHandle>(@justinemarshall)</TwitterHandle>

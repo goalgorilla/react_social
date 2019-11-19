@@ -11,7 +11,7 @@ export default function(ctx) {
           getCookie("token", ctx.req),
           getCookie("username", ctx.req),
           getCookie("id", ctx.req),
-          getCookie("profileImage", ctx.req)
+          getCookie("avatar", ctx.req)
         )
       );
     }

@@ -7,6 +7,7 @@ import NavigationDropdown from "../NavigationDropdown";
 import { deviceMinWidth } from "../../../utils/device";
 import ListDivider from "../../atoms/ListDivider";
 import DropdownHeader from "../../atoms/DropdownHeader";
+import Avatar from "../../atoms/Avatar";
 
 const AccountNavigationWrapper = styled.ul`
   display: flex;
@@ -43,8 +44,7 @@ const AccountNavigationWrapper = styled.ul`
   }
 `;
 
-const ProfileImage = styled.img`
-  border-radius: 50%;
+const HeaderAvatar = styled(Avatar)`
   border: 2px solid transparent;
   background-color: white;
 `;
@@ -95,14 +95,14 @@ const AccountNavigation = ({
   deauthenticate,
   username,
   userId,
-  profileImage
+  avatar
 }) => {
-  // if the user does not have a profile image use the placeholder
-  if (profileImage == "") {
+  // if the user does not have an avatar use the placeholder
+  if (avatar == "") {
     var accountImg = <img src="/static/account.svg" width="24px" />;
   } else {
-    // set the user's profile image as the one obtained from the API
-    var accountImg = <ProfileImage src={API_URL + profileImage} width="20px" />;
+    // set the user's avatar as the one obtained from the API
+    var accountImg = <HeaderAvatar src={API_URL + avatar} width="20px" />;
   }
   return (
     <AccountNavigationWrapper>

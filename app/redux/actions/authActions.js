@@ -27,7 +27,7 @@ const authenticate = ({ username, password }, type) => {
       token: null,
       username: null,
       id: null,
-      profileImage: null
+      avatar: null
     };
     axios
       // Obtain login token using the user's username and password
@@ -61,10 +61,10 @@ const authenticate = ({ username, password }, type) => {
         const username = decodeURI(response.data.data.attributes.name);
         data.username = username;
         setCookie("username", username);
-        // url to get profile image id
+        // url to get avatar id
         const profileUrl =
           response.data.data.relationships.profile_profiles.links.related.href;
-        // Obtain the user's profile image id
+        // Obtain the user's avatar id
         return axios.get(profileUrl, {
           headers: {
             Authorization: "Bearer " + data.token
@@ -72,29 +72,28 @@ const authenticate = ({ username, password }, type) => {
         });
       })
       .then(response => {
-        // store user profile image id if it exists otherwise set as null
-        var profileImageId = response.data.data.relationships
-          .field_profile_image.data
+        // store user avatar id if it exists otherwise set as null
+        var avatarId = response.data.data.relationships.field_profile_image.data
           ? response.data.data.relationships.field_profile_image.data.id
           : false;
 
-        if (profileImageId) {
+        if (avatarId) {
           return axios
-            .get(`${API_URL}/jsonapi/file/file/${profileImageId}`, {
+            .get(`${API_URL}/jsonapi/file/file/${avatarId}`, {
               headers: {
                 Authorization: "Bearer " + data.token
               }
             })
             .then(response => {
-              // Store the profile image url
+              // Store the avatar url
               const imageUrl = response.data.data.attributes.uri.url;
-              data.profileImage = imageUrl;
-              setCookie("profileImage", imageUrl);
+              data.avatar = imageUrl;
+              setCookie("avatar", imageUrl);
               return;
             });
         } else {
-          data.profileImage = "";
-          setCookie("profileImage", "");
+          data.avatar = "";
+          setCookie("avatar", "");
         }
       })
       .then(response => {
@@ -111,12 +110,12 @@ const authenticate = ({ username, password }, type) => {
 };
 
 // gets the token from the cookie and saves it in the store
-const reauthenticate = (token, username, id, profileImage) => {
+const reauthenticate = (token, username, id, avatar) => {
   const payload = {
     token: token,
     username: decodeURI(username),
     id: id,
-    profileImage: profileImage
+    avatar: avatar
   };
   return dispatch => {
     dispatch({ type: AUTHENTICATE, payload: payload });
@@ -129,7 +128,7 @@ const deauthenticate = () => {
     removeCookie("token");
     removeCookie("username");
     removeCookie("id");
-    removeCookie("profileImage");
+    removeCookie("avatar");
     Router.push("/");
     dispatch({ type: DEAUTHENTICATE });
   };
@@ -140,7 +139,7 @@ const clearAuthenticationStore = () => {
     removeCookie("token");
     removeCookie("username");
     removeCookie("id");
-    removeCookie("profileImage");
+    removeCookie("avatar");
     dispatch({ type: DEAUTHENTICATE });
   };
 };
