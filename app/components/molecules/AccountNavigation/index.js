@@ -6,6 +6,7 @@ import { API_URL } from "../../../utils/constants";
 import NavigationDropdown from "../NavigationDropdown";
 import { deviceMinWidth } from "../../../utils/device";
 import ListDivider from "../../atoms/ListDivider";
+import DropdownHeader from "../../atoms/DropdownHeader";
 
 const AccountNavigationWrapper = styled.ul`
   display: flex;
@@ -194,23 +195,23 @@ const AccountNavigation = ({
               rightAlign={true}
             >
               <ul>
-                <p>Notification Centre</p>
-                <li>
+                <DropdownHeader>
+                  Notification Centre
                   <Link href="/notifications">
                     <a>All notifications</a>
                   </Link>
-                </li>
+                </DropdownHeader>
               </ul>
             </NavigationDropdown>
           </DesktopButtons>
           <NavigationDropdown button={accountImg} rightAlign={true}>
             <ul>
-              <p>Signed in as</p>
-              <li>
+              <DropdownHeader>
+                Signed in as
                 <Link href={`/user?id=${userId}`}>
                   <a>{username}</a>
                 </Link>
-              </li>
+              </DropdownHeader>
               <ListDivider />
               <li>
                 <Link href="/stream">
