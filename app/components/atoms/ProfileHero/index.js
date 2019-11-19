@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 // The body for the Card component
-const StyledProfileBanner = styled.img`
+const StyledProfileHero = styled.img`
   width: 100%;
   height: auto;
   background: grey;
@@ -11,7 +11,7 @@ const StyledProfileBanner = styled.img`
   background-size: cover;
 `;
 
-const ProfileBannerContainer = styled.div`
+const ProfileHeroContainer = styled.div`
   position: absolute;
   width: 100%;
   left: 0;
@@ -19,14 +19,14 @@ const ProfileBannerContainer = styled.div`
   max-height: 150px;
 `;
 
-const ProfileBanner = () => {
-  const tempBanner =
+const ProfileHero = () => {
+  const tempHero =
     "https://images.unsplash.com/photo-1486411959861-41a3eb8da389?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80";
   return (
-    <ProfileBannerContainer>
-      <StyledProfileBanner src={tempBanner} alt="profile banner image" />
-    </ProfileBannerContainer>
+    <ProfileHeroContainer>
+      <StyledProfileHero src={tempHero} alt="profile hero image" />
+    </ProfileHeroContainer>
   );
 };
 
-export default ProfileBanner;
+export default ProfileHero;

@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 import axios from "axios";
 import { API_URL } from "../utils/constants";
 import { useRouter } from "next/router";
-import ProfileBanner from "../components/atoms/ProfileBanner";
+import ProfileHero from "../components/atoms/ProfileHero";
 import UserCard from "../components/molecules/UserCard";
 import styled from "styled-components";
 import ProfileNavigationBar from "../components/molecules/ProfileNavigationBar";
@@ -35,7 +35,7 @@ function User({ name }) {
 
   return (
     <Layout title={name + " | Open Social"}>
-      <ProfileBanner id={router.query.id} />
+      <ProfileHero id={router.query.id} />
       <ProfileContentContainer>
         <ProfileLeftColumn>
           <UserCard />
