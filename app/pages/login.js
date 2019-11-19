@@ -121,7 +121,4 @@ function Login(props) {
   );
 }
 
-export default connect(
-  state => state,
-  actions
-)(Login);
+export default connect(state => state, actions)(Login);

@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import Title from "../../atoms/Title";
 import SortAndFilter from "../../molecules/SortAndFilter";
-import CardList from "../CardList";
-import EventCard from "../../molecules/EventCard";
+import Card from "../Card";
+import CardBody from "../../atoms/CardBody";
 
 const Container = styled.div`
   margin-top: 60px;
@@ -34,12 +34,15 @@ function ProfileEvents(props) {
           <Reset>Reset</Reset>
         </HeaderRow>
         <SortAndFilter />
-        <CardList>
-          <EventCard>Temp Event Card 1</EventCard>
-          <EventCard>Temp Event Card 2</EventCard>
-          <EventCard>Temp Event Card 3</EventCard>
-          <EventCard>Temp Event Card 4</EventCard>
-        </CardList>
+        <Card>
+          <CardBody>Temp Event Card 1</CardBody>
+        </Card>
+        <Card>
+          <CardBody>Temp Event Card 1</CardBody>
+        </Card>
+        <Card>
+          <CardBody>Temp Event Card 1</CardBody>
+        </Card>
       </Container>
     );
   } else {

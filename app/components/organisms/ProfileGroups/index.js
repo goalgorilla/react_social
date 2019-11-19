@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Title from "../../atoms/Title";
-import CardList from "../CardList";
-import GroupCard from "../../molecules/GroupCard";
+import Card from "../../organisms/Card";
+import CardBody from "../../atoms/CardBody";
 
 const Container = styled.div`
   margin-top: 60px;
@@ -13,11 +13,15 @@ function ProfileGroups(props) {
     return (
       <Container>
         <Title>{count} Groups</Title>
-        <CardList>
-          <GroupCard>Temp Group Card 1</GroupCard>
-          <GroupCard>Temp Group Card 2</GroupCard>
-          <GroupCard>Temp Group Card 3</GroupCard>
-        </CardList>
+        <Card>
+          <CardBody>Temp Group Card 1</CardBody>
+        </Card>
+        <Card>
+          <CardBody>Temp Group Card 1</CardBody>
+        </Card>
+        <Card>
+          <CardBody>Temp Group Card 1</CardBody>
+        </Card>
       </Container>
     );
   } else {
