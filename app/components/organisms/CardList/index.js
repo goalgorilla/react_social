@@ -15,9 +15,6 @@ const StyledButton = styled(Button)`
 `;
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
   margin-top: 20px;
   padding: 0;
 
