@@ -7,8 +7,8 @@ import HorizontalLine from "../../atoms/HorizontalLine";
 import InfoTitle from "../../atoms/InfoTitle";
 import InfoText from "../../atoms/InfoText";
 import InfoRow from "../InfoRow";
-import ChipContainer from "../ChipContainer";
-import Chip from "../../atoms/Chip";
+import BadgeContainer from "../BadgeContainer";
+import Badge from "../../atoms/Badge";
 
 const StyledHorizontalLine = styled(HorizontalLine)`
   margin: 10px 0;
@@ -55,19 +55,19 @@ function ProfileInformation(props) {
             <StyledHorizontalLine />
             <InfoRow>
               <InfoTitle>Interests</InfoTitle>
-              <ChipContainer>
-                <Chip>Cooking</Chip>
-                <Chip>Football</Chip>
-                <Chip>Reading</Chip>
-              </ChipContainer>
+              <BadgeContainer>
+                <Badge>Cooking</Badge>
+                <Badge>Football</Badge>
+                <Badge>Reading</Badge>
+              </BadgeContainer>
             </InfoRow>
 
             <StyledHorizontalLine />
             <InfoRow>
               <InfoTitle>Expertise</InfoTitle>
-              <ChipContainer>
-                <Chip>Multicultural communication</Chip>
-              </ChipContainer>
+              <BadgeContainer>
+                <Badge>Multicultural communication</Badge>
+              </BadgeContainer>
             </InfoRow>
           </CardBody>
         </Card>

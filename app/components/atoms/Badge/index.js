@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-// Chips are used to display users' expertise and interests
-const Chip = styled.p`
+// Badge are used to display users' expertise and interests
+const Badge = styled.p`
   color: ${props => props.theme.color.text.one};
   text-align: center;
   padding: 4px 15px;
@@ -13,4 +13,4 @@ const Chip = styled.p`
   background: ${props => props.theme.color.background.secondary};
 `;
 
-export default Chip;
+export default Badge;

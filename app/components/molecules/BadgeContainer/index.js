@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-const ChipContainer = styled.div`
+const BadgeContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-beween;
 `;
 
-export default ChipContainer;
+export default BadgeContainer;
