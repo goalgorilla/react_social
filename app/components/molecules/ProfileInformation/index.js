@@ -5,7 +5,6 @@ import Card from "../../organisms/Card";
 import CardBody from "../../atoms/CardBody";
 import HorizontalLine from "../../atoms/HorizontalLine";
 import InfoTitle from "../../atoms/InfoTitle";
-import InfoText from "../../atoms/InfoText";
 import InfoRow from "../InfoRow";
 import BadgeContainer from "../BadgeContainer";
 import Badge from "../../atoms/Badge/";
@@ -27,7 +26,7 @@ function ProfileInformation(props) {
           <CardBody>
             <InfoRow>
               <InfoTitle>Introduction</InfoTitle>
-              <InfoText>
+              <p>
                 sdfhj ksdhf kshfdk shfskdjfhsdfdhsjfhksdjhfks dhs f skdjfhdks
                 fdhs fsdhkf ksdhjfdjks djksk hksdj hksh ksdjhfksjhsdfhj ksdhf
                 kshfdk shfskdjfhsdfdhsjfhksdjhfks dhs f skdjfhdks fdhs fsdhkf
@@ -38,18 +37,18 @@ function ProfileInformation(props) {
                 ksdhjfdjks djksk hksdj hksh ksdjhfksjh sdfhj ksdhf kshfdk
                 shfskdjfhsdfdhsjfhksdjhfks dhs f skdjfhdks fdhs fsdhkf
                 ksdhjfdjks djksk hksdj hksh ksdjhfksjh
-              </InfoText>
+              </p>
             </InfoRow>
 
             <StyledHorizontalLine />
             <InfoRow>
               <InfoTitle>Email</InfoTitle>
-              <InfoText>justin@tba.jp</InfoText>
+              <p>justin@tba.jp</p>
             </InfoRow>
             <StyledHorizontalLine />
             <InfoRow>
               <InfoTitle>Phone number</InfoTitle>
-              <InfoText>080-1234-5678</InfoText>
+              <p>080-1234-5678</p>
             </InfoRow>
 
             <StyledHorizontalLine />
