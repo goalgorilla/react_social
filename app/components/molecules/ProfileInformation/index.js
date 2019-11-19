@@ -18,16 +18,11 @@ const Container = styled.div`
   margin-top: 60px;
 `;
 
-const BoldTitle = styled(Title)`
-  font-weight: ${props => props.theme.font.weight.bold};
-  margin-bottom: 20px;
-`;
-
 function ProfileInformation(props) {
   if (props.activePanel == "information") {
     return (
       <Container>
-        <BoldTitle>Information</BoldTitle>
+        <Title>Information</Title>
         <Card>
           <CardBody>
             <InfoRow>

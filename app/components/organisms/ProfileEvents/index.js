@@ -8,11 +8,6 @@ const Container = styled.div`
   margin-top: 60px;
 `;
 
-const BoldTitle = styled(Title)`
-  font-weight: ${props => props.theme.font.weight.bold};
-  margin-bottom: 20px;
-`;
-
 const HeaderRow = styled.div`
   display: flex;
   justify-content: space-between;
@@ -35,7 +30,7 @@ function ProfileEvents(props) {
     return (
       <Container>
         <HeaderRow>
-          <BoldTitle>{count} Events</BoldTitle>
+          <Title>{count} Events</Title>
           <Reset>Reset</Reset>
         </HeaderRow>
         <SortAndFilter />

@@ -5,16 +5,11 @@ const Container = styled.div`
   margin-top: 60px;
 `;
 
-const BoldTitle = styled(Title)`
-  font-weight: ${props => props.theme.font.weight.bold};
-  margin-bottom: 20px;
-`;
-
 function ProfileStream(props) {
   if (props.activePanel == "stream") {
     return (
       <Container>
-        <BoldTitle>Stream</BoldTitle>
+        <Title>Stream</Title>
       </Container>
     );
   } else {
