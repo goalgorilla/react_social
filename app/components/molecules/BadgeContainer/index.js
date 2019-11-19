@@ -2,8 +2,7 @@ import styled from "styled-components";
 
 const BadgeContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-beween;
+  align-items: center;
 `;
 
 export default BadgeContainer;

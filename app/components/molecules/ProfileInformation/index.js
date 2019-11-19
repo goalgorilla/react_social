@@ -8,7 +8,7 @@ import InfoTitle from "../../atoms/InfoTitle";
 import InfoText from "../../atoms/InfoText";
 import InfoRow from "../InfoRow";
 import BadgeContainer from "../BadgeContainer";
-import Badge from "../../atoms/Badge";
+import Badge from "../../atoms/Badge/";
 
 const StyledHorizontalLine = styled(HorizontalLine)`
   margin: 10px 0;
