@@ -106,7 +106,7 @@ const AccountNavigation = ({
   isAuthenticated,
   deauthenticate,
   username,
-  id,
+  userId,
   profileImage
 }) => {
   // if the user does not have a profile image use the placeholder
@@ -220,7 +220,7 @@ const AccountNavigation = ({
             <ul>
               <p>Signed in as</p>
               <li>
-                <Link href={`/user?id=${id}`}>
+                <Link href={`/user?id=${userId}`}>
                   <a>{username}</a>
                 </Link>
               </li>

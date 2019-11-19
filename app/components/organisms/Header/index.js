@@ -99,7 +99,7 @@ const Header = ({
   isAuthenticated,
   deauthenticate,
   username,
-  id,
+  userId,
   profileImage
 }) => (
   <Wrapper>
@@ -151,7 +151,7 @@ const Header = ({
           deauthenticate={deauthenticate}
           username={username}
           profileImage={profileImage}
-          id={id}
+          userId={userId}
         ></AccountNavigation>
       </NavRow>
     </NavWrapper>
