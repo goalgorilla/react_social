@@ -45,7 +45,7 @@ const TwitterHandle = styled.p`
   color: ${props => props.theme.color.text.three};
 `;
 
-const UserRole = styled.p`
+const OrganizationTag = styled.p`
   font-weight: ${props => props.theme.font.weight.bold};
   margin-top: 10px;
   margin-bottom: 20px;
@@ -69,7 +69,7 @@ const UserCard = () => (
     <FirstName>Justine</FirstName>
     <LastName>Marshall</LastName>
     <TwitterHandle>(@justinemarshall)</TwitterHandle>
-    <UserRole>Director at Tokyo Book Association</UserRole>
+    <OrganizationTag>Director at Tokyo Book Association</OrganizationTag>
     <PrivateMessageButton>
       <b>Private message</b>
     </PrivateMessageButton>
