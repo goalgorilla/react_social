@@ -4,7 +4,8 @@ module.exports = {
     "kentcdodds",
     "kentcdodds/react",
     "kentcdodds/jsx-a11y",
-    "kentcdodds/jest"
+    "kentcdodds/jest",
+    "eslint-config-prettier"
   ],
   rules: {
     // overrides

@@ -40,6 +40,7 @@
     "babel-loader": "^8.0.6",
     "eslint": "^6.6.0",
     "eslint-config-kentcdodds": "^14.6.1",
+    "eslint-config-prettier": "^6.7.0",
     "prettier": "^1.19.1"
   }
 }
