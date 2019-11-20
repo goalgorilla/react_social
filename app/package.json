@@ -7,7 +7,7 @@
     "start": "NODE_ENV=production node server.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "lint": "eslint"
+    "lint": "eslint components pages redux utils"
   },
   "dependencies": {
     "@testing-library/react": "^9.1.4",
