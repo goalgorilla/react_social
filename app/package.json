@@ -7,7 +7,7 @@
     "start": "NODE_ENV=production node server.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "lint": "eslint components pages redux utils",
+    "lint": "eslint ./",
     "format": "prettier --write \"**/*.+(js|jsx|json|yml|css)\""
   },
   "dependencies": {
