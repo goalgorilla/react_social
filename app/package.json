@@ -6,7 +6,8 @@
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "lint": "eslint"
   },
   "dependencies": {
     "@testing-library/react": "^9.1.4",
@@ -35,6 +36,8 @@
     "@storybook/addon-links": "^5.2.1",
     "@storybook/addons": "^5.2.1",
     "@storybook/react": "^5.2.1",
-    "babel-loader": "^8.0.6"
+    "babel-loader": "^8.0.6",
+    "eslint": "^6.6.0",
+    "eslint-config-kentcdodds": "^14.6.1"
   }
 }
