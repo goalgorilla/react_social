@@ -5,6 +5,6 @@ module.exports = {
     'kentcdodds/react',
     'kentcdodds/jsx-a11y',
     'kentcdodds/jest',
-    'eslint-config-prettier',
+    'kentcdodds/stylistic',
   ],
-}
+};
