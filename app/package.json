@@ -8,9 +8,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "lint": "eslint ./",
-    "format": "yarn prettier -- --write",
-    "prettier": "prettier \"**/*.+(js|jsx|json|yml|css)\"",
-    "validate": "yarn lint && yarn prettier -- --list-different"
+    "lint-fix": "yarn lint -- --fix"
   },
   "dependencies": {
     "@testing-library/react": "^9.1.4",
@@ -42,6 +40,7 @@
     "babel-loader": "^8.0.6",
     "eslint": "^6.6.0",
     "eslint-config-kentcdodds": "^14.6.1",
+    "eslint-plugin-prettier": "^3.1.1",
     "husky": "^3.1.0",
     "lint-staged": "^9.4.3",
     "prettier": "^1.19.1"
