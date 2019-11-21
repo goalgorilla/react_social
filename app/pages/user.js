@@ -29,11 +29,11 @@ const ProfileRightColumn = styled.div`
 `;
 
 const getAvailableTabs = () => ({
-  stream:ProfileStream,
-  events:ProfileEvents,
-  topics:ProfileTopics,
-  groups:ProfileGroups,
-  information:ProfileInformation
+  stream: ProfileStream,
+  events: ProfileEvents,
+  topics: ProfileTopics,
+  groups: ProfileGroups,
+  information: ProfileInformation
 });
 
 function User({ name }) {

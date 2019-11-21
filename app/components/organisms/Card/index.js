@@ -12,7 +12,6 @@ const Card = styled.div`
     0 2px 4px rgba(0, 0, 0, 0.32);
   border-radius: ${props => props.theme.layout.borderRadius.default};
   background-color: ${props => props.theme.color.background.primary};
-  margin-top: 10px;
 `;
 
 Card.defaultProps = {};

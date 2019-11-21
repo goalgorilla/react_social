@@ -3,6 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import Button from "../../atoms/Button";
 import Avatar from "../../atoms/Avatar";
+import Card from "../../organisms/Card"
 
 const ProfileAvatar = styled(Avatar)`
   margin-top: -75px;
@@ -12,12 +13,11 @@ const ProfileAvatar = styled(Avatar)`
 `;
 
 // A card component to contain content - used, for example, for the login page's form.
-const StyledUserCard = styled.div`
-  display: flex;
-  flex-direction: column;
+const StyledCard = styled(Card)`
   align-content: center;
   background: ${props => props.theme.color.background.secondary};
   color: ${props => props.theme.color.text.one};
+  box-shadow: none;
   p,
   h1,
   h2 {
@@ -62,7 +62,7 @@ const PrivateMessageButton = styled(Button)`
 `;
 
 const UserCard = () => (
-  <StyledUserCard>
+  <StyledCard>
     <ProfileAvatar
       src="https://api.master-7rqtwti-jmqq2w45dtvdy.eu-4.platformsh.site/sites/default/files/chrishall.jpg"
       width="128px"
@@ -74,7 +74,7 @@ const UserCard = () => (
     <PrivateMessageButton>
       <b>Private message</b>
     </PrivateMessageButton>
-  </StyledUserCard>
+  </StyledCard>
 );
 
 UserCard.defaultProps = {};
