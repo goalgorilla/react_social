@@ -214,27 +214,27 @@ const AccountNavigation = ({
               </DropdownHeader>
               <ListDivider />
               <li>
-                <Link href="/stream">
+                <Link href={`/user?id=${userId}`}>
                   <a>My stream</a>
                 </Link>
               </li>
               <li>
-                <Link href="/myevents">
+                <Link href={"/userevents?id=" + userId} as={"/user?id=" + userId + "/events"}>
                   <a>My events</a>
                 </Link>
               </li>
               <li>
-                <Link href="/mytopics">
+                <Link href={"/usertopics?id=" + userId} as={"/user?id=" + userId + "/topics"}>
                   <a>My topics</a>
                 </Link>
               </li>
               <li>
-                <Link href="/mygroups">
+                <Link href={"/usergroups?id=" + userId} as={"/user?id=" + userId + "/groups"}>
                   <a>My groups</a>
                 </Link>
               </li>
               <li>
-                <Link href="/myinformation">
+                <Link href={"/userinformation?id=" + userId} as={"/user?id=" + userId + "/information"}>
                   <a>My information</a>
                 </Link>
               </li>
