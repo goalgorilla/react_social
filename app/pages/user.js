@@ -46,8 +46,6 @@ function User({ name }) {
     throw new Error("Invalid tab was somehow selected, check business logic");
   }
 
-  const SelectedTab = tabs[currentTab];
-
   return (
     <Layout title={name + " | Open Social"}>
       <ProfileHero id={router.query.id} />
@@ -62,11 +60,12 @@ function User({ name }) {
           <ProfileNavigationBar
             currentTab={currentTab}
             setCurrentTab={setCurrentTab}
+            userId={router.query.id}
           />
-          <SelectedTab />
+          <ProfileStream />
         </ProfileRightColumn>
       </ProfileContentContainer>
-    </Layout>
+    </Layout >
   );
 }
 

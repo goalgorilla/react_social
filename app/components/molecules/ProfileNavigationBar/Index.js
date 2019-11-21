@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { deviceMaxWidth } from "../../../utils/device";
+import Link from "next/link";
 
 const Menu = styled.ul`
   position: absolute;
@@ -40,6 +41,7 @@ const MenuItem = styled.li`
     font-weight: ${props => props.theme.font.weight.bold};
     opacity: ${props => (props.active ? "1" : "0.5")};
     cursor: pointer;
+    text-decoration: none;
   }
 
   a:hover {
@@ -54,31 +56,41 @@ function ProfileNavigationBar(props) {
         onClick={() => props.setCurrentTab("stream")}
         active={props.currentTab === "stream"}
       >
-        <a>Stream</a>
+        <Link href={"/user?id=" + props.userId} scroll={false}>
+          <a>Stream</a>
+        </Link>
       </MenuItem>
       <MenuItem
         onClick={() => props.setCurrentTab("events")}
         active={props.currentTab === "events"}
       >
-        <a>Events</a>
+        <Link href={"/userevents?id=" + props.userId} as={"/user?id=" + props.userId + "/events"} scroll={false}>
+          <a>Events</a>
+        </Link>
       </MenuItem>
       <MenuItem
         onClick={() => props.setCurrentTab("topics")}
         active={props.currentTab === "topics"}
       >
-        <a>Topics</a>
+        <Link href={"/usertopics?id=" + props.userId} as={"/user?id=" + props.userId + "/topics"} scroll={false}>
+          <a>Topics</a>
+        </Link>
       </MenuItem>
       <MenuItem
         onClick={() => props.setCurrentTab("groups")}
         active={props.currentTab === "groups"}
       >
-        <a>Groups</a>
+        <Link href={"/usergroups?id=" + props.userId} as={"/user?id=" + props.userId + "/groups"} scroll={false}>
+          <a>Groups</a>
+        </Link>
       </MenuItem>
       <MenuItem
         onClick={() => props.setCurrentTab("information")}
         active={props.currentTab === "information"}
       >
-        <a>Information</a>
+        <Link href={"/userinformation?id=" + props.userId} as={"/user?id=" + props.userId + "/information"} scroll={false}>
+          <a>Information</a>
+        </Link>
       </MenuItem>
     </Menu>
   );
