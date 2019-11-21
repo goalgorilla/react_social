@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { deviceMaxWidth } from "../../../utils/device";
 
-const StyledNav = styled.ul`
+const Menu = styled.ul`
   position: absolute;
   left: 0;
   width: 100%;
@@ -28,7 +28,7 @@ const StyledNav = styled.ul`
   }
 `;
 
-const StyledListItem = styled.li`
+const MenuItem = styled.li`
   padding: 0 20px;
   height: 100%;
 
@@ -49,38 +49,38 @@ const StyledListItem = styled.li`
 
 function ProfileNavigationBar(props) {
   return (
-    <StyledNav>
-      <StyledListItem
+    <Menu>
+      <MenuItem
         onClick={() => props.setCurrentTab("stream")}
-        active={props.currentTab == "stream"}
+        active={props.currentTab === "stream"}
       >
         <a>Stream</a>
-      </StyledListItem>
-      <StyledListItem
+      </MenuItem>
+      <MenuItem
         onClick={() => props.setCurrentTab("events")}
-        active={props.currentTab == "events"}
+        active={props.currentTab === "events"}
       >
         <a>Events</a>
-      </StyledListItem>
-      <StyledListItem
+      </MenuItem>
+      <MenuItem
         onClick={() => props.setCurrentTab("topics")}
-        active={props.currentTab == "topics"}
+        active={props.currentTab === "topics"}
       >
         <a>Topics</a>
-      </StyledListItem>
-      <StyledListItem
+      </MenuItem>
+      <MenuItem
         onClick={() => props.setCurrentTab("groups")}
-        active={props.currentTab == "groups"}
+        active={props.currentTab === "groups"}
       >
         <a>Groups</a>
-      </StyledListItem>
-      <StyledListItem
+      </MenuItem>
+      <MenuItem
         onClick={() => props.setCurrentTab("information")}
-        active={props.currentTab == "information"}
+        active={props.currentTab === "information"}
       >
         <a>Information</a>
-      </StyledListItem>
-    </StyledNav>
+      </MenuItem>
+    </Menu>
   );
 }
 
