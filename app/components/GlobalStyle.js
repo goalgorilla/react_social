@@ -8,6 +8,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     min-height: 100%;
     background: ${theme.color.background.secondary};
+    color: ${theme.color.foreground.primary};
     font-family: ${theme.font.family};
     font-weight: ${theme.font.weight.light};
     -webkit-font-smoothing: antialiased;
