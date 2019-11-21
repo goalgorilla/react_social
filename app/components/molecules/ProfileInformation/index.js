@@ -13,9 +13,9 @@ const StyledHorizontalLine = styled(HorizontalLine)`
   margin: 10px 0;
 `;
 
-const Container = styled.div`
-  margin-top: 60px;
-`;
+const Container = styled.div(props => `
+  margin-top: calc(${props.theme.layout.profile.navHeight} + 20px);
+`);
 
 function ProfileInformation(props) {
   return (

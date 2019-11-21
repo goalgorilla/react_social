@@ -7,11 +7,11 @@ const Menu = styled.ul`
   left: 0;
   width: 100%;
   display: flex;
+  height: ${props => props.theme.layout.profile.navHeight};
   margin: 0;
   padding: 0;
   list-style-type: none;
   background: #0f6892;
-  padding: 10px 0;
   overflow-x: auto;
   overflow-y: hidden;
 
@@ -32,14 +32,16 @@ const Menu = styled.ul`
 const MenuItem = styled.li`
   padding: 0 20px;
   height: 100%;
-
+  display: flex;
+  align-items: center;
+  
   a {
     color: white;
     font-size: 0.95rem;
-    border-bottom: ${props => (props.active ? "3px solid white" : "none")};
-    padding-bottom: 9px;
     font-weight: ${props => props.theme.font.weight.bold};
+    line-height: calc(${props => props.theme.layout.profile.navHeight});
     opacity: ${props => (props.active ? "1" : "0.5")};
+    border-bottom: ${props => (props.active ? "3px solid white" : "3px solid transparent")};
     cursor: pointer;
     text-decoration: none;
   }

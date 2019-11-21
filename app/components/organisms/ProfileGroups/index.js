@@ -3,9 +3,9 @@ import Title from "../../atoms/Title";
 import Card from "../../organisms/Card";
 import CardBody from "../../atoms/CardBody";
 
-const Container = styled.div`
-  margin-top: 60px;
-`;
+const Container = styled.div(props => `
+  margin-top: calc(${props.theme.layout.profile.navHeight} + 20px);
+`);
 
 function ProfileGroups(props) {
   const count = 0;
