@@ -28,10 +28,25 @@ const ProfileRightColumn = styled.div`
   margin-top: 20px;
 `;
 
+const getAvailableTabs = () => ({
+  stream:ProfileStream,
+  events:ProfileEvents,
+  topics:ProfileTopics,
+  groups:ProfileGroups,
+  information:ProfileInformation
+});
+
 function User({ name }) {
   const router = useRouter();
 
-  const [activePanel, setActivePanel] = useState("stream");
+  const [currentTab, setCurrentTab] = useState("stream");
+  const tabs = getAvailableTabs();
+
+  if (typeof tabs[currentTab] === "undefined") {
+    throw new Error("Invalid tab was somehow selected, check business logic");
+  }
+
+  const SelectedTab = tabs[currentTab];
 
   return (
     <Layout title={name + " | Open Social"}>
@@ -45,14 +60,10 @@ function User({ name }) {
         </ProfileLeftColumn>
         <ProfileRightColumn>
           <ProfileNavigationBar
-            activePanel={activePanel}
-            setActivePanel={setActivePanel}
+            currentTab={currentTab}
+            setCurrentTab={setCurrentTab}
           />
-          <ProfileStream activePanel={activePanel} />
-          <ProfileEvents activePanel={activePanel} />
-          <ProfileTopics activePanel={activePanel} />
-          <ProfileGroups activePanel={activePanel} />
-          <ProfileInformation activePanel={activePanel} />
+          <SelectedTab />
         </ProfileRightColumn>
       </ProfileContentContainer>
     </Layout>

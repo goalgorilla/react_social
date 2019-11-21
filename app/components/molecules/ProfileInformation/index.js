@@ -18,63 +18,59 @@ const Container = styled.div`
 `;
 
 function ProfileInformation(props) {
-  if (props.activePanel == "information") {
-    return (
-      <Container>
-        <Title>Information</Title>
-        <Card>
-          <CardBody>
-            <InfoRow>
-              <InfoTitle>Introduction</InfoTitle>
-              <p>
-                sdfhj ksdhf kshfdk shfskdjfhsdfdhsjfhksdjhfks dhs f skdjfhdks
-                fdhs fsdhkf ksdhjfdjks djksk hksdj hksh ksdjhfksjhsdfhj ksdhf
-                kshfdk shfskdjfhsdfdhsjfhksdjhfks dhs f skdjfhdks fdhs fsdhkf
-                ksdhjfdjks djksk hksdj hksh ksdjhfksjhsdfhj ksdhf kshfdk
+  return (
+    <Container>
+      <Title>Information</Title>
+      <Card>
+        <CardBody>
+          <InfoRow>
+            <InfoTitle>Introduction</InfoTitle>
+            <p>
+              sdfhj ksdhf kshfdk shfskdjfhsdfdhsjfhksdjhfks dhs f skdjfhdks
+              fdhs fsdhkf ksdhjfdjks djksk hksdj hksh ksdjhfksjhsdfhj ksdhf
+              kshfdk shfskdjfhsdfdhsjfhksdjhfks dhs f skdjfhdks fdhs fsdhkf
+              ksdhjfdjks djksk hksdj hksh ksdjhfksjhsdfhj ksdhf kshfdk
                 <br />
-                <br />
-                shfskdjfhsdfdhsjfhksdjhfks dhs f skdjfhdks fdhs fsdhkf
-                ksdhjfdjks djksk hksdj hksh ksdjhfksjh sdfhj ksdhf kshfdk
-                shfskdjfhsdfdhsjfhksdjhfks dhs f skdjfhdks fdhs fsdhkf
-                ksdhjfdjks djksk hksdj hksh ksdjhfksjh
+              <br />
+              shfskdjfhsdfdhsjfhksdjhfks dhs f skdjfhdks fdhs fsdhkf
+              ksdhjfdjks djksk hksdj hksh ksdjhfksjh sdfhj ksdhf kshfdk
+              shfskdjfhsdfdhsjfhksdjhfks dhs f skdjfhdks fdhs fsdhkf
+              ksdhjfdjks djksk hksdj hksh ksdjhfksjh
               </p>
-            </InfoRow>
+          </InfoRow>
 
-            <StyledHorizontalLine />
-            <InfoRow>
-              <InfoTitle>Email</InfoTitle>
-              <p>justin@tba.jp</p>
-            </InfoRow>
-            <StyledHorizontalLine />
-            <InfoRow>
-              <InfoTitle>Phone number</InfoTitle>
-              <p>080-1234-5678</p>
-            </InfoRow>
+          <StyledHorizontalLine />
+          <InfoRow>
+            <InfoTitle>Email</InfoTitle>
+            <p>justin@tba.jp</p>
+          </InfoRow>
+          <StyledHorizontalLine />
+          <InfoRow>
+            <InfoTitle>Phone number</InfoTitle>
+            <p>080-1234-5678</p>
+          </InfoRow>
 
-            <StyledHorizontalLine />
-            <InfoRow>
-              <InfoTitle>Interests</InfoTitle>
-              <BadgeContainer>
-                <Badge>Cooking</Badge>
-                <Badge>Football</Badge>
-                <Badge>Reading</Badge>
-              </BadgeContainer>
-            </InfoRow>
+          <StyledHorizontalLine />
+          <InfoRow>
+            <InfoTitle>Interests</InfoTitle>
+            <BadgeContainer>
+              <Badge>Cooking</Badge>
+              <Badge>Football</Badge>
+              <Badge>Reading</Badge>
+            </BadgeContainer>
+          </InfoRow>
 
-            <StyledHorizontalLine />
-            <InfoRow>
-              <InfoTitle>Expertise</InfoTitle>
-              <BadgeContainer>
-                <Badge>Multicultural communication</Badge>
-              </BadgeContainer>
-            </InfoRow>
-          </CardBody>
-        </Card>
-      </Container>
-    );
-  } else {
-    return null;
-  }
+          <StyledHorizontalLine />
+          <InfoRow>
+            <InfoTitle>Expertise</InfoTitle>
+            <BadgeContainer>
+              <Badge>Multicultural communication</Badge>
+            </BadgeContainer>
+          </InfoRow>
+        </CardBody>
+      </Card>
+    </Container>
+  );
 }
 
 export default ProfileInformation;

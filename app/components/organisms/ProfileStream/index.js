@@ -6,15 +6,11 @@ const Container = styled.div`
 `;
 
 function ProfileStream(props) {
-  if (props.activePanel == "stream") {
-    return (
-      <Container>
-        <Title>Stream</Title>
-      </Container>
-    );
-  } else {
-    return null;
-  }
+  return (
+    <Container>
+      <Title>Stream</Title>
+    </Container>
+  );
 }
 
 export default ProfileStream;

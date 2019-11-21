@@ -25,28 +25,24 @@ const Reset = styled.p`
 
 function ProfileTopics(props) {
   const count = 0;
-  if (props.activePanel == "topics") {
-    return (
-      <Container>
-        <HeaderRow>
-          <Title>{count} Topics</Title>
-          <Reset>Reset</Reset>
-        </HeaderRow>
-        <SortAndFilter />
-        <Card>
-          <CardBody>Temp Topic Card 1</CardBody>
-        </Card>
-        <Card>
-          <CardBody>Temp Topic Card 1</CardBody>
-        </Card>
-        <Card>
-          <CardBody>Temp Topic Card 1</CardBody>
-        </Card>
-      </Container>
-    );
-  } else {
-    return null;
-  }
+  return (
+    <Container>
+      <HeaderRow>
+        <Title>{count} Topics</Title>
+        <Reset>Reset</Reset>
+      </HeaderRow>
+      <SortAndFilter />
+      <Card>
+        <CardBody>Temp Topic Card 1</CardBody>
+      </Card>
+      <Card>
+        <CardBody>Temp Topic Card 1</CardBody>
+      </Card>
+      <Card>
+        <CardBody>Temp Topic Card 1</CardBody>
+      </Card>
+    </Container>
+  );
 }
 
 export default ProfileTopics;

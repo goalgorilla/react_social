@@ -51,32 +51,32 @@ function ProfileNavigationBar(props) {
   return (
     <StyledNav>
       <StyledListItem
-        onClick={() => props.setActivePanel("stream")}
-        active={props.activePanel == "stream"}
+        onClick={() => props.setCurrentTab("stream")}
+        active={props.currentTab == "stream"}
       >
         <a>Stream</a>
       </StyledListItem>
       <StyledListItem
-        onClick={() => props.setActivePanel("events")}
-        active={props.activePanel == "events"}
+        onClick={() => props.setCurrentTab("events")}
+        active={props.currentTab == "events"}
       >
         <a>Events</a>
       </StyledListItem>
       <StyledListItem
-        onClick={() => props.setActivePanel("topics")}
-        active={props.activePanel == "topics"}
+        onClick={() => props.setCurrentTab("topics")}
+        active={props.currentTab == "topics"}
       >
         <a>Topics</a>
       </StyledListItem>
       <StyledListItem
-        onClick={() => props.setActivePanel("groups")}
-        active={props.activePanel == "groups"}
+        onClick={() => props.setCurrentTab("groups")}
+        active={props.currentTab == "groups"}
       >
         <a>Groups</a>
       </StyledListItem>
       <StyledListItem
-        onClick={() => props.setActivePanel("information")}
-        active={props.activePanel == "information"}
+        onClick={() => props.setCurrentTab("information")}
+        active={props.currentTab == "information"}
       >
         <a>Information</a>
       </StyledListItem>

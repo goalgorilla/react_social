@@ -9,24 +9,20 @@ const Container = styled.div`
 
 function ProfileGroups(props) {
   const count = 0;
-  if (props.activePanel == "groups") {
-    return (
-      <Container>
-        <Title>{count} Groups</Title>
-        <Card>
-          <CardBody>Temp Group Card 1</CardBody>
-        </Card>
-        <Card>
-          <CardBody>Temp Group Card 1</CardBody>
-        </Card>
-        <Card>
-          <CardBody>Temp Group Card 1</CardBody>
-        </Card>
-      </Container>
-    );
-  } else {
-    return null;
-  }
+  return (
+    <Container>
+      <Title>{count} Groups</Title>
+      <Card>
+        <CardBody>Temp Group Card 1</CardBody>
+      </Card>
+      <Card>
+        <CardBody>Temp Group Card 1</CardBody>
+      </Card>
+      <Card>
+        <CardBody>Temp Group Card 1</CardBody>
+      </Card>
+    </Container>
+  );
 }
 
 export default ProfileGroups;

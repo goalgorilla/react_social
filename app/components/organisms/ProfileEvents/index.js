@@ -26,28 +26,24 @@ const Reset = styled.p`
 
 function ProfileEvents(props) {
   const count = 0;
-  if (props.activePanel == "events") {
-    return (
-      <Container>
-        <HeaderRow>
-          <Title>{count} Events</Title>
-          <Reset>Reset</Reset>
-        </HeaderRow>
-        <SortAndFilter />
-        <Card>
-          <CardBody>Temp Event Card 1</CardBody>
-        </Card>
-        <Card>
-          <CardBody>Temp Event Card 1</CardBody>
-        </Card>
-        <Card>
-          <CardBody>Temp Event Card 1</CardBody>
-        </Card>
-      </Container>
-    );
-  } else {
-    return null;
-  }
+  return (
+    <Container>
+      <HeaderRow>
+        <Title>{count} Events</Title>
+        <Reset>Reset</Reset>
+      </HeaderRow>
+      <SortAndFilter />
+      <Card>
+        <CardBody>Temp Event Card 1</CardBody>
+      </Card>
+      <Card>
+        <CardBody>Temp Event Card 1</CardBody>
+      </Card>
+      <Card>
+        <CardBody>Temp Event Card 1</CardBody>
+      </Card>
+    </Container>
+  );
 }
 
 export default ProfileEvents;
