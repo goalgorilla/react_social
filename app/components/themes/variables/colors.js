@@ -1,9 +1,9 @@
 const color = {
   brand: {
-    primary: "#36a9e1",
-    secondary: "#2189b5",
+    primary: "#29abe2",
+    secondary: "#1f80aa",
     tertiary: "#116892",
-    accent: ""
+    accent: "#ffc142"
   },
   foreground: {
     primary: "#4d4d4d",

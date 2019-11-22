@@ -1,35 +1,31 @@
 import styled from "styled-components";
-import Button from "../../atoms/Button";
+import RaisedButton from "../../atoms/RaisedButton";
 
 const Container = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
-`;
+  margin-bottom: 20px;
 
-const StyledButton = styled(Button)`
-  background: white;
-  color: ${props => props.theme.color.text.one};
-  font-weight: bold;
-  border: 0px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  width: 100%;
-
-  &:hover {
-    background: white;
+  & > *:not(:first-child) {
+    margin-left: 5px;
   }
 
-  &:first-of-type {
-    margin-right: 15px;
+  & > *:not(:last-child) {
+    margin-right: 5px;
   }
+
+  & > * {
+    flex: 50%;
+  }
+  
 `;
 
 function SortAndFilter() {
   return (
     <Container>
-      <StyledButton>Sort</StyledButton>
-      <StyledButton>Filter</StyledButton>
+      <RaisedButton radius="small" paddingHorizontal="xl" paddingVertical="large"><strong>Sort</strong></RaisedButton>
+      <RaisedButton radius="small" paddingHorizontal="xl" paddingVertical="large"><strong>Filter</strong></RaisedButton>
     </Container>
   );
 }

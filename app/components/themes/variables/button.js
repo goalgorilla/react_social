@@ -1,4 +1,19 @@
 const button = {
+  default: {
+    defaultColor: "",
+    defaultBackground: "",
+    defaultBorder: "",
+  },
+  primary: {
+    primaryColor: "",
+    primaryBackground: "",
+    primaryBorder: "",
+  },
+  accent: {
+    accentColor: "",
+    accentBackground: "",
+    accentBorder: "",
+  },
   fontSize: "0.875rem",
   fontSizeSmall: "0.75rem",
   fontSizeExtraSmall: "0.75rem",

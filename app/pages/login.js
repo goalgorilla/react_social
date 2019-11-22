@@ -7,7 +7,7 @@ import CardHeader from "../components/atoms/CardHeader";
 import CardBody from "../components/atoms/CardBody";
 import CardFooter from "../components/atoms/CardFooter";
 import Title from "../components/atoms/Title";
-import Button from "../components/atoms/Button";
+import RaisedButton from "../components/atoms/RaisedButton";
 import styled from "styled-components";
 import SystemMessage from "../components/atoms/SystemMessage";
 import BlockFormField from "../components/molecules/BlockFormField";
@@ -114,7 +114,7 @@ function Login(props) {
               </div>
             </CardFooter>
           </Card>
-          <Button type="submit">Log in</Button>
+          <RaisedButton variant="primary" radius="small" paddingHorizontal="xl" type="submit"><strong>Log in</strong></RaisedButton>
         </Form>
       </Wrapper>
     </Layout>

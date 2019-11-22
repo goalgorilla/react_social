@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import Button from "../../atoms/Button";
+import BaseButton from "../../atoms/BaseButton";
 import Avatar from "../../atoms/Avatar";
 import Card from "../../organisms/Card"
 
@@ -50,17 +50,6 @@ const OrganizationTag = styled.p`
   color: ${props => props.theme.color.text.three};
 `;
 
-const PrivateMessageButton = styled(Button)`
-  background: #ffc042;
-  color: ${props => props.theme.color.text.one};
-  border-color: #ffc042;
-  outline-color: #d5a021;
-  box-shadow: none;
-  &:hover {
-    background: #ffc042;
-  }
-`;
-
 const UserCard = () => (
   <StyledCard>
     <ProfileAvatar
@@ -71,9 +60,9 @@ const UserCard = () => (
     <LastName>Marshall</LastName>
     <TwitterHandle>(@justinemarshall)</TwitterHandle>
     <OrganizationTag>Director at Tokyo Book Association</OrganizationTag>
-    <PrivateMessageButton>
+    <BaseButton variant="accent" radius="small">
       <b>Private message</b>
-    </PrivateMessageButton>
+    </BaseButton>
   </StyledCard>
 );
 
