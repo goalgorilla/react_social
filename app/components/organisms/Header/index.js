@@ -102,61 +102,61 @@ const Header = ({
   userId,
   avatar
 }) => (
-  <Wrapper>
-    <Logo></Logo>
-    <NavWrapper>
-      <NavRow>
-        <NavigationDropdown
-          button={
-            <React.Fragment>
-              <img src="/static/translate.svg" width="20px" />
-              English 
+    <Wrapper>
+      <Logo></Logo>
+      <NavWrapper>
+        <NavRow>
+          <NavigationDropdown
+            button={
+              <React.Fragment>
+                <img src="/static/translate.svg" width="20px" />
+                English
               <img src="/static/dropdown.svg" width="20px" />
-            </React.Fragment>
-          }
-          navRowOne={true}
-        >
-          <ul>
-            <li>
-              <a>English (current)</a>
-            </li>
-            <li>
-              <a>Afrikaans</a>
-            </li>
-            <li>
-              <a>Albanian</a>
-            </li>
-            <li>
-              <a>Amharic</a>
-            </li>
-            <li>
-              <a>Arabic</a>
-            </li>
-            <li>
-              <a>Armenian</a>
-            </li>
-            <li>
-              <a>Azerbaijani</a>
-            </li>
-          </ul>
-        </NavigationDropdown>
-        <a href="http://www.getopensocial.com" target="_blank">
-          getopensocial.com
+              </React.Fragment>
+            }
+            navRowOne={true}
+          >
+            <ul>
+              <li>
+                <a>English (current)</a>
+              </li>
+              <li>
+                <a>Afrikaans</a>
+              </li>
+              <li>
+                <a>Albanian</a>
+              </li>
+              <li>
+                <a>Amharic</a>
+              </li>
+              <li>
+                <a>Arabic</a>
+              </li>
+              <li>
+                <a>Armenian</a>
+              </li>
+              <li>
+                <a>Azerbaijani</a>
+              </li>
+            </ul>
+          </NavigationDropdown>
+          <a href="http://www.getopensocial.com" target="_blank">
+            getopensocial.com
         </a>
-      </NavRow>
-      <NavRow>
-        <NavigationList isAuthenticated={isAuthenticated}></NavigationList>
-        <AccountNavigation
-          isAuthenticated={isAuthenticated}
-          deauthenticate={deauthenticate}
-          username={username}
-          avatar={avatar}
-          userId={userId}
-        ></AccountNavigation>
-      </NavRow>
-    </NavWrapper>
-  </Wrapper>
-);
+        </NavRow>
+        <NavRow>
+          <NavigationList />
+          <AccountNavigation
+            isAuthenticated={isAuthenticated}
+            deauthenticate={deauthenticate}
+            username={username}
+            avatar={avatar}
+            userId={userId}
+          ></AccountNavigation>
+        </NavRow>
+      </NavWrapper>
+    </Wrapper>
+  );
 
 Header.defaultProps = {};
 
