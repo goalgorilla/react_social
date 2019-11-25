@@ -1,5 +1,4 @@
 // user.js - profile page
-import { connect } from "react-redux";
 import Layout from "../components/Layout";
 import axios from "axios";
 import { API_URL } from "../utils/constants";
@@ -65,7 +64,7 @@ function User({ name }) {
           <ProfileStream />
         </ProfileRightColumn>
       </ProfileContentContainer>
-    </Layout >
+    </Layout>
   );
 }
 
@@ -82,4 +81,4 @@ User.getInitialProps = async ctx => {
     });
 };
 
-export default connect(state => state)(User);
+export default User;

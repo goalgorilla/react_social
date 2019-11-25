@@ -1,5 +1,4 @@
 import Layout from "../components/Layout";
-import { connect } from "react-redux";
 import initialize from "../utils/initialize";
 import React from "react";
 import styled from "styled-components";
@@ -29,4 +28,4 @@ Error.getInitialProps = async ctx => {
   return { statusCode };
 };
 
-export default connect(state => state)(Error);
+export default Error;

@@ -8,6 +8,9 @@ import { deviceMinWidth } from "../../../utils/device";
 import ListDivider from "../../atoms/ListDivider";
 import DropdownHeader from "../../atoms/DropdownHeader";
 import Avatar from "../../atoms/Avatar";
+import Router from "next/router";
+import { useUser, useDispatchUser } from "../../auth/userContext";
+import { removeCookie } from "../../../utils/cookie";
 
 const AccountNavigationWrapper = styled.ul`
   display: flex;
@@ -90,24 +93,32 @@ const DesktopWrapper = styled.div`
   }
 `;
 
-const AccountNavigation = ({
-  isAuthenticated,
-  deauthenticate,
-  username,
-  userId,
-  avatar
-}) => {
+const AccountNavigation = () => {
+  const user = useUser();
+  const dispatch = useDispatchUser();
+
+  const logout = event => {
+    removeCookie("token");
+    removeCookie("username");
+    removeCookie("id");
+    removeCookie("avatar");
+    dispatch({ type: "LOGOUT" });
+    Router.push("/");
+  };
+
   // if the user does not have an avatar use the placeholder
-  if (avatar == "") {
-    var accountImg = <img src="/static/account.svg" width="24px" />;
-  } else {
-    // set the user's avatar as the one obtained from the API
-    var accountImg = <HeaderAvatar src={API_URL + avatar} width="20px" />;
-  }
+  // set the user's avatar as the one obtained from the API
+  var accountImg =
+    user.avatar === "" ? (
+      <img src="/static/account.svg" width="24px" />
+    ) : (
+      <HeaderAvatar src={API_URL + user.avatar} width="20px" />
+    );
+
   return (
     <AccountNavigationWrapper>
       {/* if the user is not logged in display the login + signup links */}
-      {!isAuthenticated && (
+      {!user.isLoggedIn && (
         <React.Fragment>
           <MobileWrapper>
             <NavigationDropdown
@@ -145,7 +156,7 @@ const AccountNavigation = ({
       )}
 
       {/* if the user is logged in display the links regarding the users account */}
-      {isAuthenticated && (
+      {user.isLoggedIn && (
         <React.Fragment>
           <DesktopButtons>
             <NavigationDropdown
@@ -208,33 +219,45 @@ const AccountNavigation = ({
             <ul>
               <DropdownHeader>
                 Signed in as
-                <Link href={`/user?id=${userId}`}>
-                  <a>{username}</a>
+                <Link href={`/user?id=${user.id}`}>
+                  <a>{user.username}</a>
                 </Link>
               </DropdownHeader>
               <ListDivider />
               <li>
-                <Link href={`/user?id=${userId}`}>
+                <Link href={`/user?id=${user.id}`}>
                   <a>My stream</a>
                 </Link>
               </li>
               <li>
-                <Link href={"/userevents?id=" + userId} as={"/user?id=" + userId + "/events"}>
+                <Link
+                  href={"/userevents?id=" + user.id}
+                  as={"/user?id=" + user.id + "/events"}
+                >
                   <a>My events</a>
                 </Link>
               </li>
               <li>
-                <Link href={"/usertopics?id=" + userId} as={"/user?id=" + userId + "/topics"}>
+                <Link
+                  href={"/usertopics?id=" + user.id}
+                  as={"/user?id=" + user.id + "/topics"}
+                >
                   <a>My topics</a>
                 </Link>
               </li>
               <li>
-                <Link href={"/usergroups?id=" + userId} as={"/user?id=" + userId + "/groups"}>
+                <Link
+                  href={"/usergroups?id=" + user.id}
+                  as={"/user?id=" + user.id + "/groups"}
+                >
                   <a>My groups</a>
                 </Link>
               </li>
               <li>
-                <Link href={"/userinformation?id=" + userId} as={"/user?id=" + userId + "/information"}>
+                <Link
+                  href={"/userinformation?id=" + user.id}
+                  as={"/user?id=" + user.id + "/information"}
+                >
                   <a>My information</a>
                 </Link>
               </li>
@@ -256,7 +279,7 @@ const AccountNavigation = ({
                 </Link>
               </li>
               <ListDivider />
-              <li onClick={deauthenticate}>
+              <li onClick={logout}>
                 <a>Log out</a>
               </li>
             </ul>

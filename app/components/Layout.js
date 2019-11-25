@@ -1,7 +1,4 @@
-import Link from "next/link";
 import Head from "next/head";
-import { connect } from "react-redux";
-import actions from "../redux/actions";
 import styled from "styled-components";
 import Header from "./organisms/Header";
 import Footer from "./organisms/Footer";
@@ -32,15 +29,7 @@ const Wrapper = styled.div`
   min-height: 100vh;
 `;
 
-const Layout = ({
-  children,
-  title,
-  isAuthenticated,
-  deauthenticate,
-  username,
-  userId,
-  avatar
-}) => (
+const Layout = ({ children, title }) => (
   <div>
     <Head>
       <title>{title}</title>
@@ -57,24 +46,11 @@ const Layout = ({
       ></link>
     </Head>
     <Wrapper>
-      <Header
-        isAuthenticated={isAuthenticated}
-        deauthenticate={deauthenticate}
-        username={username}
-        avatar={avatar}
-        userId={userId}
-      ></Header>
+      <Header />
       <Content>{children}</Content>
       <Footer>Copyright © 2019. [Community name]. All rights reserved</Footer>
     </Wrapper>
   </div>
 );
 
-const mapStateToProps = state => ({
-  isAuthenticated: !!state.authentication.token,
-  username: state.authentication.username,
-  avatar: state.authentication.avatar,
-  userId: state.authentication.id
-});
-
-export default connect(mapStateToProps, actions)(Layout);
+export default Layout;

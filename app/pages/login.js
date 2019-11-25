@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
-import actions from "../redux/actions";
 import Layout from "../components/Layout";
 import Card from "../components/organisms/Card";
 import CardHeader from "../components/atoms/CardHeader";
@@ -14,6 +12,16 @@ import BlockFormField from "../components/molecules/BlockFormField";
 import Label from "../components/atoms/Label";
 import Input from "../components/atoms/Input";
 import InputDescription from "../components/atoms/InputDescription";
+import { useUser, useDispatchUser } from "../components/auth/userContext";
+import { setCookie, removeCookie } from "../utils/cookie";
+import Router from "next/router";
+import {
+  API_URL,
+  GRANT_TYPE,
+  CLIENT_ID,
+  CLIENT_SECRET
+} from "../utils/constants";
+import axios from "axios";
 
 const Wrapper = styled.div`
   flex: 0 0 66.66667%;
@@ -34,6 +42,9 @@ const Form = styled.form`
 `;
 
 function Login(props) {
+  const user = useUser();
+  const dispatch = useDispatchUser();
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
@@ -41,16 +52,108 @@ function Login(props) {
   // after render, if there is an error in props then:
   // set error to true to display SystemMessage and clear error from store
   useEffect(() => {
-    if (props.authentication.error && !error) {
+    if (user.error && !error) {
       setError(true);
-      props.clearAuthenticationStore();
     }
   });
 
   const handleSubmit = e => {
     setError(false);
     e.preventDefault();
-    props.authenticate({ username: username, password: password }, "login");
+    const data = {
+      token: "",
+      username: "",
+      id: "",
+      avatar: ""
+    };
+
+    var bodyFormData = new FormData();
+    bodyFormData.set("grant_type", GRANT_TYPE);
+    bodyFormData.set("client_id", CLIENT_ID);
+    bodyFormData.set("client_secret", CLIENT_SECRET);
+    bodyFormData.set("username", username);
+    bodyFormData.set("password", password);
+
+    axios
+      // Obtain login token using the user's username and password
+      .post(`${API_URL}/oauth/token/`, bodyFormData)
+      .then(response => {
+        // store token
+        const token = response.data.access_token;
+        data.token = token;
+        setCookie("token", token);
+        // Obtain the user's id to be used for getting information about the user
+        return axios.get(`${API_URL}/jsonapi`, {
+          headers: {
+            Authorization: "Bearer " + token
+          }
+        });
+      })
+      .then(response => {
+        // store id
+        const id = response.data.meta.links.me.meta.id;
+        data.id = id;
+        setCookie("id", id);
+        // Obtain the user's username using the user's id
+        return axios.get(`${API_URL}/jsonapi/user/user/` + id, {
+          headers: {
+            Authorization: "Bearer " + data.token
+          }
+        });
+      })
+      .then(response => {
+        // store username
+        const username = decodeURI(response.data.data.attributes.name);
+        data.username = username;
+        setCookie("username", username);
+        // url to get avatar id
+        const profileUrl =
+          response.data.data.relationships.profile_profiles.links.related.href;
+        // Obtain the user's avatar id
+        return axios.get(profileUrl, {
+          headers: {
+            Authorization: "Bearer " + data.token
+          }
+        });
+      })
+      .then(response => {
+        // store user avatar id if it exists otherwise set as null
+        var avatarId = response.data.data.relationships.field_profile_image.data
+          ? response.data.data.relationships.field_profile_image.data.id
+          : false;
+
+        if (avatarId) {
+          return axios
+            .get(`${API_URL}/jsonapi/file/file/${avatarId}`, {
+              headers: {
+                Authorization: "Bearer " + data.token
+              }
+            })
+            .then(response => {
+              // Store the avatar url
+              const imageUrl = response.data.data.attributes.uri.url;
+              data.avatar = imageUrl;
+              setCookie("avatar", imageUrl);
+              return;
+            });
+        } else {
+          data.avatar = "";
+          setCookie("avatar", "");
+        }
+      })
+      .then(response => {
+        dispatch({
+          type: "LOGIN",
+          payload: data
+        });
+        Router.push("/whoami");
+      })
+      .catch(err => {
+        dispatch({
+          type: "LOGIN_ERROR",
+          payload: { error: err.response.status }
+        });
+      });
   };
 
   return (
@@ -114,11 +217,18 @@ function Login(props) {
               </div>
             </CardFooter>
           </Card>
-          <RaisedButton variant="primary" radius="small" paddingHorizontal="xl" type="submit"><strong>Log in</strong></RaisedButton>
+          <RaisedButton
+            variant="primary"
+            radius="small"
+            paddingHorizontal="xl"
+            type="submit"
+          >
+            <strong>Log in</strong>
+          </RaisedButton>
         </Form>
       </Wrapper>
     </Layout>
   );
 }
 
-export default connect(state => state, actions)(Login);
+export default Login;
