@@ -28,4 +28,4 @@ web:
         ^/robots\.txt$:
           allow: true
 
-disk: 512
+disk: 1024
