@@ -24,19 +24,12 @@ import {
 import axios from "axios";
 
 const Wrapper = styled.div`
-  flex: 0 0 66.66667%;
-  flex-direction: column;
-  display: flex;
   max-width: 48.75rem;
 `;
 
 const Form = styled.form`
-  flex-direction: column;
-  justify-content: space-between;
-  display flex;
-
   button:last-child {
-    margin-left: auto;
+    float: right;
     margin-top: 1.25rem;
   }
 `;
