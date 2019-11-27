@@ -24,10 +24,13 @@ import {
 import axios from "axios";
 
 const Wrapper = styled.div`
-  max-width: 48.75rem;
+  margin: auto;
+  padding: ${props => props.theme.layout.padding};
+  max-width: ${props => props.theme.layout.maxWidth};
 `;
 
 const Form = styled.form`
+  max-width: 48.75rem;
   button:last-child {
     float: right;
     margin-top: 1.25rem;

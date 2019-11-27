@@ -12,7 +12,6 @@ const StyledProfileHero = styled.img`
 `;
 
 const ProfileHeroContainer = styled.div`
-  position: absolute;
   width: 100%;
   left: 0;
   overflow: hidden;

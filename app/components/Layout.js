@@ -12,9 +12,6 @@ import { deviceMinWidth } from "../utils/device";
 
  This component also passes down whether the user is authenticated along with account details to child components. */
 const Content = styled.div`
-  margin: auto;
-  max-width: ${props => props.theme.layout.maxWidth};
-  padding: ${props => props.theme.layout.padding};
   padding-top: 3.125rem;
   margin-bottom: 5rem;
   min-height: calc(100vh - 100px);

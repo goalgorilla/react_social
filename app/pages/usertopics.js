@@ -17,8 +17,7 @@ import React, { useState, useEffect } from "react";
 const ProfileContentContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
-  margin-top: 150px;
+  padding: ${props => props.theme.layout.padding};
 `;
 
 const ProfileLeftColumn = styled.div``;

@@ -7,7 +7,6 @@ import { useUser } from "../components/auth/userContext";
 // Temporary page to display the logged in user id
 const Whoami = () => {
   const user = useUser();
-  console.log(user);
   return (
     <Layout title="Who Am I">
       {(user.id && (
