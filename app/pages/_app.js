@@ -19,13 +19,15 @@ class MyApp extends App {
     };
     // Get userContext state from cookies
     if ((ctx.isServer && ctx.req.headers.cookie) || !ctx.isServer) {
-      props = {
-        isLoggedIn: true,
-        token: getCookie("token", ctx.req),
-        username: getCookie("username", ctx.req),
-        id: getCookie("id", ctx.req),
-        avatar: getCookie("avatar", ctx.req)
-      };
+      if (getCookie("token", ctx.req)) {
+        props = {
+          isLoggedIn: true,
+          token: getCookie("token", ctx.req),
+          username: getCookie("username", ctx.req),
+          id: getCookie("id", ctx.req),
+          avatar: getCookie("avatar", ctx.req)
+        };
+      }
     }
     return {
       pageProps: {
