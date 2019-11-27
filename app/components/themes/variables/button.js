@@ -1,18 +1,27 @@
+import {
+  BRAND_PRIMARY_COLOR,
+  BRAND_SECONDARY_COLOR,
+  BRAND_ACCENT_COLOR
+} from "./colors.js";
+
 const button = {
-  default: {
-    defaultColor: "",
-    defaultBackground: "",
-    defaultBorder: "",
+  color: {
+    default: "#4d4d4d",
+    primary: "#ffffff",
+    secondary: "#ffffff",
+    accent: "#333"
   },
-  primary: {
-    primaryColor: "",
-    primaryBackground: "",
-    primaryBorder: "",
+  bgColor: {
+    default: "#ffffff",
+    primary: BRAND_PRIMARY_COLOR,
+    secondary: BRAND_SECONDARY_COLOR,
+    accent: BRAND_ACCENT_COLOR
   },
-  accent: {
-    accentColor: "",
-    accentBackground: "",
-    accentBorder: "",
+  borderColor: {
+    default: "#adadad",
+    primary: BRAND_PRIMARY_COLOR,
+    secondary: BRAND_SECONDARY_COLOR,
+    accent: BRAND_ACCENT_COLOR
   },
   fontSize: "0.875rem",
   fontSizeSmall: "0.75rem",
