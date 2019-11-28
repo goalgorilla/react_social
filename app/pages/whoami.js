@@ -25,4 +25,4 @@ Whoami.getInitialProps = async ctx => {
   };
 };
 
-export default withTranslation()(Whoami);
+export default withTranslation('header')(Whoami);

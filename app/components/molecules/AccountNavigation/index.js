@@ -1,16 +1,17 @@
-import React from "react";
-import styled from "styled-components";
-import PropTypes from "prop-types";
-import Link from "next/link";
-import { API_URL } from "../../../utils/constants";
-import NavigationDropdown from "../NavigationDropdown";
-import { deviceMinWidth } from "../../../utils/device";
-import ListDivider from "../../atoms/ListDivider";
-import DropdownHeader from "../../atoms/DropdownHeader";
-import Avatar from "../../atoms/Avatar";
-import Router from "next/router";
-import { useUser, useDispatchUser } from "../../auth/userContext";
-import { removeCookie } from "../../../utils/cookie";
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import Link from 'next/link';
+import {API_URL} from '../../../utils/constants';
+import NavigationDropdown from '../NavigationDropdown';
+import {deviceMinWidth} from '../../../utils/device';
+import ListDivider from '../../atoms/ListDivider';
+import DropdownHeader from '../../atoms/DropdownHeader';
+import Avatar from '../../atoms/Avatar';
+import Router from 'next/router';
+import {useUser, useDispatchUser} from '../../auth/userContext';
+import {removeCookie} from '../../../utils/cookie';
+import {withTranslation} from '../../../i18n';
 
 const AccountNavigationWrapper = styled.ul`
   display: flex;
@@ -93,23 +94,23 @@ const DesktopWrapper = styled.div`
   }
 `;
 
-const AccountNavigation = () => {
+const AccountNavigation = ({t}) => {
   const user = useUser();
   const dispatch = useDispatchUser();
 
   const logout = event => {
-    removeCookie("token");
-    removeCookie("username");
-    removeCookie("id");
-    removeCookie("avatar");
-    dispatch({ type: "LOGOUT" });
-    Router.push("/");
+    removeCookie('token');
+    removeCookie('username');
+    removeCookie('id');
+    removeCookie('avatar');
+    dispatch({type: 'LOGOUT'});
+    Router.push('/');
   };
 
   // if the user does not have an avatar use the placeholder
   // set the user's avatar as the one obtained from the API
   var accountImg =
-    user.avatar === "" ? (
+    user.avatar === '' ? (
       <img src="/static/account.svg" width="24px" />
     ) : (
       <HeaderAvatar src={API_URL + user.avatar} width="20px" />
@@ -127,12 +128,12 @@ const AccountNavigation = () => {
               <ul>
                 <li>
                   <Link href="/signup">
-                    <a>{t("sign-up")}</a>
+                    <a>{t('sign-up')}</a>
                   </Link>
                 </li>
                 <li>
                   <Link href="/login">
-                    <a>{t("log-in")}</a>
+                    <a>{t('log-in')}</a>
                   </Link>
                 </li>
               </ul>
@@ -142,12 +143,12 @@ const AccountNavigation = () => {
             <ul>
               <li>
                 <Link href="/signup">
-                  <a>{t("sign-up")}</a>
+                  <a>{t('sign-up')}</a>
                 </Link>
               </li>
               <li>
                 <Link href="/login">
-                  <a>{t("log-in")}</a>
+                  <a>{t('log-in')}</a>
                 </Link>
               </li>
             </ul>
@@ -166,22 +167,22 @@ const AccountNavigation = () => {
               <ul>
                 <li>
                   <Link href="/node/add/event">
-                    <a>{t("new-event")}</a>
+                    <a>{t('new-event')}</a>
                   </Link>
                 </li>
                 <li>
                   <Link href="/node/add/topic">
-                    <a>{t("new-topic")}</a>
+                    <a>{t('new-topic')}</a>
                   </Link>
                 </li>
                 <li>
                   <Link href="/node/add/page">
-                    <a>{t("new-page")}</a>
+                    <a>{t('new-page')}</a>
                   </Link>
                 </li>
                 <li>
                   <Link href="/group/add">
-                    <a>{t("new-group")}</a>
+                    <a>{t('new-group')}</a>
                   </Link>
                 </li>
               </ul>
@@ -207,9 +208,9 @@ const AccountNavigation = () => {
             >
               <ul>
                 <DropdownHeader>
-                  Notification Centre
+                  {t('notification-centre')}
                   <Link href="/notifications">
-                    <a>{t("all-notifications")}</a>
+                    <a>{t('all-notifications')}</a>
                   </Link>
                 </DropdownHeader>
               </ul>
@@ -218,7 +219,7 @@ const AccountNavigation = () => {
           <NavigationDropdown button={accountImg} rightAlign={true}>
             <ul>
               <DropdownHeader>
-                Signed in as
+                {t('signed-in-as')}
                 <Link href={`/user?id=${user.id}`}>
                   <a>{user.username}</a>
                 </Link>
@@ -226,61 +227,61 @@ const AccountNavigation = () => {
               <ListDivider />
               <li>
                 <Link href={`/user?id=${user.id}`}>
-                  <a>My stream</a>
+                  <a>{t('my-stream')}</a>
                 </Link>
               </li>
               <li>
                 <Link
-                  href={"/userevents?id=" + user.id}
-                  as={"/user?id=" + user.id + "/events"}
+                  href={'/userevents?id=' + user.id}
+                  as={'/user?id=' + user.id + '/events'}
                 >
-                  <a>My events</a>
+                  <a>{t('my-events')}</a>
                 </Link>
               </li>
               <li>
                 <Link
-                  href={"/usertopics?id=" + user.id}
-                  as={"/user?id=" + user.id + "/topics"}
+                  href={'/usertopics?id=' + user.id}
+                  as={'/user?id=' + user.id + '/topics'}
                 >
-                  <a>My topics</a>
+                  <a>{t('my-topics')}</a>
                 </Link>
               </li>
               <li>
                 <Link
-                  href={"/usergroups?id=" + user.id}
-                  as={"/user?id=" + user.id + "/groups"}
+                  href={'/usergroups?id=' + user.id}
+                  as={'/user?id=' + user.id + '/groups'}
                 >
-                  <a>My groups</a>
+                  <a>{t('my-groups')}</a>
                 </Link>
               </li>
               <li>
                 <Link
-                  href={"/userinformation?id=" + user.id}
-                  as={"/user?id=" + user.id + "/information"}
+                  href={'/userinformation?id=' + user.id}
+                  as={'/user?id=' + user.id + '/information'}
                 >
-                  <a>My information</a>
+                  <a>{t('my-information')}</a>
                 </Link>
               </li>
               <ListDivider />
               <li>
                 <Link href="/following">
-                  <a>{t("following")}</a>
+                  <a>{t('following')}</a>
                 </Link>
               </li>
               <ListDivider />
               <li>
                 <Link href="/settings">
-                  <a>{t("settings")}</a>
+                  <a>{t('settings')}</a>
                 </Link>
               </li>
               <li>
                 <Link href="/editprofile">
-                  <a>{t("edit-profile")}</a>
+                  <a>{t('edit-profile')}</a>
                 </Link>
               </li>
               <ListDivider />
               <li onClick={logout}>
-                <a>Log out</a>
+                <a>{t('log-out')}</a>
               </li>
             </ul>
           </NavigationDropdown>
@@ -294,4 +295,4 @@ AccountNavigation.defaultProps = {};
 
 AccountNavigation.propTypes = {};
 
-export default withTranslation("header")(AccountNavigation);
+export default withTranslation('header')(AccountNavigation);

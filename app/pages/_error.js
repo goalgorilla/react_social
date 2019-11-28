@@ -29,4 +29,4 @@ Error.getInitialProps = async ctx => {
   return {statusCode, namespacesRequired: ['common', 'header']};
 };
 
-export default Error;
+export default withTranslation('header')(Error);
