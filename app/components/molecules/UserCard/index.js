@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import BaseButton from "../../atoms/BaseButton";
 import Avatar from "../../atoms/Avatar";
-import Card from "../../organisms/Card"
+import Card from "../../organisms/Card";
 
 const ProfileAvatar = styled(Avatar)`
   margin-top: -75px;
@@ -60,8 +60,8 @@ const UserCard = () => (
     <LastName>Marshall</LastName>
     <TwitterHandle>(@justinemarshall)</TwitterHandle>
     <OrganizationTag>Director at Tokyo Book Association</OrganizationTag>
-    <BaseButton variant="accent" radius="small">
-      <b>Private message</b>
+    <BaseButton variant="accent" radius="small" fontWeight="bold">
+      Private message
     </BaseButton>
   </StyledCard>
 );

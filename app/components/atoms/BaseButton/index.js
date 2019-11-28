@@ -57,7 +57,8 @@ const paddingVertical = props => {
 const BaseButton = styled.button`
 display: inline-block;
 margin-bottom: 0; // For input.btn
-font-weight: ${props => props.theme.button.fontWeight};
+font-weight: ${props =>
+  props.fontWeight ? props.fontWeight : props.theme.button.fontWeight};
 text-align: center;
 vertical-align: middle;
 touch-action: manipulation;

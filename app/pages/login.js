@@ -218,8 +218,9 @@ function Login(props) {
             radius="small"
             paddingHorizontal="xl"
             type="submit"
+            fontWeight="bold"
           >
-            <strong>Log in</strong>
+            Log in
           </RaisedButton>
         </Form>
       </Wrapper>
