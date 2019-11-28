@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 const StyledLabel = styled.label`
   font-size: ${props => props.theme.font.size.medium};
   font-weight: ${props => props.theme.font.weight.medium};
-  color: ${props => props.theme.color.foreground.primary};
 `;
 
 const Required = styled.span`

@@ -36,8 +36,8 @@ const Wrapper = styled.div`
     align-items: center;
     font-size: ${props => props.theme.font.size.medium};
     font-weight: ${props => props.theme.font.weight.default};
-    color: ${props => props.theme.color.foreground.primary};
     text-decoration: none;
+    color: ${props => props.theme.color.foreground.primary};
     cursor: pointer;
   }
 
@@ -103,8 +103,8 @@ const NavButton = styled.li`
         ? props.theme.color.background.primary
         : props.theme.color.brand.tertiary
       : props.navRowOne
-      ? "none"
-      : props.theme.color.brand.primary};
+        ? "none"
+        : props.theme.color.brand.primary};
   cursor: pointer;
   list-style-type: none;
 `;

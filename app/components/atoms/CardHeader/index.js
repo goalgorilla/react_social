@@ -7,7 +7,6 @@ const CardHeader = styled.div`
   padding: 1.25rem;
   font-size: ${props => props.theme.font.size.default};
   font-weight: ${props => props.theme.font.weight.medium};
-  color: ${props => props.theme.color.foreground.primary};
 `;
 
 export default CardHeader;

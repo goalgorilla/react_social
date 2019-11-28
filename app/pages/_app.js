@@ -1,37 +1,55 @@
-import App, { Container } from "next/app";
-import React from "react";
-import { ThemeProvider } from "styled-components";
-import withRedux from "next-redux-wrapper";
-import { initStore } from "../redux";
-import { Provider } from "react-redux";
-import GlobalStyle from "../components/GlobalStyle";
-import theme from "../components/Theme";
-import initialize from "../utils/initialize";
-import { appWithTranslation } from "../i18n";
+import App, {Container} from 'next/app';
+import React from 'react';
+import {ThemeProvider} from 'styled-components';
+import GlobalStyle from '../components/GlobalStyle';
+import theme from '../components/themes/theme.js';
+import {UserProvider} from '../components/auth/userContext';
+import {getCookie} from '../utils/cookie';
+import {appWithTranslation} from '../i18n';
 
 class MyApp extends App {
-  static async getInitialProps({ Component, ctx }) {
-    initialize(ctx);
+  static async getInitialProps({Component, ctx}) {
+    // Initial userContext state
+    let userData = {
+      isLoggedIn: false,
+      token: '',
+      username: '',
+      id: '',
+      avatar: '',
+    };
+    // Get userContext state from cookies
+    if ((ctx.isServer && ctx.req.headers.cookie) || !ctx.isServer) {
+      if (getCookie('token', ctx.req)) {
+        userData = {
+          isLoggedIn: true,
+          token: getCookie('token', ctx.req),
+          username: getCookie('username', ctx.req),
+          id: getCookie('id', ctx.req),
+          avatar: getCookie('avatar', ctx.req),
+        };
+      }
+    }
     return {
+      userData,
       pageProps: {
         ...(Component.getInitialProps
           ? await Component.getInitialProps(ctx)
-          : {})
-      }
+          : {}),
+      },
     };
   }
-  // render the app with the redux store, theme and globalstyle
+  // render the app with the user provider, theme and globalstyle
   render() {
-    const { Component, pageProps, store } = this.props;
+    const {Component, pageProps, userData} = this.props;
     return (
       <ThemeProvider theme={theme}>
-        <Provider store={store}>
+        <UserProvider state={userData}>
           <Component {...pageProps} />
           <GlobalStyle />
-        </Provider>
+        </UserProvider>
       </ThemeProvider>
     );
   }
 }
 
-export default withRedux(initStore)(appWithTranslation(MyApp));
+export default appWithTranslation(MyApp);

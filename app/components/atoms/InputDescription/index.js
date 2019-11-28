@@ -11,7 +11,6 @@ const StyledInputDescription = styled.h4`
     props.link
       ? props.theme.font.weight.medium
       : props.theme.font.weight.light};
-  color: ${props => props.theme.color.foreground.primary};
 `;
 
 // returns a differently styled description when the link prop is passed so the user can tell the description is a link

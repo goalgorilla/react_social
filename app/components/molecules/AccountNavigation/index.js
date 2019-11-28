@@ -5,20 +5,12 @@ import Link from "next/link";
 import { API_URL } from "../../../utils/constants";
 import NavigationDropdown from "../NavigationDropdown";
 import { deviceMinWidth } from "../../../utils/device";
-import { withTranslation } from "../../../i18n";
-
-// The right side of the header's navigation portion. Contains any navigation regarding the user's account
-const StyledHr = styled.hr`
-  margin: 0 0.625rem 0 0.625rem;
-  border: 0;
-  border-top: 1px solid #f1f1f1;
-  height: 1px;
-  padding: 0;
-
-  @media ${deviceMinWidth.tablet} {
-    margin: 0;
-  }
-`;
+import ListDivider from "../../atoms/ListDivider";
+import DropdownHeader from "../../atoms/DropdownHeader";
+import Avatar from "../../atoms/Avatar";
+import Router from "next/router";
+import { useUser, useDispatchUser } from "../../auth/userContext";
+import { removeCookie } from "../../../utils/cookie";
 
 const AccountNavigationWrapper = styled.ul`
   display: flex;
@@ -55,8 +47,7 @@ const AccountNavigationWrapper = styled.ul`
   }
 `;
 
-const ProfileImage = styled.img`
-  border-radius: 50%;
+const HeaderAvatar = styled(Avatar)`
   border: 2px solid transparent;
   background-color: white;
 `;
@@ -102,24 +93,32 @@ const DesktopWrapper = styled.div`
   }
 `;
 
-const AccountNavigation = ({
-  isAuthenticated,
-  deauthenticate,
-  username,
-  profileImage,
-  t
-}) => {
-  // if the user does not have a profile image use the placeholder
-  if (profileImage == "") {
-    var accountImg = <img src="/static/account.svg" width="24px" />;
-  } else {
-    // set the user's profile image as the one obtained from the API
-    var accountImg = <ProfileImage src={API_URL + profileImage} width="20px" />;
-  }
+const AccountNavigation = () => {
+  const user = useUser();
+  const dispatch = useDispatchUser();
+
+  const logout = event => {
+    removeCookie("token");
+    removeCookie("username");
+    removeCookie("id");
+    removeCookie("avatar");
+    dispatch({ type: "LOGOUT" });
+    Router.push("/");
+  };
+
+  // if the user does not have an avatar use the placeholder
+  // set the user's avatar as the one obtained from the API
+  var accountImg =
+    user.avatar === "" ? (
+      <img src="/static/account.svg" width="24px" />
+    ) : (
+      <HeaderAvatar src={API_URL + user.avatar} width="20px" />
+    );
+
   return (
     <AccountNavigationWrapper>
       {/* if the user is not logged in display the login + signup links */}
-      {!isAuthenticated && (
+      {!user.isLoggedIn && (
         <React.Fragment>
           <MobileWrapper>
             <NavigationDropdown
@@ -157,7 +156,7 @@ const AccountNavigation = ({
       )}
 
       {/* if the user is logged in display the links regarding the users account */}
-      {isAuthenticated && (
+      {user.isLoggedIn && (
         <React.Fragment>
           <DesktopButtons>
             <NavigationDropdown
@@ -207,56 +206,68 @@ const AccountNavigation = ({
               rightAlign={true}
             >
               <ul>
-                <p>{t("notification-centre")}</p>
-                <li>
+                <DropdownHeader>
+                  Notification Centre
                   <Link href="/notifications">
                     <a>{t("all-notifications")}</a>
                   </Link>
-                </li>
+                </DropdownHeader>
               </ul>
             </NavigationDropdown>
           </DesktopButtons>
           <NavigationDropdown button={accountImg} rightAlign={true}>
             <ul>
-              <p>{t("signed-in-as")}</p>
-              <li>
-                <Link href="/profile">
-                  <a>{username}</a>
+              <DropdownHeader>
+                Signed in as
+                <Link href={`/user?id=${user.id}`}>
+                  <a>{user.username}</a>
                 </Link>
-              </li>
-              <StyledHr></StyledHr>
+              </DropdownHeader>
+              <ListDivider />
               <li>
-                <Link href="/stream">
-                  <a>{t("my-stream")}</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/myevents">
-                  <a>{t("my-events")}</a>
+                <Link href={`/user?id=${user.id}`}>
+                  <a>My stream</a>
                 </Link>
               </li>
               <li>
-                <Link href="/mytopics">
-                  <a>{t("my-topics")}</a>
+                <Link
+                  href={"/userevents?id=" + user.id}
+                  as={"/user?id=" + user.id + "/events"}
+                >
+                  <a>My events</a>
                 </Link>
               </li>
               <li>
-                <Link href="/mygroups">
-                  <a>{t("my-groups")}</a>
+                <Link
+                  href={"/usertopics?id=" + user.id}
+                  as={"/user?id=" + user.id + "/topics"}
+                >
+                  <a>My topics</a>
                 </Link>
               </li>
               <li>
-                <Link href="/myinformation">
-                  <a>{t("my-information")}</a>
+                <Link
+                  href={"/usergroups?id=" + user.id}
+                  as={"/user?id=" + user.id + "/groups"}
+                >
+                  <a>My groups</a>
                 </Link>
               </li>
-              <StyledHr></StyledHr>
+              <li>
+                <Link
+                  href={"/userinformation?id=" + user.id}
+                  as={"/user?id=" + user.id + "/information"}
+                >
+                  <a>My information</a>
+                </Link>
+              </li>
+              <ListDivider />
               <li>
                 <Link href="/following">
                   <a>{t("following")}</a>
                 </Link>
               </li>
-              <StyledHr></StyledHr>
+              <ListDivider />
               <li>
                 <Link href="/settings">
                   <a>{t("settings")}</a>
@@ -267,9 +278,9 @@ const AccountNavigation = ({
                   <a>{t("edit-profile")}</a>
                 </Link>
               </li>
-              <StyledHr></StyledHr>
-              <li onClick={deauthenticate}>
-                <a>{t("log-out")}</a>
+              <ListDivider />
+              <li onClick={logout}>
+                <a>Log out</a>
               </li>
             </ul>
           </NavigationDropdown>

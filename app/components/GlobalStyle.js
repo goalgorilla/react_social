@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import theme from "./Theme";
+import theme from "./themes/theme.js";
 import { deviceMaxWidth } from "../utils/device";
 
 // A styled components GlobalStyle file. Used for applying a styles globally across the app.
@@ -8,6 +8,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     min-height: 100%;
     background: ${theme.color.background.secondary};
+    color: ${theme.color.foreground.primary};
     font-family: ${theme.font.family};
     font-weight: ${theme.font.weight.light};
     -webkit-font-smoothing: antialiased;

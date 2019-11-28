@@ -7,7 +7,6 @@ const CardFooter = styled.div`
   background-color: ${props => props.theme.color.background.secondary};
   font-size: ${props => props.theme.font.size.default};
   font-weight: ${props => props.theme.font.weight.light};
-  color: ${props => props.theme.color.foreground.primary};
 `;
 
 export default CardFooter;

@@ -97,12 +97,7 @@ const NavWrapper = styled.div`
   }
 `;
 
-const Header = ({
-  isAuthenticated,
-  deauthenticate,
-  username,
-  profileImage
-}) => (
+const Header = () => (
   <Wrapper>
     <Logo></Logo>
     <NavWrapper>
@@ -126,13 +121,8 @@ const Header = ({
         </a>
       </NavRow>
       <NavRow>
-        <NavigationList isAuthenticated={isAuthenticated}></NavigationList>
-        <AccountNavigation
-          isAuthenticated={isAuthenticated}
-          deauthenticate={deauthenticate}
-          username={username}
-          profileImage={profileImage}
-        ></AccountNavigation>
+        <NavigationList />
+        <AccountNavigation />
       </NavRow>
     </NavWrapper>
   </Wrapper>

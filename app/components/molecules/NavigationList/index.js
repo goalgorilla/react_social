@@ -8,6 +8,7 @@ import ExploreList from "../ExploreList";
 import { deviceMinWidth, deviceMaxWidth } from "../../../utils/device";
 import { withTranslation } from "../../../i18n";
 import SearchBar from "../SearchBar";
+import ListDivider from "../../atoms/ListDivider";
 
 // This NavigationList component contains the list of links the user can use to traverse the site. It is used in the header.
 const NavBar = styled.ul`
