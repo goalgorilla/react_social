@@ -10,7 +10,7 @@ import { getCookie } from "../utils/cookie";
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     // Initial userContext state
-    let props = {
+    let userData = {
       isLoggedIn: false,
       token: "",
       username: "",
@@ -20,7 +20,7 @@ class MyApp extends App {
     // Get userContext state from cookies
     if ((ctx.isServer && ctx.req.headers.cookie) || !ctx.isServer) {
       if (getCookie("token", ctx.req)) {
-        props = {
+        userData = {
           isLoggedIn: true,
           token: getCookie("token", ctx.req),
           username: getCookie("username", ctx.req),
@@ -30,8 +30,8 @@ class MyApp extends App {
       }
     }
     return {
+      userData,
       pageProps: {
-        ...props,
         ...(Component.getInitialProps
           ? await Component.getInitialProps(ctx)
           : {})
@@ -40,10 +40,10 @@ class MyApp extends App {
   }
   // render the app with the user provider, theme and globalstyle
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, userData } = this.props;
     return (
       <ThemeProvider theme={theme}>
-        <UserProvider state={pageProps}>
+        <UserProvider state={userData}>
           <Component {...pageProps} />
           <GlobalStyle />
         </UserProvider>
