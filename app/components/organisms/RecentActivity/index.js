@@ -24,6 +24,10 @@ const Row = styled.div`
   width: 100%;
 `;
 
+const StyledTextButton = styled(TextButton)`
+  margin-top: 30px;
+`;
+
 const RecentActivity = props => {
   switch (props.activity) {
     case "events":
@@ -42,9 +46,9 @@ const RecentActivity = props => {
             <ActivityField></ActivityField>
           </Row>
           <Row>
-            <TextButton onClick={() => props.setActivePanel("events")}>
+            <StyledTextButton onClick={() => props.setActivePanel("events")}>
               See all events of this member
-            </TextButton>
+            </StyledTextButton>
           </Row>
         </Container>
       );
@@ -64,9 +68,9 @@ const RecentActivity = props => {
             <ActivityField></ActivityField>
           </Row>
           <Row>
-            <TextButton onClick={() => props.setActivePanel("topics")}>
+            <StyledTextButton onClick={() => props.setActivePanel("topics")}>
               See all topics of this member
-            </TextButton>
+            </StyledTextButton>
           </Row>
         </Container>
       );
@@ -86,9 +90,9 @@ const RecentActivity = props => {
             <ActivityField></ActivityField>
           </Row>
           <Row>
-            <TextButton onClick={() => props.setActivePanel("groups")}>
+            <StyledTextButton onClick={() => props.setActivePanel("groups")}>
               See all groups of this member
-            </TextButton>
+            </StyledTextButton>
           </Row>
         </Container>
       );

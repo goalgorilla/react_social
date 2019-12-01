@@ -6,6 +6,7 @@ import { deviceMinWidth, deviceMaxWidth } from "../../../utils/device";
 import StyledHr from "../../atoms/StyledHr";
 import UserStats from "../UserStats";
 import TextButton from "../../atoms/TextButton";
+import Link from "next/link";
 
 // A card component to contain content - used, for example, for the login page's form.
 const StyledUserCard = styled.div`
@@ -81,6 +82,18 @@ const PrivateMessageButton = styled(Button)`
   }
 `;
 
+const EditProfileButton = styled(Button)`
+  background: ${props => props.theme.color.background.primary};
+  color: ${props => props.theme.color.text.one};
+  font-size: ${props => props.theme.font.size.medium};
+  border-color: ${props => props.theme.color.text.one};
+  outline-color: ${props => props.theme.color.text.one};
+  box-shadow: none;
+  &:hover {
+    background: ${props => props.theme.color.background.primary};
+  }
+`;
+
 const Hr = styled(StyledHr)`
   display: none;
 
@@ -91,23 +104,45 @@ const Hr = styled(StyledHr)`
   }
 `;
 
-const UserCard = props => (
-  <StyledUserCard>
-    <ProfileImage src="https://api.master-7rqtwti-jmqq2w45dtvdy.eu-4.platformsh.site/sites/default/files/chrishall.jpg" />
-    <FirstName>Justine</FirstName>
-    <LastName>Marshall</LastName>
-    <TwitterHandle>(@twitterhandle)</TwitterHandle>
-    <UserRole>Director at Tokyo Book Association</UserRole>
-    <Hr></Hr>
-    <UserStats />
-    <PrivateMessageButton>
-      <b>Private message</b>
-    </PrivateMessageButton>
-    <TextButton onClick={() => props.setActivePanel("information")}>
-      See full profile of this member
-    </TextButton>
-  </StyledUserCard>
-);
+const StyledTextButton = styled(TextButton)`
+  margin-top: 30px;
+`;
+
+function UserCard(props) {
+  // if the profile belongs to the logged in user render the editprofile button
+  let profileButton;
+  if (props.loggedInUserId == props.profileId) {
+    profileButton = (
+      <Link href="/editprofile">
+        <EditProfileButton>
+          <b>Edit profile</b>
+        </EditProfileButton>
+      </Link>
+    );
+  } else {
+    profileButton = (
+      <PrivateMessageButton>
+        <b>Private message</b>
+      </PrivateMessageButton>
+    );
+  }
+
+  return (
+    <StyledUserCard>
+      <ProfileImage src="https://api.master-7rqtwti-jmqq2w45dtvdy.eu-4.platformsh.site/sites/default/files/chrishall.jpg" />
+      <FirstName>Justine</FirstName>
+      <LastName>Marshall</LastName>
+      <TwitterHandle>(@twitterhandle)</TwitterHandle>
+      <UserRole>Director at Tokyo Book Association</UserRole>
+      <Hr></Hr>
+      <UserStats />
+      {profileButton}
+      <StyledTextButton onClick={() => props.setActivePanel("information")}>
+        See full profile of this member
+      </StyledTextButton>
+    </StyledUserCard>
+  );
+}
 
 UserCard.defaultProps = {};
 
