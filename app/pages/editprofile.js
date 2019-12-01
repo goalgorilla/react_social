@@ -51,9 +51,7 @@ function Editprofile({ id }) {
       <Form onSubmit={handleSubmit}>
         {/* Names and profile image card */}
         <StyledCard>
-          <CardHeader>
-            <div>Names and profile image</div>
-          </CardHeader>
+          <CardHeader>Names and profile image</CardHeader>
           <CardBody>
             <BlockFormField>
               <Label>First name</Label>
@@ -77,9 +75,7 @@ function Editprofile({ id }) {
         </StyledCard>
         {/* Function and organization card */}
         <StyledCard>
-          <CardHeader>
-            <div>Function and organization</div>
-          </CardHeader>
+          <CardHeader>Function and organization</CardHeader>
           <CardBody>
             <BlockFormField>
               <Label>Function</Label>
@@ -93,9 +89,7 @@ function Editprofile({ id }) {
         </StyledCard>
         {/* Phone number and location */}
         <StyledCard>
-          <CardHeader>
-            <div>Phone number and location</div>
-          </CardHeader>
+          <CardHeader>Phone number and location</CardHeader>
           <CardBody>
             <BlockFormField>
               <Label>Phone number</Label>
@@ -109,9 +103,7 @@ function Editprofile({ id }) {
         </StyledCard>
         {/* Self introduction, experise and interests card */}
         <StyledCard>
-          <CardHeader>
-            <div>Self introduction, experise and interests</div>
-          </CardHeader>
+          <CardHeader>Self introduction, experise and interests</CardHeader>
           <CardBody>
             <BlockFormField>
               <Label>Self introduction</Label>
