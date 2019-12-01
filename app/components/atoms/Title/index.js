@@ -1,5 +1,4 @@
-import React from "react";
-import styled from "styled-components";
+import styled from 'styled-components';
 
 // A basic title component - used, for example, for page titles
 const StyledTitle = styled.h2`

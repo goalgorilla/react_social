@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { Youtube } from "styled-icons/fa-brands/Youtube";
+import React from 'react';
+import styled from 'styled-components';
+import {Youtube} from 'styled-icons/fa-brands/Youtube';
 
 // Youtube social media button - used, for example, in the footer
 const StyledYoutube = styled(Youtube)`

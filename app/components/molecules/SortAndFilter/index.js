@@ -1,5 +1,6 @@
-import styled from "styled-components";
-import RaisedButton from "../../atoms/RaisedButton";
+import React from 'react';
+import styled from 'styled-components';
+import RaisedButton from '../../atoms/RaisedButton';
 
 const Container = styled.div`
   display: flex;
@@ -18,14 +19,25 @@ const Container = styled.div`
   & > * {
     flex: 50%;
   }
-  
 `;
 
 function SortAndFilter() {
   return (
     <Container>
-      <RaisedButton radius="small" paddingHorizontal="xl" paddingVertical="large"><strong>Sort</strong></RaisedButton>
-      <RaisedButton radius="small" paddingHorizontal="xl" paddingVertical="large"><strong>Filter</strong></RaisedButton>
+      <RaisedButton
+        radius="small"
+        paddingHorizontal="xl"
+        paddingVertical="large"
+      >
+        <strong>Sort</strong>
+      </RaisedButton>
+      <RaisedButton
+        radius="small"
+        paddingHorizontal="xl"
+        paddingVertical="large"
+      >
+        <strong>Filter</strong>
+      </RaisedButton>
     </Container>
   );
 }

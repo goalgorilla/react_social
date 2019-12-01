@@ -1,23 +1,25 @@
-import styled from "styled-components";
-import { deviceMaxWidth } from "../../../utils/device";
-import Title from "../../atoms/Title";
-import Card from "../../organisms/Card";
-import CardBody from "../../atoms/CardBody";
-import HorizontalLine from "../../atoms/HorizontalLine";
-import InfoTitle from "../../atoms/InfoTitle";
-import InfoRow from "../InfoRow";
-import BadgeContainer from "../BadgeContainer";
-import Badge from "../../atoms/Badge/";
+import React from 'react';
+import styled from 'styled-components';
+import Title from '../../atoms/Title';
+import Card from '../../organisms/Card';
+import CardBody from '../../atoms/CardBody';
+import HorizontalLine from '../../atoms/HorizontalLine';
+import InfoTitle from '../../atoms/InfoTitle';
+import InfoRow from '../InfoRow';
+import BadgeContainer from '../BadgeContainer';
+import Badge from '../../atoms/Badge/';
 
 const StyledHorizontalLine = styled(HorizontalLine)`
   margin: 10px 0;
 `;
 
-const Container = styled.div(props => `
+const Container = styled.div(
+  props => `
   margin-top: calc(${props.theme.layout.profile.navHeight} + 20px);
-`);
+`,
+);
 
-function ProfileInformation(props) {
+function ProfileInformation() {
   return (
     <Container>
       <Title>Information</Title>
@@ -26,17 +28,17 @@ function ProfileInformation(props) {
           <InfoRow>
             <InfoTitle>Introduction</InfoTitle>
             <p>
-              sdfhj ksdhf kshfdk shfskdjfhsdfdhsjfhksdjhfks dhs f skdjfhdks
-              fdhs fsdhkf ksdhjfdjks djksk hksdj hksh ksdjhfksjhsdfhj ksdhf
-              kshfdk shfskdjfhsdfdhsjfhksdjhfks dhs f skdjfhdks fdhs fsdhkf
-              ksdhjfdjks djksk hksdj hksh ksdjhfksjhsdfhj ksdhf kshfdk
-                <br />
+              sdfhj ksdhf kshfdk shfskdjfhsdfdhsjfhksdjhfks dhs f skdjfhdks fdhs
+              fsdhkf ksdhjfdjks djksk hksdj hksh ksdjhfksjhsdfhj ksdhf kshfdk
+              shfskdjfhsdfdhsjfhksdjhfks dhs f skdjfhdks fdhs fsdhkf ksdhjfdjks
+              djksk hksdj hksh ksdjhfksjhsdfhj ksdhf kshfdk
               <br />
-              shfskdjfhsdfdhsjfhksdjhfks dhs f skdjfhdks fdhs fsdhkf
-              ksdhjfdjks djksk hksdj hksh ksdjhfksjh sdfhj ksdhf kshfdk
-              shfskdjfhsdfdhsjfhksdjhfks dhs f skdjfhdks fdhs fsdhkf
-              ksdhjfdjks djksk hksdj hksh ksdjhfksjh
-              </p>
+              <br />
+              shfskdjfhsdfdhsjfhksdjhfks dhs f skdjfhdks fdhs fsdhkf ksdhjfdjks
+              djksk hksdj hksh ksdjhfksjh sdfhj ksdhf kshfdk
+              shfskdjfhsdfdhsjfhksdjhfks dhs f skdjfhdks fdhs fsdhkf ksdhjfdjks
+              djksk hksdj hksh ksdjhfksjh
+            </p>
           </InfoRow>
 
           <StyledHorizontalLine />

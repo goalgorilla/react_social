@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 // A footer for the card component
 const CardFooter = styled.div`

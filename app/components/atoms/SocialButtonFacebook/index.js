@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { Facebook } from "styled-icons/boxicons-logos/Facebook";
+import React from 'react';
+import styled from 'styled-components';
+import {Facebook} from 'styled-icons/boxicons-logos/Facebook';
 
 // Facebook social media button - used, for example, in the footer
 const StyledFacebook = styled(Facebook)`

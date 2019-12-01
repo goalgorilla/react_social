@@ -1,36 +1,37 @@
-import React, { useReducer, useContext } from "react";
+import React, {useReducer, useContext} from 'react';
+import PropTypes from 'prop-types';
 
 const UserStateContext = React.createContext();
 const UserDispatchContext = React.createContext();
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "LOGIN":
+    case 'LOGIN':
       return {
         isLoggedIn: true,
         token: action.payload.token,
         username: action.payload.username,
         id: action.payload.id,
         avatar: action.payload.avatar,
-        error: ""
+        error: '',
       };
-    case "LOGIN_ERROR":
+    case 'LOGIN_ERROR':
       return {
         isLoggedIn: false,
-        token: "",
-        username: "",
-        id: "",
-        avatar: "",
-        error: action.payload.error
+        token: '',
+        username: '',
+        id: '',
+        avatar: '',
+        error: action.payload.error,
       };
-    case "LOGOUT":
+    case 'LOGOUT':
       return {
         isLoggedIn: false,
-        token: "",
-        username: "",
-        id: "",
-        avatar: "",
-        error: ""
+        token: '',
+        username: '',
+        id: '',
+        avatar: '',
+        error: '',
       };
     default:
       throw new Error(`Unknown action: ${action.type}`);
@@ -44,7 +45,7 @@ export const UserProvider = props => {
     username: props.state.username,
     id: props.state.id,
     avatar: props.state.avatar,
-    error: ""
+    error: '',
   });
   return (
     <UserDispatchContext.Provider value={dispatch}>
@@ -53,6 +54,17 @@ export const UserProvider = props => {
       </UserStateContext.Provider>
     </UserDispatchContext.Provider>
   );
+};
+
+UserProvider.propTypes = {
+  state: PropTypes.shape({
+    isLoggedIn: PropTypes.bool,
+    token: PropTypes.string,
+    username: PropTypes.string,
+    id: PropTypes.string,
+    avatar: PropTypes.string,
+  }),
+  children: PropTypes.node,
 };
 
 export const useUser = () => useContext(UserStateContext);

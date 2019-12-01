@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 // A component to style a form field (label + input + input description) as inline
 const InlineFormField = styled.div`

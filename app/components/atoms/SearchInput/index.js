@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 // An input field component used for search
 const StyledInput = styled.input`
@@ -20,12 +20,12 @@ const StyledInput = styled.input`
   }
 `;
 
-const SearchInput = ({ placeholder }) => {
-  return <StyledInput placeholder={placeholder}></StyledInput>;
+const SearchInput = ({placeholder}) => {
+  return <StyledInput placeholder={placeholder} />;
 };
 
-SearchInput.defaultProps = {};
-
-SearchInput.propTypes = {};
+SearchInput.propTypes = {
+  placeholder: PropTypes.string,
+};
 
 export default SearchInput;

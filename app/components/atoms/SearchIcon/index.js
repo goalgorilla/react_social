@@ -1,6 +1,5 @@
-import React from "react";
-import styled from "styled-components";
-import PropTypes from "prop-types";
+import React from 'react';
+import styled from 'styled-components';
 
 // A search icon that can be used in a SearchInput component to indicate the input field is used for search
 const StyledImg = styled.img`
@@ -15,13 +14,9 @@ const StyledSpan = styled.span`
 const SearchIcon = () => {
   return (
     <StyledSpan>
-      <StyledImg src="/static/search.svg" width="24px"></StyledImg>
+      <StyledImg src="/static/search.svg" width="24px" />
     </StyledSpan>
   );
 };
-
-SearchIcon.defaultProps = {};
-
-SearchIcon.propTypes = {};
 
 export default SearchIcon;

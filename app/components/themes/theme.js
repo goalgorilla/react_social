@@ -1,9 +1,9 @@
-import color from "./variables/colors";
-import components from "./variables/components";
-import font from "./variables/font";
-import layout from "./variables/layout";
-import button from "./variables/button";
-import badge from "./variables/badge";
+import color from './variables/colors';
+import components from './variables/components';
+import font from './variables/font';
+import layout from './variables/layout';
+import button from './variables/button';
+import badge from './variables/badge';
 
 // A file containing all the styling variables for the styled-components theme
 const theme = {
@@ -12,7 +12,7 @@ const theme = {
   font,
   layout,
   button,
-  badge
+  badge,
 };
 
 export default theme;

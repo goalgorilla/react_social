@@ -1,13 +1,13 @@
 // resource for handling cookies taken from here:
 // https://github.com/carlos-peru/next-with-api/blob/master/lib/session.js
 
-import cookie from "js-cookie";
+import cookie from 'js-cookie';
 
 export const setCookie = (key, value) => {
   if (process.browser) {
     cookie.set(key, value, {
       expires: 1,
-      path: "/"
+      path: '/',
     });
   }
 };
@@ -15,15 +15,9 @@ export const setCookie = (key, value) => {
 export const removeCookie = key => {
   if (process.browser) {
     cookie.remove(key, {
-      expires: 1
+      expires: 1,
     });
   }
-};
-
-export const getCookie = (key, req) => {
-  return process.browser
-    ? getCookieFromBrowser(key)
-    : getCookieFromServer(key, req);
 };
 
 const getCookieFromBrowser = key => {
@@ -35,10 +29,16 @@ const getCookieFromServer = (key, req) => {
     return undefined;
   }
   const rawCookie = req.headers.cookie
-    .split(";")
+    .split(';')
     .find(c => c.trim().startsWith(`${key}=`));
   if (!rawCookie) {
     return undefined;
   }
-  return rawCookie.split("=")[1];
+  return rawCookie.split('=')[1];
+};
+
+export const getCookie = (key, req) => {
+  return process.browser
+    ? getCookieFromBrowser(key)
+    : getCookieFromServer(key, req);
 };

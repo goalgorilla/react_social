@@ -1,34 +1,40 @@
-import Link from "next/link";
-import { withTranslation } from "../../../i18n";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Link from 'next/link';
+import {withTranslation} from '../../../i18n';
 
-const ExploreList = ({ t }) => (
+const ExploreList = ({t}) => (
   <ul>
     <li>
       <Link href="/community">
-        <a>{t("community")}</a>
+        <a>{t('community')}</a>
       </Link>
     </li>
     <li>
       <Link href="/groups">
-        <a>{t("all-groups")}</a>
+        <a>{t('all-groups')}</a>
       </Link>
     </li>
     <li>
       <Link href="/events">
-        <a>{t("all-events")}</a>
+        <a>{t('all-events')}</a>
       </Link>
     </li>
     <li>
       <Link href="/topics">
-        <a>{t("all-topics")}</a>
+        <a>{t('all-topics')}</a>
       </Link>
     </li>
     <li>
       <Link href="/members">
-        <a>{t("all-members")}</a>
+        <a>{t('all-members')}</a>
       </Link>
     </li>
   </ul>
 );
 
-export default withTranslation("header")(ExploreList);
+ExploreList.propTypes = {
+  t: PropTypes.func,
+};
+
+export default withTranslation('header')(ExploreList);

@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import Router from 'next/router';
 import {API_URL} from '../../../utils/constants';
 import NavigationDropdown from '../NavigationDropdown';
 import {deviceMinWidth} from '../../../utils/device';
 import ListDivider from '../../atoms/ListDivider';
 import DropdownHeader from '../../atoms/DropdownHeader';
 import Avatar from '../../atoms/Avatar';
-import Router from 'next/router';
 import {useUser, useDispatchUser} from '../../auth/userContext';
 import {removeCookie} from '../../../utils/cookie';
 import {withTranslation} from '../../../i18n';
@@ -98,7 +98,7 @@ const AccountNavigation = ({t}) => {
   const user = useUser();
   const dispatch = useDispatchUser();
 
-  const logout = event => {
+  const logout = () => {
     removeCookie('token');
     removeCookie('username');
     removeCookie('id');
@@ -109,11 +109,15 @@ const AccountNavigation = ({t}) => {
 
   // if the user does not have an avatar use the placeholder
   // set the user's avatar as the one obtained from the API
-  var accountImg =
+  const accountImg =
     user.avatar === '' ? (
-      <img src="/static/account.svg" width="24px" />
+      <img src="/static/account.svg" width="24px" alt="default avatar" />
     ) : (
-      <HeaderAvatar src={API_URL + user.avatar} width="20px" />
+      <HeaderAvatar
+        src={API_URL + user.avatar}
+        width="20px"
+        alt="user avatar"
+      />
     );
 
   return (
@@ -123,7 +127,13 @@ const AccountNavigation = ({t}) => {
         <React.Fragment>
           <MobileWrapper>
             <NavigationDropdown
-              button={<img src="/static/account.svg" width="24px" />}
+              button={
+                <img
+                  src="/static/account.svg"
+                  width="24px"
+                  alt="account menu"
+                />
+              }
             >
               <ul>
                 <li>
@@ -161,7 +171,13 @@ const AccountNavigation = ({t}) => {
         <React.Fragment>
           <DesktopButtons>
             <NavigationDropdown
-              button={<img src="/static/add.svg" width="20px" />}
+              button={
+                <img
+                  src="/static/add.svg"
+                  width="20px"
+                  alt="add content button"
+                />
+              }
               rightAlign={true}
             >
               <ul>
@@ -190,19 +206,27 @@ const AccountNavigation = ({t}) => {
             <li>
               <Link href="/user/groups">
                 <a>
-                  <img src="/static/group.svg" width="20px" />
+                  <img src="/static/group.svg" width="20px" alt="groups" />
                 </a>
               </Link>
             </li>
             <NavigationDropdown
               button={
-                <img src="/static/private message_no_new.svg" width="20px" />
+                <img
+                  src="/static/private message_no_new.svg"
+                  width="20px"
+                  alt="no new private message icon"
+                />
               }
               rightAlign={true}
-            ></NavigationDropdown>
+            />
             <NavigationDropdown
               button={
-                <img src="/static/notification_no new.svg" width="20px" />
+                <img
+                  src="/static/notification_no new.svg"
+                  width="20px"
+                  alt="no new notification icon"
+                />
               }
               rightAlign={true}
             >
@@ -232,32 +256,32 @@ const AccountNavigation = ({t}) => {
               </li>
               <li>
                 <Link
-                  href={'/userevents?id=' + user.id}
-                  as={'/user?id=' + user.id + '/events'}
+                  href={`/userevents?id=${user.id}`}
+                  as={`/user?id=${user.id}/events`}
                 >
                   <a>{t('my-events')}</a>
                 </Link>
               </li>
               <li>
                 <Link
-                  href={'/usertopics?id=' + user.id}
-                  as={'/user?id=' + user.id + '/topics'}
+                  href={`/usertopics?id=${user.id}`}
+                  as={`/user?id=${user.id}/topics`}
                 >
                   <a>{t('my-topics')}</a>
                 </Link>
               </li>
               <li>
                 <Link
-                  href={'/usergroups?id=' + user.id}
-                  as={'/user?id=' + user.id + '/groups'}
+                  href={`/usergroups?id=${user.id}`}
+                  as={`/user?id=${user.id}/groups`}
                 >
                   <a>{t('my-groups')}</a>
                 </Link>
               </li>
               <li>
                 <Link
-                  href={'/userinformation?id=' + user.id}
-                  as={'/user?id=' + user.id + '/information'}
+                  href={`/userinformation?id=${user.id}`}
+                  as={`/user?id=${user.id}/information`}
                 >
                   <a>{t('my-information')}</a>
                 </Link>
@@ -291,8 +315,8 @@ const AccountNavigation = ({t}) => {
   );
 };
 
-AccountNavigation.defaultProps = {};
-
-AccountNavigation.propTypes = {};
+AccountNavigation.propTypes = {
+  t: PropTypes.func,
+};
 
 export default withTranslation('header')(AccountNavigation);

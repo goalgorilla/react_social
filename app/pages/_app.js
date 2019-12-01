@@ -1,8 +1,8 @@
-import App, {Container} from 'next/app';
+import App from 'next/app';
 import React from 'react';
 import {ThemeProvider} from 'styled-components';
 import GlobalStyle from '../components/GlobalStyle';
-import theme from '../components/themes/theme.js';
+import theme from '../components/themes/theme';
 import {UserProvider} from '../components/auth/userContext';
 import {getCookie} from '../utils/cookie';
 import {appWithTranslation} from '../i18n';

@@ -1,12 +1,15 @@
-import styled from "styled-components";
-import Title from "../../atoms/Title";
-import SortAndFilter from "../../molecules/SortAndFilter";
-import Card from "../../organisms/Card";
-import CardBody from "../../atoms/CardBody";
+import React from 'react';
+import styled from 'styled-components';
+import Title from '../../atoms/Title';
+import SortAndFilter from '../../molecules/SortAndFilter';
+import Card from '../../organisms/Card';
+import CardBody from '../../atoms/CardBody';
 
-const Container = styled.div(props => `
+const Container = styled.div(
+  props => `
   margin-top: calc(${props.theme.layout.profile.navHeight} + 20px);
-`);
+`,
+);
 
 const HeaderRow = styled.div`
   display: flex;
@@ -23,7 +26,7 @@ const Reset = styled.p`
   color: ${props => props.theme.color.brand.primary};
 `;
 
-function ProfileTopics(props) {
+function ProfileTopics() {
   const count = 0;
   return (
     <Container>

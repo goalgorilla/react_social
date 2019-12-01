@@ -1,5 +1,6 @@
-import { i18n } from "../../../i18n";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
+import {i18n} from '../../../i18n';
 
 const StyledHr = styled.hr`
   margin: 0 0.625rem 0 0.625rem;
@@ -9,18 +10,25 @@ const StyledHr = styled.hr`
   padding: 0;
 `;
 
-// Language list contents
-function languageList(props) {
-  //   const [currentLanguage, setCurrentLanguage] = useState("");
+const changeLang = (e, language) => {
+  e.preventDefault();
+  i18n.changeLanguage(language);
+};
 
+// Language list contents
+function languageList() {
   return (
     <React.Fragment>
-      <li onClick={() => i18n.changeLanguage("en")}>
-        <a>English&nbsp; {i18n.language == "en" && "(current)"}</a>
+      <li>
+        <a onClick={e => changeLang(e, 'en')}>
+          English&nbsp; {i18n.language == 'en' && '(current)'}
+        </a>
       </li>
-      <StyledHr></StyledHr>
-      <li onClick={() => i18n.changeLanguage("nl")}>
-        <a>Dutch&nbsp; {i18n.language == "nl" && "(current)"}</a>
+      <StyledHr />
+      <li>
+        <a onClick={e => changeLang(e, 'nl')}>
+          Dutch&nbsp; {i18n.language == 'nl' && '(current)'}
+        </a>
       </li>
     </React.Fragment>
   );

@@ -1,8 +1,8 @@
-const NextI18Next = require("next-i18next").default;
+const NextI18Next = require('next-i18next').default;
 
 module.exports = new NextI18Next({
-  defaultLanguage: "en",
-  otherLanguages: ["nl"]
+  defaultLanguage: 'en',
+  otherLanguages: ['nl'],
 });
 
 // const NextI18NextInstance = new NextI18Next({

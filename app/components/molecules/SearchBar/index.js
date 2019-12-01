@@ -1,8 +1,8 @@
-import React from "react";
-import SearchIcon from "../../atoms/SearchIcon";
-import SearchInput from "../../atoms/SearchInput";
-import styled from "styled-components";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import SearchIcon from '../../atoms/SearchIcon';
+import SearchInput from '../../atoms/SearchInput';
 
 // A search bar - consists of an input field and a search icon
 const Wrapper = styled.div`
@@ -13,17 +13,17 @@ const Wrapper = styled.div`
   margin: -0.625rem 1.25rem 0 -0.625rem;
 `;
 
-const SearchBar = ({ placeholder }) => {
+const SearchBar = ({placeholder}) => {
   return (
     <Wrapper>
-      <SearchInput placeholder={placeholder}></SearchInput>
-      <SearchIcon></SearchIcon>
+      <SearchInput placeholder={placeholder} />
+      <SearchIcon />
     </Wrapper>
   );
 };
 
-SearchBar.defaultProps = {};
-
-SearchBar.propTypes = {};
+SearchBar.propTypes = {
+  placeholder: PropTypes.string,
+};
 
 export default SearchBar;

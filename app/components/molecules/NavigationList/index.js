@@ -1,14 +1,13 @@
-import React from "react";
-import styled from "styled-components";
-import PropTypes from "prop-types";
-import Link from "next/link";
-import NavigationDropdown from "../NavigationDropdown";
-import LanguageList from "../LanguageList";
-import ExploreList from "../ExploreList";
-import { deviceMinWidth, deviceMaxWidth } from "../../../utils/device";
-import { withTranslation } from "../../../i18n";
-import SearchBar from "../SearchBar";
-import ListDivider from "../../atoms/ListDivider";
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import Link from 'next/link';
+import NavigationDropdown from '../NavigationDropdown';
+import LanguageList from '../LanguageList';
+import ExploreList from '../ExploreList';
+import {deviceMinWidth, deviceMaxWidth} from '../../../utils/device';
+import {withTranslation} from '../../../i18n';
+import SearchBar from '../SearchBar';
 
 // This NavigationList component contains the list of links the user can use to traverse the site. It is used in the header.
 const NavBar = styled.ul`
@@ -80,30 +79,36 @@ const DesktopWrapper = styled.div`
   }
 `;
 
-const NavigationList = ({ t }) => {
+const NavigationList = ({t}) => {
   return (
     <NavBar>
       {/* Mobile NavList */}
       <MobileWrapper>
         {/* Mobile translation button & dropdown */}
         <NavigationDropdown
-          button={<img src="/static/translate.svg" width="20px" />}
+          button={
+            <img
+              src="/static/translate.svg"
+              width="20px"
+              alt="translation button"
+            />
+          }
         >
           <ul>
-            <SearchBar
-              placeholder={t("language-search-placeholder")}
-            ></SearchBar>
+            <SearchBar placeholder={t('language-search-placeholder')} />
             <LanguageList />
           </ul>
         </NavigationDropdown>
         {/* Mobile hamburger button & dropdown */}
         <NavigationDropdown
-          button={<img src="/static/hamburger.svg" width="20px" />}
+          button={
+            <img src="/static/hamburger.svg" width="20px" alt="mobile menu" />
+          }
         >
           <ul>
             <li>
               <Link href="/">
-                <a>{t("home")}</a>
+                <a>{t('home')}</a>
               </Link>
             </li>
             {/* Nested explore dropdown inside hamburger menu */}
@@ -111,8 +116,12 @@ const NavigationList = ({ t }) => {
               title={
                 <li>
                   <a>
-                    {t("explore")}
-                    <img src="/static/dropdown.svg" width="20px" />
+                    {t('explore')}
+                    <img
+                      src="/static/dropdown.svg"
+                      width="20px"
+                      alt="dropdown caret"
+                    />
                   </a>
                 </li>
               }
@@ -127,25 +136,25 @@ const NavigationList = ({ t }) => {
         <ul>
           <li>
             <Link href="/">
-              <a>{t("home")}</a>
+              <a>{t('home')}</a>
             </Link>
           </li>
           {/* Desktop explore dropdown */}
-          <NavigationDropdown button={t("explore")}>
+          <NavigationDropdown button={t('explore')}>
             <ExploreList />
           </NavigationDropdown>
         </ul>
       </DesktopWrapper>
       {/* Search button */}
       <NavigationDropdown
-        button={<img src="/static/search.svg" width="24px" />}
-      ></NavigationDropdown>
+        button={<img src="/static/search.svg" width="24px" alt="search icon" />}
+      />
     </NavBar>
   );
 };
 
-NavigationList.defaultProps = {};
+NavigationList.propTypes = {
+  t: PropTypes.func,
+};
 
-NavigationList.propTypes = {};
-
-export default withTranslation("header")(NavigationList);
+export default withTranslation('header')(NavigationList);

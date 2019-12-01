@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 // InfoTitle is used on the information panel on the profile page. It is used to title a row of information (e.g Introduction, email..)
 const InfoTitle = styled.h5`

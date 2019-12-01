@@ -1,7 +1,7 @@
-import React from "react";
-import Link from "next/link";
-import styled from "styled-components";
-import { deviceMinWidth } from "../../../utils/device";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import {deviceMinWidth} from '../../../utils/device';
 
 // This component is used for dropdown menus in the Header.
 const Wrapper = styled.div`
@@ -55,8 +55,8 @@ const Wrapper = styled.div`
     position: relative;
     ul {
       position: absolute;
-      right: ${props => (props.rightAlign ? "0" : "auto")};
-      left: ${props => (props.rightAlign ? "auto" : "0")};
+      right: ${props => (props.rightAlign ? '0' : 'auto')};
+      left: ${props => (props.rightAlign ? 'auto' : '0')};
       margin-top: 0.3125rem;
       width: auto;
       padding: 0.125rem 0 0.125rem 0;
@@ -103,8 +103,8 @@ const NavButton = styled.li`
         ? props.theme.color.background.primary
         : props.theme.color.brand.tertiary
       : props.navRowOne
-        ? "none"
-        : props.theme.color.brand.primary};
+      ? 'none'
+      : props.theme.color.brand.primary};
   cursor: pointer;
   list-style-type: none;
 `;
@@ -118,24 +118,24 @@ class NavigationDropdown extends React.Component {
     super(props);
     this.container = React.createRef();
     this.state = {
-      displayMenu: false
+      displayMenu: false,
     };
   }
 
   // Adds a listener for the user's clicks to run the handleClickOutside() method
   componentDidMount() {
-    document.addEventListener("mouseup", this.handleClickOutside);
+    document.addEventListener('mouseup', this.handleClickOutside);
   }
   // Removes the click listener when the component will unmount
   componentWillUnmount() {
-    document.removeEventListener("mouseup", this.handleClickOutside);
+    document.removeEventListener('mouseup', this.handleClickOutside);
   }
 
   // Toggles the display of the dropdown
   handleButtonClick = () => {
     this.setState(state => {
       return {
-        displayMenu: !state.displayMenu
+        displayMenu: !state.displayMenu,
       };
     });
   };
@@ -147,15 +147,12 @@ class NavigationDropdown extends React.Component {
       !this.container.current.contains(event.target)
     ) {
       this.setState({
-        displayMenu: false
+        displayMenu: false,
       });
     }
   };
 
   render() {
-    {
-      /* if a button is passed return this code block */
-    }
     if (this.props.button) {
       return (
         <div>
@@ -173,12 +170,9 @@ class NavigationDropdown extends React.Component {
             </NavButton>
             {this.state.displayMenu ? this.props.children : null}
           </Wrapper>
-          {this.state.displayMenu && <PageDim></PageDim>}
+          {this.state.displayMenu && <PageDim />}
         </div>
       );
-      {
-        /* if a title is passed return this code block */
-      }
     } else if (this.props.title) {
       return (
         <NavLink
@@ -191,7 +185,16 @@ class NavigationDropdown extends React.Component {
         </NavLink>
       );
     }
+    return null;
   }
 }
+
+NavigationDropdown.propTypes = {
+  button: PropTypes.node,
+  rightAlign: PropTypes.bool,
+  navRowOne: PropTypes.bool,
+  children: PropTypes.node,
+  title: PropTypes.node,
+};
 
 export default NavigationDropdown;

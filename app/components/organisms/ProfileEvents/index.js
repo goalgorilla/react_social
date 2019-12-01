@@ -1,12 +1,15 @@
-import styled from "styled-components";
-import Title from "../../atoms/Title";
-import SortAndFilter from "../../molecules/SortAndFilter";
-import Card from "../Card";
-import CardBody from "../../atoms/CardBody";
+import React from 'react';
+import styled from 'styled-components';
+import Title from '../../atoms/Title';
+import SortAndFilter from '../../molecules/SortAndFilter';
+import Card from '../Card';
+import CardBody from '../../atoms/CardBody';
 
-const Container = styled.div(props => `
+const Container = styled.div(
+  props => `
   margin-top: calc(${props.theme.layout.profile.navHeight} + 20px);
-`);
+`,
+);
 
 const HeaderRow = styled.div`
   display: flex;
@@ -24,7 +27,7 @@ const Reset = styled.p`
   cursor: pointer;
 `;
 
-function ProfileEvents(props) {
+function ProfileEvents() {
   const count = 0;
   return (
     <Container>

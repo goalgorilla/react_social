@@ -1,13 +1,16 @@
-import styled from "styled-components";
-import Title from "../../atoms/Title";
-import Card from "../../organisms/Card";
-import CardBody from "../../atoms/CardBody";
+import React from 'react';
+import styled from 'styled-components';
+import Title from '../../atoms/Title';
+import Card from '../../organisms/Card';
+import CardBody from '../../atoms/CardBody';
 
-const Container = styled.div(props => `
+const Container = styled.div(
+  props => `
   margin-top: calc(${props.theme.layout.profile.navHeight} + 20px);
-`);
+`,
+);
 
-function ProfileGroups(props) {
+function ProfileGroups() {
   const count = 0;
   return (
     <Container>

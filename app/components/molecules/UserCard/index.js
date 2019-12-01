@@ -1,9 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import PropTypes from "prop-types";
-import BaseButton from "../../atoms/BaseButton";
-import Avatar from "../../atoms/Avatar";
-import Card from "../../organisms/Card";
+import React from 'react';
+import styled from 'styled-components';
+import BaseButton from '../../atoms/BaseButton';
+import Avatar from '../../atoms/Avatar';
+import Card from '../../organisms/Card';
 
 const ProfileAvatar = styled(Avatar)`
   margin-top: -75px;

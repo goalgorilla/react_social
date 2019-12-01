@@ -1,6 +1,7 @@
-import styled from "styled-components";
-import { deviceMaxWidth } from "../../../utils/device";
-import Link from "next/link";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Link from 'next/link';
 
 const Menu = styled.ul`
   position: absolute;
@@ -34,14 +35,15 @@ const MenuItem = styled.li`
   height: 100%;
   display: flex;
   align-items: center;
-  
+
   a {
     color: white;
     font-size: 0.95rem;
     font-weight: ${props => props.theme.font.weight.bold};
     line-height: calc(${props => props.theme.layout.profile.navHeight});
-    opacity: ${props => (props.active ? "1" : "0.5")};
-    border-bottom: ${props => (props.active ? "3px solid white" : "3px solid transparent")};
+    opacity: ${props => (props.active ? '1' : '0.5')};
+    border-bottom: ${props =>
+      props.active ? '3px solid white' : '3px solid transparent'};
     cursor: pointer;
     text-decoration: none;
   }
@@ -55,47 +57,69 @@ function ProfileNavigationBar(props) {
   return (
     <Menu>
       <MenuItem
-        onClick={() => props.setCurrentTab("stream")}
-        active={props.currentTab === "stream"}
+        onClick={() => props.setCurrentTab('stream')}
+        active={props.currentTab === 'stream'}
       >
-        <Link href={"/user?id=" + props.userId} scroll={false}>
+        <Link href={`/user?id=${props.userId}`} scroll={false}>
           <a>Stream</a>
         </Link>
       </MenuItem>
       <MenuItem
-        onClick={() => props.setCurrentTab("events")}
-        active={props.currentTab === "events"}
+        onClick={() => props.setCurrentTab('events')}
+        active={props.currentTab === 'events'}
       >
-        <Link href={"/userevents?id=" + props.userId} as={"/user?id=" + props.userId + "/events"} scroll={false}>
+        <Link
+          href={`/userevents?id=${props.userId}`}
+          as={`/user?id=${props.userId}/events`}
+          scroll={false}
+        >
           <a>Events</a>
         </Link>
       </MenuItem>
       <MenuItem
-        onClick={() => props.setCurrentTab("topics")}
-        active={props.currentTab === "topics"}
+        onClick={() => props.setCurrentTab('topics')}
+        active={props.currentTab === 'topics'}
       >
-        <Link href={"/usertopics?id=" + props.userId} as={"/user?id=" + props.userId + "/topics"} scroll={false}>
+        <Link
+          href={`/usertopics?id=${props.userId}`}
+          as={`/user?id=${props.userId}/topics`}
+          scroll={false}
+        >
           <a>Topics</a>
         </Link>
       </MenuItem>
       <MenuItem
-        onClick={() => props.setCurrentTab("groups")}
-        active={props.currentTab === "groups"}
+        onClick={() => props.setCurrentTab('groups')}
+        active={props.currentTab === 'groups'}
       >
-        <Link href={"/usergroups?id=" + props.userId} as={"/user?id=" + props.userId + "/groups"} scroll={false}>
+        <Link
+          href={`/usergroups?id=${props.userId}`}
+          as={`/user?id=${props.userId}/groups`}
+          scroll={false}
+        >
           <a>Groups</a>
         </Link>
       </MenuItem>
       <MenuItem
-        onClick={() => props.setCurrentTab("information")}
-        active={props.currentTab === "information"}
+        onClick={() => props.setCurrentTab('information')}
+        active={props.currentTab === 'information'}
       >
-        <Link href={"/userinformation?id=" + props.userId} as={"/user?id=" + props.userId + "/information"} scroll={false}>
+        <Link
+          href={`/userinformation?id=${props.userId}`}
+          as={`/user?id=${props.userId}/information`}
+          scroll={false}
+        >
           <a>Information</a>
         </Link>
       </MenuItem>
     </Menu>
   );
 }
+
+ProfileNavigationBar.propTypes = {
+  userId: PropTypes.string,
+  setCurrentTab: PropTypes.string,
+  currentTab: PropTypes.string,
+};
 
 export default ProfileNavigationBar;

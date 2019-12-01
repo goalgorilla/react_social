@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const HorizontalLine = styled.hr`
   margin: 0;

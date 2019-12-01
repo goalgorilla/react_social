@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 // The body for the Card component
 const StyledProfileHero = styled.img`
@@ -20,7 +20,7 @@ const ProfileHeroContainer = styled.div`
 
 const ProfileHero = () => {
   const tempHero =
-    "https://images.unsplash.com/photo-1486411959861-41a3eb8da389?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80";
+    'https://images.unsplash.com/photo-1486411959861-41a3eb8da389?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80';
   return (
     <ProfileHeroContainer>
       <StyledProfileHero src={tempHero} alt="profile hero image" />

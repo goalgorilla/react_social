@@ -1,8 +1,8 @@
-import React from "react";
-import { storiesOf } from "@storybook/react";
-import Title from ".";
-import { withInfo } from "@storybook/addon-info";
+import React from 'react';
+import {storiesOf} from '@storybook/react';
+import {withInfo} from '@storybook/addon-info';
+import Title from '.';
 
-storiesOf("Title", module)
+storiesOf('Title', module)
   .addDecorator(withInfo)
-  .add("default", () => <Title>Log in</Title>);
+  .add('default', () => <Title>Log in</Title>);

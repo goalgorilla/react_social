@@ -1,7 +1,8 @@
+import React from 'react';
 import Layout from '../components/Layout';
 import {withTranslation} from '../i18n';
 
-const Index = ({t}) => {
+const Index = () => {
   return (
     <Layout title="Home | Open Social">
       <p>Home Page</p>
@@ -9,7 +10,7 @@ const Index = ({t}) => {
   );
 };
 
-Index.getInitialProps = async () => ({
+Index.getInitialProps = () => ({
   namespacesRequired: ['common', 'header'],
 });
 

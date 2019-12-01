@@ -1,5 +1,4 @@
-import React from "react";
-import styled from "styled-components";
+import styled from 'styled-components';
 
 // A header for the Card component
 const CardHeader = styled.div`

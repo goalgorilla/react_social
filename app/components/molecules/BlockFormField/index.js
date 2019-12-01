@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 // A component to style a form field (label + input + input description) as a block
 const BlockFormField = styled.div`

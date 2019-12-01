@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 // Badge are used to display users' expertise and interests
 const Badge = styled.div(
@@ -20,7 +20,7 @@ const Badge = styled.div(
   color: #4d4d4d;
   transition: 0.3s;
   border-radius: 1em;
-`
+`,
 );
 
 export default Badge;

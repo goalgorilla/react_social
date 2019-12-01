@@ -1,4 +1,7 @@
 import React, {useState, useEffect} from 'react';
+import styled from 'styled-components';
+import Router from 'next/router';
+import axios from 'axios';
 import Layout from '../components/Layout';
 import Card from '../components/organisms/Card';
 import CardHeader from '../components/atoms/CardHeader';
@@ -6,7 +9,6 @@ import CardBody from '../components/atoms/CardBody';
 import CardFooter from '../components/atoms/CardFooter';
 import Title from '../components/atoms/Title';
 import RaisedButton from '../components/atoms/RaisedButton';
-import styled from 'styled-components';
 import SystemMessage from '../components/atoms/SystemMessage';
 import BlockFormField from '../components/molecules/BlockFormField';
 import Label from '../components/atoms/Label';
@@ -14,15 +16,13 @@ import Input from '../components/atoms/Input';
 import InputDescription from '../components/atoms/InputDescription';
 import {withTranslation} from '../i18n';
 import {useUser, useDispatchUser} from '../components/auth/userContext';
-import {setCookie, removeCookie} from '../utils/cookie';
-import Router from 'next/router';
+import {setCookie} from '../utils/cookie';
 import {
   API_URL,
   GRANT_TYPE,
   CLIENT_ID,
   CLIENT_SECRET,
 } from '../utils/constants';
-import axios from 'axios';
 
 const Wrapper = styled.div`
   margin: auto;
@@ -38,7 +38,7 @@ const Form = styled.form`
   }
 `;
 
-function Login(props) {
+function Login() {
   const user = useUser();
   const dispatch = useDispatchUser();
 
@@ -52,7 +52,7 @@ function Login(props) {
     if (user.error && !error) {
       setError(true);
     }
-  });
+  }, [user.error, error]);
 
   const handleSubmit = e => {
     setError(false);
@@ -64,7 +64,7 @@ function Login(props) {
       avatar: '',
     };
 
-    var bodyFormData = new FormData();
+    const bodyFormData = new FormData();
     bodyFormData.set('grant_type', GRANT_TYPE);
     bodyFormData.set('client_id', CLIENT_ID);
     bodyFormData.set('client_secret', CLIENT_SECRET);
@@ -82,7 +82,7 @@ function Login(props) {
         // Obtain the user's id to be used for getting information about the user
         return axios.get(`${API_URL}/jsonapi`, {
           headers: {
-            Authorization: 'Bearer ' + token,
+            Authorization: `Bearer ${token}`,
           },
         });
       })
@@ -92,30 +92,31 @@ function Login(props) {
         data.id = id;
         setCookie('id', id);
         // Obtain the user's username using the user's id
-        return axios.get(`${API_URL}/jsonapi/user/user/` + id, {
+        return axios.get(`${API_URL}/jsonapi/user/user/${id}`, {
           headers: {
-            Authorization: 'Bearer ' + data.token,
+            Authorization: `Bearer ${data.token}`,
           },
         });
       })
       .then(response => {
         // store username
-        const username = decodeURI(response.data.data.attributes.name);
-        data.username = username;
-        setCookie('username', username);
+        const name = decodeURI(response.data.data.attributes.name);
+        data.username = name;
+        setCookie('username', name);
         // url to get avatar id
         const profileUrl =
           response.data.data.relationships.profile_profiles.links.related.href;
         // Obtain the user's avatar id
         return axios.get(profileUrl, {
           headers: {
-            Authorization: 'Bearer ' + data.token,
+            Authorization: `Bearer ${data.token}`,
           },
         });
       })
       .then(response => {
         // store user avatar id if it exists otherwise set as null
-        var avatarId = response.data.data.relationships.field_profile_image.data
+        const avatarId = response.data.data.relationships.field_profile_image
+          .data
           ? response.data.data.relationships.field_profile_image.data.id
           : false;
 
@@ -123,22 +124,21 @@ function Login(props) {
           return axios
             .get(`${API_URL}/jsonapi/file/file/${avatarId}`, {
               headers: {
-                Authorization: 'Bearer ' + data.token,
+                Authorization: `Bearer ${data.token}`,
               },
             })
-            .then(response => {
+            .then(avatarResponse => {
               // Store the avatar url
-              const imageUrl = response.data.data.attributes.uri.url;
+              const imageUrl = avatarResponse.data.data.attributes.uri.url;
               data.avatar = imageUrl;
               setCookie('avatar', imageUrl);
-              return;
             });
         } else {
           data.avatar = '';
           setCookie('avatar', '');
         }
       })
-      .then(response => {
+      .then(() => {
         dispatch({
           type: 'LOGIN',
           payload: data,
@@ -189,7 +189,7 @@ function Login(props) {
                   value={username}
                   onChange={e => setUsername(e.target.value)}
                   required
-                ></Input>
+                />
                 <InputDescription>
                   Enter your Open Social username or email.
                 </InputDescription>
@@ -202,7 +202,7 @@ function Login(props) {
                   value={password}
                   onChange={e => setPassword(e.target.value)}
                   required
-                ></Input>
+                />
                 <InputDescription link={true}>
                   Forgot your password?
                 </InputDescription>
@@ -229,7 +229,7 @@ function Login(props) {
   );
 }
 
-Login.getInitialProps = async () => ({
+Login.getInitialProps = () => ({
   namespacesRequired: ['common', 'header'],
 });
 

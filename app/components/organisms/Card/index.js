@@ -1,6 +1,5 @@
-import React from "react";
-import styled from "styled-components";
-import PropTypes from "prop-types";
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 // A card component to contain content - used, for example, for the login page's form.
 const Card = styled.div`
@@ -20,7 +19,7 @@ Card.propTypes = {
   /** object containing the header's content */
   header: PropTypes.object,
   /** object containing the footer's content */
-  footer: PropTypes.object
+  footer: PropTypes.object,
 };
 
 export default Card;

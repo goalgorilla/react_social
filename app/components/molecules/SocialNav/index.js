@@ -1,9 +1,10 @@
-import SocialButtonFacebook from "../../atoms/SocialButtonFacebook";
-import SocialButtonLinkedIn from "../../atoms/SocialButtonLinkedIn";
-import SocialButtonTwitter from "../../atoms/SocialButtonTwitter";
-import SocialButtonYoutube from "../../atoms/SocialButtonYoutube";
-import styled from "styled-components";
-import { deviceMaxWidth } from "../../../utils/device";
+import React from 'react';
+import styled from 'styled-components';
+import SocialButtonFacebook from '../../atoms/SocialButtonFacebook';
+import SocialButtonLinkedIn from '../../atoms/SocialButtonLinkedIn';
+import SocialButtonTwitter from '../../atoms/SocialButtonTwitter';
+import SocialButtonYoutube from '../../atoms/SocialButtonYoutube';
+import {deviceMaxWidth} from '../../../utils/device';
 
 // A navigation bar containing social media buttons/links
 const StyledSocialNav = styled.ul`

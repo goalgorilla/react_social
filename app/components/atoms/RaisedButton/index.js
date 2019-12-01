@@ -1,6 +1,5 @@
-import React from "react";
-import styled from "styled-components";
-import BaseButton from "../BaseButton";
+import styled from 'styled-components';
+import BaseButton from '../BaseButton';
 
 // RaisedButton component - Rectangular-shaped buttons that behave like a piece of
 // material resting on another sheet – they lift and fill with color on press.

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const DropdownHeader = styled.li(
   props => `
@@ -8,7 +8,7 @@ const DropdownHeader = styled.li(
   font-size: ${props.theme.font.size.verySmall};
   font-weight: 400;
   white-space: nowrap;
-`
+`,
 );
 
 export default DropdownHeader;

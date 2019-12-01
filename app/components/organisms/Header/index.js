@@ -1,12 +1,12 @@
-import React from "react";
-import styled from "styled-components";
-import Logo from "../../atoms/Logo";
-import NavigationList from "../../molecules/NavigationList";
-import AccountNavigation from "../../molecules/AccountNavigation";
-import NavigationDropdown from "../../molecules/NavigationDropdown";
-import LanguageList from "../../molecules/LanguageList";
-import { deviceMinWidth } from "../../../utils/device";
-import { i18n } from "../../../i18n";
+import React from 'react';
+import styled from 'styled-components';
+import Logo from '../../atoms/Logo';
+import NavigationList from '../../molecules/NavigationList';
+import AccountNavigation from '../../molecules/AccountNavigation';
+import NavigationDropdown from '../../molecules/NavigationDropdown';
+import LanguageList from '../../molecules/LanguageList';
+import {deviceMinWidth} from '../../../utils/device';
+import {i18n} from '../../../i18n';
 
 // The header of the website. Containing the navigation bars.
 const Wrapper = styled.div`
@@ -99,15 +99,23 @@ const NavWrapper = styled.div`
 
 const Header = () => (
   <Wrapper>
-    <Logo></Logo>
+    <Logo />
     <NavWrapper>
       <NavRow>
         <NavigationDropdown
           button={
             <React.Fragment>
-              <img src="/static/translate.svg" width="20px" />
+              <img
+                src="/static/translate.svg"
+                width="20px"
+                alt="translation icon"
+              />
               {i18n.language}
-              <img src="/static/dropdown.svg" width="20px" />
+              <img
+                src="/static/dropdown.svg"
+                width="20px"
+                alt="dropdown caret"
+              />
             </React.Fragment>
           }
           navRowOne={true}
@@ -116,7 +124,11 @@ const Header = () => (
             <LanguageList />
           </ul>
         </NavigationDropdown>
-        <a href="http://www.getopensocial.com" target="_blank">
+        <a
+          href="http://www.getopensocial.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           getopensocial.com
         </a>
       </NavRow>

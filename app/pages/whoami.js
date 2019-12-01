@@ -1,7 +1,5 @@
-import axios from 'axios';
-import initialize from '../utils/initialize';
+import React from 'react';
 import Layout from '../components/Layout';
-import {API_URL} from '../utils/constants';
 import {useUser} from '../components/auth/userContext';
 import {withTranslation} from '../i18n';
 
@@ -19,7 +17,7 @@ const Whoami = () => {
   );
 };
 
-Whoami.getInitialProps = async ctx => {
+Whoami.getInitialProps = () => {
   return {
     namespacesRequired: ['common', 'header'],
   };

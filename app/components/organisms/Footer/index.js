@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import Link from "next/link";
-import PropTypes from "prop-types";
-import { deviceMaxWidth } from "../../../utils/device";
-import SocialNav from "../../molecules/SocialNav";
+import React from 'react';
+import styled from 'styled-components';
+import Link from 'next/link';
+import PropTypes from 'prop-types';
+import {deviceMaxWidth} from '../../../utils/device';
+import SocialNav from '../../molecules/SocialNav';
 
 // The footer of the website, contains SocialNav, FooterNav and any children in the form of a <p> tag.
 const Wrapper = styled.div`
@@ -77,7 +77,7 @@ const FooterNav = styled.ul`
   }
 `;
 
-const Footer = ({ children }) => (
+const Footer = ({children}) => (
   <Wrapper>
     <FooterContent>
       <FooterNav>
@@ -100,8 +100,6 @@ const Footer = ({ children }) => (
   </Wrapper>
 );
 
-Footer.defaultProps = {};
-
-Footer.propTypes = {};
+Footer.propTypes = {children: PropTypes.node};
 
 export default Footer;

@@ -1,39 +1,39 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 // Retrieves button color attributes from /components/themes
-const getThemeMapper = namespace => ({ variant, theme }) => {
-  return typeof theme.button[namespace][variant] !== "undefined"
-    ? theme.button[namespace][variant]
-    : theme.button[namespace].default;
+const getThemeMapper = namespace => ({variant, theme}) => {
+  return typeof theme.button[namespace][variant] === 'undefined'
+    ? theme.button[namespace].default
+    : theme.button[namespace][variant];
 };
 
 // Color attributes
-const variantColor = getThemeMapper("color");
-const variantBgColor = getThemeMapper("bgColor");
-const variantBorderColor = getThemeMapper("borderColor");
+const variantColor = getThemeMapper('color');
+const variantBgColor = getThemeMapper('bgColor');
+const variantBorderColor = getThemeMapper('borderColor');
 
 // Other attributes
 const borderRadius = props => {
   switch (props.radius) {
-    case "base":
+    case 'base':
       return props.theme.components.borderRadiusBase;
-    case "small":
+    case 'small':
       return props.theme.components.borderRadiusSmall;
-    case "large":
+    case 'large':
       return props.theme.components.borderRadiusLarge;
     default:
-      return "0";
+      return '0';
   }
 };
 const paddingHorizontal = props => {
   switch (props.paddingHorizontal) {
-    case "xs":
+    case 'xs':
       return props.theme.components.paddingXsHorizontal;
-    case "small":
+    case 'small':
       return props.theme.components.paddingSmallHorizontal;
-    case "large":
+    case 'large':
       return props.theme.components.paddingLargeHorizontal;
-    case "xl":
+    case 'xl':
       return props.theme.components.paddingXlHorizontal;
     default:
       return props.theme.components.paddingBaseHorizontal;
@@ -41,11 +41,11 @@ const paddingHorizontal = props => {
 };
 const paddingVertical = props => {
   switch (props.paddingVertical) {
-    case "xs":
+    case 'xs':
       return props.theme.components.paddingXsVertical;
-    case "small":
+    case 'small':
       return props.theme.components.paddingSmallVertical;
-    case "large":
+    case 'large':
       return props.theme.components.paddingLargeVertical;
     default:
       return props.theme.components.paddingBaseVertical;

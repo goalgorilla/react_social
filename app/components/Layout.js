@@ -1,8 +1,10 @@
-import Head from "next/head";
-import styled from "styled-components";
-import Header from "./organisms/Header";
-import Footer from "./organisms/Footer";
-import { deviceMinWidth } from "../utils/device";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Head from 'next/head';
+import styled from 'styled-components';
+import {deviceMinWidth} from '../utils/device';
+import Header from './organisms/Header';
+import Footer from './organisms/Footer';
 
 /* Layout used by all pages, containing:
  - <head> data
@@ -26,7 +28,7 @@ const Wrapper = styled.div`
   min-height: 100vh;
 `;
 
-const Layout = ({ children, title }) => (
+const Layout = ({children, title}) => (
   <div>
     <Head>
       <title>{title}</title>
@@ -40,7 +42,7 @@ const Layout = ({ children, title }) => (
       <link
         href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap"
         rel="stylesheet"
-      ></link>
+      />
     </Head>
     <Wrapper>
       <Header />
@@ -49,5 +51,10 @@ const Layout = ({ children, title }) => (
     </Wrapper>
   </div>
 );
+
+Layout.propTypes = {
+  title: PropTypes.string,
+  children: PropTypes.node,
+};
 
 export default Layout;

@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { Linkedin } from "styled-icons/boxicons-logos/Linkedin";
+import React from 'react';
+import styled from 'styled-components';
+import {Linkedin} from 'styled-icons/boxicons-logos/Linkedin';
 
 // Linkedin social media button - used, for example, in the footer
 const StyledLinkedIn = styled(Linkedin)`
