@@ -62,7 +62,7 @@ function ProfileInformation(props) {
         <BoldTitle>Information</BoldTitle>
         <Card>
           <CardBody>
-            {!!data.field_profile_self_introduction && (
+            {data.field_profile_self_introduction && (
               <React.Fragment>
                 <InfoRow>
                   <StyledInfoTitle>Introduction</StyledInfoTitle>
@@ -82,7 +82,7 @@ function ProfileInformation(props) {
                 <Hr />
               </React.Fragment>
             )}
-            {!!data.field_profile_self_introduction && (
+            {data.field_profile_self_introduction && (
               <React.Fragment>
                 <InfoRow>
                   <StyledInfoTitle>Phone number</StyledInfoTitle>
