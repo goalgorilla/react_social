@@ -126,9 +126,9 @@ function Editprofile({ id }) {
           </CardBody>
         </StyledCard>
         <FormButtons>
-          <Link href="/user">
-            <TextButton>Cancel</TextButton>
-          </Link>
+          <TextButton as={Link} href="/user">
+            Cancel
+          </TextButton>
           <Button type="submit">Save</Button>
         </FormButtons>
       </Form>
