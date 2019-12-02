@@ -11,7 +11,7 @@ import Button from "../components/atoms/Button";
 import styled from "styled-components";
 import SystemMessage from "../components/atoms/SystemMessage";
 import BlockFormField from "../components/molecules/BlockFormField";
-import Label from "../components/atoms/Label";
+import InputLabel from "../components/atoms/InputLabel";
 import Input from "../components/atoms/Input";
 import InputDescription from "../components/atoms/InputDescription";
 
@@ -82,7 +82,9 @@ function Login(props) {
             </CardHeader>
             <CardBody>
               <BlockFormField>
-                <Label required={true}>Username or email address</Label>
+                <InputLabel required={true}>
+                  Username or email address
+                </InputLabel>
                 <Input
                   type="text"
                   name="username"
@@ -95,7 +97,7 @@ function Login(props) {
                 </InputDescription>
               </BlockFormField>
               <BlockFormField>
-                <Label required={true}>Password</Label>
+                <InputLabel required={true}>Password</InputLabel>
                 <Input
                   type="password"
                   name="password"
@@ -121,7 +123,4 @@ function Login(props) {
   );
 }
 
-export default connect(
-  state => state,
-  actions
-)(Login);
+export default connect(state => state, actions)(Login);

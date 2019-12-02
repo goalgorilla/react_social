@@ -8,7 +8,7 @@ import Title from "../components/atoms/Title";
 import Button from "../components/atoms/Button";
 import styled from "styled-components";
 import BlockFormField from "../components/molecules/BlockFormField";
-import Label from "../components/atoms/Label";
+import InputLabel from "../components/atoms/InputLabel";
 import Input from "../components/atoms/Input";
 import TextButton from "../components/atoms/TextButton";
 import Link from "next/link";
@@ -54,20 +54,20 @@ function Editprofile({ id }) {
           <CardHeader>Names and profile image</CardHeader>
           <CardBody>
             <BlockFormField>
-              <Label>First name</Label>
+              <InputLabel>First name</InputLabel>
               <Input type="text" name="firstname"></Input>
             </BlockFormField>
             <BlockFormField>
-              <Label>Last name</Label>
+              <InputLabel>Last name</InputLabel>
               <Input type="text" name="lastname"></Input>
             </BlockFormField>
             <BlockFormField>
-              <Label>Profile image</Label>
+              <InputLabel>Profile image</InputLabel>
               <Input type="file" name="bannerimg"></Input>
               <InputDescription link>Upload requirements</InputDescription>
             </BlockFormField>
             <BlockFormField>
-              <Label>Banner image</Label>
+              <InputLabel>Banner image</InputLabel>
               <Input type="file" name="bannerimg"></Input>
               <InputDescription link>Upload requirements</InputDescription>
             </BlockFormField>
@@ -78,11 +78,11 @@ function Editprofile({ id }) {
           <CardHeader>Function and organization</CardHeader>
           <CardBody>
             <BlockFormField>
-              <Label>Function</Label>
+              <InputLabel>Function</InputLabel>
               <Input type="text" name="function"></Input>
             </BlockFormField>
             <BlockFormField>
-              <Label>Organization</Label>
+              <InputLabel>Organization</InputLabel>
               <Input type="text" name="organization"></Input>
             </BlockFormField>
           </CardBody>
@@ -92,11 +92,11 @@ function Editprofile({ id }) {
           <CardHeader>Phone number and location</CardHeader>
           <CardBody>
             <BlockFormField>
-              <Label>Phone number</Label>
+              <InputLabel>Phone number</InputLabel>
               <Input type="text" name="phonenumber"></Input>
             </BlockFormField>
             <BlockFormField>
-              <Label>Country</Label>
+              <InputLabel>Country</InputLabel>
               <Input type="text" name="country"></Input>
             </BlockFormField>
           </CardBody>
@@ -106,18 +106,18 @@ function Editprofile({ id }) {
           <CardHeader>Self introduction, experise and interests</CardHeader>
           <CardBody>
             <BlockFormField>
-              <Label>Self introduction</Label>
+              <InputLabel>Self introduction</InputLabel>
               <Input type="text" name="selfintroduction"></Input>
             </BlockFormField>
             <BlockFormField>
-              <Label>Expertise</Label>
+              <InputLabel>Expertise</InputLabel>
               <Input type="text" name="expertise"></Input>
               <InputDescription>
                 Separate multiple values by a comma.
               </InputDescription>
             </BlockFormField>
             <BlockFormField>
-              <Label>Interests</Label>
+              <InputLabel>Interests</InputLabel>
               <Input type="text" name="interests"></Input>
               <InputDescription>
                 Separate multiple values by a comma.

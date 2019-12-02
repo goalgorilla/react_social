@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Tag from "../../atoms/Tag";
+import Label from "../../atoms/Label";
 
 const Container = styled.div`
   display: flex;
@@ -52,7 +52,7 @@ const ActivityField = () => {
           <p>28 Nov '19</p>
           <p>18:00 - 21:00</p>
         </ActivityInfo>
-        <Tag>You also enrolled</Tag>
+        <Label>You also enrolled</Label>
       </ActivityDetails>
     </Container>
   );

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-// A component to style a form field (label + input + input description) as inline
+// A component to style a form field (Inputlabel + input + input description) as inline
 const InlineFormField = styled.div`
   flex-direction: row;
   justify-content: flex-start;
