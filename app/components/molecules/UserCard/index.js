@@ -4,9 +4,8 @@ import PropTypes from 'prop-types';
 import BaseButton from '../../atoms/BaseButton';
 import Avatar from '../../atoms/Avatar';
 import Card from '../../organisms/Card';
-import Button from '../../atoms/Button';
 import {deviceMinWidth, deviceMaxWidth} from '../../../utils/device';
-import StyledHr from '../../atoms/StyledHr';
+import HorizontalLine from '../../atoms/HorizontalLine';
 import UserStats from '../UserStats';
 import TextButton from '../../atoms/TextButton';
 import Link from 'next/link';
@@ -69,7 +68,7 @@ const OrganizationTag = styled.p`
   font-size: ${props => props.theme.font.size.medium};
 `;
 
-const Hr = styled(StyledHr)`
+const Hr = styled(HorizontalLine)`
   display: none;
 
   @media ${deviceMinWidth.laptop} {

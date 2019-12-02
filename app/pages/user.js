@@ -9,13 +9,13 @@ import {API_URL} from '../utils/constants';
 import ProfileHero from '../components/atoms/ProfileHero';
 import UserCard from '../components/molecules/UserCard';
 import ProfileNavigationBar from '../components/molecules/ProfileNavigationBar';
-import ProfileInformation from '../components/molecules/ProfileInformation';
+import ProfileInformation from '../components/organisms/ProfileInformation';
 import ProfileStream from '../components/organisms/ProfileStream';
 import ProfileEvents from '../components/organisms/ProfileEvents';
 import ProfileTopics from '../components/organisms/ProfileTopics';
 import ProfileGroups from '../components/organisms/ProfileGroups';
 import RecentActivity from '../components/organisms/RecentActivity';
-import StyledHr from '../components/atoms/StyledHr';
+import HorizontalLine from '../components/atoms/HorizontalLine';
 import {deviceMinWidth, deviceMaxWidth} from '../utils/device';
 
 const ProfileContentContainer = styled.div`
@@ -89,9 +89,9 @@ function User({name}) {
           />
           <RecentActivityContainer>
             <RecentActivity activity="events" setActivePanel={setActivePanel} />
-            <StyledHr />
+            <HorizontalLine />
             <RecentActivity activity="topics" setActivePanel={setActivePanel} />
-            <StyledHr />
+            <HorizontalLine />
             <RecentActivity activity="groups" setActivePanel={setActivePanel} />
           </RecentActivityContainer>
         </ProfileLeftColumn>

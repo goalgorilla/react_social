@@ -1,23 +1,22 @@
-import styled from "styled-components";
-import Title from "../../atoms/Title";
-import Card from "../Card";
-import CardBody from "../../atoms/CardBody";
-import StyledHr from "../../atoms/StyledHr";
-import InfoTitle from "../../atoms/InfoTitle";
-import InfoText from "../../atoms/InfoText";
-import InfoRow from "../../molecules/InfoRow";
-import ChipContainer from "../../molecules/ChipContainer";
-import Chip from "../../atoms/Chip";
-import { deviceMaxWidth, deviceMinWidth } from "../../../utils/device";
-import { API_URL } from "../../../utils/constants";
-import axios from "axios";
-import React, { useState, useEffect } from "react";
+import styled from 'styled-components';
+import Title from '../../atoms/Title';
+import Card from '../Card';
+import CardBody from '../../atoms/CardBody';
+import HorizontalLine from '../../atoms/HorizontalLine';
+import InfoTitle from '../../atoms/InfoTitle';
+import InfoRow from '../../molecules/InfoRow';
+import BadgeContainer from '../../molecules/BadgeContainer';
+import Badge from '../../atoms/Badge';
+import {deviceMaxWidth, deviceMinWidth} from '../../../utils/device';
+import {API_URL} from '../../../utils/constants';
+import axios from 'axios';
+import React, {useState, useEffect} from 'react';
 
-const StyledInfoTitle = styled(InfoTitle)`
-  min-width: 170px;
-`;
+// const StyledInfoTitle = styled(InfoTitle)`
+//   min-width: 170px;
+// `;
 
-const Hr = styled(StyledHr)`
+const Hr = styled(HorizontalLine)`
   margin: 10px 0;
 `;
 
@@ -29,14 +28,9 @@ const Container = styled.div`
   }
 `;
 
-const BoldTitle = styled(Title)`
-  font-weight: ${props => props.theme.font.weight.bold};
-  margin-bottom: 20px;
-`;
-
 function ProfileInformation(props) {
   const [data, setData] = useState({
-    field_profile_self_introduction: null
+    field_profile_self_introduction: null,
   });
 
   const fetchUserInfo = async () => {
@@ -44,9 +38,9 @@ function ProfileInformation(props) {
       `${API_URL}/jsonapi/user/user/${props.userId}/profile_profiles`,
       {
         headers: {
-          Authorization: "Bearer " + props.token
-        }
-      }
+          Authorization: 'Bearer ' + props.token,
+        },
+      },
     );
     setData(result.data.data.attributes);
   };
@@ -55,19 +49,17 @@ function ProfileInformation(props) {
     fetchUserInfo();
   }, []);
 
-  if (props.activePanel == "information") {
+  if (props.activePanel == 'information') {
     return (
       <Container>
-        <BoldTitle>Information</BoldTitle>
+        <Title>Information</Title>
         <Card>
           <CardBody>
             {data.field_profile_self_introduction && (
               <React.Fragment>
                 <InfoRow>
-                  <StyledInfoTitle>Introduction</StyledInfoTitle>
-                  <InfoText>
-                    {data.field_profile_self_introduction.value}
-                  </InfoText>
+                  <InfoTitle>Introduction</InfoTitle>
+                  <p>{data.field_profile_self_introduction.value}</p>
                 </InfoRow>
                 <Hr />
               </React.Fragment>
@@ -75,8 +67,8 @@ function ProfileInformation(props) {
             {data.field_profile_show_email && (
               <React.Fragment>
                 <InfoRow>
-                  <StyledInfoTitle>Email</StyledInfoTitle>
-                  <InfoText>justin@tba.jp</InfoText>
+                  <InfoTitle>Email</InfoTitle>
+                  <p>justin@tba.jp</p>
                 </InfoRow>
                 <Hr />
               </React.Fragment>
@@ -84,27 +76,27 @@ function ProfileInformation(props) {
             {data.field_profile_self_introduction && (
               <React.Fragment>
                 <InfoRow>
-                  <StyledInfoTitle>Phone number</StyledInfoTitle>
-                  <InfoText>{data.field_profile_phone_number}</InfoText>
+                  <InfoTitle>Phone number</InfoTitle>
+                  <p>{data.field_profile_phone_number}</p>
                 </InfoRow>
                 <Hr />
               </React.Fragment>
             )}
             <InfoRow>
               <StyledInfoTitle>Interests</StyledInfoTitle>
-              <ChipContainer>
-                <Chip>Cooking</Chip>
-                <Chip>Football</Chip>
-                <Chip>Reading</Chip>
-              </ChipContainer>
+              <BadgeContainer>
+                <Badge>Cooking</Badge>
+                <Badge>Football</Badge>
+                <Badge>Reading</Badge>
+              </BadgeContainer>
             </InfoRow>
 
             <Hr />
             <InfoRow>
-              <StyledInfoTitle>Expertise</StyledInfoTitle>
-              <ChipContainer>
-                <Chip>Multicultural communication</Chip>
-              </ChipContainer>
+              <InfoTitle>Expertise</InfoTitle>
+              <BadgeContainer>
+                <Badge>Multicultural communication</Badge>
+              </BadgeContainer>
             </InfoRow>
           </CardBody>
         </Card>
