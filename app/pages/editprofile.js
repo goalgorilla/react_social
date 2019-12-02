@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
-import Layout from "../components/Layout";
-import Card from "../components/organisms/Card";
-import CardHeader from "../components/atoms/CardHeader";
-import CardBody from "../components/atoms/CardBody";
-import Title from "../components/atoms/Title";
-import Button from "../components/atoms/Button";
-import styled from "styled-components";
-import BlockFormField from "../components/molecules/BlockFormField";
-import InputLabel from "../components/atoms/InputLabel";
-import Input from "../components/atoms/Input";
-import TextButton from "../components/atoms/TextButton";
-import Link from "next/link";
-import InputDescription from "../components/atoms/InputDescription";
+import React, {useState, useEffect} from 'react';
+import Layout from '../components/Layout';
+import Card from '../components/organisms/Card';
+import CardHeader from '../components/atoms/CardHeader';
+import CardBody from '../components/atoms/CardBody';
+import Title from '../components/atoms/Title';
+import Button from '../components/atoms/BaseButton';
+import styled from 'styled-components';
+import BlockFormField from '../components/molecules/BlockFormField';
+import InputLabel from '../components/atoms/InputLabel';
+import Input from '../components/atoms/Input';
+import TextButton from '../components/atoms/TextButton';
+import Link from 'next/link';
+import InputDescription from '../components/atoms/InputDescription';
 
 const Form = styled.form`
   flex-direction: column;
@@ -37,11 +36,11 @@ const FormButtons = styled.div`
   max-width: 48.75rem;
 `;
 
-function Editprofile({ id }) {
+function Editprofile() {
   useEffect(() => {});
 
   const handleSubmit = e => {
-    console.log("submitted");
+    console.log('submitted');
     e.preventDefault();
   };
 
@@ -136,10 +135,6 @@ function Editprofile({ id }) {
   );
 }
 
-Editprofile.getInitialProps = async ctx => {
-  const token = ctx.store.getState().authentication.token;
-  const id = ctx.store.getState().authentication.id;
-  return id;
-};
+Editprofile.getInitialProps = ctx => {};
 
-export default connect(state => state)(Editprofile);
+export default Editprofile;
