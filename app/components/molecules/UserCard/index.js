@@ -102,7 +102,7 @@ function UserCard(props) {
   }
 
   return (
-    <StyledUserCard>
+    <StyledCard>
       <ProfileAvatar
         src="https://api.master-7rqtwti-jmqq2w45dtvdy.eu-4.platformsh.site/sites/default/files/chrishall.jpg"
         width="128px"
@@ -110,14 +110,14 @@ function UserCard(props) {
       <FirstName>Justine</FirstName>
       <LastName>Marshall</LastName>
       <TwitterHandle>(@twitterhandle)</TwitterHandle>
-      <UserRole>Director at Tokyo Book Association</UserRole>
+      <OrganizationTag>Director at Tokyo Book Association</OrganizationTag>
       <Hr></Hr>
       <UserStats />
       {profileButton}
-      <StyledTextButton onClick={() => props.setActivePanel('information')}>
+      <StyledTextButton onClick={() => props.setCurrentTab('information')}>
         See full profile of this member
       </StyledTextButton>
-    </StyledUserCard>
+    </StyledCard>
   );
 }
 

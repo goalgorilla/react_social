@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Title from '../../atoms/Title';
 import Card from '../../organisms/Card';
 import CardBody from '../../atoms/CardBody';
+import {deviceMaxWidth, deviceMinWidth} from '../../../utils/device';
 
 const Container = styled.div(
   props => `

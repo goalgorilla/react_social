@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Title from '../../atoms/Title';
+import {deviceMaxWidth, deviceMinWidth} from '../../../utils/device';
 
 const Container = styled.div(
   props => `

@@ -21,13 +21,10 @@ import {deviceMinWidth, deviceMaxWidth} from '../utils/device';
 const ProfileContentContainer = styled.div`
   display: flex;
   flex-direction: column;
-  // padding: ${props => props.theme.layout.padding};
-  width: 100%;
-  margin-top: 150px;
+  padding: ${props => props.theme.layout.padding};
 
   @media ${deviceMinWidth.laptop} {
     flex-direction: row;
-    margin-top: 320px;
   }
 `;
 
@@ -82,17 +79,13 @@ function User({name}) {
       <ProfileHero id={router.query.id} />
       <ProfileContentContainer>
         <ProfileLeftColumn>
-          <UserCard
-            setActivePanel={setActivePanel}
-            loggedInUser={id}
-            id={profileId}
-          />
+          <UserCard setCurrentTab={setCurrentTab} id={router.query.id} />
           <RecentActivityContainer>
-            <RecentActivity activity="events" setActivePanel={setActivePanel} />
+            <RecentActivity activity="events" setCurrentTab={setCurrentTab} />
             <HorizontalLine />
-            <RecentActivity activity="topics" setActivePanel={setActivePanel} />
+            <RecentActivity activity="topics" setCurrentTab={setCurrentTab} />
             <HorizontalLine />
-            <RecentActivity activity="groups" setActivePanel={setActivePanel} />
+            <RecentActivity activity="groups" setCurrentTab={setCurrentTab} />
           </RecentActivityContainer>
         </ProfileLeftColumn>
         <ProfileRightColumn>
@@ -111,7 +104,7 @@ function User({name}) {
 User.getInitialProps = ctx => {
   // Get name of the user from the id passed in url
   return axios
-    .get(`${API_URL}/jsonapi/user/user/${profileId}`)
+    .get(`${API_URL}/jsonapi/user/user/${ctx.query.id}`)
     .then(response => {
       const name = response.data.data.attributes.name;
       return {name};

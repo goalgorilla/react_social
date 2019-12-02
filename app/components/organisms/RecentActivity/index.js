@@ -1,10 +1,10 @@
-import styled from "styled-components";
-import { deviceMinWidth, deviceMaxWidth } from "../../../utils/device";
-import TextButton from "../../atoms/TextButton";
-import RecentActivityTitle from "../../atoms/RecentActivityTitle";
-import RecentActivitySubtitle from "../../atoms/RecentActivitySubtitle";
-import RecentActivityHeader from "../../molecules/RecentActivityHeader";
-import ActivityField from "../../molecules/ActivityField";
+import styled from 'styled-components';
+import {deviceMinWidth, deviceMaxWidth} from '../../../utils/device';
+import TextButton from '../../atoms/TextButton';
+import RecentActivityTitle from '../../atoms/RecentActivityTitle';
+import RecentActivitySubtitle from '../../atoms/RecentActivitySubtitle';
+import RecentActivityHeader from '../../molecules/RecentActivityHeader';
+import ActivityField from '../../molecules/ActivityField';
 
 // RecentActivity component - Used to display the recent groups, events or topics of a given user
 const Container = styled.div`
@@ -30,7 +30,7 @@ const StyledTextButton = styled(TextButton)`
 
 const RecentActivity = props => {
   switch (props.activity) {
-    case "events":
+    case 'events':
       return (
         <Container>
           <Row>
@@ -46,13 +46,13 @@ const RecentActivity = props => {
             <ActivityField></ActivityField>
           </Row>
           <Row>
-            <StyledTextButton onClick={() => props.setActivePanel("events")}>
+            <StyledTextButton onClick={() => props.setCurrentTab('events')}>
               See all events of this member
             </StyledTextButton>
           </Row>
         </Container>
       );
-    case "topics":
+    case 'topics':
       return (
         <Container>
           <Row>
@@ -68,13 +68,13 @@ const RecentActivity = props => {
             <ActivityField></ActivityField>
           </Row>
           <Row>
-            <StyledTextButton onClick={() => props.setActivePanel("topics")}>
+            <StyledTextButton onClick={() => props.setCurrentTab('topics')}>
               See all topics of this member
             </StyledTextButton>
           </Row>
         </Container>
       );
-    case "groups":
+    case 'groups':
       return (
         <Container>
           <Row>
@@ -90,7 +90,7 @@ const RecentActivity = props => {
             <ActivityField></ActivityField>
           </Row>
           <Row>
-            <StyledTextButton onClick={() => props.setActivePanel("groups")}>
+            <StyledTextButton onClick={() => props.setCurrentTab('groups')}>
               See all groups of this member
             </StyledTextButton>
           </Row>

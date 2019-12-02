@@ -4,6 +4,7 @@ import Title from '../../atoms/Title';
 import SortAndFilter from '../../molecules/SortAndFilter';
 import Card from '../../organisms/Card';
 import CardBody from '../../atoms/CardBody';
+import {deviceMaxWidth, deviceMinWidth} from '../../../utils/device';
 
 const Container = styled.div(
   props => `
