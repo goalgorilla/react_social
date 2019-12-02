@@ -11,7 +11,7 @@ import Title from '../components/atoms/Title';
 import RaisedButton from '../components/atoms/RaisedButton';
 import SystemMessage from '../components/atoms/SystemMessage';
 import BlockFormField from '../components/molecules/BlockFormField';
-import Label from '../components/atoms/Label';
+import InputLabel from '../components/atoms/InputLabel';
 import Input from '../components/atoms/Input';
 import InputDescription from '../components/atoms/InputDescription';
 import {withTranslation} from '../i18n';
@@ -182,7 +182,9 @@ function Login() {
             </CardHeader>
             <CardBody>
               <BlockFormField>
-                <Label required={true}>Username or email address</Label>
+                <InputLabel required={true}>
+                  Username or email address
+                </InputLabel>
                 <Input
                   type="text"
                   name="username"
@@ -195,7 +197,7 @@ function Login() {
                 </InputDescription>
               </BlockFormField>
               <BlockFormField>
-                <Label required={true}>Password</Label>
+                <InputLabel required={true}>Password</InputLabel>
                 <Input
                   type="password"
                   name="password"

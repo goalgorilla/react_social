@@ -7,6 +7,10 @@ import CardBody from '../../atoms/CardBody';
 const Container = styled.div(
   props => `
   margin-top: calc(${props.theme.layout.profile.navHeight} + 20px);
+
+  @media ${deviceMinWidth.laptop} {
+    margin-top: calc(${props.theme.layout.profile.navHeight} - 10px);
+  }
 `,
 );
 

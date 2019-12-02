@@ -8,6 +8,10 @@ import CardBody from '../../atoms/CardBody';
 const Container = styled.div(
   props => `
   margin-top: calc(${props.theme.layout.profile.navHeight} + 20px);
+
+  @media ${deviceMinWidth.laptop} {
+    margin-top: calc(${props.theme.layout.profile.navHeight} - 10px);
+  }
 `,
 );
 
@@ -22,6 +26,7 @@ const HeaderRow = styled.div`
 `;
 
 const Reset = styled.p`
+  font-size: ${props => props.theme.font.size.medium};
   font-weight: ${props => props.theme.font.weight.bold};
   color: ${props => props.theme.color.brand.primary};
   cursor: pointer;

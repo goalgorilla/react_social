@@ -2,37 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-// This component can be used as a label for an input field
-const StyledLabel = styled.label`
-  font-size: ${props => props.theme.font.size.medium};
+// A label can be used to highlight information on a card for the user
+// For example on the profile page, in the RecentActivity card a label
+// is used to show if a user is already enrolled in an event with the message:
+// 'You also enrolled'
+const Label = styled.p`
+  color: ${props => props.theme.color.background.primary};
+  font-size: ${props => props.theme.font.size.small};
+  background: ${props => props.theme.color.brand.tertiary};
   font-weight: ${props => props.theme.font.weight.medium};
+  padding: 1px 15px;
+  margin: 0;
+  border-radius: ${props => props.theme.layout.borderRadius.default};
 `;
-
-const Required = styled.span`
-  color: red;
-`;
-
-// If a required prop is passed a required '*' symbol is added to the end of the label
-const Label = ({children, required}) => {
-  if (required) {
-    return (
-      <StyledLabel>
-        {children}
-        <Required>*</Required>
-      </StyledLabel>
-    );
-  }
-  return <StyledLabel>{children}</StyledLabel>;
-};
-
-Label.defaultProps = {
-  required: false,
-};
-
-Label.propTypes = {
-  /** boolean indicating if the form is required */
-  required: PropTypes.bool,
-  children: PropTypes.node,
-};
 
 export default Label;

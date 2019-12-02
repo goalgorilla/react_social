@@ -1,18 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import Link from 'next/link';
+import styled from "styled-components";
+import { deviceMaxWidth, deviceMinWidth } from "../../../utils/device";
+import React from "react";
 
-const Menu = styled.ul`
+const StyledNav = styled.ul`
   position: absolute;
   left: 0;
   width: 100%;
   display: flex;
-  height: ${props => props.theme.layout.profile.navHeight};
   margin: 0;
-  padding: 0;
   list-style-type: none;
-  background: #0f6892;
+  background: ${props => props.theme.color.brand.tertiary};
+  padding: 10px 0;
   overflow-x: auto;
   overflow-y: hidden;
 
@@ -28,98 +26,77 @@ const Menu = styled.ul`
       ),
       linear-gradient(to left, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0) 30px);
   }
+
+  @media ${deviceMinWidth.laptop} {
+    position: relative;
+    border-radius: 5px 5px 0px 0px;
+    justify-content: center;
+    align-items: center;
+    min-height: 45px;
+    padding: 0;
+  }
 `;
 
-const MenuItem = styled.li`
+const StyledListItem = styled.li`
   padding: 0 20px;
   height: 100%;
-  display: flex;
-  align-items: center;
 
   a {
     color: white;
-    font-size: 0.95rem;
+    font-size: ${props => props.theme.font.size.medium};
+    border-bottom: ${props => (props.active ? "3px solid white" : "none")};
+    padding-bottom: 9px;
     font-weight: ${props => props.theme.font.weight.bold};
-    line-height: calc(${props => props.theme.layout.profile.navHeight});
-    opacity: ${props => (props.active ? '1' : '0.5')};
-    border-bottom: ${props =>
-      props.active ? '3px solid white' : '3px solid transparent'};
+    opacity: ${props => (props.active ? "1" : "0.5")};
     cursor: pointer;
-    text-decoration: none;
   }
 
   a:hover {
     opacity: 1;
   }
+
+  @media ${deviceMinWidth.laptop} {
+    a {
+      padding-bottom: 10px;
+    }
+  }
 `;
 
 function ProfileNavigationBar(props) {
   return (
-    <Menu>
-      <MenuItem
-        onClick={() => props.setCurrentTab('stream')}
-        active={props.currentTab === 'stream'}
+    <StyledNav>
+      <StyledListItem
+        onClick={() => props.setActivePanel("stream")}
+        active={props.activePanel == "stream"}
       >
-        <Link href={`/user?id=${props.userId}`} scroll={false}>
-          <a>Stream</a>
-        </Link>
-      </MenuItem>
-      <MenuItem
-        onClick={() => props.setCurrentTab('events')}
-        active={props.currentTab === 'events'}
+        <a>Stream</a>
+      </StyledListItem>
+      <StyledListItem
+        onClick={() => props.setActivePanel("events")}
+        active={props.activePanel == "events"}
       >
-        <Link
-          href={`/userevents?id=${props.userId}`}
-          as={`/user?id=${props.userId}/events`}
-          scroll={false}
-        >
-          <a>Events</a>
-        </Link>
-      </MenuItem>
-      <MenuItem
-        onClick={() => props.setCurrentTab('topics')}
-        active={props.currentTab === 'topics'}
+        <a>Events</a>
+      </StyledListItem>
+      <StyledListItem
+        onClick={() => props.setActivePanel("topics")}
+        active={props.activePanel == "topics"}
       >
-        <Link
-          href={`/usertopics?id=${props.userId}`}
-          as={`/user?id=${props.userId}/topics`}
-          scroll={false}
-        >
-          <a>Topics</a>
-        </Link>
-      </MenuItem>
-      <MenuItem
-        onClick={() => props.setCurrentTab('groups')}
-        active={props.currentTab === 'groups'}
+        <a>Topics</a>
+      </StyledListItem>
+      <StyledListItem
+        onClick={() => props.setActivePanel("groups")}
+        active={props.activePanel == "groups"}
       >
-        <Link
-          href={`/usergroups?id=${props.userId}`}
-          as={`/user?id=${props.userId}/groups`}
-          scroll={false}
-        >
-          <a>Groups</a>
-        </Link>
-      </MenuItem>
-      <MenuItem
-        onClick={() => props.setCurrentTab('information')}
-        active={props.currentTab === 'information'}
+        <a>Groups</a>
+      </StyledListItem>
+      <StyledListItem
+        onClick={() => props.setActivePanel("information")}
+        active={props.activePanel == "information"}
       >
-        <Link
-          href={`/userinformation?id=${props.userId}`}
-          as={`/user?id=${props.userId}/information`}
-          scroll={false}
-        >
-          <a>Information</a>
-        </Link>
-      </MenuItem>
-    </Menu>
+        <a>Information</a>
+      </StyledListItem>
+    </StyledNav>
   );
 }
-
-ProfileNavigationBar.propTypes = {
-  userId: PropTypes.string,
-  setCurrentTab: PropTypes.string,
-  currentTab: PropTypes.string,
-};
 
 export default ProfileNavigationBar;

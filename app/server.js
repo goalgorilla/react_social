@@ -27,6 +27,25 @@ app
       }
     });
 
+    server.get('/editprofile', (req, res) => {
+      if (!req.cookies.token) {
+        res.redirect('/login');
+        res.end();
+      } else {
+        console.log(req);
+        return app.render(req, res, '/editprofile', req.query);
+      }
+    });
+
+    server.get('/user', (req, res) => {
+      if (!req.cookies.token) {
+        res.redirect('/login');
+        res.end();
+      } else {
+        return app.render(req, res, '/user', req.query);
+      }
+    });
+
     server.get('*', (req, res) => {
       return handle(req, res);
     });
