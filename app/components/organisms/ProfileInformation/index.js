@@ -48,7 +48,6 @@ function ProfileInformation(props) {
         }
       }
     );
-    console.log(result.data.data.attributes);
     setData(result.data.data.attributes);
   };
 
