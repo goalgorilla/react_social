@@ -54,6 +54,10 @@ const RecentActivityContainer = styled.div`
   background: ${props => props.theme.color.background.primary};
   padding: 0 40px;
   border-radius: 0px 0px 5px 5px;
+
+  @media ${deviceMaxWidth.laptop} {
+    display: none;
+  }
 `;
 
 const getAvailableTabs = () => ({
@@ -101,7 +105,7 @@ function User({name}) {
   );
 }
 
-User.getInitialProps = ctx => {
+User.getInitialProps = async ctx => {
   // Get name of the user from the id passed in url
   return axios
     .get(`${API_URL}/jsonapi/user/user/${ctx.query.id}`)

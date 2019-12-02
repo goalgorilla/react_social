@@ -6,6 +6,7 @@ const InfoTitle = styled.h5`
   font-size: ${props => props.theme.font.size.medium};
   font-weight: ${props => props.theme.font.weight.bold};
   margin: 5px 0;
+  min-width: 170px;
 `;
 
 export default InfoTitle;

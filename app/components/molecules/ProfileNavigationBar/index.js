@@ -128,7 +128,7 @@ function ProfileNavigationBar(props) {
 
 ProfileNavigationBar.propTypes = {
   userId: PropTypes.string,
-  setCurrentTab: PropTypes.string,
+  setCurrentTab: PropTypes.func,
   currentTab: PropTypes.string,
 };
 
