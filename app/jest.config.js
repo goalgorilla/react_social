@@ -5,4 +5,5 @@ module.exports = {
     '<rootDir>/node_modules/',
     '<rootDir>/.storybook/',
   ],
+  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
 };
