@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import PropTypes from "prop-types";
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 // This component can be used as a label for an input field
 const StyledLabel = styled.label`
@@ -14,25 +14,25 @@ const Required = styled.span`
 `;
 
 // If a required prop is passed a required '*' symbol is added to the end of the label
-const InputLabel = ({ children, required }) => {
+const InputLabel = ({children, required, forInput}) => {
   if (required) {
     return (
-      <StyledLabel>
+      <StyledLabel htmlFor={forInput}>
         {children}
         <Required>*</Required>
       </StyledLabel>
     );
   }
-  return <StyledLabel>{children}</StyledLabel>;
+  return <StyledLabel htmlFor={forInput}>{children}</StyledLabel>;
 };
 
 InputLabel.defaultProps = {
-  required: false
+  required: false,
 };
 
 InputLabel.propTypes = {
   /** boolean indicating if the form is required */
-  required: PropTypes.bool
+  required: PropTypes.bool,
 };
 
 export default InputLabel;
