@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import Router from 'next/router';
-import axios from 'axios';
 import Layout from '../components/Layout';
 import Card from '../components/organisms/Card';
 import CardHeader from '../components/atoms/CardHeader';
@@ -16,13 +15,7 @@ import Input from '../components/atoms/Input';
 import InputDescription from '../components/atoms/InputDescription';
 import {withTranslation} from '../i18n';
 import {useUser, useDispatchUser} from '../components/auth/userContext';
-import {setCookie} from '../utils/cookie';
-import {
-  API_URL,
-  GRANT_TYPE,
-  CLIENT_ID,
-  CLIENT_SECRET,
-} from '../utils/constants';
+import {loginCall} from '../components/auth/loginCall';
 
 const Wrapper = styled.div`
   margin: auto;
@@ -57,98 +50,19 @@ function Login() {
   const handleSubmit = e => {
     setError(false);
     e.preventDefault();
-    const data = {
-      token: '',
-      username: '',
-      id: '',
-      avatar: '',
-    };
-
-    const bodyFormData = new FormData();
-    bodyFormData.set('grant_type', GRANT_TYPE);
-    bodyFormData.set('client_id', CLIENT_ID);
-    bodyFormData.set('client_secret', CLIENT_SECRET);
-    bodyFormData.set('username', username);
-    bodyFormData.set('password', password);
-
-    axios
-      // Obtain login token using the user's username and password
-      .post(`${API_URL}/oauth/token/`, bodyFormData)
-      .then(response => {
-        // store token
-        const token = response.data.access_token;
-        data.token = token;
-        setCookie('token', token);
-        // Obtain the user's id to be used for getting information about the user
-        return axios.get(`${API_URL}/jsonapi`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-      })
-      .then(response => {
-        // store id
-        const id = response.data.meta.links.me.meta.id;
-        data.id = id;
-        setCookie('id', id);
-        // Obtain the user's username using the user's id
-        return axios.get(`${API_URL}/jsonapi/user/user/${id}`, {
-          headers: {
-            Authorization: `Bearer ${data.token}`,
-          },
-        });
-      })
-      .then(response => {
-        // store username
-        const name = decodeURI(response.data.data.attributes.name);
-        data.username = name;
-        setCookie('username', name);
-        // url to get avatar id
-        const profileUrl =
-          response.data.data.relationships.profile_profiles.links.related.href;
-        // Obtain the user's avatar id
-        return axios.get(profileUrl, {
-          headers: {
-            Authorization: `Bearer ${data.token}`,
-          },
-        });
-      })
-      .then(response => {
-        // store user avatar id if it exists otherwise set as null
-        const avatarId = response.data.data.relationships.field_profile_image
-          .data
-          ? response.data.data.relationships.field_profile_image.data.id
-          : false;
-
-        if (avatarId) {
-          return axios
-            .get(`${API_URL}/jsonapi/file/file/${avatarId}`, {
-              headers: {
-                Authorization: `Bearer ${data.token}`,
-              },
-            })
-            .then(avatarResponse => {
-              // Store the avatar url
-              const imageUrl = avatarResponse.data.data.attributes.uri.url;
-              data.avatar = imageUrl;
-              setCookie('avatar', imageUrl);
-            });
-        } else {
-          data.avatar = '';
-          setCookie('avatar', '');
-        }
-      })
-      .then(() => {
+    loginCall(username, password)
+      .then(res => {
         dispatch({
           type: 'LOGIN',
-          payload: data,
+          payload: res,
         });
         Router.push('/whoami');
       })
       .catch(err => {
+        setError(true);
         dispatch({
           type: 'LOGIN_ERROR',
-          payload: {error: err.response.status},
+          payload: {error: err.message},
         });
       });
   };
@@ -182,13 +96,14 @@ function Login() {
             </CardHeader>
             <CardBody>
               <BlockFormField>
-                <InputLabel required={true}>
+                <InputLabel forInput="username" required={true}>
                   Username or email address
                 </InputLabel>
                 <Input
                   type="text"
                   name="username"
                   value={username}
+                  id="username"
                   onChange={e => setUsername(e.target.value)}
                   required
                 />
@@ -197,11 +112,14 @@ function Login() {
                 </InputDescription>
               </BlockFormField>
               <BlockFormField>
-                <InputLabel required={true}>Password</InputLabel>
+                <InputLabel forInput="password" required={true}>
+                  Password
+                </InputLabel>
                 <Input
                   type="password"
                   name="password"
                   value={password}
+                  id="password"
                   onChange={e => setPassword(e.target.value)}
                   required
                 />
