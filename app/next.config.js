@@ -27,4 +27,7 @@ module.exports = {
     // platform_routes: read_base64_json("PLATFORM_ROUTES")
   },
   pageExtensions: ['js'],
+  experimental: {
+    cpus: 1,
+  },
 };
