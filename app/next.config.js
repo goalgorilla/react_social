@@ -26,4 +26,5 @@ module.exports = {
     platformVariables: readBase64Json('PLATFORM_VARIABLES'),
     // platform_routes: read_base64_json("PLATFORM_ROUTES")
   },
+  pageExtensions: ['js'],
 };
