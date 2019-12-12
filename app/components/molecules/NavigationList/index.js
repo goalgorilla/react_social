@@ -148,7 +148,7 @@ const NavigationList = ({t}) => {
       {/* Search button */}
       <NavigationDropdown
         button={
-          <Link href="/searchall" as="/search/all">
+          <Link href="/search/all">
             <img src="/static/search.svg" width="24px" alt="search icon" />
           </Link>
         }
