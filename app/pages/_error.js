@@ -93,6 +93,16 @@ Error.getInitialProps = async ctx => {
           }
         }
 
+        // remove the drupal domain href from a tags (drupaldomain.com/user -> /user)
+        var a = doc.getElementsByTagName('a');
+        for (var i = 0; i < a.length; i++) {
+          if (a[i].href.includes(API_URL)) {
+            let oldHref = a[i].href;
+            let newHref = oldHref.replace(API_URL, '');
+            a[i].href = newHref;
+          }
+        }
+
         // set all script src to our drupal domain
         // var scripts = doc.getElementsByTagName('script');
         // for (var i = 0; i < scripts.length; i++) {
