@@ -5,6 +5,8 @@ import styled from 'styled-components';
 const StyledImg = styled.img`
   filter: invert(0.5);
   height: 100%;
+  position: relative;
+  top: 3px;
 `;
 
 const StyledSpan = styled.span`
