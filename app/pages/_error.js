@@ -8,7 +8,7 @@ import {withTranslation} from '../i18n';
 import {API_URL} from '../utils/constants';
 import {getCookie} from '../utils/cookie';
 import ReactHtmlParser from 'react-html-parser';
-import DOMParser from '../utils/DOMParser';
+import DOMParser from '../utils/domparser';
 
 // A custom error page displaying the error status code to the user and whether the error occured server side or client side
 const ErrorMessage = styled.p`
