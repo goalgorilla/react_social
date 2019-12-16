@@ -71,24 +71,24 @@ function SearchAll() {
       <SecondaryNavigation>
         <ul>
           <li>
-            <Link href="/search/all">
+            <Link href="/search/all" scroll={false}>
               <MenuItem active>All</MenuItem>
             </Link>
           </li>
           <li>
-            <Link href="/search/content">
+            <Link href="/search/content" scroll={false}>
               <MenuItem>Content</MenuItem>
             </Link>
           </li>
           {user.token && (
             <li>
-              <Link href="/search/users">
+              <Link href="/search/users" scroll={false}>
                 <MenuItem>Users</MenuItem>
               </Link>
             </li>
           )}
           <li>
-            <Link href="/search/groups">
+            <Link href="/search/groups" scroll={false}>
               <MenuItem>Groups</MenuItem>
             </Link>
           </li>

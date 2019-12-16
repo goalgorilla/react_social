@@ -68,6 +68,7 @@ function SearchUsers() {
     });
     setUsers(result.data.data);
     setLoading(false);
+    console.log(users);
   };
 
   const renderSearchResults = () => {
@@ -76,8 +77,12 @@ function SearchUsers() {
         <React.Fragment>
           {users.map(user => (
             <Card key={user.id}>
-              <CardHeader>{user.attributes.name}</CardHeader>
-              <CardBody>{user.id}</CardBody>
+              <CardHeader>
+                <Link href={'/user/' + user.attributes.drupal_internal__uid}>
+                  <a>{user.attributes.name}</a>
+                </Link>
+              </CardHeader>
+              <CardBody>{user.attributes.drupal_internal__uid}</CardBody>
             </Card>
           ))}
         </React.Fragment>
@@ -108,22 +113,22 @@ function SearchUsers() {
       <SecondaryNavigation>
         <ul>
           <li>
-            <Link href="/search/all">
+            <Link href="/search/all" scroll={false}>
               <MenuItem>All</MenuItem>
             </Link>
           </li>
           <li>
-            <Link href="/search/content">
+            <Link href="/search/content" scroll={false}>
               <MenuItem>Content</MenuItem>
             </Link>
           </li>
           <li>
-            <Link href="/search/users">
+            <Link href="/search/users" scroll={false}>
               <MenuItem active>Users</MenuItem>
             </Link>
           </li>
           <li>
-            <Link href="/search/groups">
+            <Link href="/search/groups" scroll={false}>
               <MenuItem>Groups</MenuItem>
             </Link>
           </li>
