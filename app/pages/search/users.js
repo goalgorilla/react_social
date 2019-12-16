@@ -82,7 +82,7 @@ function SearchUsers() {
                   <a>{user.attributes.name}</a>
                 </Link>
               </CardHeader>
-              <CardBody>{user.attributes.drupal_internal__uid}</CardBody>
+              <CardBody>{user.attributes.created}</CardBody>
             </Card>
           ))}
         </React.Fragment>

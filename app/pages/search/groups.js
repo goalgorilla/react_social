@@ -22,6 +22,7 @@ import SearchBlockHero from '../../components/atoms/SearchBlockHero';
 import SearchHeroForm from '../../components/molecules/SearchHeroForm';
 import {API_URL} from '../../utils/constants';
 import ClipLoader from 'react-spinners/ClipLoader';
+import {createHtmlMarkup} from '../../utils/markup';
 
 const SearchContainer = styled.div`
   margin: auto;
@@ -69,6 +70,7 @@ function SearchGroups() {
           Authorization: 'Bearer ' + user.token,
         },
       });
+      console.log(openGroups);
       setGroups(openGroups.data.data);
 
       // Get Closed Groups
@@ -97,8 +99,16 @@ function SearchGroups() {
         <React.Fragment>
           {groups.map(group => (
             <Card key={group.id}>
-              <CardHeader>{group.attributes.label}</CardHeader>
-              <CardBody>{group.id}</CardBody>
+              <CardHeader>
+                <Link href={'/group/' + group.attributes.drupal_internal__id}>
+                  {group.attributes.label}
+                </Link>
+              </CardHeader>
+              <CardBody
+                dangerouslySetInnerHTML={createHtmlMarkup(
+                  group.attributes.field_group_description.value,
+                )}
+              />
             </Card>
           ))}
         </React.Fragment>
