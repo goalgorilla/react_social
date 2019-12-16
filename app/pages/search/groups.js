@@ -99,6 +99,8 @@ function SearchGroups() {
           ))}
         </React.Fragment>
       );
+    } else {
+      return <p>No results found.</p>;
     }
   };
 
@@ -148,7 +150,7 @@ function SearchGroups() {
       </SecondaryNavigation>
       <SearchContainer>
         <ContentRegion>
-          <Title>All results</Title>
+          <Title>Group results</Title>
           {renderSearchResults()}
         </ContentRegion>
         <ComplimentaryRegion></ComplimentaryRegion>

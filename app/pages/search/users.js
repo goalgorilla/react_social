@@ -78,6 +78,8 @@ function SearchUsers() {
           ))}
         </React.Fragment>
       );
+    } else {
+      return <p>No results found.</p>;
     }
   };
 
@@ -125,7 +127,7 @@ function SearchUsers() {
       </SecondaryNavigation>
       <SearchContainer>
         <ContentRegion>
-          <Title>All results</Title>
+          <Title>Member results</Title>
           {renderSearchResults()}
         </ContentRegion>
         <ComplimentaryRegion></ComplimentaryRegion>

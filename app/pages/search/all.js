@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react';
+import {useUser} from '../../components/auth/userContext';
+import axios from 'axios';
 import Link from 'next/link';
 import Layout from '../../components/Layout';
 import styled from 'styled-components';
@@ -17,6 +19,7 @@ import SecondaryNavigation from '../../components/molecules/SecondaryNavigation'
 import SearchInputLabel from '../../components/atoms/SearchInputLabel';
 import SearchBlockHero from '../../components/atoms/SearchBlockHero';
 import SearchHeroForm from '../../components/molecules/SearchHeroForm';
+import {API_URL} from '../../utils/constants';
 
 const SearchContainer = styled.div`
   margin: auto;
@@ -39,6 +42,8 @@ const SearchButton = styled(BaseButton)`
 `;
 
 function SearchAll() {
+  const user = useUser();
+
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearch = e => {
