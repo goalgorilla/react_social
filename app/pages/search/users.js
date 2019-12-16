@@ -61,14 +61,16 @@ function SearchUsers() {
 
   const getUsers = async e => {
     setLoading(true);
-    let result = await axios.get(`${API_URL}/jsonapi/user/user/`, {
-      headers: {
-        Authorization: 'Bearer ' + user.token,
+    let result = await axios.get(
+      `${API_URL}/jsonapi/user/user?filter[name][operator]=CONTAINS&filter[name][value]=${searchQuery}`,
+      {
+        headers: {
+          Authorization: 'Bearer ' + user.token,
+        },
       },
-    });
+    );
     setUsers(result.data.data);
     setLoading(false);
-    console.log(users);
   };
 
   const renderSearchResults = () => {
