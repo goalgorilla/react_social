@@ -46,6 +46,15 @@ app
       }
     });
 
+    server.get('/search/users', (req, res) => {
+      if (!req.cookies.token) {
+        res.redirect('/login');
+        res.end();
+      } else {
+        return app.render(req, res, '/search/users', req.query);
+      }
+    });
+
     server.get('*', (req, res) => {
       return handle(req, res);
     });

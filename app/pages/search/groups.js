@@ -132,11 +132,13 @@ function SearchGroups() {
               <MenuItem>Content</MenuItem>
             </Link>
           </li>
-          <li>
-            <Link href="/search/users">
-              <MenuItem>Users</MenuItem>
-            </Link>
-          </li>
+          {user.token && (
+            <li>
+              <Link href="/search/users">
+                <MenuItem>Users</MenuItem>
+              </Link>
+            </li>
+          )}
           <li>
             <Link href="/search/groups">
               <MenuItem active>Groups</MenuItem>
