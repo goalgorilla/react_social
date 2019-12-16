@@ -89,7 +89,7 @@ function SearchGroups() {
 
     // get Public Groups
     let publicGroups = await axios.get(
-      `${API_URL}/jsonapi/group/public_group/`,
+      `${API_URL}/jsonapi/group/public_group?filter[label][operator]=CONTAINS&filter[label][value]=${searchQuery}`,
     );
     setGroups(groups => [...groups, ...publicGroups.data.data]);
     setLoading(false);
