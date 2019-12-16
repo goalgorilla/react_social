@@ -50,7 +50,7 @@ function SearchUsers() {
 
   useEffect(() => {
     getUsers();
-  });
+  }, []);
 
   const handleSearch = async e => {
     e.preventDefault();

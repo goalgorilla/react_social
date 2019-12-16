@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react';
+import {useUser} from '../../components/auth/userContext';
+import axios from 'axios';
 import Link from 'next/link';
 import Layout from '../../components/Layout';
 import styled from 'styled-components';
@@ -18,6 +20,7 @@ import SecondaryNavigation from '../../components/molecules/SecondaryNavigation'
 import SearchInputLabel from '../../components/atoms/SearchInputLabel';
 import SearchBlockHero from '../../components/atoms/SearchBlockHero';
 import SearchHeroForm from '../../components/molecules/SearchHeroForm';
+import {API_URL} from '../../utils/constants';
 
 const SearchContainer = styled.div`
   margin: auto;
@@ -40,10 +43,63 @@ const SearchButton = styled(BaseButton)`
 `;
 
 function SearchGroups() {
-  const [searchQuery, setSearchQuery] = useState('');
+  const user = useUser();
 
-  const handleSearch = e => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [groups, setGroups] = useState('');
+
+  useEffect(() => {
+    getGroups();
+  }, []);
+
+  const handleSearch = async e => {
     e.preventDefault();
+    getGroups();
+  };
+
+  const getGroups = async e => {
+    // for logged in users
+    if (user.token) {
+      // Get Open Groups
+      let openGroups = await axios.get(`${API_URL}/jsonapi/group/open_group/`, {
+        headers: {
+          Authorization: 'Bearer ' + user.token,
+        },
+      });
+      setGroups(openGroups.data.data);
+
+      // Get Closed Groups
+      let closedGroups = await axios.get(
+        `${API_URL}/jsonapi/group/closed_group/`,
+        {
+          headers: {
+            Authorization: 'Bearer ' + user.token,
+          },
+        },
+      );
+      setGroups(groups => [...groups, ...closedGroups.data.data]);
+    }
+
+    // get Public Groups
+    let publicGroups = await axios.get(
+      `${API_URL}/jsonapi/group/public_group/`,
+    );
+    setGroups(groups => [...groups, ...publicGroups.data.data]);
+  };
+
+  const renderSearchResults = () => {
+    if (groups.length) {
+      return (
+        <React.Fragment>
+          {groups.map(group => (
+            <Card key={group.id}>
+              <CardHeader>{group.attributes.label}</CardHeader>
+              <CardBody>{group.id}</CardBody>
+            </Card>
+          ))}
+        </React.Fragment>
+      );
+    }
   };
 
   return (
@@ -91,10 +147,7 @@ function SearchGroups() {
       <SearchContainer>
         <ContentRegion>
           <Title>All results</Title>
-          <Card>
-            <CardHeader>Placeholder</CardHeader>
-            <CardBody>This is a placeholder</CardBody>
-          </Card>
+          {renderSearchResults()}
         </ContentRegion>
         <ComplimentaryRegion></ComplimentaryRegion>
       </SearchContainer>
