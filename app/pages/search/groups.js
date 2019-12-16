@@ -65,17 +65,19 @@ function SearchGroups() {
     // for logged in users
     if (user.token) {
       // Get Open Groups
-      let openGroups = await axios.get(`${API_URL}/jsonapi/group/open_group/`, {
-        headers: {
-          Authorization: 'Bearer ' + user.token,
+      let openGroups = await axios.get(
+        `${API_URL}/jsonapi/group/open_group?filter[label][operator]=CONTAINS&filter[label][value]=${searchQuery}`,
+        {
+          headers: {
+            Authorization: 'Bearer ' + user.token,
+          },
         },
-      });
-      console.log(openGroups);
+      );
       setGroups(openGroups.data.data);
 
       // Get Closed Groups
       let closedGroups = await axios.get(
-        `${API_URL}/jsonapi/group/closed_group/`,
+        `${API_URL}/jsonapi/group/closed_group?filter[label][operator]=CONTAINS&filter[label][value]=${searchQuery}`,
         {
           headers: {
             Authorization: 'Bearer ' + user.token,
