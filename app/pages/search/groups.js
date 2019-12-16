@@ -21,6 +21,7 @@ import SearchInputLabel from '../../components/atoms/SearchInputLabel';
 import SearchBlockHero from '../../components/atoms/SearchBlockHero';
 import SearchHeroForm from '../../components/molecules/SearchHeroForm';
 import {API_URL} from '../../utils/constants';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 const SearchContainer = styled.div`
   margin: auto;
@@ -47,6 +48,7 @@ function SearchGroups() {
 
   const [searchQuery, setSearchQuery] = useState('');
   const [groups, setGroups] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getGroups();
@@ -58,6 +60,7 @@ function SearchGroups() {
   };
 
   const getGroups = async e => {
+    setLoading(true);
     // for logged in users
     if (user.token) {
       // Get Open Groups
@@ -85,10 +88,11 @@ function SearchGroups() {
       `${API_URL}/jsonapi/group/public_group/`,
     );
     setGroups(groups => [...groups, ...publicGroups.data.data]);
+    setLoading(false);
   };
 
   const renderSearchResults = () => {
-    if (groups.length) {
+    if (groups.length && !loading) {
       return (
         <React.Fragment>
           {groups.map(group => (
@@ -99,7 +103,7 @@ function SearchGroups() {
           ))}
         </React.Fragment>
       );
-    } else {
+    } else if (!loading) {
       return <p>No results found.</p>;
     }
   };
@@ -151,6 +155,7 @@ function SearchGroups() {
       <SearchContainer>
         <ContentRegion>
           <Title>Group results</Title>
+          <ClipLoader loading={loading} />
           {renderSearchResults()}
         </ContentRegion>
         <ComplimentaryRegion></ComplimentaryRegion>

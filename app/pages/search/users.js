@@ -21,6 +21,7 @@ import SearchInputLabel from '../../components/atoms/SearchInputLabel';
 import SearchBlockHero from '../../components/atoms/SearchBlockHero';
 import SearchHeroForm from '../../components/molecules/SearchHeroForm';
 import {API_URL} from '../../utils/constants';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 const SearchContainer = styled.div`
   margin: auto;
@@ -47,6 +48,7 @@ function SearchUsers() {
 
   const [searchQuery, setSearchQuery] = useState('');
   const [users, setUsers] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getUsers();
@@ -58,16 +60,18 @@ function SearchUsers() {
   };
 
   const getUsers = async e => {
+    setLoading(true);
     let result = await axios.get(`${API_URL}/jsonapi/user/user/`, {
       headers: {
         Authorization: 'Bearer ' + user.token,
       },
     });
     setUsers(result.data.data);
+    setLoading(false);
   };
 
   const renderSearchResults = () => {
-    if (users.length) {
+    if (users.length && !loading) {
       return (
         <React.Fragment>
           {users.map(user => (
@@ -78,7 +82,7 @@ function SearchUsers() {
           ))}
         </React.Fragment>
       );
-    } else {
+    } else if (!loading) {
       return <p>No results found.</p>;
     }
   };
@@ -128,6 +132,7 @@ function SearchUsers() {
       <SearchContainer>
         <ContentRegion>
           <Title>Member results</Title>
+          <ClipLoader loading={loading} />
           {renderSearchResults()}
         </ContentRegion>
         <ComplimentaryRegion></ComplimentaryRegion>
