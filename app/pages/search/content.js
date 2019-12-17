@@ -20,7 +20,9 @@ import SecondaryNavigation from '../../components/molecules/SecondaryNavigation'
 import SearchInputLabel from '../../components/atoms/SearchInputLabel';
 import SearchBlockHero from '../../components/atoms/SearchBlockHero';
 import SearchHeroForm from '../../components/molecules/SearchHeroForm';
+import ClipLoader from 'react-spinners/ClipLoader';
 import {API_URL} from '../../utils/constants';
+import {createHtmlMarkup} from '../../utils/markup';
 
 const SearchContainer = styled.div`
   margin: auto;
@@ -46,9 +48,68 @@ function SearchContent() {
   const user = useUser();
 
   const [searchQuery, setSearchQuery] = useState('');
+  const [content, setContent] = useState('');
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getContent();
+  }, []);
 
   const handleSearch = e => {
     e.preventDefault();
+  };
+
+  const getContent = async e => {
+    setLoading(true);
+    // Get topics
+    let topics = await axios.get(`${API_URL}/jsonapi/node/topic`, {
+      headers: {
+        Authorization: 'Bearer ' + user.token,
+      },
+    });
+    setContent(topics.data.data);
+
+    // Get pages
+    let pages = await axios.get(`${API_URL}/jsonapi/node/page`, {
+      headers: {
+        Authorization: 'Bearer ' + user.token,
+      },
+    });
+    setContent(content => [...content, ...pages.data.data]);
+
+    // Get events
+    let events = await axios.get(`${API_URL}/jsonapi/node/event`, {
+      headers: {
+        Authorization: 'Bearer ' + user.token,
+      },
+    });
+    setContent(content => [...content, ...events.data.data]);
+    setLoading(false);
+  };
+
+  const renderSearchResults = () => {
+    if (content.length && !loading) {
+      return (
+        <React.Fragment>
+          {content.map(content => (
+            <Card key={content.id}>
+              <CardHeader>
+                <Link href={'/node/' + content.attributes.drupal_internal__nid}>
+                  {content.attributes.title}
+                </Link>
+              </CardHeader>
+              <CardBody>
+                {content.type}
+                <br />
+                {content.attributes.field_content_visibility}
+              </CardBody>
+            </Card>
+          ))}
+        </React.Fragment>
+      );
+    } else if (!loading) {
+      return <p>No results found.</p>;
+    }
   };
 
   return (
@@ -98,10 +159,8 @@ function SearchContent() {
       <SearchContainer>
         <ContentRegion>
           <Title>Content results</Title>
-          <Card>
-            <CardHeader>Placeholder</CardHeader>
-            <CardBody>This is a placeholder</CardBody>
-          </Card>
+          <ClipLoader loading={loading} />
+          {renderSearchResults()}
         </ContentRegion>
         <ComplimentaryRegion></ComplimentaryRegion>
       </SearchContainer>
