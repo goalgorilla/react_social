@@ -156,11 +156,7 @@ class NavigationDropdown extends React.Component {
     if (this.props.button) {
       return (
         <div>
-          <Wrapper
-            className="container"
-            ref={this.container}
-            rightAlign={this.props.rightAlign}
-          >
+          <Wrapper ref={this.container} rightAlign={this.props.rightAlign}>
             <NavButton
               onClick={this.handleButtonClick}
               active={this.state.displayMenu}
@@ -175,11 +171,7 @@ class NavigationDropdown extends React.Component {
       );
     } else if (this.props.title) {
       return (
-        <NavLink
-          className="container"
-          ref={this.container}
-          onClick={this.handleButtonClick}
-        >
+        <NavLink ref={this.container} onClick={this.handleButtonClick}>
           {this.props.title}
           {this.state.displayMenu ? this.props.children : null}
         </NavLink>
