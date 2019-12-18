@@ -4,19 +4,20 @@ import axios from 'axios';
 import {useRouter} from 'next/router';
 import styled from 'styled-components';
 import React, {useState, useEffect} from 'react';
-import Layout from '../components/Layout';
-import {API_URL} from '../utils/constants';
-import ProfileHero from '../components/atoms/ProfileHero';
-import UserCard from '../components/molecules/UserCard';
-import ProfileNavigationBar from '../components/molecules/ProfileNavigationBar';
-import ProfileInformation from '../components/organisms/ProfileInformation';
-import ProfileStream from '../components/organisms/ProfileStream';
-import ProfileEvents from '../components/organisms/ProfileEvents';
-import ProfileTopics from '../components/organisms/ProfileTopics';
-import ProfileGroups from '../components/organisms/ProfileGroups';
-import RecentActivity from '../components/organisms/RecentActivity';
-import HorizontalLine from '../components/atoms/HorizontalLine';
-import {deviceMinWidth, deviceMaxWidth} from '../utils/device';
+import Layout from '../../../components/Layout';
+import {API_URL} from '../../../utils/constants';
+import ProfileHero from '../../../components/atoms/ProfileHero';
+import UserCard from '../../../components/molecules/UserCard';
+import ProfileNavigationBar from '../../../components/molecules/ProfileNavigationBar';
+import ProfileInformation from '../../../components/organisms/ProfileInformation';
+import ProfileStream from '../../../components/organisms/ProfileStream';
+import ProfileEvents from '../../../components/organisms/ProfileEvents';
+import ProfileTopics from '../../../components/organisms/ProfileTopics';
+import ProfileGroups from '../../../components/organisms/ProfileGroups';
+import RecentActivity from '../../../components/organisms/RecentActivity';
+import HorizontalLine from '../../../components/atoms/HorizontalLine';
+import {deviceMinWidth, deviceMaxWidth} from '../../../utils/device';
+import {getCookie} from '../../../utils/cookie';
 
 const ProfileContentContainer = styled.div`
   display: flex;
@@ -108,13 +109,20 @@ function User({name}) {
 User.getInitialProps = async ctx => {
   // Get name of the user from the id passed in url
   return axios
-    .get(`${API_URL}/jsonapi/user/user/${ctx.query.id}`)
+    .get(
+      `${API_URL}/jsonapi/user/user?filter[drupal_internal__uid][value]=${ctx.query.id}`,
+      {
+        headers: {
+          Authorization: 'Bearer ' + getCookie('token', ctx.req),
+        },
+      },
+    )
     .then(response => {
-      const name = response.data.data.attributes.name;
+      const name = response.data.data[0].attributes.name;
       return {name};
     })
     .catch(err => {
-      throw new Error(`Error occured while fetching user: ${err}`);
+      throw new Error(`Error occured while fetching user`);
     });
 };
 

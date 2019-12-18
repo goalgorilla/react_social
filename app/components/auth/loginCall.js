@@ -39,11 +39,8 @@ export const loginCall = (username, password) => {
         });
       })
       .then(response => {
-        // store id
         const id = response.data.meta.links.me.meta.id;
-        data.id = id;
-        setCookie('id', id);
-        // Obtain the user's username using the user's id
+        // Obtain the user's username/drupal_internal__uid using the user's id
         return axios.get(`${API_URL}/jsonapi/user/user/${id}`, {
           headers: {
             Authorization: `Bearer ${data.token}`,
@@ -51,6 +48,10 @@ export const loginCall = (username, password) => {
         });
       })
       .then(response => {
+        // store id
+        const drupalId = response.data.data.attributes.drupal_internal__uid;
+        data.id = drupalId;
+        setCookie('id', drupalId);
         // store username
         const name = decodeURI(response.data.data.attributes.name);
         data.username = name;

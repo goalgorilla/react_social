@@ -244,45 +244,33 @@ const AccountNavigation = ({t}) => {
             <ul>
               <DropdownHeader>
                 {t('signed-in-as')}
-                <Link href={`/user?id=${user.id}`}>
+                <Link href={`/user/${user.id}/stream`}>
                   <a>{user.username}</a>
                 </Link>
               </DropdownHeader>
               <ListDivider />
               <li>
-                <Link href={`/user?id=${user.id}`}>
+                <Link href={`/user/${user.id}/stream`}>
                   <a>{t('my-stream')}</a>
                 </Link>
               </li>
               <li>
-                <Link
-                  href={`/userevents?id=${user.id}`}
-                  as={`/user?id=${user.id}/events`}
-                >
+                <Link href={`/user/${user.id}/events`}>
                   <a>{t('my-events')}</a>
                 </Link>
               </li>
               <li>
-                <Link
-                  href={`/usertopics?id=${user.id}`}
-                  as={`/user?id=${user.id}/topics`}
-                >
+                <Link href={`/user/${user.id}/topics`}>
                   <a>{t('my-topics')}</a>
                 </Link>
               </li>
               <li>
-                <Link
-                  href={`/usergroups?id=${user.id}`}
-                  as={`/user?id=${user.id}/groups`}
-                >
+                <Link href={`/user/${user.id}/groups`}>
                   <a>{t('my-groups')}</a>
                 </Link>
               </li>
               <li>
-                <Link
-                  href={`/userinformation?id=${user.id}`}
-                  as={`/user?id=${user.id}/information`}
-                >
+                <Link href={`/user/${user.id}/information`}>
                   <a>{t('my-information')}</a>
                 </Link>
               </li>

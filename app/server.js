@@ -46,6 +46,20 @@ app
       }
     });
 
+    server.get('/user/:id/home', (req, res) => {
+      if (!req.cookies.token) {
+        res.redirect('/user/login');
+        res.end();
+      } else {
+        return app.render(
+          req,
+          res,
+          '/user/' + req.params.id + '/stream',
+          req.query,
+        );
+      }
+    });
+
     server.get('*', (req, res) => {
       return handle(req, res);
     });
