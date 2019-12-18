@@ -6,27 +6,27 @@ import {withTranslation} from '../../../i18n';
 const ExploreList = ({t}) => (
   <ul>
     <li>
-      <Link href="/community">
+      <Link href="/explore">
         <a>{t('community')}</a>
       </Link>
     </li>
     <li>
-      <Link href="/groups">
+      <Link href="/all-groups">
         <a>{t('all-groups')}</a>
       </Link>
     </li>
     <li>
-      <Link href="/events">
+      <Link href="/community-events">
         <a>{t('all-events')}</a>
       </Link>
     </li>
     <li>
-      <Link href="/topics">
+      <Link href="/all-topics">
         <a>{t('all-topics')}</a>
       </Link>
     </li>
     <li>
-      <Link href="/members">
+      <Link href="/all-members">
         <a>{t('all-members')}</a>
       </Link>
     </li>
