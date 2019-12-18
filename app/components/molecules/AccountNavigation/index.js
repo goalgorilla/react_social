@@ -142,7 +142,7 @@ const AccountNavigation = ({t}) => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/login">
+                  <Link href="/user/login">
                     <a>{t('log-in')}</a>
                   </Link>
                 </li>
@@ -157,7 +157,7 @@ const AccountNavigation = ({t}) => {
                 </Link>
               </li>
               <li>
-                <Link href="/login">
+                <Link href="/user/login">
                   <a>{t('log-in')}</a>
                 </Link>
               </li>

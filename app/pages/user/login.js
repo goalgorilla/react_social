@@ -1,21 +1,21 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import Router from 'next/router';
-import Layout from '../components/Layout';
-import Card from '../components/organisms/Card';
-import CardHeader from '../components/atoms/CardHeader';
-import CardBody from '../components/atoms/CardBody';
-import CardFooter from '../components/atoms/CardFooter';
-import Title from '../components/atoms/Title';
-import RaisedButton from '../components/atoms/RaisedButton';
-import SystemMessage from '../components/atoms/SystemMessage';
-import BlockFormField from '../components/molecules/BlockFormField';
-import InputLabel from '../components/atoms/InputLabel';
-import Input from '../components/atoms/Input';
-import InputDescription from '../components/atoms/InputDescription';
-import {withTranslation} from '../i18n';
-import {useUser, useDispatchUser} from '../components/auth/userContext';
-import {loginCall} from '../components/auth/loginCall';
+import Layout from '../../components/Layout';
+import Card from '../../components/organisms/Card';
+import CardHeader from '../../components/atoms/CardHeader';
+import CardBody from '../../components/atoms/CardBody';
+import CardFooter from '../../components/atoms/CardFooter';
+import Title from '../../components/atoms/Title';
+import RaisedButton from '../../components/atoms/RaisedButton';
+import SystemMessage from '../../components/atoms/SystemMessage';
+import BlockFormField from '../../components/molecules/BlockFormField';
+import InputLabel from '../../components/atoms/InputLabel';
+import Input from '../../components/atoms/Input';
+import InputDescription from '../../components/atoms/InputDescription';
+import {withTranslation} from '../../i18n';
+import {useUser, useDispatchUser} from '../../components/auth/userContext';
+import {loginCall} from '../../components/auth/loginCall';
 
 const Wrapper = styled.div`
   margin: auto;
@@ -56,7 +56,7 @@ function Login() {
           type: 'LOGIN',
           payload: res,
         });
-        Router.push('/whoami');
+        Router.push('/');
       })
       .catch(err => {
         setError(true);
