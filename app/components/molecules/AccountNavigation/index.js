@@ -287,7 +287,7 @@ const AccountNavigation = ({t}) => {
                 </Link>
               </li>
               <li>
-                <Link href="/editprofile">
+                <Link href={`/user/${user.id}/profile`}>
                   <a>{t('edit-profile')}</a>
                 </Link>
               </li>
