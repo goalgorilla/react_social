@@ -6,7 +6,7 @@ const MenuItem = styled.a`
   display: block;
   padding: 13px 10px 13px 10px;
   line-height: 24px;
-  color: #f9f9f9;
+  color: #f9f9f9 !important;
   transition: all 0.3s;
   white-space: nowrap;
   opacity: ${props => (props.active ? '1' : '0.75')};

@@ -5,11 +5,7 @@ import Link from 'next/link';
 import Layout from '../../components/Layout';
 import styled from 'styled-components';
 import Input from '../../components/atoms/Input';
-import InputLabel from '../../components/atoms/InputLabel';
 import Title from '../../components/atoms/Title';
-import Card from '../../components/organisms/Card';
-import CardHeader from '../../components/atoms/CardHeader';
-import CardBody from '../../components/atoms/CardBody';
 import ContentRegion from '../../components/organisms/ContentRegion';
 import ComplimentaryRegion from '../../components/organisms/ComplimentaryRegion';
 import BaseButton from '../../components/atoms/BaseButton';
@@ -22,6 +18,10 @@ import SearchBlockHero from '../../components/atoms/SearchBlockHero';
 import SearchHeroForm from '../../components/molecules/SearchHeroForm';
 import {API_URL} from '../../utils/constants';
 import ClipLoader from 'react-spinners/ClipLoader';
+import {
+  parseSearchResponse,
+  renderSearchResults,
+} from '../../utils/searchUtils';
 
 const SearchContainer = styled.div`
   margin: auto;
@@ -47,7 +47,9 @@ function SearchUsers() {
   const user = useUser();
 
   const [searchQuery, setSearchQuery] = useState('');
-  const [users, setUsers] = useState('');
+  const [searchResults, setSearchResults] = useState('');
+  const [htmlHead, setHtmlHead] = useState('');
+  const [svgs, setSvgs] = useState('');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -61,37 +63,20 @@ function SearchUsers() {
 
   const getUsers = async e => {
     setLoading(true);
-    let result = await axios.get(
-      `${API_URL}/jsonapi/user/user?filter[name][operator]=CONTAINS&filter[name][value]=${searchQuery}`,
-      {
+
+    const {searchResults, head, svgs} = await axios
+      .get(encodeURI(`${API_URL}/search/users/${searchQuery}`), {
         headers: {
           Authorization: 'Bearer ' + user.token,
         },
-      },
-    );
-    setUsers(result.data.data);
+      })
+      .then(response => {
+        return parseSearchResponse(response);
+      });
+    setSearchResults(searchResults);
+    setHtmlHead(head);
+    setSvgs(svgs);
     setLoading(false);
-  };
-
-  const renderSearchResults = () => {
-    if (users.length && !loading) {
-      return (
-        <React.Fragment>
-          {users.map(user => (
-            <Card key={user.id}>
-              <CardHeader>
-                <Link href={'/user/' + user.attributes.drupal_internal__uid}>
-                  <a>{user.attributes.name}</a>
-                </Link>
-              </CardHeader>
-              <CardBody>{user.attributes.created}</CardBody>
-            </Card>
-          ))}
-        </React.Fragment>
-      );
-    } else if (!loading) {
-      return <p>No results found.</p>;
-    }
   };
 
   return (
@@ -140,7 +125,7 @@ function SearchUsers() {
         <ContentRegion>
           <Title>Member results</Title>
           <ClipLoader loading={loading} />
-          {renderSearchResults()}
+          {renderSearchResults(htmlHead, searchResults, svgs, loading)}
         </ContentRegion>
         <ComplimentaryRegion></ComplimentaryRegion>
       </SearchContainer>
