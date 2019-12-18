@@ -22,6 +22,7 @@ import {
   parseSearchResponse,
   renderSearchResults,
 } from '../../utils/searchUtils';
+import {useRouter} from 'next/router';
 
 const SearchContainer = styled.div`
   margin: auto;
@@ -45,6 +46,7 @@ const SearchButton = styled(BaseButton)`
 
 function SearchGroups() {
   const user = useUser();
+  const router = useRouter();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState('');
@@ -64,12 +66,17 @@ function SearchGroups() {
   const getGroups = async e => {
     setLoading(true);
 
+    const pageNumber = router.query.page ? router.query.page : 0;
+
     const {searchResults, head, svgs} = await axios
-      .get(encodeURI(`${API_URL}/search/groups/${searchQuery}`), {
-        headers: {
-          Authorization: 'Bearer ' + user.token,
+      .get(
+        encodeURI(`${API_URL}/search/groups/${searchQuery}?page=${pageNumber}`),
+        {
+          headers: {
+            Authorization: 'Bearer ' + user.token,
+          },
         },
-      })
+      )
       .then(response => {
         return parseSearchResponse(response);
       });
