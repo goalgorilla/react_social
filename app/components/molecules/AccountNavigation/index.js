@@ -137,7 +137,7 @@ const AccountNavigation = ({t}) => {
             >
               <ul>
                 <li>
-                  <Link href="/signup">
+                  <Link href="/user/register">
                     <a>{t('sign-up')}</a>
                   </Link>
                 </li>
@@ -152,7 +152,7 @@ const AccountNavigation = ({t}) => {
           <DesktopWrapper>
             <ul>
               <li>
-                <Link href="/signup">
+                <Link href="/user/register">
                   <a>{t('sign-up')}</a>
                 </Link>
               </li>
