@@ -20,6 +20,11 @@ import SearchInputLabel from '../../components/atoms/SearchInputLabel';
 import SearchBlockHero from '../../components/atoms/SearchBlockHero';
 import SearchHeroForm from '../../components/molecules/SearchHeroForm';
 import {API_URL} from '../../utils/constants';
+import {
+  parseSearchResponse,
+  renderSearchResults,
+} from '../../utils/searchUtils';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 const SearchContainer = styled.div`
   margin: auto;
@@ -45,9 +50,36 @@ function SearchAll() {
   const user = useUser();
 
   const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState('');
+  const [htmlHead, setHtmlHead] = useState('');
+  const [svgs, setSvgs] = useState('');
+  const [loading, setLoading] = useState(true);
 
-  const handleSearch = e => {
+  useEffect(() => {
+    getAll();
+  }, []);
+
+  const handleSearch = async e => {
     e.preventDefault();
+    getAll();
+  };
+
+  const getAll = async e => {
+    setLoading(true);
+
+    const {searchResults, head, svgs} = await axios
+      .get(encodeURI(`${API_URL}/search/all/${searchQuery}`), {
+        headers: {
+          Authorization: 'Bearer ' + user.token,
+        },
+      })
+      .then(response => {
+        return parseSearchResponse(response);
+      });
+    setSearchResults(searchResults);
+    setHtmlHead(head);
+    setSvgs(svgs);
+    setLoading(false);
   };
 
   return (
@@ -97,10 +129,8 @@ function SearchAll() {
       <SearchContainer>
         <ContentRegion>
           <Title>All results</Title>
-          <Card>
-            <CardHeader>Placeholder</CardHeader>
-            <CardBody>This is a placeholder</CardBody>
-          </Card>
+          <ClipLoader loading={loading} />
+          {renderSearchResults(htmlHead, searchResults, svgs, loading)}
         </ContentRegion>
         <ComplimentaryRegion></ComplimentaryRegion>
       </SearchContainer>
