@@ -5,7 +5,6 @@ import Link from 'next/link';
 import Layout from '../../components/Layout';
 import styled from 'styled-components';
 import Input from '../../components/atoms/Input';
-import InputLabel from '../../components/atoms/InputLabel';
 import Title from '../../components/atoms/Title';
 import Card from '../../components/organisms/Card';
 import CardHeader from '../../components/atoms/CardHeader';
@@ -22,7 +21,10 @@ import SearchBlockHero from '../../components/atoms/SearchBlockHero';
 import SearchHeroForm from '../../components/molecules/SearchHeroForm';
 import ClipLoader from 'react-spinners/ClipLoader';
 import {API_URL} from '../../utils/constants';
-import {createHtmlMarkup} from '../../utils/markup';
+import {
+  parseSearchResponse,
+  renderSearchResults,
+} from '../../utils/searchUtils';
 
 const SearchContainer = styled.div`
   margin: auto;
@@ -48,68 +50,36 @@ function SearchContent() {
   const user = useUser();
 
   const [searchQuery, setSearchQuery] = useState('');
-  const [content, setContent] = useState('');
+  const [searchResults, setSearchResults] = useState('');
+  const [htmlHead, setHtmlHead] = useState('');
+  const [svgs, setSvgs] = useState('');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getContent();
   }, []);
 
-  const handleSearch = e => {
+  const handleSearch = async e => {
     e.preventDefault();
+    getContent();
   };
 
   const getContent = async e => {
     setLoading(true);
-    // Get topics
-    let topics = await axios.get(`${API_URL}/jsonapi/node/topic`, {
-      headers: {
-        Authorization: 'Bearer ' + user.token,
-      },
-    });
-    setContent(topics.data.data);
 
-    // Get pages
-    let pages = await axios.get(`${API_URL}/jsonapi/node/page`, {
-      headers: {
-        Authorization: 'Bearer ' + user.token,
-      },
-    });
-    setContent(content => [...content, ...pages.data.data]);
-
-    // Get events
-    let events = await axios.get(`${API_URL}/jsonapi/node/event`, {
-      headers: {
-        Authorization: 'Bearer ' + user.token,
-      },
-    });
-    setContent(content => [...content, ...events.data.data]);
+    const {searchResults, head, svgs} = await axios
+      .get(encodeURI(`${API_URL}/search/content/${searchQuery}`), {
+        headers: {
+          Authorization: 'Bearer ' + user.token,
+        },
+      })
+      .then(response => {
+        return parseSearchResponse(response);
+      });
+    setSearchResults(searchResults);
+    setHtmlHead(head);
+    setSvgs(svgs);
     setLoading(false);
-  };
-
-  const renderSearchResults = () => {
-    if (content.length && !loading) {
-      return (
-        <React.Fragment>
-          {content.map(content => (
-            <Card key={content.id}>
-              <CardHeader>
-                <Link href={'/node/' + content.attributes.drupal_internal__nid}>
-                  {content.attributes.title}
-                </Link>
-              </CardHeader>
-              <CardBody>
-                {content.type}
-                <br />
-                {content.attributes.field_content_visibility}
-              </CardBody>
-            </Card>
-          ))}
-        </React.Fragment>
-      );
-    } else if (!loading) {
-      return <p>No results found.</p>;
-    }
   };
 
   return (
@@ -160,7 +130,7 @@ function SearchContent() {
         <ContentRegion>
           <Title>Content results</Title>
           <ClipLoader loading={loading} />
-          {renderSearchResults()}
+          {renderSearchResults(htmlHead, searchResults, svgs, loading)}
         </ContentRegion>
         <ComplimentaryRegion></ComplimentaryRegion>
       </SearchContainer>
