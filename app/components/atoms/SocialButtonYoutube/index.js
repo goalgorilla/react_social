@@ -4,6 +4,7 @@ import {Youtube} from 'styled-icons/fa-brands/Youtube';
 
 // Youtube social media button - used, for example, in the footer
 const StyledYoutube = styled(Youtube)`
+  box-sizing: content-box;
   margin: 0.3125rem 0.125rem;
   padding: 0.4375rem;
   border-radius: 50%;
