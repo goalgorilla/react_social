@@ -10,12 +10,13 @@ const DrupalContent = styled.div`
   margin: -50px 0 -100px 0;
 `;
 
-export function renderPage(head, body, svgs) {
+export function renderPage(head, body, svgs, scripts) {
   return (
     <Layout>
       <Head>{ReactHtmlParser(head)}</Head>
       <DrupalContent dangerouslySetInnerHTML={createHtmlMarkup(body)} />
       <div dangerouslySetInnerHTML={createHtmlMarkup(svgs)} />
+      <div dangerouslySetInnerHTML={createHtmlMarkup(scripts)} />
     </Layout>
   );
 }
@@ -68,14 +69,16 @@ export function parseResponse(response) {
   }
 
   // set all script src to our drupal domain
-  // var scripts = doc.getElementsByTagName('script');
-  // for (var i = 0; i < scripts.length; i++) {
-  //   if (!scripts[i].src.includes(API_URL)) {
-  //     let oldSrc = scripts[i].src;
-  //     let newSrc = API_URL + oldSrc;
-  //     scripts[i].src = newSrc;
-  //   }
-  // }
+  var htmlScripts = '';
+  var scripts = doc.getElementsByTagName('script');
+  for (var i = 0; i < scripts.length; i++) {
+    if (!scripts[i].src.includes(API_URL)) {
+      let oldSrc = scripts[i].src;
+      let newSrc = API_URL + oldSrc;
+      scripts[i].src = newSrc;
+    }
+    htmlScripts += scripts[i].outerHTML;
+  }
 
   // set head, body
   const htmlHead = doc.head.innerHTML;
@@ -89,5 +92,6 @@ export function parseResponse(response) {
     body: htmlBody,
     head: htmlHead,
     svgs: svgs,
+    scripts: htmlScripts,
   };
 }
