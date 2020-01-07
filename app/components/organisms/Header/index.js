@@ -43,6 +43,7 @@ const NavRow = styled.div`
     text-align: center;
     text-decoration: none;
     color: ${props => props.theme.color.text.three};
+    font-weight: ${props => props.theme.font.weight.bold} !important;
   }
 
   &:first-of-type {
@@ -75,6 +76,7 @@ const NavRow = styled.div`
   }
 
   &:first-of-type > div img:first-of-type {
+    box-sizing: content-box;
     padding-right: 10px;
     opacity: 0.9;
   }

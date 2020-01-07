@@ -27,10 +27,20 @@ const NavBar = styled.ul`
 
   li > a {
     align-self: center;
-    display: flex;
+    height: 100%;
+    display: block;
     cursor: pointer;
     padding: 0 0.6125rem 0 0.6125rem;
     text-decoration: none;
+  }
+
+  &:li > a {
+    line-height: 50px;
+  }
+
+  li > a > img {
+    height: 100%;
+    vertical-align: middle;
   }
 
   @media ${deviceMaxWidth.tablet} {
@@ -68,6 +78,7 @@ const DesktopWrapper = styled.div`
     height: 100%;
     line-height: 50px;
     color: inherit;
+    font-weight: ${props => props.theme.font.weight.bold} !important;
   }
 
   & > ul > li > div {

@@ -80,6 +80,7 @@ const DesktopWrapper = styled.div`
   }
 
   ul li {
+    box-sizing: content-box;
     padding: 0 0 0 0.9375rem;
     margin-left: 0.9375rem;
   }
@@ -87,6 +88,7 @@ const DesktopWrapper = styled.div`
   ul li a {
     white-space: nowrap;
     color: inherit;
+    font-weight: ${props => props.theme.font.weight.bold} !important;
   }
 
   @media ${deviceMinWidth.tablet} {

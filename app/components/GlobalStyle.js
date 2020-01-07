@@ -11,8 +11,12 @@ const GlobalStyle = createGlobalStyle`
     color: ${theme.color.foreground.primary};
     font-family: ${theme.font.family};
     font-weight: ${theme.font.weight.light};
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+  * {
+    box-sizing: border-box;
   }
   html {
     height: 100%;
