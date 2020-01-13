@@ -14,8 +14,3 @@
 "https://api.{default}/":
   type: upstream
   upstream: "api:http"
-  cache:
-    enabled: true
-    default_ttl: 0
-    cookies: ["*"]
-    headers: ["Accept", "Accept-Language"]
