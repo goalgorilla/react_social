@@ -74,7 +74,7 @@ web:
         "^/sites/default/files/(css|jss)":
           expires: 2w
 
-    "/profiles/contrib/social/themes/"
+    "/profiles/contrib/social/themes/":
       # Allow access to all files in the themes directory
       allow: true
       headers:
