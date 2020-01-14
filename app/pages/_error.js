@@ -45,10 +45,19 @@ Error.getInitialProps = async ctx => {
 
   const namespacesRequired = {namespacesRequired: ['common', 'header']};
 
+  var reqMethod = '';
+  if (ctx.req.route.methods.get) {
+    reqMethod = 'GET';
+  } else if (ctx.req.route.methods.post) {
+    reqMethod = 'POST';
+  }
+
   // if page does not exist on the React application then perform a GET request to the Drupal site to check if it exists there
-  if (statusCode === 404) {
+  if (statusCode === 404 && reqMethod !== '') {
     return axios
-      .get(API_URL + requestedUrl, {
+      .request({
+        url: API_URL + requestedUrl,
+        method: reqMethod,
         headers: {
           Authorization: 'Bearer ' + getCookie('token', ctx.req),
         },
