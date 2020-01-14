@@ -147,7 +147,11 @@ const NavigationList = ({t}) => {
       </DesktopWrapper>
       {/* Search button */}
       <NavigationDropdown
-        button={<img src="/static/search.svg" width="24px" alt="search icon" />}
+        button={
+          <Link href="/search/all">
+            <img src="/static/search.svg" width="24px" alt="search icon" />
+          </Link>
+        }
       />
     </NavBar>
   );
