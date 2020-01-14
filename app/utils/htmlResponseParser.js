@@ -68,6 +68,16 @@ export function parseResponse(response) {
     }
   }
 
+  // remove the drupal domain href from a tags (drupaldomain.com/user -> /user)
+  var forms = doc.getElementsByTagName('form');
+  for (var i = 0; i < forms.length; i++) {
+    if (!forms[i].action.includes(API_URL)) {
+      let oldAction = forms[i].action;
+      let newAction = API_URL + oldAction;
+      forms[i].action = newAction;
+    }
+  }
+
   // set all script src to our drupal domain
   var htmlScripts = '';
   var scripts = doc.getElementsByTagName('script');
@@ -82,11 +92,12 @@ export function parseResponse(response) {
 
   // set head, body
   const htmlHead = doc.head.innerHTML;
-  const htmlBody = doc.getElementById('content').outerHTML;
+  const htmlBody = doc.getElementsByTagName('main')[0].outerHTML;
 
   // set svgs
   const svgArray = doc.getElementsByTagName('svg');
-  const svgs = svgArray[svgArray.length - 1].outerHTML;
+  const svgs =
+    svgArray.length > 0 ? svgArray[svgArray.length - 1].outerHTML : null;
 
   return {
     body: htmlBody,
