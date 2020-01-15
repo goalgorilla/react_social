@@ -6,9 +6,6 @@ import Layout from '../../components/Layout';
 import styled from 'styled-components';
 import Input from '../../components/atoms/Input';
 import Title from '../../components/atoms/Title';
-import Card from '../../components/organisms/Card';
-import CardHeader from '../../components/atoms/CardHeader';
-import CardBody from '../../components/atoms/CardBody';
 import ContentRegion from '../../components/organisms/ContentRegion';
 import ComplimentaryRegion from '../../components/organisms/ComplimentaryRegion';
 import BaseButton from '../../components/atoms/BaseButton';
@@ -25,6 +22,7 @@ import {
   renderSearchResults,
 } from '../../utils/searchUtils';
 import ClipLoader from 'react-spinners/ClipLoader';
+import {useRouter} from 'next/router';
 
 const SearchContainer = styled.div`
   margin: auto;
@@ -48,6 +46,7 @@ const SearchButton = styled(BaseButton)`
 
 function SearchAll() {
   const user = useUser();
+  const router = useRouter();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState('');
@@ -67,12 +66,17 @@ function SearchAll() {
   const getAll = async e => {
     setLoading(true);
 
+    const pageNumber = router.query.page ? router.query.page : 0;
+
     const {searchResults, head, svgs} = await axios
-      .get(encodeURI(`${API_URL}/search/all/${searchQuery}`), {
-        headers: {
-          Authorization: 'Bearer ' + user.token,
+      .get(
+        encodeURI(`${API_URL}/search/all/${searchQuery}?page=${pageNumber}`),
+        {
+          headers: {
+            Authorization: 'Bearer ' + user.token,
+          },
         },
-      })
+      )
       .then(response => {
         return parseSearchResponse(response);
       });
