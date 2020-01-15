@@ -13,11 +13,13 @@ const ErrorMessage = styled.p`
   padding: ${props => props.theme.layout.padding};
 `;
 
-function Error({statusCode, htmlHead, htmlBody, svgs}) {
+function Error({statusCode, htmlHead, htmlBody, svgs, scripts}) {
   // if the page is found on drupal then we render it
   if (statusCode === 200) {
     return (
-      <React.Fragment>{renderPage(htmlHead, htmlBody, svgs)}</React.Fragment>
+      <React.Fragment>
+        {renderPage(htmlHead, htmlBody, svgs, scripts)}
+      </React.Fragment>
     );
     // if the page does not exist at all display an error message
   } else {
@@ -52,11 +54,12 @@ Error.getInitialProps = async ctx => {
         },
       })
       .then(response => {
-        const {head, body, svgs} = parseResponse(response);
+        const {head, body, svgs, scripts} = parseResponse(response);
         return {
           htmlBody: body,
           htmlHead: head,
-          svgs: svgs,
+          svgs,
+          scripts,
           statusCode: 200,
           namespacesRequired,
         };
