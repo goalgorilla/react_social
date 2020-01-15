@@ -18,6 +18,9 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     font-size: 16px;
   }
+  * {
+    box-sizing: border-box;
+  }
   @media ${deviceMaxWidth.tablet}{
     html {
       font-size: 14px;  
