@@ -9,6 +9,7 @@ import HorizontalLine from '../../atoms/HorizontalLine';
 import UserStats from '../UserStats';
 import TextButton from '../../atoms/TextButton';
 import Link from 'next/link';
+import {useUser} from '../../auth/userContext';
 
 const ProfileAvatar = styled(Avatar)`
   margin-top: -75px;
@@ -83,11 +84,12 @@ const StyledTextButton = styled(TextButton)`
 `;
 
 function UserCard(props) {
+  const user = useUser();
   // if the profile belongs to the logged in user render the editprofile button
   let profileButton;
-  if (props.loggedInUserId == props.profileId) {
+  if (user.id == props.id) {
     profileButton = (
-      <Link href="/editprofile">
+      <Link href={`/user/${user.id}/profile`}>
         <BaseButton radius="small" fontWeight="bold">
           Edit profile
         </BaseButton>

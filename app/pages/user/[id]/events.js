@@ -4,19 +4,20 @@ import axios from 'axios';
 import {useRouter} from 'next/router';
 import styled from 'styled-components';
 import React, {useState} from 'react';
-import Layout from '../components/Layout';
-import {API_URL} from '../utils/constants';
-import ProfileHero from '../components/atoms/ProfileHero';
-import UserCard from '../components/molecules/UserCard';
-import ProfileNavigationBar from '../components/molecules/ProfileNavigationBar';
-import ProfileInformation from '../components/organisms/ProfileInformation';
-import ProfileStream from '../components/organisms/ProfileStream';
-import ProfileEvents from '../components/organisms/ProfileEvents';
-import ProfileTopics from '../components/organisms/ProfileTopics';
-import ProfileGroups from '../components/organisms/ProfileGroups';
-import {deviceMinWidth, deviceMaxWidth} from '../utils/device';
-import HorizontalLine from '../components/atoms/HorizontalLine';
-import RecentActivity from '../components/organisms/RecentActivity';
+import Layout from '../../../components/Layout';
+import {API_URL} from '../../../utils/constants';
+import ProfileHero from '../../../components/atoms/ProfileHero';
+import UserCard from '../../../components/molecules/UserCard';
+import ProfileNavigationBar from '../../../components/molecules/ProfileNavigationBar';
+import ProfileInformation from '../../../components/organisms/ProfileInformation';
+import ProfileStream from '../../../components/organisms/ProfileStream';
+import ProfileEvents from '../../../components/organisms/ProfileEvents';
+import ProfileTopics from '../../../components/organisms/ProfileTopics';
+import ProfileGroups from '../../../components/organisms/ProfileGroups';
+import {deviceMinWidth, deviceMaxWidth} from '../../../utils/device';
+import HorizontalLine from '../../../components/atoms/HorizontalLine';
+import RecentActivity from '../../../components/organisms/RecentActivity';
+import {getCookie} from '../../../utils/cookie';
 
 const ProfileContentContainer = styled.div`
   display: flex;
@@ -68,10 +69,10 @@ const getAvailableTabs = () => ({
   information: ProfileInformation,
 });
 
-function UserTopics({name}) {
+function UserEvents({name}) {
   const router = useRouter();
 
-  const [currentTab, setCurrentTab] = useState('topics');
+  const [currentTab, setCurrentTab] = useState('events');
   const tabs = getAvailableTabs();
 
   if (typeof tabs[currentTab] === 'undefined') {
@@ -98,28 +99,31 @@ function UserTopics({name}) {
             setCurrentTab={setCurrentTab}
             userId={router.query.id}
           />
-          <ProfileTopics />
+          <ProfileEvents />
         </ProfileRightColumn>
       </ProfileContentContainer>
     </Layout>
   );
 }
 
-UserTopics.getInitialProps = ctx => {
+UserEvents.getInitialProps = async ctx => {
   // Get name of the user from the id passed in url
   return axios
-    .get(`${API_URL}/jsonapi/user/user/${ctx.query.id}`)
+    .get(
+      `${API_URL}/jsonapi/user/user?filter[drupal_internal__uid][value]=${ctx.query.id}`,
+      {
+        headers: {
+          Authorization: 'Bearer ' + getCookie('token', ctx.req),
+        },
+      },
+    )
     .then(response => {
-      const name = response.data.data.attributes.name;
+      const name = response.data.data[0].attributes.name;
       return {name};
     })
     .catch(err => {
-      throw new Error(`Error occured while fetching user: ${err}`);
+      throw new Error(`Error occured while fetching user`);
     });
 };
 
-UserTopics.propTypes = {
-  name: PropTypes.string,
-};
-
-export default UserTopics;
+export default UserEvents;
