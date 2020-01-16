@@ -16,11 +16,7 @@ const ErrorMessage = styled.p`
 function Error({statusCode, htmlHead, htmlBody, svgs, scripts}) {
   // if the page is found on drupal then we render it
   if (statusCode === 200) {
-    return (
-      <React.Fragment>
-        {renderPage(htmlHead, htmlBody, svgs, scripts)}
-      </React.Fragment>
-    );
+    return renderPage(htmlHead, htmlBody, svgs, scripts);
     // if the page does not exist at all display an error message
   } else {
     return (
