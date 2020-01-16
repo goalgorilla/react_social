@@ -14,7 +14,9 @@ const ErrorMessage = styled.p`
 `;
 
 function Error({statusCode, htmlHead, htmlBody, svgs, scripts}) {
-  // if the page is found on drupal then we render it
+  // in the case of a 404 error a request is made to the server/API
+  // to check if the page exists there, if true we are returned
+  // a 200 status code and a page to render
   if (statusCode === 200) {
     return renderPage(htmlHead, htmlBody, svgs, scripts);
     // if the page does not exist at all display an error message

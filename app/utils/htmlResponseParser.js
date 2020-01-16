@@ -10,6 +10,8 @@ const DrupalContent = styled.div`
   margin: -50px 0 -100px 0;
 `;
 
+// This is a render function which is used for the rendering of Drupal pages
+// This is not a generic render function
 export function renderPage(head, body, svgs, scripts) {
   return (
     <Layout>
