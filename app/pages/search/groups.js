@@ -28,6 +28,7 @@ import CardHeader from '../../components/atoms/CardHeader';
 import CardBody from '../../components/atoms/CardBody';
 import TextButton from '../../components/atoms/TextButton';
 import InputLabel from '../../components/atoms/InputLabel';
+import SearchSelect from '../../components/atoms/SearchSelect';
 
 const SearchContainer = styled.div`
   margin: auto;
@@ -49,13 +50,6 @@ const SearchButton = styled(BaseButton)`
   border-radius: 0 3px 3px 0;
 `;
 
-const SearchSelect = styled.select`
-  width: 100%;
-  padding: 8px;
-  border-radius: 3px;
-  margin-top: 5px;
-`;
-
 const FormButtons = styled.div`
   display: flex;
   flex-direction: row;
@@ -66,7 +60,6 @@ const FormButtons = styled.div`
 
 function SearchGroups() {
   const user = useUser();
-  const router = useRouter();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState('');
@@ -111,7 +104,7 @@ function SearchGroups() {
     setLoading(false);
   };
 
-  const handleSubmit = e => {
+  const handleFilter = e => {
     e.preventDefault();
     getGroups();
   };
@@ -175,7 +168,7 @@ function SearchGroups() {
           <Card>
             <CardHeader>Filter</CardHeader>
             <CardBody>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleFilter}>
                 <InputLabel>Type</InputLabel>
                 <SearchSelect
                   name="type"

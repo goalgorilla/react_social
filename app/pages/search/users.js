@@ -29,6 +29,8 @@ import TextButton from '../../components/atoms/TextButton';
 import InputLabel from '../../components/atoms/InputLabel';
 import BlockFormField from '../../components/molecules/BlockFormField';
 import InputDescription from '../../components/atoms/InputDescription';
+import SearchSelect from '../../components/atoms/SearchSelect';
+
 const FormButtons = styled.div`
   display: flex;
   flex-direction: row;
@@ -55,14 +57,6 @@ const SearchButton = styled(BaseButton)`
   border: none;
   margin-left: -3px;
   border-radius: 0 3px 3px 0;
-`;
-
-const SearchSelect = styled.select`
-  width: 100%;
-  padding: 10px;
-  border-radius: 3px;
-  margin-top: 5px;
-  margin-bottom: 10px;
 `;
 
 function SearchUsers() {
@@ -92,6 +86,7 @@ function SearchUsers() {
   const getUsers = async e => {
     setLoading(true);
 
+    // Build the expertise filter query using the user's input
     var expertiseFilter = '?expertise=';
     expertise.split(/\s*,\s*/).forEach(function(i, idx, array) {
       i = i.replace(/^\s*/, '').replace(/\s*$/, '');
@@ -101,17 +96,17 @@ function SearchUsers() {
       }
     });
 
+    // Build the interests filter query using the user's input
     var interestsFilter = '&interests=';
     interests.split(/\s*,\s*/).forEach(function(i, idx, array) {
-      console.log(i);
       i = i.replace(/^\s*/, '').replace(/\s*$/, '');
-      console.log(i);
       interestsFilter += i;
       if (idx !== array.length - 1) {
         interestsFilter += ', ';
       }
     });
 
+    // Selects the correct operator based on the selected time period filter (before, after, between)
     var timePeriodFilter = '&created_op=';
     switch (timePeriod) {
       case 'before':
@@ -125,6 +120,7 @@ function SearchUsers() {
         break;
     }
 
+    // if 'between' then set the min and max date in the query
     if (timePeriod === 'between') {
       timePeriodFilter +=
         '&created[value]=&created[min]=' +
@@ -152,7 +148,7 @@ function SearchUsers() {
     setLoading(false);
   };
 
-  const handleSubmit = e => {
+  const handleFilter = e => {
     e.preventDefault();
     getUsers();
   };
@@ -217,7 +213,7 @@ function SearchUsers() {
           <Card>
             <CardHeader>Filter</CardHeader>
             <CardBody>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleFilter}>
                 <BlockFormField>
                   <InputLabel>Expertise</InputLabel>
                   <Input

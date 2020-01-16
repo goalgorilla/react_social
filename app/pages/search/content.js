@@ -29,7 +29,8 @@ import CardBody from '../../components/atoms/CardBody';
 import TextButton from '../../components/atoms/TextButton';
 import InputLabel from '../../components/atoms/InputLabel';
 import BlockFormField from '../../components/molecules/BlockFormField';
-import InputDescription from '../../components/atoms/InputDescription';
+import SearchSelect from '../../components/atoms/SearchSelect';
+
 const FormButtons = styled.div`
   display: flex;
   flex-direction: row;
@@ -56,14 +57,6 @@ const SearchButton = styled(BaseButton)`
   border: none;
   margin-left: -3px;
   border-radius: 0 3px 3px 0;
-`;
-
-const SearchSelect = styled.select`
-  width: 100%;
-  padding: 10px;
-  border-radius: 3px;
-  margin-top: 5px;
-  margin-bottom: 10px;
 `;
 
 function SearchContent() {
@@ -95,6 +88,7 @@ function SearchContent() {
 
     const contentFilter = '?type=' + contentType;
 
+    // Selects the correct operator based on the selected time period filter (before, after, between)
     var timePeriodFilter = '&field_event_date_op=';
     switch (timePeriod) {
       case 'before':
@@ -108,6 +102,7 @@ function SearchContent() {
         break;
     }
 
+    // if 'between' then set the min and max date in the query
     if (timePeriod === 'between') {
       timePeriodFilter +=
         '&field_event_date[value]=&field_event_date[min]=' +
