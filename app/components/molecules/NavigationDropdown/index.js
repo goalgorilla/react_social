@@ -25,7 +25,7 @@ const Wrapper = styled.div`
   }
 
   ul li {
-    box-sizing: content-box;
+    box-sizing: content-box; // This is to prevent a styling conflict with Open Social that results in the header dropdown menu layout to be incorrect
     justify-content: flex-start;
     display: flex;
     width: 100%;
