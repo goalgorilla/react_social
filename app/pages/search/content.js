@@ -58,7 +58,7 @@ function SearchContent() {
     getContent();
   }, []);
 
-  const handleSearch = async e => {
+  const handleSearch = e => {
     e.preventDefault();
     getContent();
   };

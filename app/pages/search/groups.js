@@ -58,7 +58,7 @@ function SearchGroups() {
     getGroups();
   }, []);
 
-  const handleSearch = async e => {
+  const handleSearch = e => {
     e.preventDefault();
     getGroups();
   };

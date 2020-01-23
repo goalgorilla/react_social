@@ -58,7 +58,7 @@ function SearchAll() {
     getAll();
   }, []);
 
-  const handleSearch = async e => {
+  const handleSearch = e => {
     e.preventDefault();
     getAll();
   };
