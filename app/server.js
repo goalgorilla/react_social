@@ -46,13 +46,14 @@ app
       }
     });
 
-
     server.get('/search/users', (req, res) => {
       if (!req.cookies.token) {
         res.redirect('/login');
         res.end();
       } else {
         return app.render(req, res, '/search/users', req.query);
+      }
+    });
 
     server.get('/user/:id/home', (req, res) => {
       if (!req.cookies.token) {
@@ -65,7 +66,6 @@ app
           '/user/' + req.params.id + '/stream',
           req.query,
         );
-
       }
     });
 
