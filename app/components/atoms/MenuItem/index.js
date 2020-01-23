@@ -6,7 +6,7 @@ const MenuItem = styled.a`
   display: block;
   padding: 13px 10px 13px 10px;
   line-height: 24px;
-  color: #f9f9f9 !important;
+  color: #f9f9f9 !important; // This is overwriting the open social stylesheet from changing the color of menu items
   transition: all 0.3s;
   white-space: nowrap;
   opacity: ${props => (props.active ? '1' : '0.75')};
