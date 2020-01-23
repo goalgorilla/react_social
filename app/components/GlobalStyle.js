@@ -11,12 +11,17 @@ const GlobalStyle = createGlobalStyle`
     color: ${theme.color.foreground.primary};
     font-family: ${theme.font.family};
     font-weight: ${theme.font.weight.light};
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
   }
   html {
     height: 100%;
     font-size: 16px;
+    box-sizing: border-box;
   }
   @media ${deviceMaxWidth.tablet}{
     html {

@@ -23,7 +23,7 @@ class MyApp extends App {
         userData = {
           isLoggedIn: true,
           token: getCookie('token', ctx.req),
-          username: getCookie('username', ctx.req),
+          username: decodeURI(getCookie('username', ctx.req)),
           id: getCookie('id', ctx.req),
           avatar: getCookie('avatar', ctx.req),
         };

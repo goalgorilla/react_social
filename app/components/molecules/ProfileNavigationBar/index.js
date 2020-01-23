@@ -70,7 +70,7 @@ function ProfileNavigationBar(props) {
         onClick={() => props.setCurrentTab('stream')}
         active={props.currentTab === 'stream'}
       >
-        <Link href={`/user?id=${props.userId}`} scroll={false}>
+        <Link href={`/user/${props.userId}/stream`} scroll={false}>
           <a>Stream</a>
         </Link>
       </MenuItem>
@@ -78,11 +78,7 @@ function ProfileNavigationBar(props) {
         onClick={() => props.setCurrentTab('events')}
         active={props.currentTab === 'events'}
       >
-        <Link
-          href={`/userevents?id=${props.userId}`}
-          as={`/user?id=${props.userId}/events`}
-          scroll={false}
-        >
+        <Link href={`/user/${props.userId}/events`} scroll={false}>
           <a>Events</a>
         </Link>
       </MenuItem>
@@ -90,11 +86,7 @@ function ProfileNavigationBar(props) {
         onClick={() => props.setCurrentTab('topics')}
         active={props.currentTab === 'topics'}
       >
-        <Link
-          href={`/usertopics?id=${props.userId}`}
-          as={`/user?id=${props.userId}/topics`}
-          scroll={false}
-        >
+        <Link href={`/user/${props.userId}/topics`} scroll={false}>
           <a>Topics</a>
         </Link>
       </MenuItem>
@@ -102,11 +94,7 @@ function ProfileNavigationBar(props) {
         onClick={() => props.setCurrentTab('groups')}
         active={props.currentTab === 'groups'}
       >
-        <Link
-          href={`/usergroups?id=${props.userId}`}
-          as={`/user?id=${props.userId}/groups`}
-          scroll={false}
-        >
+        <Link href={`/user/${props.userId}/groups`} scroll={false}>
           <a>Groups</a>
         </Link>
       </MenuItem>
@@ -114,11 +102,7 @@ function ProfileNavigationBar(props) {
         onClick={() => props.setCurrentTab('information')}
         active={props.currentTab === 'information'}
       >
-        <Link
-          href={`/userinformation?id=${props.userId}`}
-          as={`/user?id=${props.userId}/information`}
-          scroll={false}
-        >
+        <Link href={`/user/${props.userId}/information`} scroll={false}>
           <a>Information</a>
         </Link>
       </MenuItem>

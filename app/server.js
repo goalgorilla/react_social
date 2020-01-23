@@ -18,18 +18,18 @@ app
     server.use(cookieParser());
     server.use(nextI18NextMiddleware(nextI18next));
 
-    server.get('/login', (req, res) => {
+    server.get('/user/login', (req, res) => {
       if (req.cookies.token) {
         res.redirect('/');
         res.end();
       } else {
-        return app.render(req, res, '/login', req.query);
+        return app.render(req, res, '/user/login', req.query);
       }
     });
 
     server.get('/editprofile', (req, res) => {
       if (!req.cookies.token) {
-        res.redirect('/login');
+        res.redirect('/user/login');
         res.end();
       } else {
         console.log(req);
@@ -39,12 +39,13 @@ app
 
     server.get('/user', (req, res) => {
       if (!req.cookies.token) {
-        res.redirect('/login');
+        res.redirect('/user/login');
         res.end();
       } else {
         return app.render(req, res, '/user', req.query);
       }
     });
+
 
     server.get('/search/users', (req, res) => {
       if (!req.cookies.token) {
@@ -52,6 +53,19 @@ app
         res.end();
       } else {
         return app.render(req, res, '/search/users', req.query);
+
+    server.get('/user/:id/home', (req, res) => {
+      if (!req.cookies.token) {
+        res.redirect('/user/login');
+        res.end();
+      } else {
+        return app.render(
+          req,
+          res,
+          '/user/' + req.params.id + '/stream',
+          req.query,
+        );
+
       }
     });
 

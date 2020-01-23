@@ -25,6 +25,7 @@ const Wrapper = styled.div`
   }
 
   ul li {
+    box-sizing: content-box; // This is to prevent a styling conflict with Open Social that results in the header dropdown menu layout to be incorrect
     justify-content: flex-start;
     display: flex;
     width: 100%;
@@ -107,6 +108,11 @@ const NavButton = styled.li`
       : props.theme.color.brand.primary};
   cursor: pointer;
   list-style-type: none;
+  vertical-align: middle;
+  line-height: 50px;
+  & > a {
+    font-weight: ${props => props.theme.font.weight.bold} !important;
+  }
 `;
 
 const NavLink = styled.div`
