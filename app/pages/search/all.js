@@ -6,6 +6,7 @@ import Layout from '../../components/Layout';
 import styled from 'styled-components';
 import Input from '../../components/atoms/Input';
 import Title from '../../components/atoms/Title';
+import Spinner from '../../components/atoms/Spinner';
 import ContentRegion from '../../components/organisms/ContentRegion';
 import ComplimentaryRegion from '../../components/organisms/ComplimentaryRegion';
 import BaseButton from '../../components/atoms/BaseButton';
@@ -21,7 +22,6 @@ import {
   parseSearchResponse,
   renderSearchResults,
 } from '../../utils/searchUtils';
-import ClipLoader from 'react-spinners/ClipLoader';
 import {useRouter} from 'next/router';
 
 const SearchContainer = styled.div`
@@ -133,7 +133,7 @@ function SearchAll() {
       <SearchContainer>
         <ContentRegion>
           <Title>All results</Title>
-          <ClipLoader loading={loading} />
+          {loading && <Spinner />}
           {renderSearchResults(htmlHead, searchResults, svgs, loading)}
         </ContentRegion>
         <ComplimentaryRegion></ComplimentaryRegion>

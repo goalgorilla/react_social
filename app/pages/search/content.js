@@ -9,6 +9,7 @@ import Title from '../../components/atoms/Title';
 import ContentRegion from '../../components/organisms/ContentRegion';
 import ComplimentaryRegion from '../../components/organisms/ComplimentaryRegion';
 import BaseButton from '../../components/atoms/BaseButton';
+import Spinner from '../../components/atoms/Spinner';
 import PageTitle from '../../components/atoms/PageTitle';
 import SearchIcon from '../../components/atoms/SearchIcon';
 import MenuItem from '../../components/atoms/MenuItem';
@@ -16,7 +17,6 @@ import SecondaryNavigation from '../../components/molecules/SecondaryNavigation'
 import SearchInputLabel from '../../components/atoms/SearchInputLabel';
 import SearchBlockHero from '../../components/atoms/SearchBlockHero';
 import SearchHeroForm from '../../components/molecules/SearchHeroForm';
-import ClipLoader from 'react-spinners/ClipLoader';
 import {API_URL} from '../../utils/constants';
 import {
   parseSearchResponse,
@@ -135,7 +135,7 @@ function SearchContent() {
       <SearchContainer>
         <ContentRegion>
           <Title>Content results</Title>
-          <ClipLoader loading={loading} />
+          {loading && <Spinner />}
           {renderSearchResults(htmlHead, searchResults, svgs, loading)}
         </ContentRegion>
         <ComplimentaryRegion></ComplimentaryRegion>
