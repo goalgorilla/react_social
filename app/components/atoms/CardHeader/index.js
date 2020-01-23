@@ -6,6 +6,11 @@ const CardHeader = styled.div`
   padding: 1.25rem;
   font-size: ${props => props.theme.font.size.default};
   font-weight: ${props => props.theme.font.weight.medium};
+
+  & > a {
+    color: inherit;
+    text-decoration: none;
+  }
 `;
 
 export default CardHeader;

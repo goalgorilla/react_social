@@ -1,16 +1,15 @@
 import React, {useState, useEffect} from 'react';
+import {useUser} from '../../components/auth/userContext';
+import axios from 'axios';
 import Link from 'next/link';
 import Layout from '../../components/Layout';
 import styled from 'styled-components';
 import Input from '../../components/atoms/Input';
-import InputLabel from '../../components/atoms/InputLabel';
 import Title from '../../components/atoms/Title';
-import Card from '../../components/organisms/Card';
-import CardHeader from '../../components/atoms/CardHeader';
-import CardBody from '../../components/atoms/CardBody';
 import ContentRegion from '../../components/organisms/ContentRegion';
 import ComplimentaryRegion from '../../components/organisms/ComplimentaryRegion';
 import BaseButton from '../../components/atoms/BaseButton';
+import Spinner from '../../components/atoms/Spinner';
 import PageTitle from '../../components/atoms/PageTitle';
 import SearchIcon from '../../components/atoms/SearchIcon';
 import MenuItem from '../../components/atoms/MenuItem';
@@ -18,6 +17,11 @@ import SecondaryNavigation from '../../components/molecules/SecondaryNavigation'
 import SearchInputLabel from '../../components/atoms/SearchInputLabel';
 import SearchBlockHero from '../../components/atoms/SearchBlockHero';
 import SearchHeroForm from '../../components/molecules/SearchHeroForm';
+import {API_URL} from '../../utils/constants';
+import {
+  parseSearchResponse,
+  renderSearchResults,
+} from '../../utils/searchUtils';
 
 const SearchContainer = styled.div`
   margin: auto;
@@ -40,10 +44,39 @@ const SearchButton = styled(BaseButton)`
 `;
 
 function SearchUsers() {
+  const user = useUser();
+
   const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState('');
+  const [htmlHead, setHtmlHead] = useState('');
+  const [svgs, setSvgs] = useState('');
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getUsers();
+  }, []);
 
   const handleSearch = e => {
     e.preventDefault();
+    getUsers();
+  };
+
+  const getUsers = async e => {
+    setLoading(true);
+
+    const {searchResults, head, svgs} = await axios
+      .get(encodeURI(`${API_URL}/search/users/${searchQuery}`), {
+        headers: {
+          Authorization: 'Bearer ' + user.token,
+        },
+      })
+      .then(response => {
+        return parseSearchResponse(response);
+      });
+    setSearchResults(searchResults);
+    setHtmlHead(head);
+    setSvgs(svgs);
+    setLoading(false);
   };
 
   return (
@@ -67,22 +100,22 @@ function SearchUsers() {
       <SecondaryNavigation>
         <ul>
           <li>
-            <Link href="/search/all">
+            <Link href="/search/all" scroll={false}>
               <MenuItem>All</MenuItem>
             </Link>
           </li>
           <li>
-            <Link href="/search/content">
+            <Link href="/search/content" scroll={false}>
               <MenuItem>Content</MenuItem>
             </Link>
           </li>
           <li>
-            <Link href="/search/users">
+            <Link href="/search/users" scroll={false}>
               <MenuItem active>Users</MenuItem>
             </Link>
           </li>
           <li>
-            <Link href="/search/groups">
+            <Link href="/search/groups" scroll={false}>
               <MenuItem>Groups</MenuItem>
             </Link>
           </li>
@@ -90,11 +123,9 @@ function SearchUsers() {
       </SecondaryNavigation>
       <SearchContainer>
         <ContentRegion>
-          <Title>All results</Title>
-          <Card>
-            <CardHeader>Placeholder</CardHeader>
-            <CardBody>This is a placeholder</CardBody>
-          </Card>
+          <Title>Member results</Title>
+          {loading && <Spinner />}
+          {renderSearchResults(htmlHead, searchResults, svgs, loading)}
         </ContentRegion>
         <ComplimentaryRegion></ComplimentaryRegion>
       </SearchContainer>
