@@ -5,10 +5,6 @@ const ContentRegion = styled.div`
   max-width: 66.66667%;
   order: 1;
   margin-top: 10px;
-
-  & > * {
-    margin: 15px 0;
-  }
 `;
 
 export default ContentRegion;
