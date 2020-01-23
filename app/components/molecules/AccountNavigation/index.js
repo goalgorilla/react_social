@@ -87,6 +87,7 @@ const DesktopWrapper = styled.div`
   ul li a {
     white-space: nowrap;
     color: inherit;
+    font-weight: ${props => props.theme.font.weight.bold};
   }
 
   @media ${deviceMinWidth.tablet} {
