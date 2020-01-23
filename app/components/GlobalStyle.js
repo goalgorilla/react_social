@@ -15,12 +15,13 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  * {
-    box-sizing: border-box;
+  *, *:before, *:after {
+    box-sizing: inherit;
   }
   html {
     height: 100%;
     font-size: 16px;
+    box-sizing: border-box;
   }
   @media ${deviceMaxWidth.tablet}{
     html {
