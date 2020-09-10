@@ -9,6 +9,7 @@ const PageTitle = styled.h1`
   padding-top: 2rem;
   padding-bottom: 1em;
   width: 80%;
+  font-size: 3rem;
 `;
 
 export default PageTitle;

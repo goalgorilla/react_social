@@ -22,6 +22,22 @@ import {
   parseSearchResponse,
   renderSearchResults,
 } from '../../utils/searchUtils';
+import Card from '../../components/organisms/Card';
+import CardHeader from '../../components/atoms/CardHeader';
+import CardBody from '../../components/atoms/CardBody';
+import TextButton from '../../components/atoms/TextButton';
+import InputLabel from '../../components/atoms/InputLabel';
+import BlockFormField from '../../components/molecules/BlockFormField';
+import InputDescription from '../../components/atoms/InputDescription';
+import SearchSelect from '../../components/atoms/SearchSelect';
+
+const FormButtons = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+  align-items: center;
+`;
 
 const SearchContainer = styled.div`
   margin: auto;
@@ -52,6 +68,12 @@ function SearchUsers() {
   const [svgs, setSvgs] = useState('');
   const [loading, setLoading] = useState(true);
 
+  const [expertise, setExpertise] = useState('');
+  const [interests, setInterests] = useState('');
+  const [timePeriod, setTimePeriod] = useState('before');
+  const [registrationDate, setRegistrationDate] = useState('');
+  const [registrationDateMax, setRegistrationDateMax] = useState('');
+
   useEffect(() => {
     getUsers();
   }, []);
@@ -64,8 +86,55 @@ function SearchUsers() {
   const getUsers = async e => {
     setLoading(true);
 
+    // Build the expertise filter query using the user's input
+    var expertiseFilter = '?expertise=';
+    expertise.split(/\s*,\s*/).forEach(function(i, idx, array) {
+      i = i.replace(/^\s*/, '').replace(/\s*$/, '');
+      expertiseFilter += i;
+      if (idx !== array.length - 1) {
+        expertiseFilter += ', ';
+      }
+    });
+
+    // Build the interests filter query using the user's input
+    var interestsFilter = '&interests=';
+    interests.split(/\s*,\s*/).forEach(function(i, idx, array) {
+      i = i.replace(/^\s*/, '').replace(/\s*$/, '');
+      interestsFilter += i;
+      if (idx !== array.length - 1) {
+        interestsFilter += ', ';
+      }
+    });
+
+    // Selects the correct operator based on the selected time period filter (before, after, between)
+    var timePeriodFilter = '&created_op=';
+    switch (timePeriod) {
+      case 'before':
+        timePeriodFilter += '<';
+        break;
+      case 'after':
+        timePeriodFilter += '>';
+        break;
+      case 'between':
+        timePeriodFilter += 'between';
+        break;
+    }
+
+    // if 'between' then set the min and max date in the query
+    if (timePeriod === 'between') {
+      timePeriodFilter +=
+        '&created[value]=&created[min]=' +
+        registrationDate +
+        '&created[max]=' +
+        registrationDateMax;
+    } else {
+      timePeriodFilter +=
+        '&created[value]=' + registrationDate + '&created[min]=&created[max]=';
+    }
+
+    const filter = expertiseFilter + interestsFilter + timePeriodFilter;
     const {searchResults, head, svgs} = await axios
-      .get(encodeURI(`${API_URL}/search/users/${searchQuery}`), {
+      .get(encodeURI(`${API_URL}/search/users/${searchQuery}${filter}`), {
         headers: {
           Authorization: 'Bearer ' + user.token,
         },
@@ -77,6 +146,19 @@ function SearchUsers() {
     setHtmlHead(head);
     setSvgs(svgs);
     setLoading(false);
+  };
+
+  const handleFilter = e => {
+    e.preventDefault();
+    getUsers();
+  };
+
+  const handleReset = e => {
+    setExpertise('');
+    setInterests('');
+    setTimePeriod('before');
+    setRegistrationDate('');
+    getUsers();
   };
 
   return (
@@ -127,7 +209,70 @@ function SearchUsers() {
           {loading && <Spinner />}
           {renderSearchResults(htmlHead, searchResults, svgs, loading)}
         </ContentRegion>
-        <ComplimentaryRegion></ComplimentaryRegion>
+        <ComplimentaryRegion>
+          <Card>
+            <CardHeader>Filter</CardHeader>
+            <CardBody>
+              <form onSubmit={handleFilter}>
+                <BlockFormField>
+                  <InputLabel>Expertise</InputLabel>
+                  <Input
+                    type="text"
+                    name="expertise"
+                    onChange={e => setExpertise(e.target.value)}
+                  ></Input>
+                  <InputDescription>
+                    Separate multiple values by a comma.
+                  </InputDescription>
+                </BlockFormField>
+                <BlockFormField>
+                  <InputLabel>Interests</InputLabel>
+                  <Input
+                    type="text"
+                    name="interests"
+                    onChange={e => setInterests(e.target.value)}
+                  ></Input>
+                  <InputDescription>
+                    Separate multiple values by a comma.
+                  </InputDescription>
+                </BlockFormField>
+                <BlockFormField>
+                  <InputLabel>Registration Date</InputLabel>
+                  <SearchSelect
+                    name="type"
+                    onChange={e => setTimePeriod(e.target.value)}
+                    value={timePeriod}
+                  >
+                    <option value="before">Before</option>
+                    <option value="after">After</option>
+                    <option value="between">Between</option>
+                  </SearchSelect>
+                  <Input
+                    type="date"
+                    name="date"
+                    onChange={e => setRegistrationDate(e.target.value)}
+                  ></Input>
+                  {timePeriod === 'between' && (
+                    <React.Fragment>
+                      <InputLabel>and</InputLabel>
+                      <Input
+                        type="date"
+                        name="date"
+                        onChange={e => setRegistrationDateMax(e.target.value)}
+                      ></Input>
+                    </React.Fragment>
+                  )}
+                </BlockFormField>
+                <FormButtons>
+                  <TextButton onClick={handleReset}>Reset</TextButton>
+                  <BaseButton type="submit" value="Apply" radius="small">
+                    Apply
+                  </BaseButton>
+                </FormButtons>
+              </form>
+            </CardBody>
+          </Card>
+        </ComplimentaryRegion>
       </SearchContainer>
     </Layout>
   );

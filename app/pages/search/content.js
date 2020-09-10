@@ -23,6 +23,21 @@ import {
   renderSearchResults,
 } from '../../utils/searchUtils';
 import {useRouter} from 'next/router';
+import Card from '../../components/organisms/Card';
+import CardHeader from '../../components/atoms/CardHeader';
+import CardBody from '../../components/atoms/CardBody';
+import TextButton from '../../components/atoms/TextButton';
+import InputLabel from '../../components/atoms/InputLabel';
+import BlockFormField from '../../components/molecules/BlockFormField';
+import SearchSelect from '../../components/atoms/SearchSelect';
+
+const FormButtons = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+  align-items: center;
+`;
 
 const SearchContainer = styled.div`
   margin: auto;
@@ -54,6 +69,11 @@ function SearchContent() {
   const [svgs, setSvgs] = useState('');
   const [loading, setLoading] = useState(true);
 
+  const [contentType, setContentType] = useState('All');
+  const [timePeriod, setTimePeriod] = useState('before');
+  const [eventDate, setEventDate] = useState('');
+  const [eventDateMax, setEventDateMax] = useState('');
+
   useEffect(() => {
     getContent();
   }, []);
@@ -66,12 +86,51 @@ function SearchContent() {
   const getContent = async e => {
     setLoading(true);
 
+    const contentFilter = '?type=' + contentType;
+
+    // Selects the correct operator based on the selected time period filter (before, after, between)
+    var timePeriodFilter = '&field_event_date_op=';
+    switch (timePeriod) {
+      case 'before':
+        timePeriodFilter += '<';
+        break;
+      case 'after':
+        timePeriodFilter += '>';
+        break;
+      case 'between':
+        timePeriodFilter += 'between';
+        break;
+    }
+
+    // if 'between' then set the min and max date in the query
+    if (timePeriod === 'between') {
+      timePeriodFilter +=
+        '&field_event_date[value]=&field_event_date[min]=' +
+        eventDate +
+        '&field_event_date[max]=' +
+        eventDateMax;
+    } else {
+      timePeriodFilter +=
+        '&field_event_date[value]=' +
+        eventDate +
+        '&field_event_date[min]=&field_event_date[max]=';
+    }
+    timePeriodFilter += '&created_op&login_op';
+
+    const dateFilter = timePeriodFilter;
+
     const pageNumber = router.query.page ? router.query.page : 0;
+    const pageFilter = dateFilter
+      ? '&page=' + pageNumber
+      : '?page=' + pageNumber;
 
     const {searchResults, head, svgs} = await axios
       .get(
         encodeURI(
-          `${API_URL}/search/content/${searchQuery}?page=${pageNumber}`,
+          `${API_URL}/search/content/${searchQuery +
+            contentFilter +
+            dateFilter +
+            pageFilter}`,
         ),
         {
           headers: {
@@ -86,6 +145,19 @@ function SearchContent() {
     setHtmlHead(head);
     setSvgs(svgs);
     setLoading(false);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    getContent();
+  };
+
+  const handleReset = e => {
+    setContentType('All');
+    setTimePeriod('before');
+    setEventDate('');
+    setEventDateMax('');
+    getContent();
   };
 
   return (
@@ -138,7 +210,64 @@ function SearchContent() {
           {loading && <Spinner />}
           {renderSearchResults(htmlHead, searchResults, svgs, loading)}
         </ContentRegion>
-        <ComplimentaryRegion></ComplimentaryRegion>
+        <ComplimentaryRegion>
+          <Card>
+            <CardHeader>Filter</CardHeader>
+            <CardBody>
+              <form onSubmit={handleSubmit}>
+                <BlockFormField>
+                  <InputLabel>Type</InputLabel>
+                  <SearchSelect
+                    name="type"
+                    onChange={e => setContentType(e.target.value)}
+                    value={contentType}
+                  >
+                    <option value="All">- Any -</option>
+                    <option value="event">Event</option>
+                    <option value="page">Basic Page</option>
+                    <option value="topic">Topic</option>
+                  </SearchSelect>
+                </BlockFormField>
+                {contentType === 'event' && (
+                  <BlockFormField>
+                    <InputLabel>Date of Event</InputLabel>
+                    <SearchSelect
+                      name="type"
+                      onChange={e => setTimePeriod(e.target.value)}
+                      value={timePeriod}
+                    >
+                      <option value="before">Before</option>
+                      <option value="after">After</option>
+                      <option value="between">Between</option>
+                    </SearchSelect>
+                    <Input
+                      type="date"
+                      name="date"
+                      onChange={e => setEventDate(e.target.value)}
+                    ></Input>
+                    {timePeriod === 'between' && contentType === 'event' && (
+                      <React.Fragment>
+                        <InputLabel>and</InputLabel>
+                        <Input
+                          type="date"
+                          name="date"
+                          onChange={e => setEventDateMax(e.target.value)}
+                        ></Input>
+                      </React.Fragment>
+                    )}
+                  </BlockFormField>
+                )}
+
+                <FormButtons>
+                  <TextButton onClick={handleReset}>Reset</TextButton>
+                  <BaseButton type="submit" value="Apply" radius="small">
+                    Apply
+                  </BaseButton>
+                </FormButtons>
+              </form>
+            </CardBody>
+          </Card>
+        </ComplimentaryRegion>
       </SearchContainer>
     </Layout>
   );

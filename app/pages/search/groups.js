@@ -23,6 +23,12 @@ import {
   renderSearchResults,
 } from '../../utils/searchUtils';
 import {useRouter} from 'next/router';
+import Card from '../../components/organisms/Card';
+import CardHeader from '../../components/atoms/CardHeader';
+import CardBody from '../../components/atoms/CardBody';
+import TextButton from '../../components/atoms/TextButton';
+import InputLabel from '../../components/atoms/InputLabel';
+import SearchSelect from '../../components/atoms/SearchSelect';
 
 const SearchContainer = styled.div`
   margin: auto;
@@ -44,12 +50,20 @@ const SearchButton = styled(BaseButton)`
   border-radius: 0 3px 3px 0;
 `;
 
+const FormButtons = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+  align-items: center;
+`;
+
 function SearchGroups() {
   const user = useUser();
-  const router = useRouter();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState('');
+  const [searchFilter, setSearchFilter] = useState('');
   const [htmlHead, setHtmlHead] = useState('');
   const [svgs, setSvgs] = useState('');
   const [loading, setLoading] = useState(true);
@@ -66,17 +80,21 @@ function SearchGroups() {
   const getGroups = async e => {
     setLoading(true);
 
-    const pageNumber = router.query.page ? router.query.page : 0;
+    // Applying page number when filtering groups results in
+    // an illegal action error from Drupal
+    // const pageNumber = router.query.page ? router.query.page : 0;
+
+    const filter = searchFilter ? '?type=' + searchFilter : '';
+    const searchUrl = encodeURI(
+      `${API_URL}/search/groups/${searchQuery}${filter}`,
+    );
 
     const {searchResults, head, svgs} = await axios
-      .get(
-        encodeURI(`${API_URL}/search/groups/${searchQuery}?page=${pageNumber}`),
-        {
-          headers: {
-            Authorization: 'Bearer ' + user.token,
-          },
+      .get(searchUrl, {
+        headers: {
+          Authorization: 'Bearer ' + user.token,
         },
-      )
+      })
       .then(response => {
         return parseSearchResponse(response);
       });
@@ -84,6 +102,16 @@ function SearchGroups() {
     setHtmlHead(head);
     setSvgs(svgs);
     setLoading(false);
+  };
+
+  const handleFilter = e => {
+    e.preventDefault();
+    getGroups();
+  };
+
+  const handleReset = e => {
+    setSearchFilter('');
+    getGroups();
   };
 
   return (
@@ -136,7 +164,32 @@ function SearchGroups() {
           {loading && <Spinner />}
           {renderSearchResults(htmlHead, searchResults, svgs, loading)}
         </ContentRegion>
-        <ComplimentaryRegion></ComplimentaryRegion>
+        <ComplimentaryRegion>
+          <Card>
+            <CardHeader>Filter</CardHeader>
+            <CardBody>
+              <form onSubmit={handleFilter}>
+                <InputLabel>Type</InputLabel>
+                <SearchSelect
+                  name="type"
+                  onChange={e => setSearchFilter(e.target.value)}
+                  value={searchFilter}
+                >
+                  <option value="">- Any -</option>
+                  <option value="closed_group">Closed group</option>
+                  <option value="open_group">Open group</option>
+                  <option value="public_group">Public group</option>
+                </SearchSelect>
+                <FormButtons>
+                  <TextButton onClick={handleReset}>Reset</TextButton>
+                  <BaseButton type="submit" value="Apply" radius="small">
+                    Apply
+                  </BaseButton>
+                </FormButtons>
+              </form>
+            </CardBody>
+          </Card>
+        </ComplimentaryRegion>
       </SearchContainer>
     </Layout>
   );
